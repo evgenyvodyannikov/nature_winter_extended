@@ -1,0 +1,128 @@
+function search_diary_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("case_10_section_2_diary_true") then
+            db.actor:give_info_portion("player_take_section_2_diary")
+            return true
+        end
+    end
+return false
+end
+
+function search_art_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("af_drops_gorgona") then
+            db.actor:give_info_portion("player_find_art_bar_dmitry")
+            return true
+        end
+    end
+return false
+end
+
+
+function start_add_spawn_docs()
+spawn_false_one()
+spawn_false_two()
+spawn_false_three()
+spawn_false_four()
+spawn_false_five()
+spawn_true()
+spawn_npc()
+end
+
+function spawn_false_one()
+local x= 120,821
+local y= -4,398
+local z= 12,667
+local level_vertex= 35099
+local game_vertex_id= 1238
+alife():create("case_10_section_2_diary_false_one",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_false_two()
+local x= 113,862
+local y= -4,408
+local z= 11,736
+local level_vertex= 33613
+local game_vertex_id= 1239
+alife():create("case_10_section_2_diary_false_two",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_false_three()
+local x= 116,184
+local y= -4,398
+local z= 18,129
+local level_vertex= 33908
+local game_vertex_id= 1239
+alife():create("case_10_section_2_diary_false_three",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_false_four()
+local x= 129,253
+local y= -4,825
+local z= 17,167
+local level_vertex= 35860
+local game_vertex_id= 1238
+alife():create("case_10_section_2_diary_false_four",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_false_five()
+local x= 116,369
+local y= -5,306
+local z= 19,949
+local level_vertex= 33909
+local game_vertex_id= 1239
+alife():create("case_10_section_2_diary_true",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_true()
+local x= 127,245
+local y= -4,825
+local z= 15,123
+local level_vertex= 35474
+local game_vertex_id= 1238
+alife():create("case_10_section_2_diary_false_five",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function start_add_spawn_npc()
+spawn_npc()
+end
+
+function spawn_npc()
+local x= 113,862
+local y= -4,408
+local z= 11,736
+local level_vertex= 33613
+local game_vertex_id= 1239
+alife():create("case_10_section_2_diary_false_two",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
+function art_item_spawn()
+    local obj= alife():create("m_taynik",vector():set(-14.424,-4.787,-265.384),156775,853)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="af_drops_gorgona" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Излучение")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="af_drops_gorgona" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+

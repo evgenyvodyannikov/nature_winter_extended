@@ -1,0 +1,26 @@
+function case_2_racket_money(actor, npc)
+dialogs.relocate_money(actor, 40000, "in")
+end
+
+function case_2_racket_give_pda(actor, npc)
+dialogs.relocate_item_section(actor, "dolg_pda_case_2_racket", "in")
+end
+
+function case_2_racket_money_dolg(actor, npc)
+	return actor:money() >= 40000
+end
+
+function case_2_racket_give_money_and_pda(actor, npc)
+dialogs.relocate_money(npc, 40000, "out")
+dialogs.relocate_item_section(npc, "dolg_pda_case_2_racket", "out")
+end
+
+function case_2_racket_give_money_and_wpn(actor, npc)
+dialogs.relocate_money(actor, 5000, "in")
+dialogs.relocate_item_section(actor, "wpn_wincheaster1300_modifier_15", "in")
+end
+
+function case_2_racket_enemy_dolg(actor, npc)
+npc:set_relation (game_object.enemy, db.actor)
+end
+

@@ -1,0 +1,5 @@
+<actor_dialog>dm_dialog_exchanging_items</actor_dialog>
+<actor_dialog>dm_loan_money_dialog</actor_dialog>
+<actor_dialog>dm_loan_money_out_dialog</actor_dialog>
+<actor_dialog>dm_help_to_actor_dialog</actor_dialog>
+<actor_dialog>dm_help_to_npc_dialog</actor_dialog>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+	<string id="dialog_order_items_0">
+		<text>Можно сделать заказ?</text>
+	</string>
+	<string id="dialog_order_items_1">
+		<text>Да, конечно, выберай, что тебе нужно.</text>
+	</string>
+	<string id="dialog_order_items_2">
+		<text>Пистолет.</text>
+	</string>
+	<string id="dialog_order_items_3">
+		<text>Оружие для ближнего боя.</text>
+	</string>
+	<string id="dialog_order_items_4">
+		<text>Штурмовое оружие.</text>
+	</string>	
+	<string id="dialog_order_items_5">
+		<text>Снайперское оружие.</text>
+	</string>
+	<string id="dialog_order_items_6">
+		<text>Бронезащита.</text>
+	</string>
+	<string id="dialog_order_items_7">
+		<text>Экзоскелет.</text>
+	</string>
+	<string id="dialog_order_items_8">
+		<text>Легко.Пистолет будет стоить 3500.Из них 700 мне нужны как задаток.</text>
+	</string>
+	<string id="dialog_order_items_9">
+		<text>Хорошо, держи.</text>
+	</string>
+	<string id="dialog_order_items_10">
+		<text>У меня сейчас нет денег.</text>
+	</string>
+	<string id="dialog_order_items_11">
+		<text>Я свяжусь с тобой, когда заказ будет готов.</text>
+	</string>
+	<string id="dialog_order_items_12">
+		<text>Что ж... Будут деньги - обращайся.</text>
+	</string>
+	<string id="dialog_order_items_13">
+		<text>Я передумал.</text>
+	</string>
+	<string id="dialog_order_items_14">
+		<text>Как хочеш, дело твое.</text>
+	</string>
+<!------->
+	<string id="dialog_order_items_15">
+		<text>Запросто. Это обойдется тебе в 10000, причем 2000 мне понадобятся сразу.</text>
+	</string>
+	<string id="dialog_order_items_16">
+		<text>Крупнокалиберное и скорострельное... Обычная цена - 20000, из них 4000 - задаток. Что скажешь?</text>
+	</string>
+	<string id="dialog_order_items_17">
+		<text>Могу достать за 25000, но 7000 из них нужно будет оплатить заранее.Как тебе такой расклад?</text>
+	</string>
+	<string id="dialog_order_items_18">
+		<text>Есть у меня кое-что на примете... Обойдется в 40000, но 8000 из них нужно будет заплатить вперед.</text>
+	</string>
+	<string id="dialog_order_items_19">
+		<text>Серьезный выбор. Думаю, я мог бы раздобыть его боевую модификацию, но это обойдется в 60000. Недешево, но это снаряжение стоит таких денег. Учти, 12000 из них будут нужны прямо сейчас.</text>
+	</string>
+	
+	
+	<string id="dialog_order_items_pick_up_order_0">
+		<text>Я хочу забрать заказ.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_1">
+		<text>Вот, «Черный Ястреб». С ним пришлось повозиться... С тебя еще 2800..</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_2">
+		<text>Вот, пистолет «Форт». С тебя еще 2800.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_3">
+		<text>Хорошо, держи.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_4">
+		<text>Я не хочу это покупать.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_5">
+		<text>У меня нет столько денег.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_6">
+		<text>Если ты отказываешься забрать заказ, в следующий раз я не смогу на тебя рассчитывать.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_7">
+		<text>Тем не менее, я не буду забирать этот заказ.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_8">
+		<text>Ну что же, дело твое.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_9">
+		<text>Отлично, вот твой заказ.</text>
+	</string>		
+	<string id="dialog_order_items_pick_up_order_10">
+		<text>Рановато ты что-то. Я же сказал - свяжусь с тобой, когда товар будет у меня на руках.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_11">
+		<text>Спасибо.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_12">
+		<text>Вот, дробовик «ТОС-34». С тебя оставшиеся 8000.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_13">
+		<text>Вот он, дробовик «СПСА14», нового поколения. С тебя - 8000.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_14">
+		<text>Вот она, «ГП37», штурмовая винтовка нового поколения. С тебя - 16000.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_15">
+		<text>Конечно. Вот, автоматно-гранатометный комплекс «Грoза», за недостающие 16000.</text>
+	</string>	
+	<string id="dialog_order_items_pick_up_order_16">
+		<text>Вот, «Винторез». Создавался для военных подразделений на базе бесшумной снайперской винтовки специально для ведения боя с зомбированными. Он твой за оставшиеся 18000.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_17">
+		<text>Угу. «СВД» - снайперская винтовка. С тебя еще 18000.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_18">
+		<text>Держи. Комбинезон «СЕВА». Как и договаривались, 32000.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_19">
+		<text>Держи. Укрепленный костюм «Свободы». Как и договаривались, 32000.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_20">
+		<text>Вот он - экзоскелет боевой, одна штука... 48000 - и забирай.</text>
+	</string>
+	<string id="dialog_order_items_pick_up_order_21">
+		<text>Вот он - экзоскелет одной из группировок, одна штука... 48000 - и забирай.</text>
+	</string>
+
+</string_table>
+
+
+
+
+
+
+
+
+
+

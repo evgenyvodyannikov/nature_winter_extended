@@ -1,0 +1,42 @@
+function start_add_spawn()
+wpn_create()
+outfit_create()
+spawn_npc_zombie()
+spawn_npc_zombie_two()
+end
+
+function wpn_create()
+local x= 180,096
+local y= -7,826
+local z= -100,173
+local level_vertex= 134368
+local game_vertex_id= 1451
+alife():create("wpn_kriss_super_v",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function outfit_create()
+local x= 178,728
+local y= -6,502
+local z= -98,228
+local level_vertex= 134049
+local game_vertex_id= 1451
+alife():create("bandit_outfit",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_npc_zombie()
+local x= 174,046
+local y= -8,074
+local z= -105,889
+local level_vertex= 133423
+local game_vertex_id= 1442
+alife():create("yan_zombied_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_npc_zombie_two()
+local x= 175,007
+local y= -8,171
+local z= -118,291
+local level_vertex= 133554
+local game_vertex_id= 1442
+alife():create("yan_zombied_respawn_2",vector():set(x,y,z),level_vertex,game_vertex_id)
+end

@@ -1,0 +1,247 @@
+;Мод "2D HUD Viewer"
+
+[d2hud]
+d2hud				= true 
+pos_x				= 0
+pos_y				= 0
+d_x					= 1025
+d_y					= 800
+pages				= 1
+monoimage			= false
+img_path			= auto
+
+[s0f]:identity_immunities, d2hud
+GroupControlSection	= spawn_group
+discovery_dependency = 
+class				= II_ATTCH
+cform				= skeleton
+$spawn 				= "devices\pda"
+visual				= equipments\item_mozg.ogf
+radius				= 1
+slot				= 1
+inv_weight				= 0
+quest_item			= true
+cost				= 0
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 28
+inv_grid_y			= 40
+
+inv_name			= Memory
+inv_name_short		= Memory
+description			= enc_equipment_devic_device-memory1
+
+monoimage			= true
+pages				= 1
+;auto_attach			= true
+
+[s1f]:s0f
+quest_item			= false
+
+[s2f]:s0f
+inv_grid_x			= 29
+inv_grid_y			= 40
+quest_item			= false
+
+[s3f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.0
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s4f]:s0f
+inv_name			= Memor1
+inv_name_short		= Memor1
+description			= enc_equipment_devic_device-memor11
+quest_item			= false
+
+[s5f]:s0f
+inv_name			= Memor2
+inv_name_short		= Memor2
+description			= enc_equipment_devic_device-memor21
+quest_item			= false
+
+[s6f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s7f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s8f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s9f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s10f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s11f]:s0f
+visual				= equipments\foto_monolit.ogf
+inv_weight				= 0.15
+
+quest_item			= false
+cost				= 10000
+inv_grid_x			= 30
+inv_grid_y			= 40
+
+inv_name			= Photo
+inv_name_short		= Photo
+description			= enc_equipment_devic_device-photo1
+
+[s12f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+
+quest_item			= false
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 19
+
+inv_name			= Old_letter
+inv_name_short		= Old_letter
+description			= enc_equipment_devic_device-old_letter1
+
+[s13f]:s0f
+inv_name			= Memor1
+inv_name_short		= Memor1
+description			= enc_equipment_devic_device-memor11
+quest_item			= false
+
+[s14f]:s0f
+inv_name			= Memor1
+inv_name_short		= Memor1
+description			= enc_equipment_devic_device-memor11
+quest_item			= false
+
+[s15f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+quest_item			= false
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 40
+inv_grid_y			= 5
+
+inv_name			= Bloodied_note
+inv_name_short		= Bloodied_note
+description			= enc_equipment_devic_device-bloodied_note1
+
+[s16f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+quest_item			= false
+cost				= 1000
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 36
+inv_grid_y			= 34
+
+inv_name			= Map_code_case
+inv_name_short		= Map_code_case
+description			= enc_equipment_devic_device-map_code_case1
+
+[s17f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+quest_item			= false
+cost				= 10000
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 44
+inv_grid_y			= 10
+
+inv_name			= Easter_egg
+inv_name_short		= Easter_egg
+description			= enc_equipment_devic_device-easter_egg1
+
+[s18f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+quest_item			= false
+cost				= 2500
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 18
+
+inv_name			= Easter_egg
+inv_name_short		= Easter_egg
+description			= enc_equipment_devic_device-easter_egg2
+
+[s19f]:s0f
+visual				= equipments\item_document_01.ogf
+inv_weight				= 0.25
+quest_item			= false
+cost				= 2500
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 18
+
+inv_name			= Easter_egg
+inv_name_short		= Easter_egg
+description			= enc_equipment_devic_device-easter_egg3

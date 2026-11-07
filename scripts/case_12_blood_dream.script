@@ -1,0 +1,48 @@
+function case_12_blood_dream_all(actor, npc)
+	return actor:money() >= 25000
+end
+
+function actor_have_pda_green(actor, npc)
+      return actor:object("pda_green") ~= nil
+end
+
+
+function get_case_12_cache()
+    local obj= alife():create("ctw_taynik",vector():set(37.9749984741211,0.0500000007450581,-220.550003051758),218395,857)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="case_12_blood_dream_begin" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Нужно проверить")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="case_12_blood_dream_begin" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+function actor_give_pda_green()
+    local oItem = db.actor:object("pda_green")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+function case_12_blood_dream_b(actor, npc)
+dialogs.relocate_money(npc, 25000, "out")
+end

@@ -1,0 +1,79 @@
+function case_6_protocol_weapons_give_all_documents(actor, npc)
+dialogs.relocate_money(actor, 25250, "in")
+dialogs.relocate_item_section(actor, "document1_case_6_protocol_weapons", "out")
+dialogs.relocate_item_section(actor, "document2_case_6_protocol_weapons", "out")
+end
+
+function get_case_6_protocol_weapons_secret_place()
+this.get_case_six_secret_place_one()
+this.get_case_six_secret_place_two()
+end
+
+
+function get_case_six_secret_place_one()
+    local obj= alife():create("cso_taynik",vector():set(-122.459999084473,-14.9890003204346,-46.5410003662109),38,758)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="document1_case_6_protocol_weapons" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Что-то здесь точно есть")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="document1_case_6_protocol_weapons" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+
+function get_case_six_secret_place_two()
+    local obj= alife():create("cson_taynik",vector():set(-47.2960014343262,-4.01200008392334,-29.6650009155273),4323,718)
+this.set_metka_two()
+end
+
+function set_metka_two()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="document2_case_6_protocol_weapons" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Неизвестно, что там лежит")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_two()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="document2_case_6_protocol_weapons" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+
+function actor_have_document1_case_6_protocol_weapons(actor, npc)
+      return actor:object("document1_case_6_protocol_weapons") ~= nil
+end
+
+function actor_have_document2_case_6_protocol_weapons(actor, npc)
+      return actor:object("document2_case_6_protocol_weapons") ~= nil
+end

@@ -1,0 +1,115 @@
+function check_outfit()
+local outfit = db.actor:item_in_slot(6)
+    if not db.actor:item_in_slot(6) and db.actor:dont_has_info("player_complete_case_12_blood_dream_part_last") then db.actor.health = -0.0001
+        return true
+    end
+--last case
+local actot = db.actor
+    if not db.actor:item_in_slot(6) and db.actor:has_info("player_complete_case_12_blood_dream_part_last") then db.actor.health = -2.0
+       return true
+    end
+    if outfit:section() == "unknown_blood_dream_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -0.00001
+        return true
+    end
+
+--Простейшие
+    if outfit:section() == "novice_outfit" and actot:object("unknown_blood_dream") and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "bandit_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "svoboda_light_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "soldier_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_novice_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_bandit_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+
+--Нормальные
+    if outfit:section() == "killer_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "killer1_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "killer2_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "monolit_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "specops_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "stalker_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "scientific_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "scientifi1_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "dolg_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "ecolog_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_dolg_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_killer_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_specnaz_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_stalker_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_stalker_m2" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_svoboda_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+
+--Улучшенные
+    if outfit:section() == "svoboda_heavy_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "dolg_scientific_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "scientifi2_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "killer3_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "protection_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+
+--Высшие
+    if outfit:section() == "military_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "scientifi3_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "exo_outfit" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+    if outfit:section() == "outfit_exo_m1" and actot:object("unknown_blood_dream") then db.actor.health = -2.0
+        return true
+    end
+end

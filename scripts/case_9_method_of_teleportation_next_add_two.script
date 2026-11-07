@@ -1,0 +1,28 @@
+function teleport()
+teleport_next()
+again_animation()
+spawn_npc_zombie()
+end
+
+function teleport_next()
+    local a = vector()
+    a.x = 116,036
+    a.y = 0,036
+    a.z = 37,183
+    db.actor:set_actor_position(a)
+end
+
+function again_animation()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "") 
+end
+
+function spawn_npc_zombie()
+local x= 129,887
+local y= -0,001
+local z= 44,768
+local level_vertex= 36072
+local game_vertex_id= 1233
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end

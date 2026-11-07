@@ -1,0 +1,30 @@
+function actor_advance_wpn(actor, npc)
+dialogs.relocate_item_section(actor, "wpn_mg42", "in")
+end
+
+function actor_advance_art(actor, npc)
+dialogs.relocate_item_section(actor, "af_b-roza", "in")
+end
+
+function actor_advance_outfit(actor, npc)
+dialogs.relocate_item_section(actor, "svoboda_light_outfit", "in")
+end
+
+function actor_have_doc(actor, npc)
+      return actor:object("case_9_method_of_teleportation_doc") ~= nil
+end
+
+function actor_have_msmo(actor, npc)
+      return actor:object("case_9_method_of_teleportation_doc") ~= nil
+end
+
+function actor_give_doc(actor, npc)
+dialogs.relocate_item_section(npc, "case_9_method_of_teleportation_doc", "out")
+dialogs.relocate_item_section(npc, "msmo", "out")
+end
+
+function get_case_9_cache()
+treasure_manager.get_treasure_manager():give_treasure("treasure_3740")
+end
+
+

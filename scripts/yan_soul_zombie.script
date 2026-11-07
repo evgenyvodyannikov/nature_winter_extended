@@ -1,0 +1,15 @@
+function actor_have_af_soul_zombie(actor, npc)
+      return actor:object("soul_zombie") ~= nil
+end
+
+function actor_have_af_soul_zombie_n(actor, npc)
+      return actor:object("soul_zombie_n") ~= nil
+end
+
+function actor_have_af_soul_zombie_s(actor, npc)
+      return actor:object("soul_zombie_s") ~= nil
+end
+
+function actor_have_money_for_art_zombie(actor, npc)
+	return actor:money() >= 10000
+end

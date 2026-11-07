@@ -1,0 +1,54 @@
+function start_add_spawn()
+spawn_zombie3_one()
+spawn_zombie4_one()
+spawn_zombie5_one()
+end
+
+function spawn_zombie3_one()
+local x= -244,375
+local y= -20,172
+local z= -155,524
+local level_vertex= 12793
+local game_vertex_id= 47
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_zombie4_one()
+local x= -250,103
+local y= -24,800
+local z= -135,551
+local level_vertex= 10132
+local game_vertex_id= 7
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_zombie5_one()
+local x= -246,770
+local y= -24,794
+local z= -133,999
+local level_vertex= 11368
+local game_vertex_id= 4
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

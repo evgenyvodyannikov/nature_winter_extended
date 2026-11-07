@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_crysis1_one()
+end
+
+function spawn_crysis1_one()
+local x= 56,219
+local y= -9,832
+local z= 405,303
+local level_vertex= 355765
+local game_vertex_id= 1806
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

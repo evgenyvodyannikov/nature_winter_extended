@@ -1,0 +1,3 @@
+function start_add_spawn()
+--news_manager.send_tip(db.actor, "%c[255,1,128,128]Ну и холод... Я в куртке новичка до костей замерз...", 0, "trader", 5000)
+end

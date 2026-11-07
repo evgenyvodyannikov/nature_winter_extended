@@ -1,0 +1,43 @@
+function case_8_teleport_to_problem(actor, npc)
+local money = actor:money() 
+actor:give_money(-money)
+end
+
+function animation()
+del_all()
+reduction_of_health()
+teleport()
+again_animation()
+end
+
+function del_all()
+  local cnt = db.actor:object_count() 
+  for i=0, cnt-1 do 
+  local item = db.actor:object(i) 
+  local sobj = alife():object(item:id()) 
+  if sobj then  
+  if sobj:section_name()~="device_pda" and sobj:section_name()~="amulet_case_7_kill_volkodav" and sobj:section_name()~="point_horror" and sobj:section_name()~="point_murder" and sobj:section_name()~="wpn_binachi_case_7_cargo" and sobj:section_name()~="af_7_case_7_cargo" and sobj:section_name()~="screwdriver_bandit_borov" and sobj:section_name()~="medalten" and sobj:section_name()~="medal9" and sobj:section_name()~="medal8" and sobj:section_name()~="medal7" and sobj:section_name()~="medal6" and sobj:section_name()~="medal5" and sobj:section_name()~="medal4" and sobj:section_name()~="medal3" and sobj:section_name()~="medal2" and sobj:section_name()~="medal1" then  then 
+  alife():release(sobj,true) 
+  end 
+  end 
+  end 
+ end
+
+function reduction_of_health()
+    db.actor.health = -0.5
+end
+
+function teleport()
+    local a = vector()
+    a.x = 178,926
+    a.y = -7,245
+    a.z = -102,732
+    db.actor:set_actor_position(a)
+end
+
+function again_animation()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "") 
+    level.add_pp_effector("peace_fade.ppe", 999, false, "") 
+end

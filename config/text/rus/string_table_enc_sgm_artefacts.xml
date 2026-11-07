@@ -1,0 +1,279 @@
+        <string id="yantar_saharov_work_dialog_2">
+		<text>Выберите пожалуйста артефакт с которым будет проводиться опыт:</text>
+	</string>
+        <string id="yantar_saharov_work_dialog_1">
+		<text>Хорошо, но сначала я должен Вам кратко обьяснить требования и все правила эксперимента. Во-первых, наши сотрудники проводят эксперименты только с обыкновенными артефактами, а не с уже улучшеными. Во-вторых, мы можем провести всего 3 експеримента, но при этом, если Вы, к примеру, сделали 2 эксперимента из 3 возможных, и прекратили опыт, то продолжать исследования уже будет невозможно, поскольку артефакат замерзает и преобретает свои свойства, которые уже не изменить. Ну и еще важно понимать, что каждый эксперимент должен достаточно финансироватся. Могу сказать Вам, что первый эксперимент будет требовать от 10 до 20 тысяч, второй от 25 до 35 тысяч, и последний от 40 до 50 тысяч. Пересчитайте свои деньги, и скажите: будем ли мы начинать эксперимент?</text>
+	</string>
+        <string id="sgm_af_work_dialog_1">
+		<text>Извините, но у меня нет артефактов.</text>
+	</string>
+        <string id="sgm_af_work_dialog_2">
+		<text>У меня нет такой суммы, на первый эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_3">
+		<text>У меня нет такой суммы, на второй эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_4">
+		<text>У меня нет такой суммы, на третий эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_5">
+		<text>Хотелось бы провести научный эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_6">
+		<text>Я согласен. Что мне нужно зделать?</text>
+	</string>
+        <string id="sgm_af_work_dialog_7">
+		<text>Возьмите (10-20 тысяч).</text>
+	</string>
+        <string id="sgm_af_work_dialog_8">
+		<text>Возьмите (25-35 тысяч).</text>
+	</string>
+        <string id="sgm_af_work_dialog_9">
+		<text>Возьмите (40-50 тысяч).</text>
+	</string>
+        <string id="sgm_af_work_dialog_10">
+		<text>Все, я передал артефакт в лабораторию. Подождите пожалуйста.</text>
+	</string>
+        <string id="sgm_af_work_dialog_11">
+		<text>Жду.</text>
+	</string>
+        <string id="sgm_af_work_dialog_12">
+		<text>Все, готово. Скажите, пожалуйста, вернуть артефакт в лабораторию, для продолжения опыта, или отдать его вам?</text>
+	</string>
+        <string id="sgm_af_work_dialog_13">
+		<text>Нет, верните его мне.</text>
+	</string>
+        <string id="sgm_af_work_dialog_14">
+		<text>Вот, возьмите.</text>
+	</string>
+        <string id="sgm_af_work_dialog_15">
+		<text>Спасибо.</text>
+	</string>
+        <string id="sgm_af_work_dialog_16">
+		<text>Продолжайте эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_17">
+		<text>Хорошо, но сначала деньги.</text>
+	</string>
+        <string id="sgm_af_work_dialog_18">
+		<text>Я сказал сотрудникам, чтобы они приступили ко второму эксперименту. Подождите пожалуйста.</text>
+	</string>
+        <string id="sgm_af_work_dialog_19">
+		<text>Я сказал сотрудникам, чтобы они приступили к последнему эксперименту. Подождите пожалуйста.</text>
+	</string>
+        <string id="sgm_af_work_dialog_20">
+		<text>Все, готово. Вот ваш артефакт..</text>
+	</string>
+        <string id="sgm_af_work_dialog_21">
+		<text>Спасибо за эксперимент.</text>
+	</string>
+        <string id="sgm_af_work_dialog_22">
+		<text>Я выбираю артефакт "Медуза"</text>
+	</string>
+        <string id="sgm_af_work_dialog_23">
+		<text>Вы выбрали "Медуза"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_24">
+		<text>Я выбираю артефакт "Каменный цветок"</text>
+	</string>
+        <string id="sgm_af_work_dialog_25">
+		<text>Вы выбрали "Каменный цветок"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_26">
+		<text>Я выбираю артефакт "Ночная звезда"</text>
+	</string>
+        <string id="sgm_af_work_dialog_27">
+		<text>Вы выбрали "Ночная звезда"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_28">
+		<text>Я выбираю артефакт "Выверт"</text>
+	</string>
+        <string id="sgm_af_work_dialog_29">
+		<text>Вы выбрали "Выверт"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_30">
+		<text>Вы выбрали "Грави"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_31">
+		<text>Я выбираю артефакт "Грави"</text>
+	</string>
+        <string id="sgm_af_work_dialog_32">
+		<text>Я выбираю артефакт "Золотая рыбка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_33">
+		<text>Вы выбрали "Золотая рыбка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_34">
+		<text>Я выбираю артефакт "Капли"</text>
+	</string>
+        <string id="sgm_af_work_dialog_35">
+		<text>Вы выбрали "Капли"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_36">
+		<text>Я выбираю артефакт "Огненный шар"</text>
+	</string>
+        <string id="sgm_af_work_dialog_37">
+		<text>Вы выбрали "Огненный шар"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_38">
+		<text>Я выбираю артефакт "Кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_39">
+		<text>Вы выбрали "Кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_40">
+		<text>Я выбираю артефакт "Кровь камня"</text>
+	</string>
+        <string id="sgm_af_work_dialog_41">
+		<text>Вы выбрали "Кровь камня"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_42">
+		<text>Я выбираю артефакт "Ломоть мяса"</text>
+	</string>
+        <string id="sgm_af_work_dialog_43">
+		<text>Вы выбрали "Ломоть мяса"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_44">
+		<text>Я выбираю артефакт "Бенгальский огонь"</text>
+	</string>
+        <string id="sgm_af_work_dialog_45">
+		<text>Вы выбрали "Бенгальский огонь"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_46">
+		<text>Я выбираю артефакт "Вспышка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_47">
+		<text>Вы выбрали "Вспышка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_48">
+		<text>Я выбираю артефакт "Лунный свет"</text>
+	</string>
+        <string id="sgm_af_work_dialog_49">
+		<text>Вы выбрали "Лунный свет"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_50">
+		<text>Я выбираю артефакт "Статический шар"</text>
+	</string>
+        <string id="sgm_af_work_dialog_51">
+		<text>Вы выбрали "Статический шар"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_52">
+		<text>Я выбираю артефакт "Слизняк"</text>
+	</string>
+        <string id="sgm_af_work_dialog_53">
+		<text>Вы выбрали "Слизняк"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_54">
+		<text>Я выбираю артефакт "Слизь"</text>
+	</string>
+        <string id="sgm_af_work_dialog_55">
+		<text>Вы выбрали "Слизняк"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_56">
+		<text>Я выбираю артефакт "Слюда"</text>
+	</string>
+        <string id="sgm_af_work_dialog_57">
+		<text>Вы выбрали "Слюда"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_58">
+		<text>Я выбираю артефакт "Пружина"</text>
+	</string>
+        <string id="sgm_af_work_dialog_59">
+		<text>Вы выбрали "Пружина"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_60">
+		<text>Я выбираю артефакт "Пустышка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_61">
+		<text>Вы выбрали "Пустышка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_62">
+		<text>Я выбираю артефакт "Батарейка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_63">
+		<text>Вы выбрали "Батарейка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_64">
+		<text>Я выбираю артефакт "Плёнка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_65">
+		<text>Вы выбрали "Плёнка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_66">
+		<text>Я выбираю артефакт "Мамины бусы"</text>
+	</string>
+        <string id="sgm_af_work_dialog_67">
+		<text>Вы выбрали "Мамины бусы"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_68">
+		<text>Я выбираю артефакт "Колючка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_69">
+		<text>Вы выбрали "Колючка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_70">
+		<text>Я выбираю артефакт "Кристалическая решотка"</text>
+	</string>
+        <string id="sgm_af_work_dialog_71">
+		<text>Вы выбрали "Кристалическая решотка"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_72">
+		<text>Я выбираю артефакт "Колобок"</text>
+	</string>
+        <string id="sgm_af_work_dialog_73">
+		<text>Вы выбрали "Колобок"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_74">
+		<text>Я выбираю артефакт "Душа"</text>
+	</string>
+        <string id="sgm_af_work_dialog_75">
+		<text>Вы выбрали "Душа"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_76">
+		<text>Я выбираю артефакт "Светло-жолтый кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_77">
+		<text>Вы выбрали "Светло-жолтый кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_78">
+		<text>Я выбираю артефакт "Пурпурный кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_79">
+		<text>Вы выбрали "Пурпурный кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_80">
+		<text>Я выбираю артефакт "Салатовый кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_81">
+		<text>Вы выбрали "Салатовый кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_82">
+		<text>Я выбираю артефакт "Синий кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_83">
+		<text>Вы выбрали "Синий кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_84">
+		<text>Я выбираю артефакт "Красный кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_85">
+		<text>Вы выбрали "Красный кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_86">
+		<text>Я выбираю артефакт "Зеленый кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_87">
+		<text>Вы выбрали "Зеленый кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_88">
+		<text>Я выбираю артефакт "Фиолетовый кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_89">
+		<text>Вы выбрали "Фиолетовый кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>
+        <string id="sgm_af_work_dialog_90">
+		<text>Я выбираю артефакт "Голубой кристалл"</text>
+	</string>
+        <string id="sgm_af_work_dialog_91">
+		<text>Вы выбрали "Голубой кристалл"... Теперь давайте артефакт и деньги на первое исследование, и мы приступим к работе.</text>
+	</string>

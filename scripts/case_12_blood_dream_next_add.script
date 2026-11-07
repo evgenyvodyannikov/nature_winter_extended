@@ -1,0 +1,20 @@
+function search_case_12_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("screwdriver_bandit_borov") then
+            db.actor:give_info_portion("player_have_screwdriver_bandit_borov")
+            db.actor:give_info_portion("player_complete_case_12_blood_dream_part_2")
+            return true
+        end
+    end
+return false
+end
+
+function search_case_12_complete_next(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("pda_green_elk") then
+            db.actor:give_info_portion("player_complete_case_12_blood_dream_part_3_stop")
+            return true
+        end
+    end
+return false
+end

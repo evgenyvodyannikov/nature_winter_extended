@@ -1,0 +1,39 @@
+--Основная функция
+function actor_has_items(sSection,iNum)
+    if not iNum then iNum = 1 end
+    local oActor = db.actor
+    local iCnt = 0
+    if oActor and sSection then
+        oActor:iterate_inventory(
+            function (dummy, oItem)
+                if oItem:section() == sSection then
+                    iCnt = iCnt + 1
+                    if iCnt >= iNum then
+                        return true
+                    end
+                end
+            end
+        ,nil)
+    end
+    return iCnt >= iNum
+end
+
+--Вызов
+function search_souls_complete()
+    return this.actor_has_items("soul_zombie_n", 5)
+end
+
+function go_to_souls_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("af_drops_gorgona_l") then
+            db.actor:give_info_portion("player_find_art_l_bar_dmitry")
+            return true
+        end
+    end
+return false
+end
+
+function sound_dmitry()
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_points]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

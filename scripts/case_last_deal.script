@@ -1,0 +1,110 @@
+function get_case()
+    local obj= alife():create("case_t_taynik",vector():set(-169.709,-2.613,-6.868),80840,69)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="wpn_gaus4" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Проверь перед тем, как отправиться на Сделку к Падалеки")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="wpn_gaus4" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+
+function get_case_r()
+    local obj= alife():create("case_tl_taynik",vector():set(-123.380,-26.318,-476.279),129145,11)
+this.set_metka_r()
+end
+
+function set_metka_r()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="bullion_gild_deal" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Место проведения сделки с Падалеки")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_r()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="bullion_gild_deal" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+function all_spawn_last()
+wolf_create()
+zombies_create()
+npc_create()
+pad_death()
+end
+
+function wolf_create()
+local x= -149,862
+local y= -24,129
+local z= -457,481
+local level_vertex= 99922
+local game_vertex_id= 11
+alife():create("white_wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function zombies_create()
+local x= -130,822
+local y= -26,292
+local z= -443,434
+local level_vertex= 120323
+local game_vertex_id= 11
+alife():create("zombie_speed",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_ti",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function npc_create()
+local x= -109,928
+local y= -24,665
+local z= -441,036
+local level_vertex= 146764
+local game_vertex_id= 12
+alife():create("pri_monolith_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("pri_monolith_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function pad_death()
+local obj= alife():create("npc_1875",vector():set(-134.494,-25.578,-455.059),116452,11)
+obj:on_death()
+end
+
+
+function text_art_nw(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение системы:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Поздравляем! Вы прошли основной сюжет Nature Winter. Режим Freeplay - открыт.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

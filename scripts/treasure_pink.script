@@ -1,0 +1,29 @@
+function actor_have_pink_letter(actor, npc)
+      return actor:object("pink_letter") ~= nil
+end
+
+function actor_give_item(actor, npc)
+local tbl = "actor"
+local items = {'grenade_rgd5', 7,
+'grenade_f1', 5,
+'af_ameba_slug_mod_1',
+'af_electra_sparkler_mod_1',
+{'wpn_m29_satan','ammo_11.43x23_fmj'},
+{'wpn_colt_m1','ammo_11.43x23_fmj'},
+{'wpn_anaconda','ammo_11.43x23_fmj'},
+{'wpn_ak74_military','ammo_5.45x39_fmj'},
+{'wpn_groza_dolg','ammo_9x39_pab9'},
+{'wpn_svi','ammo_11.43x23_fmj'},
+{'wpn_thompson','ammo_5.56x45_ss190'},
+'af_electra_touster'}      
+xr_effects.uni_random_spawn(items, tbl, kol)
+msg("Получен предмет")
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+
+--Убор
+dialogs.relocate_item_section(npc, "pink_letter", "out")
+end
+function msg(text)
+	db.actor:give_game_news(text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+end

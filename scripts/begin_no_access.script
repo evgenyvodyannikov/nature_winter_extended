@@ -1,0 +1,21 @@
+function check_access()
+           if db.actor and level.name() == "l04_darkvalley" and db.actor:has_info("player_complete_case_1del2_auditor") and db.actor:dont_has_info("actor_have_access") then
+	db.actor:give_info_portion("actor_have_access")
+           end
+           if db.actor and level.name() == "l04_darkvalley" and db.actor:dont_has_info("player_complete_case_1del2_auditor") then
+	db.actor.health = -0.01
+           end
+           if db.actor and level.name() == "l05_bar" and db.actor:has_info("player_give_pro_act") and db.actor:dont_has_info("player_decide_the_fate_of") then
+	db.actor:give_info_portion("player_decide_the_fate_of")
+           end
+           if db.actor and level.name() == "l10_radar" and db.actor:has_info("player_give_pro_act") and db.actor:dont_has_info("player_decide_the_fate_of") then
+	db.actor:give_info_portion("player_decide_the_fate_of")
+           end
+           if db.actor and level.name() == "l04_darkvalley" and db.actor:has_info("case_13_quantum_leap_started") and db.actor:dont_has_info("player_find_exit_case_13_quantum_leap") then
+	db.actor:give_info_portion("player_find_exit_case_13_quantum_leap")
+           end
+           if db.actor and level.name() == "l02_garbage" and db.actor:has_info("spawn_deception_ql") and db.actor:dont_has_info("player_complete_case_13_quantum_leap") then
+	db.actor.health = -0.01
+           end
+end
+

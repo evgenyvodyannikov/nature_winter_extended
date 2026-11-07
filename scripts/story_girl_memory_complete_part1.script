@@ -1,0 +1,24 @@
+function delete_s1f_from_actor()
+    local oItem = db.actor:object("s1f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+function delete_s2f_from_actor()
+    local oItem = db.actor:object("s2f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+function actor_have_s3f(actor, npc)
+      return actor:object("s3f") ~= nil
+end
+
+function give_s4f_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "s4f", "in")
+end
+

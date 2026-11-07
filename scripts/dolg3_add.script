@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_dolg3_one()
+end
+
+function spawn_dolg3_one()
+local x= 204,529
+local y= 0,099
+local z= 55,183
+local level_vertex= 49216
+local game_vertex_id= 1177
+local obj= alife():create("npc_1874",vector():set(x,y,z),level_vertex,game_vertex_id)
+level.map_add_object_spot_ser(obj.id, "red_location", "%c[255,238,155,23]Второй наемный убийца")
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end

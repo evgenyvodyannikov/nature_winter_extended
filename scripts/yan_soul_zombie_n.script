@@ -1,0 +1,26 @@
+function actor_have_art_zombie(actor, npc)
+dialogs.relocate_money(npc, 10000, "out")
+dialogs.relocate_item_section(actor, "af_soul_zombie", "in")
+this.delete_soul_zombie()
+end
+
+function delete_soul_zombie()
+    local oItem = db.actor:object("soul_zombie")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+
+function actor_have_art_zombie_n(actor, npc)
+dialogs.relocate_money(npc, 10000, "out")
+dialogs.relocate_item_section(actor, "af_soul_zombie_n", "in")
+this.delete_soul_zombie_n()
+end
+
+function delete_soul_zombie_n()
+    local oItem = db.actor:object("soul_zombie_n")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end

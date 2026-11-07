@@ -1,0 +1,343 @@
+local dark_matter = 0
+local ini = system_ini()
+local separator_id = nil
+local time_belt = time_global()
+inv_mass = 0
+exchange_ui = nil
+belt = {}
+local no_repack =	{
+					["dark_matter_ammo1"] = true,
+					["dark_matter_ammo2"] = true,
+					["arc_ballast"] = true
+					}
+
+function is_exchange_ui_open()
+	return exchange_ui ~= nil
+end
+
+function on_inv_open()
+	update_belt_init() -- здесь из-за перепаковщика и конвертера предметов в фейки
+	exchange_ui = "inv"
+end
+
+function on_inv_close()
+	update_belt_init() -- могли одеть/снять что-то на пояс или с пояса
+	exchange_ui = nil
+end
+
+function on_trade_open()
+	update_belt_init() -- здесь из-за перепаковщика и конвертера предметов в фейки
+	exchange_ui = "trade"
+end
+
+function on_trade_close()
+	update_belt_init() -- могли купить/продать что-то на пояс или с пояса
+	exchange_ui = nil
+end
+
+function on_search_open()
+	update_belt_init() -- здесь из-за перепаковщика и конвертера предметов в фейки
+	exchange_ui = "search"
+end
+
+function on_search_close()
+	update_belt_init() -- могли подобрать/выбросить что-то на пояс или с пояса
+	exchange_ui = nil
+end
+
+function update_belt_init() 
+	if not separator_id then -- должен быть единственным
+		local sep = spawn.inv("inv_separator") -- при получении в инвентарь - запуск update_belt_main()
+		if sep then
+			separator_id = sep.id
+		else
+			--qqq("ERROR! 'inv_separator' has NOT been spawned")
+		end
+	end
+end
+
+function update_belt_main() -- поиск предметов на поясе, заодно перепаковка патронов и конвертер предметов в фейки
+	belt = {}
+	local ammo = {}
+	local sep_found = false
+	local stop_id = 0 -- ИД актора точно не попадется
+	if db.actor:item_in_slot(1) then -- в пистолетном слоте что-то есть - стоп
+		stop_id = db.actor:item_in_slot(1):id()
+	elseif db.actor:item_in_slot(2) then -- в автоматном слоте что-то есть - стоп
+		stop_id = db.actor:item_in_slot(2):id()
+	elseif db.actor:item_in_slot(6) then -- в слоте костюма что-то есть - стоп
+		stop_id = db.actor:item_in_slot(6):id()
+	end
+	--qqq("inv open = "..tostring(exchange_ui == "inv"))
+	local npc = db.actor -- в inventory_for_each с db.actor вместо npc посылает с логом: attempt to index global 'inv' (a nil value)!
+	npc:inventory_for_each(
+		function(item, npc)
+			--qqq(item:section())
+			if not sep_found then
+				local sect = item:section()
+				local id = item:id()
+				local mass = ini:r_float(sect,"inv_weight")
+				local class = ini:r_string(sect,"class")
+				local slot = 15
+				if system_ini():line_exist(sect,"slot") then
+					slot = system_ini():r_u32(sect,"slot")
+				end
+				-- конвертер предметов с фейками в свои фейки, если они не в слоте - для смены биноклей, ножей, и т.д.
+				if ini:section_exist("fake_"..sect) then -- если есть фейки
+					if slot ~= 4 or not (db.actor:item_in_slot(4) and string.sub(db.actor:item_in_slot(4):section(),1,3) == "wm_" ) then 
+					-- слот не биноклевый или в слоте бинокля не магазин
+						--qqq("exchanging: "..sect)
+						alife():release(alife():object(id), true)
+						spawn.inv("fake_"..sect)
+						--qqq("exchanged")
+					end
+				end
+				-- [[ перепаковка патронов (начало)
+				if class == "AMMO" and (no_repack[sect] == nil) and not (string.sub(sect,1,4) == "mag_" or string.sub(sect,1,5) == "clip_" or string.sub(sect,1,5) == "belt_") then
+					--qqq("sect = "..sect.." id = "..id.." time = "..time_global())
+					local box_max = ini:r_float(sect,"box_size")
+					local box_curr = get_ammo_in_box(id)
+					if box_curr ~= box_max then -- пачка неполная
+						--qqq("box incomplete")
+						if not ammo[sect] then
+							ammo[sect] = box_curr
+						else
+							ammo[sect] = ammo[sect] + box_curr
+						end
+						alife():release(alife():object(id),true)
+					end
+				end
+				--]]
+				if item:id() == separator_id or sect == "inv_separator" then -- нашли разделитель
+					sep_found = true -- старт со следующего предмета
+				end
+			else
+				if stop_id == item:id() then -- первый предмет, находящийся в видимом слоте
+					sep_found = false -- стоп
+				else
+					table.insert(belt,item)
+				end
+			end
+		end
+	,npc)
+	--qqq("inv open = "..tostring(exchange_ui == "inv"))
+	
+	-- [[ перепаковка патронов (продолжение)
+	for sect, num in pairs (ammo) do
+		--qqq("sect = "..sect.." num = "..num)
+		se_respawn.create_ammo(sect,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),num)
+		time_belt = time_global() + 500
+	end
+	--]]
+	
+	alife():release(alife():object(separator_id),true)
+	separator_id = nil
+end
+
+function update_mass()
+	if time_global() < time_belt then return end
+	inv_mass = 0
+	local npc = db.actor -- в inventory_for_each с db.actor вместо npc посылает с логом: attempt to index global 'inv' (a nil value)!
+	npc:iterate_inventory(
+		function(dummy, item)
+			local sect = item:section()
+			local id = item:id()
+			local mass = ini:r_float(sect,"inv_weight")
+			local class = ini:r_string(sect,"class")
+			if class == "AMMO" and not (string.sub(sect,1,4) == "mag_" or string.sub(sect,1,5) == "clip_" or string.sub(sect,1,5) == "belt_") then
+				local box_max = ini:r_float(sect,"box_size")
+				--qqq("asking 'get_ammo_in_box' from 'update_mass'".." time = "..time_global())
+				local box_curr = get_ammo_in_box(id)
+				mass = mass*box_curr/box_max
+			elseif string.find(class,"WP_") and class ~= "WP_BINOC" and class ~= "WP_KNIFE" and class ~= "WP_SCOPE" then
+				local load = item:get_ammo_in_magazine()
+				local ammo = parse_data(ini:r_string(sect,"ammo_class"))
+				local atype,addons = get_atype_addons(id)
+				local current_ammo = ammo[atype+1]
+				local ammo_box = ini:r_float(current_ammo, "box_size")
+				--qqq("sect = "..sect.." addons = "..addons.." current_ammo = "..ammo[atype+1])
+				local box_weight = ini:r_float(current_ammo, "inv_weight")
+				mass = mass + load*box_weight/ammo_box
+				--[[ Не нужно, учтено в dark_matter
+				if ini:section_exist(current_ammo.."_e") and load > 0 then
+					mass = mass + ini:r_float(current_ammo.."_e","inv_weight")
+				end
+				--]]
+				if addons == 4 or addons == 5 or addons == 6 or addons == 7 then
+					local sl = ini:r_string(sect,"silencer_name")
+					local sl_mass = ini:r_float(sl,"inv_weight")
+					mass = mass + sl_mass
+				end
+				if addons == 2 or addons == 3 or addons == 6 or addons == 7 then
+					local gl = ini:r_string(sect,"grenade_launcher_name")
+					local gl_mass = ini:r_float(gl,"inv_weight")
+					mass = mass + gl_mass
+				end
+				if addons == 1 or addons == 3 or addons == 5 or addons == 7 then
+					local sc = ini:r_string(sect,"scope_name")
+					local sc_mass = ini:r_float(sc,"inv_weight")
+					mass = mass + sc_mass
+				end
+			end
+			inv_mass = inv_mass + mass
+		end
+	,npc)
+end
+
+function get_mass()
+	return inv_mass or 0
+end
+
+function init_dark_matter()
+	local dmc1 = db.actor:object("dark_matter_container1")
+	local dmc2 = db.actor:object("dark_matter_container2")
+	if not (dmc1 and dmc2) then
+		--qqq("cannot init dark matter")
+		return false
+	end
+	dmc1:unload_magazine()
+	dmc2:unload_magazine()
+	local npc = db.actor -- в inventory_for_each с db.actor вместо npc посылает с логом: attempt to index global 'inv' (a nil value)!
+	npc:iterate_inventory(
+		function(dummy, item)
+			local sect = item:section()
+			local id = item:id()
+			local class = ini:r_string(sect,"class")
+			if string.sub(sect,1,4) == "mag_" or string.sub(sect,1,5) == "clip_" or string.sub(sect,1,5) == "belt_" then
+				local cond = item:condition()
+				local mass = ammo_manager.get_extra_mass(sect,cond)
+				--qqq("add_weight = "..mass)
+				add_dark_matter(mass)
+			elseif string.find(class,"WP_") and class ~= "WP_BINOC" and class ~= "WP_KNIFE" and class ~= "WP_SCOPE" then
+				local load = item:get_ammo_in_magazine()
+				local ammo = parse_data(ini:r_string(sect,"ammo_class"))
+				local atype,addons = get_atype_addons(id)
+				local current_ammo = ammo[atype+1]
+				if ini:section_exist(current_ammo.."_e") and load > 0 then
+				--qqq("mag_weight = "..tonumber(ini:r_string(current_ammo.."_e","inv_weight")))
+					add_dark_matter(ammo_manager.unfloat10kx(current_ammo.."_e","inv_weight"))
+				end
+			end
+		end
+	,npc)
+	update_belt_init() -- заодно проверим пояс
+	return true
+end
+
+
+function add_dark_matter(mass) -- передавать 10000 х реал
+	local dmc1 = db.actor:object("dark_matter_container1")
+	local dmc2 = db.actor:object("dark_matter_container2")
+	if not (dmc1 and dmc2) then
+		--qqq("cannot add mass")
+		return
+	end
+	local dmc1load = dmc1:get_ammo_in_magazine()
+	local dmc2load = dmc2:get_ammo_in_magazine()
+	local dm = dmc1load*10000 + dmc2load
+	local dmnew = dm + mass
+	local mass_hi = math.floor(dmnew/10000)
+	local mass_low = dmnew - mass_hi*10000
+	dmc1:set_ammo_elapsed(mass_hi)
+	dmc2:set_ammo_elapsed(mass_low)
+end
+
+function subtract_dark_matter(mass) -- передавать 10000 х реал
+	local dmc1 = db.actor:object("dark_matter_container1")
+	local dmc2 = db.actor:object("dark_matter_container2")
+	if not (dmc1 and dmc2) then
+		--qqq("cannot subtract mass")
+		return
+	end
+	local dmc1load = dmc1:get_ammo_in_magazine()
+	local dmc2load = dmc2:get_ammo_in_magazine()
+	local dm = dmc1load*10000 + dmc2load
+	local dmnew = dm - mass
+	if dmnew >= 0 then
+		local mass_hi = math.floor(dmnew/10000)
+		local mass_low = dmnew - mass_hi*10000
+		dmc1:set_ammo_elapsed(mass_hi)
+		dmc2:set_ammo_elapsed(mass_low)
+	else
+		--qqq("ERROR! inv.script string 251: dmnew = "..dmnew)
+		init_dark_matter()
+	end
+end
+
+function get_ammo_in_box(id)
+	local sobj = alife():object(id)
+	if not sobj then
+		--qqq("no server object: id = "..id)
+		return 0
+	end
+	local np = net_packet()
+	sobj:STATE_Write(np)
+	local size = np:w_tell()
+	np:r_seek(size - 2)
+	local ammo_left = np:r_u16()
+	return ammo_left
+end
+
+function get_atype_addons(id)
+	local sobj = alife():object(id)
+	if not sobj then
+		return 0,0 
+	end
+	local np = net_packet()
+	sobj:STATE_Write(np)
+	local size = np:w_tell()
+	np:r_seek(size - 2)
+	local addons = np:r_u8()
+	local ammo_type = np:r_u8()
+	return ammo_type,addons
+end
+
+function item_ids(section,npc)
+	if not npc then
+		npc = db.actor
+	end
+	local ids = {}
+	npc:iterate_inventory(
+		function(dummy, item)
+			if item:section() == section then
+				table.insert(ids,item:id())
+			end
+		end
+	,npc)
+	return ids
+end
+
+function item_count(section,npc)
+	if not npc then
+		npc = db.actor
+	end
+	local items = item_ids(section,npc)
+	return table.getn(items)
+end
+
+function del_items(section,number,npc)
+	if type(number)~="number" then
+		npc = number
+		number = 1
+	end
+	if number == -1 then
+		number = item_count(section,npc)
+	end
+	if not npc then
+		npc = db.actor
+	end
+	local items = item_ids(section,npc)
+	for k,v in pairs(items) do
+		if number == 0 then return end
+		alife():release(alife():object(v),true)
+		number = number - 1
+	end
+end
+
+
+function belt_list()
+	for k,v in pairs (belt) do
+		qqq(k.." = "..v:section().." "..v:id())
+	end
+end
+

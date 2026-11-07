@@ -1,0 +1,11 @@
+function start_add_spawn()
+text_one()
+end
+
+function text_one(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,1,1]Всем внимание! Цель обнаружена. Координаты местонахождения объекта - локация Бар. Выполняю активное задание.", nil, nil, 30000)
+end
+
+function actor_have_msmo(actor, npc)
+dialogs.relocate_item_section(actor, "msmo", "in")
+end

@@ -1,0 +1,152 @@
+----------
+-- чтение формы из нет-пакета
+----------
+function r_shape(packet)
+ local s
+ local st = {}
+ st.count = packet:r_u8()
+ st.shapes = {}
+ for i=1, st.count do
+ s = {}
+ s.type = packet:r_u8()
+ if s.type == 0 then
+ s.center = packet:r_vec3()
+ s.radius = packet:r_float()
+ else
+ s.axis_x = packet:r_vec3()
+ s.axis_y = packet:r_vec3()
+ s.axis_z = packet:r_vec3()
+ s.offset = packet:r_vec3()
+ end
+ st.shapes[i] = s
+ end
+ return st
+end
+
+----------
+-- запись формы в нет-пакет
+----------
+function w_shape(packet, st)
+ local s
+ packet:w_u8(st.count)
+ for i=1, st.count do
+ s = st.shapes[i]
+ packet:w_u8(s.type)
+ if s.type == 0 then
+ packet:w_vec3(s.center)
+ packet:w_float(s.radius)
+ else
+ packet:w_vec3(s.axis_x)
+ packet:w_vec3(s.axis_y)
+ packet:w_vec3(s.axis_z)
+ packet:w_vec3(s.offset)
+ end
+ end
+end
+
+----------
+-- перепаковка нет-пакета созданного скриптом рестрикта
+----------
+function rewrite_restrictor(se_obj, custom, radius)
+ local packet = net_packet()
+ se_obj:STATE_Write(packet)
+ local game_vertex_id = packet:r_u16()
+ local distance = packet:r_float()
+ local direct_control = packet:r_s32()
+ local level_vertex_id = packet:r_s32()
+ local object_flags = packet:r_s32()
+ local custom_data = packet:r_stringZ()
+ local story_id = packet:r_s32()
+ local spawn_story_id = packet:r_s32()
+ local shape = r_shape(packet)
+ local restrictor_type = packet:r_u8()
+
+ custom_data = custom
+ shape = {}
+ shape.count = 1
+ shape.shapes = {}
+ shape.shapes[1] = {}
+ shape.shapes[1].type = 0
+ shape.shapes[1].center = vector():set(0,0,0)
+ shape.shapes[1].radius = radius
+
+ packet:w_u16(game_vertex_id)
+ packet:w_float(distance)
+ packet:w_s32(direct_control)
+ packet:w_s32(level_vertex_id)
+ packet:w_s32(object_flags)
+ packet:w_stringZ(custom_data)
+ packet:w_s32(story_id)
+ packet:w_s32(spawn_story_id)
+ w_shape(packet, shape)
+ packet:w_u8(restrictor_type)
+ se_obj:STATE_Read(packet, packet:w_tell() - packet:r_tell())
+end
+
+function spawn_zones()
+esc_spawn1_zone()
+esc_spawn2_zone()
+end
+
+function esc_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(5.756,0.543,-36.875),179710,293)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+spawn_pad_first%"
+  rewrite_restrictor(se_obj, custom, 8.0)
+end
+
+function esc_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(82.444,0.465,435.961),377727,199)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+spawn_pad_sec%"
+  rewrite_restrictor(se_obj, custom, 8.0)
+end
+
+function esc_spawn3_text()
+  local se_obj = alife():create("space_restrictor",vector():set(-250.896,-19.601,-127.214),9843,8)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+spawn_pad_deal%"
+  rewrite_restrictor(se_obj, custom, 4.0)
+end
+
+
+function text_deal_nw()
+text_sid_nw()
+text_pad_nw()
+text_sid_nw_two()
+text_pad_nw_two()
+end
+
+function text_sid_nw(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_esc_trader_job")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Пад, цель хочет с тобой встретиться, чтобы провести сделку.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 15000)
+end
+
+function text_pad_nw(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Какие условия?%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function text_sid_nw_two(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_esc_trader_job")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Два уникальных арта и кусок золота.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 25000)
+end
+
+function text_pad_nw_two(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Договорились. Жду.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

@@ -1,0 +1,50 @@
+function open_unique_case()
+	db.actor:give_info_portion("fh")
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,1,255,1]јктивирован раздел fH.%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+
+function buy_open_new_unique_case()
+local v= "point_horror"
+           if db.actor:has_info("buy_open_this_unique_case") then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]¬ы уже открыли уникальный квест.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+           if db.actor:object(v) and db.actor:has_info("fh") and db.actor:dont_has_info("buy_open_this_unique_case") and db.actor:money()>=500000 then
+	this.next_vis_new_unique_case()
+           end
+           if db.actor:dont_has_info("fh") then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]¬ы не активировали раздел fH.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+           if db.actor:money()<500000 then 
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас не достаточно денег - дл€ открыти€ уникального квеста.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+           if not db.actor:object(v) then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас недостаточно баллов страха - дл€ открыти€ уникального квеста.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+end
+
+function next_vis_new_unique_case()
+	db.actor:give_info_portion("buy_open_this_unique_case")
+	ability_horror_money.del_money_five()
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,1,255,1]”никальный квест доступен.%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    local oItem = db.actor:object("point_horror") 
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end

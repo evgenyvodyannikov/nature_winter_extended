@@ -1,0 +1,40 @@
+function get_case_7_cargo()
+    local obj= alife():create("cs_taynik",vector():set(-284.191986083984,4.69700002670288,47.6549987792969),1464,1392)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="wpn_binachi_case_7_cargo" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Бармен попросил проверить")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="wpn_binachi_case_7_cargo" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+function actor_have_case_7_amulet(actor, npc)
+      return actor:object("amulet_case_7_kill_volkodav") ~= nil
+end
+
+function actor_have_case_7_binachi(actor, npc)
+      return actor:object("wpn_binachi_case_7_cargo") ~= nil
+end
+
+function actor_have_case_7_artefact(actor, npc)
+      return actor:object("af_7_case_7_cargo") ~= nil
+end

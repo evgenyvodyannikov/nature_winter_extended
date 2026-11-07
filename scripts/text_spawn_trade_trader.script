@@ -1,0 +1,5 @@
+function text3_trade_trader(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_esc_trader_job")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение от Сидоровича:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Меченый, спаси!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+end

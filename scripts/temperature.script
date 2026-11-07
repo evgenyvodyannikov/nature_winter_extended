@@ -1,0 +1,127 @@
+local temperature = 0
+local hud_temperature = 0
+local wea_sect = ""
+local lrain = 0
+local stand = true
+local lwind = 0
+
+function getwind(delta)
+    local ltx = system_ini()
+    local weather_section = level.get_weather()
+    local pos_of = 1
+    stand = true
+    
+    for i = 1, 3 do
+        if pos_of then
+        pos_of = string.find(weather_section, "_", pos_of + 1)
+        end
+        
+    end
+    local weather_hour = ""
+    local wind = 0
+    if pos_of ~= nil then
+    weather_hour = string.sub(weather_section, pos_of + 1, string.len(weather_section))
+    get_temperature(weather_hour)
+    if string.len(weather_hour) == 1 then weather_hour = "0"..weather_hour end
+    weather_section = ltx:r_string("sect_"..weather_section, weather_hour..":00:00")
+    wind = ltx:r_float(weather_section, "wind_velocity")
+
+    else
+        --- нетипичная секция погоды
+        stand = false
+        wind = ui_wpn_params.read_if_exist(ltx, weather_section, "wind_velocity", 0)
+        get_temperature("22")
+        --if twoteam.under_ground() ~= true then
+        wea_sect = level.get_weather()
+    end
+    
+
+    lwind = wind / 20
+    wea_sect = weather_section
+    rain_density()
+    temphud()
+    change_hud_temperature(delta)
+end
+
+function rain_density()
+--- возвращает интенсивность дождя, исключение для подземных локаций
+    local rain = 0
+    local sim = alife()
+    if not sim then return 0 end
+    local levelname = string.lower(sim:level_name(sim:level_id()))
+    if levelname == "l03_agr_underground"
+    or levelname == "l04u_labx18"
+    or levelname == "l08u_brainlab"
+    or levelname == "l10u_bunker"
+    or levelname == "l12u_sarcofag"
+    or levelname == "l12u_control_monolith" then
+        rain = 0
+    else
+        rain = level.rain_factor()
+    end
+    lrain = rain
+end
+
+function get_temperature(weat_hour)
+    local hour = level.get_time_hours()
+    if hour == 0 or hour == 1 then temperature = 17
+    elseif hour == 2 or hour == 3 then temperature = 16
+    elseif hour == 4 or hour == 5 then temperature = 15
+    elseif hour == 6 or hour == 7 then temperature = 14
+    elseif hour == 8 or hour == 9 then temperature = 13
+    elseif hour == 10 or hour == 11 then temperature = 12
+    elseif hour == 12 or hour == 13 then temperature = 11
+    elseif hour == 14 or hour == 15 then temperature = 12
+    elseif hour == 16 or hour == 17 then temperature = 13
+    elseif hour == 18 or hour == 19 then temperature = 14
+    elseif hour == 20 or hour == 21 then temperature = 15
+    elseif hour == 22 or hour == 23 then temperature = 16
+    end
+    if (string.find(wea_sect, "pasmurno", 1) ~= nil) then temperature = temperature - 1 end
+    if (string.find(wea_sect, "groza", 1) ~= nil) then temperature = temperature - 1 end
+    if lrain > 0 then temperature = temperature - 1 end
+    if lrain > 0.5 then temperature = temperature - 1 end
+    if lwind > 0 then temperature = temperature - 1 end
+--Проверка костюмов
+    if hour == 0 or hour == 1 then holod_outfit.check_outfit() end
+    if hour == 2 or hour == 3 then holod_outfit_type_first.check_outfit() end
+    if hour == 4 or hour == 5 then holod_outfit_type_second.check_outfit() end
+    if hour == 20 or hour == 21 then holod_outfit_type_second.check_outfit() end
+    if hour == 22 or hour == 23 then holod_outfit_type_first.check_outfit() end
+--Проверка оружия
+    if hour == 0 or hour == 1 then holod_wpn.check_wpn() end
+    if hour == 20 or hour == 21 then holod_wpn_type_second.check_wpn() end
+    if hour == 22 or hour == 23 then holod_wpn_type_first.check_wpn() end
+--Нет костюма
+    if hour == 6 or hour == 7 then holod_outfit_type_all.check_outfit() end
+    if hour == 8 or hour == 9 then holod_outfit_type_all.check_outfit() end
+    if hour == 10 or hour == 11 then holod_outfit_type_all.check_outfit() end
+    if hour == 12 or hour == 13 then holod_outfit_type_all.check_outfit() end
+    if hour == 14 or hour == 15 then holod_outfit_type_all.check_outfit() end
+    if hour == 16 or hour == 17 then holod_outfit_type_all.check_outfit() end
+    if hour == 18 or hour == 19 then holod_outfit_type_all.check_outfit() end
+end
+
+function temphud()
+    local hud = get_hud()
+    local cps = hud:GetCustomStatic("th_weather_text")
+    if cps == nil then
+        hud:AddCustomStatic("th_weather_text", true)
+        cps = hud:GetCustomStatic("th_weather_text")
+    end    
+  if hud_temperature == 0 then hud_temperature = temperature end
+    cps:wnd():SetText("-"..tostring(hud_temperature).." C")
+end
+
+
+local hud_temperature_timer = 0
+
+function change_hud_temperature(delta)
+--- устраняем резкие скачки температуры. Изменение должно быть плавным
+hud_temperature_timer = hud_temperature_timer + delta
+if hud_temperature_timer > 45000 then
+    hud_temperature_timer = 0
+    if hud_temperature > temperature then hud_temperature = hud_temperature - 1 end
+    if hud_temperature < temperature then hud_temperature = hud_temperature + 1 end
+end
+end

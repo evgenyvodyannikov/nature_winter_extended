@@ -1,0 +1,82 @@
+function del_npc_all()
+del_npc_one()
+del_npc_two()
+del_npc_three()
+del_npc_fifth()
+del_npc_six()
+del_npc_seven()
+del_npc_eight()
+del_npc_nine()
+del_npc_ten()
+end
+
+function del_npc_one()
+    local se_obj = alife():object("npc_1871")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_two()
+    local se_obj = alife():object("npc_1872")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_three()
+    local se_obj = alife():object("npc_888")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_fifth()
+    local se_obj = alife():object("npc_1874")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_six()
+    local se_obj = alife():object("npc_nw_1875")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_seven()
+    local se_obj = alife():object("npc_nw_1876")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_eight()
+    local se_obj = alife():object("npc_nw_1877")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_nine()
+    local se_obj = alife():object("npc_nw_1878")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function del_npc_ten()
+    local se_obj = alife():object("npc_nw_1879")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+
+function del_npc_four()
+    local se_obj = alife():object("npc_3337")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end

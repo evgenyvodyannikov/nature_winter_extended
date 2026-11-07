@@ -1,0 +1,726 @@
+local table_art = 
+	{
+		{"af_medusa",           0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_cristall_flower",  0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_night_star",       0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_vyvert",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_gravi",            0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_gold_fish",        0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_blood",            0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_mincer_meat",      0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_soul",             0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_electra_sparkler", 0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_electra_flash",    0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_electra_moonlight",0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_rusty_thorn",      0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_rusty_kristall",   0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_rusty_sea-urchin", 0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_ameba_slime",      0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_ameba_slug",       0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_ameba_mica",       0.25, 0.15, 0, 		0, 		1, 1},
+		{"af_drops",            0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_touster",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_radiation_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_telepatic_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_strike_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_burn_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_explosion_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_firewound_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_shock_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_chemical-burn_crystall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_cristall_flower_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_night_star_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_vyvert_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_gravi_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_gold_fish_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_drops_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_cristall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_blood_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_mincer_meat_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_soul_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_sparkler_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_flash_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_moonlight_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_touster_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_ameba_slime_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_ameba_slug_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_ameba_mica_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_spring_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_dummy_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_battery_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_glassbeads_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_rusty_thorn_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_rusty_kristall_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_rusty_sea-urchin_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fuzz_kolobok_mod_1",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_adegansky_crystall_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_carbonyl_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_cortosis_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_cosmi_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_plastal_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_metatsianid_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_elerium-115_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_medusa_adamantane_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_adegansky_crystall_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_carbonyl_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_cortosis_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_cosmi_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_plastal_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_metatsianid_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_elerium-115_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle_adamantane_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_adegansky_crystall_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_carbonyl_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_cortosis_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_cosmi_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_plastal_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_metatsianid_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_elerium-115_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_adamantane_01",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_cristall",         0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_glassbeads", 0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_pellicle",   0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_battery",    0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_dummy",      0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_dummy_spring",     0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_burn_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_strike_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_b-roza",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_shock_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_firewound_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_explosion_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_chemical-burn_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_telepatic_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_radiation_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_electra_sparkler_0",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fuzz_kolobok_0",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_vyvert_0",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fireball_0",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_bleeding_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_satiety_crystall",           0.25, 0.15, 0, 		0, 		1, 1}, 
+		{"af_fuzz_kolobok",     0.25, 0.15, 0, 		0, 		1, 1} 
+	}
+
+local table_ammo = 
+	{
+		{"ammo_9x18_fmj",       0.30, 0.1,  0,    0,    2, 3},
+		{"ammo_9x18_pmm",       0,    0.05, 0.05, 0, 		2, 3},
+		{"ammo_9x19_pbp",       0.15, 0.1,  0,    0,    2, 3},
+		{"ammo_9x19_fmj",       0,    0.05, 0.05, 0, 		2, 3},
+		{"ammo_11.43x23_hydro", 0.20, 0.1,  0,    0,    2, 3},
+		{"ammo_11.43x23_fmj",   0,    0.05, 0.05, 0, 		2, 3},
+		{"ammo_12x70_buck",     0.25, 0.1,  0,    0,    2, 3},
+		{"ammo_12x76_dart",     0.10, 0.1,  0.05, 0,    2, 3},
+		{"ammo_12x76_zhekan",   0,    0.05, 0.05, 0, 		2, 3},
+		{"ammo_5.45x39_ap",     0,    0.15, 0.20, 0,    3, 5},
+		{"ammo_5.45x39_fmj",    0,    0.05, 0.10, 0, 		3, 5},
+		{"ammo_9x39_sp5",       0,    0,    0,    0.08, 2, 3},
+		{"ammo_9x39_ap",        0,    0,    0,    0.08, 2, 3},
+		{"ammo_9x39_pab9",      0,    0,    0,    0.08, 2, 3},
+		{"ammo_5.56x45_ss190",  0,    0,    0.05, 0.08, 3, 5},
+		{"ammo_5.56x45_ap",     0,    0,    0,    0.08, 3, 5},
+		{"ammo_7.62x54_7h14",   0,    0,    0.05, 0.08, 3, 4},
+		{"ammo_7.62x54_7h1",    0,    0,    0,    0.08, 3, 4},
+		{"ammo_7.62x54_ap",     0,    0,    0,    0.08, 3, 4},
+		{"ammo_og-7b",          0,    0,    0,    0.08, 1, 1},
+		{"ammo_vog-25p",        0,    0,    0.05, 0.07, 2, 4},
+		{"ammo_vog-25",         0,    0,    0.05, 0.07, 2, 4},
+		{"grenade_f1",          0,    0.05, 0.1,  0, 		2, 4},
+		{"grenade_rgd5",        0,    0.05, 0.1,  0, 		2, 4},
+		{"ammo_m209",           0,    0,    0.05, 0.07, 2, 4},
+		{"ammo_4.73x33_dm11",       0,    0,    0,    0.08, 2, 3},
+		{"arro1_carbon",       0,    0,    0,    0.08, 2, 3},
+		{"arrow_carbon",       0,    0,    0,    0.08, 2, 3},
+		{"ammo_11.43x23gold",          0,    0,    0,    0.07, 1, 2},
+		{"ammo_11.43x23silv",          0,    0,    0,    0.07, 1, 2},
+		{"ammo_gauss",          0,    0,    0,    0.07, 1, 2}
+	}
+  
+local table_medkit = 
+	{
+		{"bandage",         0.40,   0.25, 0.15, 0.10, 3, 5},
+		{"medkit",          0.60,   0.45, 0.40, 0.30, 2, 3},
+		{"medkit_scientic", 0,      0.20, 0.25, 0.25, 2, 3},
+		{"medkit_army",     0,      0,    0,    0.15, 2, 3},
+		{"medkit_elite",     0,      0,    0,    0.15, 2, 3},
+		{"antirad",         0,      0.10, 0.20, 0.20, 2, 4}
+	}
+  
+local table_food = 
+	{
+		{"nuts",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"vodka",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"condensed_milk",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"yogurt",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"paek2",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"paek1",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"sandwich",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"processed_cheese",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"kolbasa",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"conserva",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"bread",        0.2,  0.2,  0.2,  0.2,  1, 1},
+		{"energy_drink", 0.2,  0.2,  0.2,  0.2,  1, 1}
+	}
+
+local table_cool = 
+	{
+		{"outfit_dolg_m1",		0,	0,	0,	0.16,	1,	1},
+		{"outfit_killer_m1",	0,	0,	0,	0.17,	1,	1},
+		{"outfit_exo_m1",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_m29_satan",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_superx3",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_thompson",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_twinbo1",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_ak2012",			0,	0,	0,	0.16,	1,	1},
+		{"wpn_vintorez",			0,	0,	0,	0.17,	1,	1},
+		{"wpn_ak47_camo2",			0,	0,	0,	0.17,	1,	1},
+		{"wpn_aks74_m1_camo2",			0,	0,	0,	0.17,	1,	1},
+		{"wpn_val_m1",				0,	0,	0,	0.17,	1,	1},
+		{"wpn_rg6_m1",				0,	0,	0,	0.17,	1,	1}
+	}
+
+local table_percent = {{30, 35, 35, 0, 0}, {0, 30, 40, 30, 0}}
+	
+local treasure_manager = nil
+local reject_percent = 85
+local mined_percent = 25
+local drop_percent = 40
+local reject_percent_def = reject_percent
+
+need_move_pstor_data = false
+
+function parse_spawns(line)
+	if line == nil then
+		return {}
+	end
+	--' если default-ов больше, чем значений в ini, то забить недостающие последним значением из ini
+	local t = se_respawn.parse_names(line)
+	local n = table.getn(t)
+	local ret_table = {}
+	local k = 1
+	while k <= n do
+		local spawn = {}
+		spawn.section = t[k]
+		-- Проверяем что это не последняя запись
+		if t[k+1] ~= nil then
+			local p = tonumber(t[k+1])
+			-- проверяем что вторым числом задана вероятность, а не другая секция спавну
+			if p then
+				-- забиваем число
+				spawn.prob = p
+				k = k + 2
+			else
+				-- забиваем дефолт 1
+				spawn.prob = 1
+				k = k + 1
+			end
+		else
+			spawn.prob = 1
+			k = k + 1
+		end
+		table.insert(ret_table, spawn)
+	end
+	return ret_table
+end
+
+class "CTreasure"
+function CTreasure:__init()
+	--' На конструкторе вычитываем LTX и создаем заготовки квестов.
+	self.ini = ini_file("misc\\treasure_manager.ltx")
+	--' Итерируемся по всем настройкам фраз
+	if not self.ini:section_exist("list") then
+		abort("There is no section [list] in treasure_manager.ltx")
+	end
+	local n = self.ini:line_count("list")
+	local id, value = "",""
+	--' начальная установка
+	self.treasure_info = {}
+	for i=0,n-1 do
+		result, id, value = self.ini:r_line("list",i,"","")
+		self.treasure_info[id] = {}
+		self.treasure_info[id].target		= utils.cfg_get_number(self.ini, id, "target", nil, true)
+		self.treasure_info[id].name			= utils.cfg_get_string(self.ini, id, "name", nil, true, "")
+		self.treasure_info[id].description	= utils.cfg_get_string(self.ini, id, "description", nil, true, "")
+		self.treasure_info[id].items		= parse_spawns(utils.cfg_get_string(self.ini, id, "items", nil, true, ""))
+		local community = parse_names(utils.cfg_get_string(self.ini, id, "community", nil, false, "", "stalker, bandit, dolg, freedom"))
+		self.treasure_info[id].community = {}
+		for k,v in pairs(community) do
+			self.treasure_info[id].community[v] = true
+		end
+		if self.treasure_info[id].items == nil then
+			abort("cant find 'items' in %s", id)
+		end
+		self.treasure_info[id].condlist	 = xr_logic.parse_condlist(db.actor, "treasure_manager", "condlist", utils.cfg_get_string(self.ini, id, "condlist", nil, false, "", ""))
+		--' Отметим тайник как новый
+		self.treasure_info[id].active = false
+		self.treasure_info[id].done = false
+		--print_table(self.treasure_info)
+	end
+	--' Вспомогательные таблицы для облегчения поиска
+	self.treasure_by_target = {}
+	for k,v in pairs(self.treasure_info) do
+		self.treasure_by_target[v.target] = k
+	end
+	self.loss_workaround_queue = {}
+end
+--' Юзание инициатора (возможность выдать тайник)
+function CTreasure:use(npc)
+	printf("TREASURE USE")
+	--' Проверим, не вызывались ли мы уже для этого объекта. 
+	local se_obj = alife():object(npc:id())
+	if se_obj.treasure_processed == true then
+		return
+	end
+	se_obj.treasure_processed = true
+	--' Нужно рандомно выбрать один из тайников.
+	local avail = {}
+	local tr_sum = 0
+	for k,v in pairs(self.treasure_info) do
+		if v.done == false then
+			local treasure_prob = xr_logic.pick_section_from_condlist(db.actor, npc, v.condlist)
+			if treasure_prob == "" or treasure_prob == nil then
+				treasure_prob = 0
+			end
+			if tonumber(treasure_prob) >= 0 and
+			v.community[npc:character_community()] == true and
+			v.active == false
+			then
+				if tonumber(treasure_prob) == 100 then
+					self:give_treasure(k, npc)
+				else
+					table.insert(avail, {k = k, prob = treasure_prob})
+					tr_sum = tr_sum + treasure_prob
+				end
+			end
+		end
+	end
+	if tr_sum == 0 or math.random(100) < reject_percent then
+		return
+	end
+	local tr_w = math.random(tr_sum)
+	for k,v in pairs(avail) do
+		tr_w = tr_w - v.prob
+		if tr_w <= 0 then
+			--' Выдать тайник
+			self:give_treasure(v.k, npc)
+			break
+		end
+	end
+end
+
+--' Сохранение
+function CTreasure:check()
+	--' Проверка тайников
+	for k,v in pairs(self.treasure_info) do
+		--' Выдать тайник
+		self:give_treasure(k)
+	end
+end
+--' Выдача тайника
+function CTreasure:give_treasure(k, npc)
+	local v = self.treasure_info[k]
+	local sim = alife()
+	local obj = sim:story_object(v.target)
+	local actor_rank_number = ranks.get_obj_rank_number(db.actor)
+	local npc_rank_number = ranks.get_obj_rank_number(npc)
+	local rank_number = nil
+	if (actor_rank_number == nil) then
+		actor_rank_number = 1
+	end
+	if npc_rank_number == nil then
+		rank_number = actor_rank_number
+	else
+		rank_number = math.min(actor_rank_number, npc_rank_number)
+	end
+	if obj ~= nil then
+		local pstor_obj
+		local lobj = level.object_by_id(obj.id)
+		if lobj ~= nil then
+			pstor_obj = lobj
+		else
+			pstor_obj = db.actor
+		end
+--		news_manager.send_treasure(v.name)
+		--' Пометить на карте
+		local text = "%c[255,238,155,23]"..game.translate_string(v.name).."\\n".."%c[default]"..game.translate_string(v.description).."\\n"
+--		level.map_add_object_spot_ser(obj.id, "treasure", text)
+		--' Сгенерить вещи
+		--'
+		--' Из-за какого-то дефекта в xrGame.dll тайник потеряет
+		--' сгенерированное содержимое в следующей ситуации:
+		--'	1) получена ссылка на тайник, который находится в online;
+		--'	2) игрок сохраняется и загружается;
+		--'	3) между 1 и 2 не было переводов тайника в offline хотя бы раз.
+		--' Для предотвращения этого создаём вещи у актёра, запоминаем
+		--' идентификаторы, а в вызове actor_binder:update() переносим их
+		--' в нужный ящик.
+		local item_ids = {}
+		local pos, lvid, gvid, pid, new_obj
+		local need_workaround = level.object_by_id(obj.id) ~= nil
+		if need_workaround then
+			pos = db.actor:position()
+			lvid = db.actor:level_vertex_id()
+			gvid = db.actor:game_vertex_id()
+			pid = db.actor:id()
+		else
+			pos = obj.position
+			lvid = obj.m_level_vertex_id
+			gvid = obj.m_game_vertex_id
+			pid = obj.id
+		end
+		if self:named_treasure(v) then
+			for kk,vv in pairs(v.items) do
+				if ammo_section[vv.section] == true then
+					local left, box_size = vv.prob, system_ini():r_u32(vv.section, "box_size")
+					while left > box_size do
+						new_obj = sim:create_ammo(vv.section, pos, lvid, gvid, pid, box_size)
+						table.insert(item_ids, new_obj.id)
+						left = left - box_size
+					end
+					if left > 0 then
+						new_obj = sim:create_ammo(vv.section, pos, lvid, gvid, pid, left)
+						table.insert(item_ids, new_obj.id)
+					end
+				else
+					for i=1,vv.prob do
+						new_obj = sim:create(vv.section, pos, lvid, gvid, pid)
+						table.insert(item_ids, new_obj.id)
+					end
+				end
+				local tmp_str = ""
+				if kk > 1 then
+					tmp_str = ", "
+				else
+					tmp_str = ""
+				end
+    				--if string.find(text,add_dialogs.get_treasure_name(vv.section)) == nil  then 
+				--text = text.."%c[255,155,238,23]"..tmp_str..add_dialogs.get_treasure_name(vv.section)
+				--end
+			end
+		else
+			local rnd = nil
+			local t_rnd = nil
+			local tables = {0, 0}
+			for i=1,2 do
+				rnd = math.random(100)
+				t_rnd = 0
+				for kk,vv in pairs(table_percent[i]) do
+					t_rnd = t_rnd + vv
+					if t_rnd >= rnd then
+						tables[i] = kk
+						break
+					end
+				end
+			end
+			local mined = math.random(100) <= mined_percent
+			local table_items = {}
+			local mined_items_str = ""
+				
+			for i=1,2 do
+				if tables[i] == 1 then
+					table_items = table_art
+				elseif tables[i] == 2 then
+					table_items = table_ammo
+				elseif tables[i] == 3 then
+					table_items = table_medkit
+				elseif tables[i] == 4 then
+					table_items = table_food
+				elseif tables[i] == 5 then
+					table_items = table_cool
+				else
+					break
+				end
+
+				rnd = math.random()
+				t_rnd = 0
+				for kk,vv in pairs(table_items) do
+					t_rnd = t_rnd + vv[rank_number+1]
+					if t_rnd >= rnd then
+						for cnt=1,math.random(vv[6],vv[7]) do
+							if tables[i] == 2 then
+								new_obj = sim:create_ammo(vv[1], pos, lvid, gvid, pid, system_ini():r_u32(vv[1], "box_size"))
+								table.insert(item_ids, new_obj.id)
+							else
+								new_obj = sim:create(vv[1], pos, lvid, gvid, pid)
+								table.insert(item_ids, new_obj.id)
+							end
+							if mined then
+								if new_obj ~= nil then
+									if mined_items_str == "" then
+										mined_items_str = tostring(new_obj.id)
+									else
+										mined_items_str = tostring(new_obj.id)..","..mined_items_str
+									end
+								end
+							end		
+						end
+						local tmp_str = ""
+						if i ~= 1 then
+							tmp_str = ", "
+						else
+							tmp_str = ""
+						end
+						if string.find(text,add_dialogs.get_treasure_name(vv[1])) == nil then 
+							text = text.."%c[255,155,238,23]"..tmp_str..add_dialogs.get_treasure_name(vv[1])
+						end
+						break
+					end
+				end
+				if tables[i] == 1 or tables[i] == 5 then
+					break
+				end
+			end
+
+			if mined_items_str ~= "" then
+				xr_logic.pstor_store(pstor_obj, "mined_items_"..tostring(obj.id), mined_items_str)
+			end
+		end
+		if need_workaround then
+			self.loss_workaround_queue[v.target] = item_ids
+		end
+		text = text.."."
+		news_manager.send_treasure(v.name)
+		local rnd_spot = nil
+		if actor_rank_number == 1 then
+			rnd_spot = math.random(1,16)
+		else
+			rnd_spot = math.random(1,8)
+		end
+		level.map_add_object_spot_ser(obj.id, "treasure_"..actor_rank_number.."_"..rnd_spot, text)
+		--' Пометим тайник как выданный
+		self.treasure_info[k].active = true
+		self.treasure_info[k].done = true
+	else
+		printf("TREASURE %s, target doesnt exist", k)
+	end
+end
+
+function move_pstor_data()
+	if need_move_pstor_data == true then
+		for i=0,65535 do
+			local mn_var = "mined_items_"..i
+			local mn_val =	xr_logic.pstor_retrieve(db.actor, mn_var, nil)
+			if mn_val ~= nil then
+				local box = level.object_by_id(i)
+				if box ~= nil then
+					xr_logic.pstor_store(box, mn_var, mn_val)
+					db.storage[db.actor:id()].pstor[mn_var] = nil
+				end
+			end
+		end
+	end                
+	need_move_pstor_data = false
+end
+
+-- Непись во время диалога дает наводку на тайник
+function npc_give_treasure (first, second)
+	reject_percent = 0
+	get_treasure_manager():use(first)
+	reject_percent = reject_percent_def
+end 
+
+-- Проверка, может ли НПС дать наводку на тайник. Сделано на основе CTreasure:use()
+function CTreasure:can_use(npc)
+
+	local se_obj = alife():object(npc:id())
+	if se_obj.treasure_processed == true then
+		return false
+	end
+
+	local avail = {}
+	local tr_sum = 0
+
+	for k,v in pairs(self.treasure_info) do
+		if v.done == false then
+			local treasure_prob = xr_logic.pick_section_from_condlist(db.actor, npc, v.condlist)
+
+			if treasure_prob == "" or treasure_prob == nil then
+				treasure_prob = 0
+			end
+
+			if tonumber(treasure_prob) >= 0 and v.community[npc:character_community()] == true and v.active == false then
+				if tonumber(treasure_prob) == 100 then
+					return true
+				else
+					table.insert(avail, {k = k, prob = treasure_prob})
+					tr_sum = tr_sum + treasure_prob
+				end
+			end
+		end
+	end
+
+	if tr_sum == 0 then
+		return false
+	end
+	
+	local tr_w = math.random(tr_sum)
+	for k,v in pairs(avail) do
+		tr_w = tr_w - v.prob
+		if tr_w <= 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
+--' Снимаем отметку с тайника
+--' Перенос содержимого для предотвращения возможной потери
+function CTreasure:loss_workaround()
+	for k,v in pairs(self.loss_workaround_queue) do
+		box = level_object_by_sid(k)
+		if box == nil then
+			abort("inv box nil")
+		end
+		dbglog("loss_workaround:box=%d", k)
+		for kk,vv in ipairs(v) do
+			dbglog("  item:name=%s", level.object_by_id(vv):name())
+			db.actor:transfer_item(level.object_by_id(vv), box)
+		end
+	end
+	self.loss_workaround_queue = {}
+end
+
+--' Снимаем отметку с тайника
+function CTreasure:treasure_empty(box, box_story_id)
+	printf("!!! treasure empty")
+	local k = self.treasure_by_target[box_story_id]
+	if k == nil or self.treasure_info[k] == nil then 
+		return
+	end
+
+	self.treasure_info[k].active = false
+	for i=1,4 do
+		for j=1,16 do
+			level.map_remove_object_spot(box:id(), "treasure_"..i.."_"..j)
+		end
+	end
+	level.map_remove_object_spot(box:id(), "treasure")
+end
+
+--' Сохранение
+function CTreasure:save(p)
+	--' Сохраняем размер таблицы
+	local size = 0
+	for k,v in pairs(self.treasure_info) do
+		size = size + 1
+	end
+	p:w_u16(size)
+	for k,v in pairs(self.treasure_info) do
+		p:w_u16(v.target)
+		p:w_bool(v.active)
+		p:w_bool(v.done)
+	end
+end
+--' Загрузка
+function CTreasure:load(p)
+	local t = p:r_u16()
+	for i = 1,t do
+		local k = self.treasure_by_target[p:r_u16()]
+		self.treasure_info[k].active = p:r_bool()
+		self.treasure_info[k].done = p:r_bool()
+	end
+end
+
+-- проверка, является ли тайник именным
+function CTreasure:named_treasure(v)
+		if v.name == "treasure_885_0000_name"
+		or v.name == "treasure_886_0000_name"
+		or v.name == "treasure_887_0000_name"
+		or v.name == "treasure_3740_0000_name"
+		or v.name == "treasure_3331_0000_name"
+		or v.name == "treasure_1870_0000_name"
+		or v.name == "treasure_889_0000_name"
+	then
+		return true
+	else
+		return false
+	end		
+end
+
+function get_treasure_manager()
+	if treasure_manager == nil then
+		treasure_manager = CTreasure()
+	end
+	return treasure_manager
+end
+
+function use_box(box)
+	local mn_var = "mined_items_"..box:id()
+	local mined_items_str = xr_logic.pstor_retrieve(box, mn_var, nil)
+
+	-- Проверка на заминированость
+	if mined_items_str ~= nil then
+			local item = nil
+			local mined_items = parse_nums(mined_items_str)
+
+			for kk,vv in pairs(mined_items) do
+					item = alife():object(vv)
+					local section = item:section_name()
+					local ammo = false
+					
+					if item:clsid() == wpn_ammo then
+						ammo = true
+					end
+					
+					if item ~= nil then
+						alife():release(item, true)
+						if math.random(100) < drop_percent then
+							if ammo == false then
+								alife():create(section, box:position(), box:level_vertex_id(), box:game_vertex_id())
+							else
+								alife():create_ammo(section, box:position(), box:level_vertex_id(), box:game_vertex_id(), nil, system_ini():r_u32(section, "box_size"))
+							end
+						end
+					end
+			end
+
+			local dir = db.actor:direction()
+			local snd = xr_sound.get_safe_sound_object([[weapons\f1_explode]])
+			local h = hit()
+			h.power		= 0.25
+			h.impulse	= 300
+			h.type		= hit.explosion
+			h.direction = vector():set(-dir.x,dir.y,-dir.z)
+			h.draftsman = db.actor
+				
+			snd:play_at_pos(db.actor, db.actor:position())
+
+			level.add_cam_effector("camera_effects\\head_shot.anm", 789, false, "")
+			db.actor:hit(h)
+
+			if db.storage[box:id()].pstor[mn_var] then
+				db.storage[box:id()].pstor[mn_var] = nil
+			end
+
+			local story_id = box:story_id()
+			take_item_from_box(box, story_id)
+
+			-- Спавним и сразу же удаляем предмет для перерисовки инвентаря (по другому не знаю пока как)
+			local obj = alife():create("bolt", db.actor:position(), db.actor:level_vertex_id(),	db.actor:game_vertex_id(), db.actor:id())
+			if obj ~= nil then 
+				alife():release(obj, true) 
+			end
+	end
+end
+
+function take_item_from_box(box, box_story_id, item)
+	printf("!!! take item from box %s", tostring(box:is_inv_box_empty()))
+	if box:is_inv_box_empty() == true then
+		get_treasure_manager():treasure_empty(box, box_story_id)
+	end
+end
+
+function save(p)
+	get_treasure_manager():save(p)
+end
+function load(p)
+	get_treasure_manager():load(p)
+end
+function clear_treasure_manager()
+	treasure_manager = nil
+end

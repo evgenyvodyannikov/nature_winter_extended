@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_militar2_one()
+end
+
+function spawn_militar2_one()
+local x= -170,779
+local y= -30,480
+local z= -349,826
+local level_vertex= 79045
+local game_vertex_id= 31
+alife():create("mil_stalker_respawn_7",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

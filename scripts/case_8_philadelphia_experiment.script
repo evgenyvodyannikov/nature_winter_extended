@@ -1,0 +1,19 @@
+function case_8_money_for_energon(actor, npc)
+dialogs.relocate_money(actor, 500000, "in")
+dialogs.relocate_item_section(actor, "ogg_flash_1", "in")
+end
+
+function case_8_take_energon(actor, npc)
+dialogs.relocate_item_section(actor, "energon", "in")
+end
+
+function actor_have_energon(actor, npc)
+      return actor:object("energon") ~= nil
+end
+
+function actor_give_energon(actor, npc)
+dialogs.relocate_item_section(npc, "energon", "out")
+dialogs.relocate_item_section(actor, "wpn_kac_pdw", "in")
+end
+
+

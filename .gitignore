@@ -1,0 +1,21 @@
+# Track the mod's source and text configuration.
+*
+!*/
+!/.gitignore
+!*.script
+!*.lua
+!*.ltx
+!*.xml
+
+# Shader source and its build scripts.
+!/shaders/**/*.ps
+!/shaders/**/*.vs
+!/shaders/**/*.s
+!/shaders/**/*.h
+!/shaders/**/*.cfg
+!/shaders/**/*.bat
+!/shaders/**/*.cmd
+/shaders/**/test/
+
+# Local editor settings.
+.vscode/

@@ -1,0 +1,696 @@
+
+	<!-- ТОЛЬКО ДЛЯ ВКЛЮЧЕНИЯ INCLUDE-ОМ -->
+
+	<!-- Пустые -->
+	<string id="desc_clip_e">
+		<text>Снаряжение: Пустая</text>
+	</string>
+	<string id="desc_belt_e">
+		<text>Снаряжение: Пустая</text>
+	</string>
+	<string id="desc_mag_e">
+		<text>Снаряжение: Пустой</text>
+	</string>
+
+	
+	<!-- 9x18 -->
+	<string id="desc_load_9x18_fmj">
+		<text>Снаряжение: 9x18 мм ПМ</text>
+	</string>
+	<string id="desc_load_9x18_pmm">
+		<text>Снаряжение: 9x18 мм +P+</text>
+	</string>
+
+	<string id="clip_8_9x18">
+		<text>Обойма 8 патр. 9x18 мм</text>
+	</string>
+	<string id="clip_8_9x18_fmj_s">
+		<text>9x18 ПМ</text>
+	</string>
+	<string id="clip_8_9x18_pmm_s">
+		<text>9x18 +P+</text>
+	</string>
+	
+	<string id="clip_12_9x18">
+		<text>Обойма 12 патр. 9x18 мм</text>
+	</string>
+	<string id="clip_12_9x18_fmj_s">
+		<text>9x18 ПМ</text>
+	</string>
+	<string id="clip_12_9x18_pmm_s">
+		<text>9x18 +P+</text>
+	</string>
+	
+	<string id="clip_20_9x18">
+		<text>Обойма 20 патр. 9x18 мм</text>
+	</string>
+	<string id="clip_20_9x18_fmj_s">
+		<text>9x18 ПМ</text>
+	</string>
+	<string id="clip_20_9x18_pmm_s">
+		<text>9x18 +P+</text>
+	</string>
+	
+
+	<!-- 9x19 -->
+	<string id="desc_load_9x19_fmj">
+		<text>Снаряжение: 9x19 мм Para</text>
+	</string>
+	<string id="desc_load_9x19_pbp">
+		<text>Снаряжение: 9x19 мм ПБП</text>
+	</string>
+
+	<string id="clip_8_9x19">
+		<text>Обойма 8 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_8_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_8_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_13_9x19">
+		<text>Обойма 13 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_13_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_13_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_15_9x19">
+		<text>Обойма 15 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_15_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_15_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_16_9x19">
+		<text>Обойма 16 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_16_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_16_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_17_9x19">
+		<text>Обойма 17 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_17_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_17_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_18_9x19">
+		<text>Обойма 18 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_18_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="clip_18_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="mag_20_9x19">
+		<text>Магазин 20 патр. 9x19 мм</text>
+	</string>
+	<string id="mag_20_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="mag_20_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="mag_30_9x19">
+		<text>Магазин 30 патр. 9x19 мм</text>
+	</string>
+	<string id="mag_30_9x19_fmj_s">
+		<text>9x19 Para</text>
+	</string>
+	<string id="mag_30_9x19_pbp_s">
+		<text>9x19 ПБП</text>
+	</string>
+	
+	<string id="clip_31_9x19">
+		<text>Обойма 31 патр. 9x19 мм</text>
+	</string>
+	<string id="clip_31_9x19_fmj_s">
+		<text>31 x 9x19 Para</text>
+	</string>
+	<string id="clip_31_9x19_pbp_s">
+		<text>31 x 9x19 ПБП</text>
+	</string>
+	
+	<string id="mag_32_9x19">
+		<text>Магазин 32 патрона калибра 9x19 мм</text>
+	</string>
+	<string id="mag_32_9x19_fmj_s">
+		<text>32 x 9x19 Para</text>
+	</string>
+	<string id="mag_32_9x19_pbp_s">
+		<text>32 x 9x19 ПБП</text>
+	</string>
+	
+	<!-- 7.62x25 -->
+	<string id="desc_load_7.62x25_p">
+		<text>Снаряжение: 7.62x25 мм ТТ</text>
+	</string>
+	<string id="desc_load_7.62x25_ps">
+		<text>Снаряжение: 7.62x25 мм ПС</text>
+	</string>
+
+	<string id="clip_8_7.62x25">
+		<text>Обойма 8 патр. 7.62x25 мм</text>
+	</string>
+	<string id="clip_8_7.62x25_p_s">
+		<text>8 x 7.62x25 ТТ</text>
+	</string>
+	<string id="clip_8_7.62x25_ps_s">
+		<text>8 x 7.62x25 ПС</text>
+	</string>
+	
+	<string id="mag_20_7.62x25">
+		<text>Магазин 20 патр. 7.62x25 мм</text>
+	</string>
+	<string id="mag_20_7.62x25_p_s">
+		<text>20 x 7.62x25 ТТ</text>
+	</string>
+	<string id="mag_20_7.62x25_ps_s">
+		<text>20 x 7.62x25 ПС</text>
+	</string>
+	
+	<string id="mag_64_7.62x25">
+		<text>Шнековый Магазин 64 патрона калибра 7.62x25 мм</text>
+	</string>
+	<string id="mag_64_7.62x25_p_s">
+		<text>64 x 7.62x25 ТТ</text>
+	</string>
+	<string id="mag_64_7.62x25_ps_s">
+		<text>64 x 7.62x25 ПС</text>
+	</string>
+	
+	<string id="mag_71_7.62x25">
+		<text>Дисковый Магазин 71 патр. 7.62x25 мм</text>
+	</string>
+	<string id="mag_71_7.62x25_p_s">
+		<text>71 x 7.62x25 ТТ</text>
+	</string>
+	<string id="mag_71_7.62x25_ps_s">
+		<text>71 x 7.62x25 ПС</text>
+	</string>
+	
+	<!-- .45ACP aka 11.43x23 -->
+	<string id="desc_load_45_fmj">
+		<text>Снаряжение: .45 ACP FMJ</text>
+	</string>
+	<string id="desc_load_45_hydro">
+		<text>Снаряжение: .45 ACP Hydro</text>
+	</string>
+
+	<string id="clip_7_45">
+		<text>Обойма 7 патр. .45 ACP</text>
+	</string>
+	<string id="clip_7_45_fmj_s">
+		<text>.45 ACP FMJ</text>
+	</string>
+	<string id="clip_7_45_hydro_s">
+		<text>.45 ACP Hydro</text>
+	</string>
+	
+	<string id="clip_8_45">
+		<text>Обойма 8 патр. .45 ACP</text>
+	</string>
+	<string id="clip_8_45_fmj_s">
+		<text>.45 ACP FMJ</text>
+	</string>
+	<string id="clip_8_45_hydro_s">
+		<text>.45 ACP Hydro</text>
+	</string>
+	
+	<string id="mag_30_45">
+		<text>Магазин 30 патр. .45 ACP</text>
+	</string>
+	<string id="mag_30_45_fmj_s">
+		<text>.45 ACP FMJ</text>
+	</string>
+	<string id="mag_30_45_hydro_s">
+		<text>.45 ACP Hydro</text>
+	</string>
+	
+	<!-- .357 Magnum aka 9x32R -->
+	<string id="desc_load_357_jfp">
+		<text>Снаряжение: .357 JFP</text>
+	</string>
+	<string id="desc_load_357_jhp">
+		<text>Снаряжение: .357 JHP</text>
+	</string>
+
+	<string id="clip_6_357">
+		<text>Ускоритель заряжания для револьверов на 6 патр. .357 Magnum (9x32R мм)</text>
+	</string>
+	<string id="clip_6_357_jfp_s">
+		<text>6 x .357 JFP</text>
+	</string>
+	<string id="clip_6_357_jhp_s">
+		<text>6 x .357 JHP</text>
+	</string>
+	
+	<string id="clip_8_357">
+		<text>Обойма 8 патр. .357 Magnum (9x32R мм)</text>
+	</string>
+	<string id="clip_8_357_jfp_s">
+		<text>8 x .357 JFP</text>
+	</string>
+	<string id="clip_8_357_jhp_s">
+		<text>8 x .357 JHP</text>
+	</string>
+	
+	<!-- 5.7x28 -->
+	<string id="desc_load_5.7x28_fmj">
+		<text>Снаряжение: 5.7x28 мм SS190</text>
+	</string>
+	<string id="desc_load_5.7x28_ap">
+		<text>Снаряжение: 5.7x28 мм SS192</text>
+	</string>
+
+	<string id="clip_20_5.7x28">
+		<text>Обойма 20 патр. 5.7x28 мм</text>
+	</string>
+	<string id="clip_20_5.7x28_fmj_s">
+		<text>5.7x28 SS190</text>
+	</string>
+	<string id="clip_20_5.7x28_ap_s">
+		<text>5.7x28 SS192</text>
+	</string>
+	
+	<string id="mag_50_5.7x28">
+		<text>Магазин для FN P90 на 50 патр. 5.7x28 мм</text>
+	</string>
+	<string id="mag_50_5.7x28-b">
+		<text>Магазин 50 патр. 5.7x28 мм</text>
+	</string>
+	<string id="mag_50_5.7x28_fmj_s">
+		<text>50 x 5.7x28 SS190</text>
+	</string>
+	<string id="mag_50_5.7x28_ap_s">
+		<text>50 x 5.7x28 SS192</text>
+	</string>
+	
+	<!-- 5.45x39 -->
+	<string id="desc_load_5.45x39_fmj">
+		<text>Снаряжение: 5.45x39 мм 7Н10</text>
+	</string>
+	<string id="desc_load_5.45x39_ap">
+		<text>Снаряжение: 5.45x39 мм 7Н22</text>
+	</string>
+
+	<string id="mag_30_5.45x39">
+		<text>Магазин 30 патр. 5.45x39 мм</text>
+	</string>
+	<string id="mag_30_5.45x39_fmj_s">
+		<text>5.45x39 7Н10</text>
+	</string>
+	<string id="mag_30_5.45x39_ap_s">
+		<text>5.45x39 7Н22</text>
+	</string>
+	
+	<string id="mag_45_5.45x39">
+		<text>Увеличенный Магазин 45 патр. 5.45x39 мм</text>
+	</string>
+	<string id="mag_45_5.45x39_fmj_s">
+		<text>5.45x39 7Н10</text>
+	</string>
+	<string id="mag_45_5.45x39_ap_s">
+		<text>5.45x39 7Н22</text>
+	</string>
+	
+	<string id="mag_75_5.45x39">
+		<text>Дисковый Магазин 75 патр. 5.45x39 мм</text>
+	</string>
+	<string id="mag_75_5.45x39_fmj_s">
+		<text>5.45x39 7Н10</text>
+	</string>
+	<string id="mag_75_5.45x39_ap_s">
+		<text>5.45x39 7Н22</text>
+	</string>
+	
+	<!-- 5.56x45 -->
+	<string id="desc_load_5.56x45_ss190">
+		<text>Снаряжение: 5.56x45 мм SS109</text>
+	</string>
+	<string id="desc_load_5.56x45_ap">
+		<text>Снаряжение: 5.56x45 мм AP</text>
+	</string>
+
+	<string id="mag_30_5.56x45">
+		<text>Магазин 30 патр. 5.56x45 мм</text>
+	</string>
+	<string id="mag_30_5.56x45_ss190_s">
+		<text>5.56x45 SS109</text>
+	</string>
+	<string id="mag_30_5.56x45_ap_s">
+		<text>5.56x45 AP</text>
+	</string>
+	
+	<string id="mag_100_5.56x45">
+		<text>Магазин C-MAG на 100 патр. 5.56x45 мм</text>
+	</string>
+	<string id="mag_100_5.56x45_ss190_s">
+		<text>5.56x45 SS109</text>
+	</string>
+	<string id="mag_100_5.56x45_ap_s">
+		<text>5.56x45 AP</text>
+	</string>
+	
+	<string id="belt_100_5.56x45">
+		<text>Лента на 100 патр. 5.56x45 мм</text>
+	</string>
+	<string id="belt_100_5.56x45_ss190_s">
+		<text>5.56x45 SS109</text>
+	</string>
+	<string id="belt_100_5.56x45_ap_s">
+		<text>5.56x45 AP</text>
+	</string>
+	
+	<!-- 7.62x39 -->
+	<string id="desc_load_7.62x39_fmj">
+		<text>Снаряжение: 7.62x39 мм ПС</text>
+	</string>
+	<string id="desc_load_7.62x39_ap">
+		<text>Снаряжение: 7.62x39 мм БП</text>
+	</string>
+
+	<string id="mag_10_7.62x39">
+		<text>Магазин 10 патр. 7.62x39 мм</text>
+	</string>
+	<string id="mag_10_7.62x39_fmj_s">
+		<text>10 x 7.62x39 ПС</text>
+	</string>
+	<string id="mag_10_7.62x39_ap_s">
+		<text>10 x 7.62x39 БП</text>
+	</string>
+	
+	<string id="mag_30_7.62x39">
+		<text>Магазин 30 патр. 7.62x39 мм</text>
+	</string>
+	<string id="mag_30_7.62x39_fmj_s">
+		<text>30 x 7.62x39 ПС</text>
+	</string>
+	<string id="mag_30_7.62x39_ap_s">
+		<text>30 x 7.62x39 БП</text>
+	</string>
+	
+	<string id="mag_75_7.62x39">
+		<text>Дисковый Магазин 75 патр. 7.62x39 мм</text>
+	</string>
+	<string id="mag_75_7.62x39_fmj_s">
+		<text>75 x 7.62x39 ПС</text>
+	</string>
+	<string id="mag_75_7.62x39_ap_s">
+		<text>75 x 7.62x39 БП</text>
+	</string>
+	
+	<!-- 9x39 -->
+	<string id="desc_load_9x39_pab9">
+		<text>Снаряжение: 9x39 мм ПАБ-9</text>
+	</string>
+	<string id="desc_load_9x39_ap">
+		<text>Снаряжение: 9x39 мм СП-6</text>
+	</string>
+	<string id="desc_load_9x39_sp5">
+		<text>Снаряжение: 9x39 мм СП-5</text>
+	</string>
+
+	<string id="mag_10_9x39">
+		<text>Магазин 10 патр. 9x39 мм</text>
+	</string>
+	<string id="mag_10_9x39_pab9_s">
+		<text>9x39 ПАБ-9</text>
+	</string>
+	<string id="mag_10_9x39_ap_s">
+		<text>9x39 СП-6</text>
+	</string>
+	<string id="mag_10_9x39_sp5_s">
+		<text>9x39 СП-5</text>
+	</string>
+	
+	<string id="mag_20_9x39">
+		<text>Магазин 20 патр. 9x39 мм</text>
+	</string>
+	<string id="mag_20_9x39_pab9_s">
+		<text>9x39 ПАБ-9</text>
+	</string>
+	<string id="mag_20_9x39_ap_s">
+		<text>9x39 СП-6</text>
+	</string>
+	<string id="mag_20_9x39_sp5_s">
+		<text>9x39 СП-5</text>
+	</string>
+	
+	<!-- 7.62x51 aka .308Win -->
+	<string id="desc_load_7.62x51_fmj">
+		<text>Снаряжение: 7.62x51 мм FMJ</text>
+	</string>
+	<string id="desc_load_7.62x51_ap">
+		<text>Снаряжение: 7.62x51 мм AP</text>
+	</string>
+
+	<string id="mag_5_7.62x51">
+		<text>Магазин 5 патр. 7.62x51 мм</text>
+	</string>
+	<string id="mag_5_7.62x51_fmj_s">
+		<text>5 x 7.62x51 FMJ</text>
+	</string>
+	<string id="mag_5_7.62x51_ap_s">
+		<text>5 x 7.62x51 AP</text>
+	</string>
+	
+	<string id="mag_8_7.62x51">
+		<text>Магазин 8 патр. 7.62x51 мм</text>
+	</string>
+	<string id="mag_8_7.62x51_fmj_s">
+		<text>8 x 7.62x51 FMJ</text>
+	</string>
+	<string id="mag_8_7.62x51_ap_s">
+		<text>8 x 7.62x51 AP</text>
+	</string>
+	
+	<string id="mag_10_7.62x51">
+		<text>Магазин 10 патр. 7.62x51 мм</text>
+	</string>
+	<string id="mag_10_7.62x51_fmj_s">
+		<text>10 x 7.62x51 FMJ</text>
+	</string>
+	<string id="mag_10_7.62x51_ap_s">
+		<text>10 x 7.62x51 AP</text>
+	</string>
+	
+	<string id="mag_20_7.62x51">
+		<text>Магазин 20 патр. 7.62x51 мм</text>
+	</string>
+	<string id="mag_20_7.62x51_fmj_s">
+		<text>20 x 7.62x51 FMJ</text>
+	</string>
+	<string id="mag_20_7.62x51_ap_s">
+		<text>20 x 7.62x51 AP</text>
+	</string>
+	
+	<string id="belt_50_7.62x51">
+		<text>Лента на 50 патр. 7.62x51 мм</text>
+	</string>
+	<string id="belt_50_7.62x51_fmj_s">
+		<text>50 x 7.62x51 FMJ</text>
+	</string>
+	<string id="belt_50_7.62x51_ap_s">
+		<text>50 x 7.62x51 AP</text>
+	</string>
+	
+	<string id="belt_100_7.62x51">
+		<text>Лента на 100 патр. 7.62x51 мм</text>
+	</string>
+	<string id="belt_100_7.62x51_fmj_s">
+		<text>100 x 7.62x51 FMJ</text>
+	</string>
+	<string id="belt_100_7.62x51_ap_s">
+		<text>100 x 7.62x51 AP</text>
+	</string>
+	
+	<!-- 7.62x54R -->
+	<string id="desc_load_7.62x54_7h1">
+		<text>Снаряжение: 7.62x54R мм 7Н1</text>
+	</string>
+	<string id="desc_load_7.62x54_ap">
+		<text>Снаряжение: 7.62x54R мм 7Н26</text>
+	</string>
+	<string id="desc_load_7.62x54_7h14">
+		<text>Снаряжение: 7.62x54R мм 7Н14</text>
+	</string>
+
+	<string id="mag_10_7.62x54">
+		<text>Магазин 10 патр. 7.62x54R мм</text>
+	</string>
+	<string id="mag_10_7.62x54_7h1_s">
+		<text>7.62x54R 7Н1</text>
+	</string>
+	<string id="mag_10_7.62x54_ap_s">
+		<text>7.62x54R 7Н26</text>
+	</string>
+	<string id="mag_10_7.62x54_7h14_s">
+		<text>7.62x54R 7Н14</text>
+	</string>
+	
+	<string id="mag_47_7.62x54">
+		<text>Дисковый Магазин 47 патр. 7.62x54R мм</text>
+	</string>
+	<string id="mag_47_7.62x54_7h1_s">
+		<text>47 x 7.62x54R 7Н1</text>
+	</string>
+	<string id="mag_47_7.62x54_ap_s">
+		<text>47 x 7.62x54R 7Н26</text>
+	</string>
+	<string id="mag_47_7.62x54_7h14_s">
+		<text>47 x 7.62x54R 7Н14</text>
+	</string>
+	
+	<string id="belt_100_7.62x54">
+		<text>Лента на 100 патр. 7.62x54R мм</text>
+	</string>
+	<string id="belt_100_7.62x54_7h1_s">
+		<text>100 x 7.62x54R 7Н1</text>
+	</string>
+	<string id="belt_100_7.62x54_ap_s">
+		<text>100 x 7.62x54R 7Н26</text>
+	</string>
+	<string id="belt_100_7.62x54_7h14_s">
+		<text>100 x 7.62x54R 7Н14</text>
+	</string>
+	
+	<!-- 7.92x57 aka 8mm Mauser -->
+	<string id="desc_load_7.92x57_fmj">
+		<text>Снаряжение: 7.92x57 мм FMJ</text>
+	</string>
+	<string id="desc_load_7.92x57_ap">
+		<text>Снаряжение: 7.92x57 мм AP</text>
+	</string>
+
+	<string id="mag_10_7.92x57">
+		<text>Магазин 10 патр. 7.92x57 мм</text>
+	</string>
+	<string id="mag_10_7.92x57_fmj_s">
+		<text>10 x 7.92x57 FMJ</text>
+	</string>
+	<string id="mag_10_7.92x57_ap_s">
+		<text>10 x 7.92x57 AP</text>
+	</string>
+	
+	<string id="belt_50_7.92x57">
+		<text>Лента на 50 патр. 7.92x57 мм</text>
+	</string>
+	<string id="belt_50_7.92x57_fmj_s">
+		<text>50 x 7.92x57 FMJ</text>
+	</string>
+	<string id="belt_50_7.92x57_ap_s">
+		<text>50 x 7.92x57 AP</text>
+	</string>
+	
+	<!-- 12.7x99 aka .50BMG -->
+	<string id="desc_load_12.7x99_ap">
+		<text>Снаряжение: .50 BMG API</text>
+	</string>
+
+	<string id="mag_5_12.7x99">
+		<text>Магазин 5 патр. .50 BMG (12.7x99 мм)</text>
+	</string>
+	<string id="mag_5_12.7x99_ap_s">
+		<text>5 x .50 BMG API</text>
+	</string>
+	
+	<string id="mag_10_12.7x99">
+		<text>Магазин 10 патр. .50 BMG (12.7x99 мм)</text>
+	</string>
+	<string id="mag_10_12.7x99_ap_s">
+		<text>10 x .50 BMG API</text>
+	</string>
+	
+	<!-- 12.7x108 -->
+	<string id="desc_load_12.7x108_ap">
+		<text>Снаряжение: 12.7x108 мм Б-32</text>
+	</string>
+
+	<string id="mag_5_12.7x108">
+		<text>Магазин 5 патр. 12.7x108 мм</text>
+	</string>
+	<string id="mag_5_12.7x108_ap_s">
+		<text>5 x 12.7x108 Б-32</text>
+	</string>
+	
+	<!-- 12 калибр -->
+	<string id="desc_load_12x76_buck">
+		<text>Снаряжение: 12/76 картечь "00"</text>
+	</string>
+	<string id="desc_load_12x76_zhekan">
+		<text>Снаряжение: 12/76 жекан</text>
+	</string>
+	<string id="desc_load_12x76_dart">
+		<text>Снаряжение: 12/76 дротик</text>
+	</string>
+
+	<string id="mag_8_12x76">
+		<text>Магазин 8 патр. 12/76</text>
+	</string>
+	<string id="mag_8_12x76_buck_s">
+		<text>12/76 картечь</text>
+	</string>
+	<string id="mag_8_12x76_zhekan_s">
+		<text>12/76 жекан</text>
+	</string>
+	<string id="mag_8_12x76_dart_s">
+		<text>12/76 дротик</text>
+	</string>
+	
+	<!-- Гаусс -->
+	<string id="desc_load_gauss">
+		<text>Снаряжение: 2 мм Гаусс \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. Источником энергии является капсулированный фрагмент артефакта "Вспышка", а в качестве поражающего элемента используются 2 мм металлические иглы. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+	<string id="desc_load_gauss_std">
+		<text>Снаряжение: 6 мм Гаусс \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. В качестве поражающего элемента используются 6 мм оперенные металлические иглы. Источником энергии является капсулированный фрагмент артефакта "Лунный свет", запускающий каскадный резонанс в артефактах самого оружия, так как артефакт "Вспышка" и обычные электромагниты не справлялись с разгоном гораздо более тяжелого поражающего элемента. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+	<string id="desc_load_gauss_ndl">
+		<text>Снаряжение: 6 мм N-28 \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. В качестве поражающего элемента используются 28 2мм игл от снайперского варианта Гаусс-пушки (блоки по 7 игл в 4 ряда), разгоняющихся в стволе как единое целое и разделяющихся на отдельные иглы после выхода из ствола для обеспечения максимальной вероятности поражения цели. Источником энергии является капсулированный фрагмент артефакта "Лунный свет", запускающий каскадный резонанс в артефактах самого оружия, так как артефакт "Вспышка" и обычные электромагниты не справлялись с разгоном гораздо более тяжелого поражающего элемента. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+	<string id="desc_load_gauss_e">
+		<text>Снаряжение: Пустой \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. Источником энергии является капсулированный фрагмент артефакта "Вспышка", а в качестве поражающего элемента используются 2 мм металлические иглы. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+	<string id="desc_load_gauss_std_e">
+		<text>Снаряжение: Пустой \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. В качестве поражающего элемента используются 6 мм оперенные металлические иглы. Источником энергии является капсулированный фрагмент артефакта "Лунный свет", запускающий каскадный резонанс в артефактах самого оружия, так как артефакт "Вспышка" и обычные электромагниты не справлялись с разгоном гораздо более тяжелого поражающего элемента. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+	<string id="desc_load_gauss_ndl_e">
+		<text>Снаряжение: Пустой \n\n В магазине совмещены мощный компактный источник энергии и поражающие элементы. В качестве поражающего элемента используются 28 2мм игл от снайперского варианта Гаусс-пушки (блоки по 7 игл в 4 ряда), разгоняющихся в стволе как единое целое и разделяющихся на отдельные иглы после выхода из ствола для обеспечения максимальной вероятности поражения цели. Источником энергии является капсулированный фрагмент артефакта "Лунный свет", запускающий каскадный резонанс в артефактах самого оружия, так как артефакт "Вспышка" и обычные электромагниты не справлялись с разгоном гораздо более тяжелого поражающего элемента. Конструкция магазина позволяет заряжать его только в лабораторных условиях.</text>
+	</string>
+
+	<string id="mag_10_gauss">
+		<text>Магазин 10 зарядов к снайперской винтовке Гаусса</text>
+	</string>
+	<string id="mag_10_gauss_s">
+		<text>10 x 2 мм Гаусс</text>
+	</string>
+	
+	<string id="mag_50_gauss">
+		<text>Магазин 50 зарядов к автоматической винтовке Гаусса</text>
+	</string>
+	<string id="mag_50_gauss_std_s">
+		<text>50 x 6 мм Гаусс</text>
+	</string>
+	<string id="mag_50_gauss_ndl_s">
+		<text>50 х 6 мм N-28</text>
+	</string>
+	

@@ -1,0 +1,11 @@
+function actor_want_gun(actor, npc)
+dialogs.relocate_item_section(actor, "medkit", "in")
+dialogs.relocate_item_section(actor, "medkit_army", "in")
+dialogs.relocate_item_section(actor, "medkit_scientic", "in")
+dialogs.relocate_item_section(actor, "medkit_elite", "in")
+dialogs.relocate_item_section(actor, "ammo_5.45x39_fmj", "in")
+dialogs.relocate_item_section(actor, "ammo_5.45x39_ap", "in")
+dialogs.relocate_item_section(actor, "ammo_5.56x45_ss190", "in")
+dialogs.relocate_item_section(actor, "ammo_5.56x45_ap", "in")
+dialogs.relocate_item_section(actor, "ammo_11.43x23silv", "in")
+end

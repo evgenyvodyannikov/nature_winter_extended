@@ -1,0 +1,157 @@
+function start_add_spawn()
+spawn_killer_01()
+spawn_killer_02()
+spawn_killer_03()
+spawn_killer_04()
+spawn_crysis05()
+spawn_crysis06()
+spawn_crysis07()
+spawn_crysis08()
+spawn_crysis09()
+end
+
+function spawn_killer_01()
+local x= 57,199
+local y= -11,766
+local z= -263,760
+local level_vertex= 69041
+local game_vertex_id= 1480
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_killer_02()
+local x= 49,568
+local y= -11,796
+local z= -251,711
+local level_vertex= 64827
+local game_vertex_id= 1480
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_killer_03()
+local x= 41,719
+local y= -11,880
+local z= -256,892
+local level_vertex= 58487
+local game_vertex_id= 1480
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_killer_04()
+local x= 57,201
+local y= -11,880
+local z= -288,973
+local level_vertex= 69006
+local game_vertex_id= 1480
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_crysis05()
+local x= 590,424
+local y= -52,273
+local z= -367,451
+local level_vertex= 209662
+local game_vertex_id= 1879
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_crysis06()
+local x= 587,908
+local y= -52,277
+local z= -365,939
+local level_vertex= 209048
+local game_vertex_id= 1879
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_crysis07()
+local x= 601,597
+local y= -52,094
+local z= -320,979
+local level_vertex= 215091
+local game_vertex_id= 1881
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+function spawn_crysis08()
+local x= 600,688
+local y= -52,442
+local z= -310,311
+local level_vertex= 214754
+local game_vertex_id= 1881
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+
+function spawn_crysis09()
+local x= 580,301
+local y= -53,606
+local z= -262,271
+local level_vertex= 203782
+local game_vertex_id= 1863
+alife():create("mil_monolit_crysis_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

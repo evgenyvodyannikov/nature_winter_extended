@@ -1,0 +1,309 @@
+	<string id="bar_bring_hunter_rifle">
+		<text>Вернуть охотнику фамильное ружье</text>
+	</string>
+	<string id="bar_bring_PDA_lucky">
+		<text>Принести КПК лидера бармену</text>
+	</string>
+	<string id="bar_crazy_veterans_quest">
+		<text>Уничтожить безумных ветеранов</text>
+	</string>
+	<string id="bar_dolg_base_rules">
+		<text>Отметиться у начальника охраны Долга</text>
+	</string>
+	<string id="bar_dolg_base_rules_fin">
+		<text>Вернуться к бармену</text>
+	</string>
+	<string id="bar_dolg_base_rules_talk">
+		<text>Найти начальника охраны Долга и отметиться у него</text>
+	</string>
+	<string id="bar_dolg_bring_rg6">
+		<text>Добыть РГ-6 для генерала Воронина</text>
+	</string>
+	<string id="bar_dolg_community_quest">
+		<text>Вступление в группировку "Долг"</text>
+	</string>
+	<string id="bar_dolg_community_quest_prisyaga">
+		<text>Принять присягу</text>
+	</string>
+	<string id="bar_dolg_community_quest_recomendation">
+		<text>Получить рекомендацию капитана Иванцова</text>
+	</string>
+	<string id="bar_dolg_community_quest_vernost">
+		<text>Доказать свою верность "Долгу"</text>
+	</string>
+	<string id="bar_dolg_find_cook">
+		<text>Втереться в доверие к повару Свободы и узнать, где хранится РГ-6</text>
+	</string>
+	<string id="bar_dolg_find_rg6">
+		<text>Проникнуть на территорию группировки Свободы, найти и выкрасть РГ-6</text>
+	</string>
+	<string id="bar_dolg_info_gain">
+		<text>Найти перехваченную информацию о лаборатории X18</text>
+	</string>
+	<string id="bar_dolg_kill_tiran">
+		<text>Убить Тирана, предводителя отряда</text>
+	</string>
+	<string id="bar_dolg_return_info">
+		<text>Вернуть информацию о лаборатории X18 генералу Воронину</text>
+	</string>
+	<string id="bar_dolg_return_rg6">
+		<text>Принести РГ-6 генералу Воронину</text>
+	</string>
+	<string id="bar_dolg_rg6_quest">
+		<text>Задание для вступления в Долг</text>
+	</string>
+	<string id="bar_dolg_svoboda_ambush_quest">
+		<text>Уничтожить наемников</text>
+	</string>
+	<string id="bar_dolg_svoboda_ambush_return">
+		<text>Отдать нашивки генералу Воронину</text>
+	</string>
+	<string id="bar_dolg_tiran_PDA">
+		<text>Взять КПК Тирана</text>
+	</string>
+	<string id="bar_hunter_find_rifle">
+		<text>Найти фамильное ружье</text>
+	</string>
+	<string id="bar_hunter_return_rifle">
+		<text>Вернуть ружье охотнику в баре</text>
+	</string>
+	<string id="bar_hunter_rifle">
+		<text>Найти фамильное ружье</text>
+	</string>
+	<string id="bar_kill_crazy_veterans">
+		<text>Убить лидера ветеранов</text>
+	</string>
+	<string id="bar_kill_crazy_veterans_PDA">
+		<text>Взять КПК их лидера</text>
+	</string>
+	<string id="bar_kill_veterans">
+		<text>Уничтожить лагерь сумасшедших ветеранов</text>
+	</string>
+	<string id="bar_radar_deactivate">
+		<text>Отключить Выжигатель Мозгов</text>
+	</string>
+	<string id="bar_resque_information">
+		<text>Встретиться с Кругловым</text>
+	</string>
+	<string id="bar_resque_information_2">
+		<text>Вывести Круглова на Янтарь</text>
+	</string>
+	<string id="bar_resque_scientific_follow">
+		<text>Вывести Круглова к выходу на Янтарь</text>
+	</string>
+	<string id="bar_resque_scientific_information">
+		<text>...</text>
+	</string>
+	<string id="bar_resque_scientific_information_bring">
+		<text>Поговорить с Кругловым</text>
+	</string>
+	<string id="bar_resque_scientific_information_get">
+		<text>Пробиться к Круглову</text>
+	</string>
+	<string id="bar_resque_scientific_information_get_2">
+		<text>Поговорить с профессором Кругловым</text>
+	</string>
+	<string id="bar_x16_documents">
+		<text>Найти документы в лаборатории X16</text>
+	</string>
+	<string id="bring_x16_documents">
+		<text>Принести документы бармену</text>
+	</string>
+	<string id="deactivate_radar_now">
+		<text>Отключить установку</text>
+	</string>
+	<string id="find_and_deactivate_radar">
+		<text>Найти вход в бункер управления</text>
+	</string>
+	<string id="get_to_antennas">
+		<text>Добраться до антенн</text>
+	</string>
+	<string id="Kruglov_research">
+		<text>Исследования Круглова</text>
+	</string>
+	<string id="look_for_x16_lab">
+		<text>Найти документы Х-16</text>
+	</string>
+	<string id="wpn-winchester_m1">
+		<text>Боевой чейзер</text>
+	</string>
+	<string id="x16_yantar">
+		<text>Поговорить с учеными</text>
+	</string>
+    <string id="back_with_all_documents_to_barman">
+        <text>Принести Бармену документы</text>
+    </string>
+    <string id="talking_with_barman_case_6_protocol_weapons">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="take_document1_from_secret_place">
+        <text>Взять 1-й протокол</text>
+    </string>
+    <string id="take_document2_from_secret_place">
+        <text>Взять 2-й протокол</text>
+    </string>
+    <string id="back_with_cargo_and_amulet_to_barman">
+        <text>Вернуться к Бармену с амулетом и содержимым тайника</text>
+    </string>
+    <string id="talking_with_barman_case_7_kill_volkodav_delivery_of_cargo">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="take_cargo_from_place">
+        <text>Проверить тайник</text>
+    </string>
+    <string id="kill_volkodav_and_take_amulet">
+        <text>Убить Волкодава и взять его амулет</text>
+    </string>
+    <string id="back_with_energon_to_barman">
+        <text>Принести Бармену вещество</text>
+    </string>
+    <string id="talking_with_barman_case_8_philadelphia_experiment">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="take_energon_at_ecolog">
+        <text>Принести Сахарову 500 000 руб. и забрать энергон</text>
+    </string>
+    <string id="talking_with_barman_case_9_method_of_teleportation">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="buy_equipment">
+        <text>Купить снаряжение</text>
+    </string>
+    <string id="check_cache_case_9_method_of_teleportation">
+        <text>Проверить тайник</text>
+    </string>
+    <string id="back_with_doc_case_9_to_barman">
+        <text>Принести документы Бармену</text>
+    </string>
+    <string id="back_with_case_9_equipment_to_barman">
+        <text>Вернуться к Бармену</text>
+    </string>
+    <string id="talking_with_barman_case_10_mutation">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="check_cache_case_10_mutation">
+        <text>Проверить тайник</text>
+    </string>
+    <string id="back_with_doc_case_10_to_barman">
+        <text>Принести документы Бармену</text>
+    </string>
+    <string id="case_11_old_friend_npc">
+        <text>Поговорить со сталкером</text>
+    </string>
+    <string id="case_11_old_friend_begin">
+        <text>Найти сталкера</text>
+    </string>
+    <string id="case_12_blood_dream_begin">
+        <text>Найти тайник</text>
+    </string>
+    <string id="case_12_blood_dream_cache">
+        <text>Проверить тайник</text>
+    </string>
+    <string id="case_12_blood_dream_borov_begin">
+        <text>Найти Борова</text>
+    </string>
+    <string id="case_12_blood_dream_borov">
+        <text>Забрать ключ от лаборатории Х-16 у Борова</text>
+    </string>
+    <string id="case_12_blood_dream_elk_begin">
+        <text>Найти сталкера по кличке Лось в Х-16</text>
+    </string>
+    <string id="case_12_blood_dream_elk">
+        <text>Встретиться с Лосем</text>
+    </string>
+    <string id="case_12_blood_dream_cache_begin_two">
+        <text>Найти тайник, который оставил Слон</text>
+    </string>
+    <string id="case_12_blood_dream_cache_two">
+        <text>Проверить тайник, предназначенный Лосю</text>
+    </string>
+    <string id="case_12_blood_dream_part_last_begin">
+        <text>Обыскать тайник</text>
+    </string>
+    <string id="case_12_blood_dream_part_last">
+        <text>Взять прототип</text>
+    </string>
+    <string id="case_6_protocol_weapons_name">
+        <text>%c[255,255,128,1]Дело A - Протокол вооружения</text>
+    </string>
+    <string id="case_7_kill_volkodav_delivery_of_cargo_name">
+        <text>%c[255,255,128,1]Дело B - Убийство палача, доставка груза</text>
+    </string>
+    <string id="case_8_philadelphia_experiment_name">
+        <text>%c[255,255,128,1]Дело 6 - Филадельфийский эксперимент</text>
+    </string>
+    <string id="case_9_method_of_teleportation_name">
+        <text>%c[255,255,128,1]Дело 7 - Метод телепортации</text>
+    </string>
+    <string id="case_10_mutation_name">
+        <text>%c[255,255,128,1]Дело 7 - Мутация ли?</text>
+    </string>
+    <string id="case_11_old_friend_name">
+        <text>%c[255,255,128,1]Дело 8 - Старый друг</text>
+    </string>
+    <string id="case_12_blood_dream_name">
+        <text>%c[255,255,128,1]Дело 9 - Кровь мечты</text>
+    </string>
+    <string id="case_10_section_2_diary_name">
+        <text>%c[255,255,128,1]Дело 7. Раздел 2 - Дневник Джона Винчестера</text>
+    </string>
+    <string id="talking_with_barman_case_10_section_2_diary">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="find_case_10_section_2_diary">
+        <text>Найти дневник Джона Винчестера</text>
+    </string>
+    <string id="back_with_diary_to_barman">
+        <text>Вернуться с дневником к Бармену</text>
+    </string>
+    <string id="case_10_section_2_diary_art_name">
+        <text>%c[255,255,128,1]Дело 7. Раздел 2 - Дневник Джона Винчестера</text>
+    </string>
+    <string id="talking_with_barman_case_10_section_2_diary_art">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="find_art_case_10_section_2_diary">
+        <text>Отыскать причину излучения</text>
+    </string>
+    <string id="back_with_art_to_bar_dmitry">
+        <text>Рассказать Падалеки об увиденном</text>
+    </string>
+    <string id="case_10_section_2_diary_talk_name">
+        <text>Найти Дмитрия Падалеки</text>
+    </string>
+    <string id="talking_with_barman_case_10_section_2_diary_talk">
+        <text>Поговорить с Барменом</text>
+    </string>
+    <string id="talking_with_bar_dmitry_talk">
+        <text>Поговорить с Падалеки</text>
+    </string>
+    <string id="case_10_section_3_leviathan_name">
+        <text>%c[255,255,128,1]Дело 7. Раздел 3 - Левиафаны и их друзья</text>
+    </string>
+    <string id="talking_with_dmitry_case_10_section_3_leviathan">
+        <text>Поговорить с Падалеки</text>
+    </string>
+    <string id="go_to_souls_case_10_section_3_leviathan">
+        <text>Прибыть в точку назначения</text>
+    </string>
+    <string id="find_souls_case_10_section_3_leviathan">
+        <text>Найти, как минимум, 5 душ зомби</text>
+    </string>
+    <string id="back_with_souls_to_bar_dmitry">
+        <text>Принести их Падалеки</text>
+    </string>
+    <string id="case_13_quantum_leap_name">
+        <text>%c[255,255,128,1]Дело 10 - Квантовый скачок</text>
+    </string>
+    <string id="take_unk_item">
+        <text>Взять прототип</text>
+    </string>
+    <string id="exit_case_13_quantum_leap">
+        <text>Выйти из лаборатории</text>
+    </string>
+    <string id="find_souls_case_13_quantum_leap">
+        <text>Ослабить био-поле, отыскав 5 душ</text>
+    </string>
+    <string id="kill_and_search_in_dmitry">
+        <text>Убить Падалеки, обыскать его труп</text>
+    </string>

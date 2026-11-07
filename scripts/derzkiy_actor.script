@@ -1,0 +1,366 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : derzkiy_actor.script
+ Description : Дерзкий игрок
+ Copyright   : 2011 © Stalk15
+ Author      : Stalk15
+ Last update : 07.01.2011 
+--]]----------------------------------------------------------------------------------------------------
+
+
+local timer = 0
+local PunchOn = false
+local NpcEnemy = false
+local NpcEnemyId
+
+------
+
+local ReplayStrike = 0.3 --/30% Вероятность того, что НПС после удара, ударит ГГ еще разок
+local StikeNoBazar = 0.1 --/ 10% Вероятность того, что НПС ударит ГГ сразу, после наезда без всяких разговоров
+
+------
+
+function vsech_po_rozhe_actora(actor, npc)
+  local cNpc
+    if actor ~= nil and npc ~= nil then
+        cNpc = level.object_by_id(npc:id())
+	end
+		if actor == nil and npc == nil then
+		    cNpc = NpcEnemyId
+		end
+        if cNpc == db.actor:id() then
+            cNpc = level.object_by_id(actor:id())
+        end
+        if cNpc then
+	        local ComNpc = cNpc:character_community()
+            cNpc:clear_animations()
+            cNpc:add_animation("udar_0", true, false)
+		    npc_punch_to_actor(ComNpc)
+		if actor ~= nil and npc ~= nil then
+		    actor:stop_talk()
+		    npc:stop_talk()
+		end
+    end
+  timer = time_global()
+  NpcEnemyId = cNpc
+end
+
+function npc_punch_to_actor(com)
+    local sound
+	sound = sound_object("characters_voice\\human_02\\"..com.."\\talk\\use\\abuse_"..tostring(math.random(1, 4)))
+    sound:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+	set_inactivate_input_time(40)
+	PunchOn = true
+end
+
+function actora_udarili()
+    sound = sound_object("actor\\pain_"..tostring(math.random(1, 8)))
+    sound:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+	local Rnd = math.random(1, 4)
+    sound = sound_object("affects\\hit_fist")
+    sound:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+	level.add_pp_effector("fire_hit.ppe", 1977, false)
+	db.actor.health = -0.2
+--	db.actor.get_bleeding = -0.5
+	if Rnd == 1 then
+	    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "derzkiy_actor.rnd_vsech_actoru_povtorno")
+	    level.add_cam_effector("camera_effects\\fusker.anm", 9990, false, "") 
+	elseif Rnd == 2 then
+	    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "derzkiy_actor.rnd_vsech_actoru_povtorno")
+	    level.add_cam_effector("camera_effects\\dis_consciousness.anm", 9991, false, "") 
+	elseif Rnd == 3 then
+	    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "derzkiy_actor.rnd_vsech_actoru_povtorno")
+	    level.add_cam_effector("camera_effects\\dream.anm", 9992, false, "") 
+	elseif Rnd == 4 then
+	    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "derzkiy_actor.rnd_vsech_actoru_povtorno")
+	    level.add_cam_effector("camera_effects\\prison_1.anm", 9993, false, "")
+	end
+end
+
+function rnd_vsech_actoru_povtorno(actor, npc)
+    if math.random() <= ReplayStrike then
+	    vsech_po_rozhe_actora(npc, actor)
+	end
+end
+
+function rnd_vsech_actoru(actor, npc)
+    if math.random() <= StikeNoBazar then
+	    vsech_po_rozhe_actora(npc, actor)
+	end
+end
+
+function npc_neytral_to_actor()
+    NpcEnemyId:set_relation(game_object.neutral, db.actor)
+end
+
+function npc_enemy_to_actor(first_speaker, second_speaker)
+    second_speaker:set_relation(game_object.enemy, first_speaker)
+	timer = time_global()
+	NpcEnemy = true
+	NpcEnemyId = level.object_by_id(second_speaker:id())
+end
+
+function actor_derzkiy_update()
+    if PunchOn == true then
+	    if time_global() - timer > 0.9*1000 then
+		    actora_udarili()
+			PunchOn = false
+		end
+	end
+	if NpcEnemy == true then
+	    if time_global() - timer > 7*1000 then
+		    npc_neytral_to_actor()
+		end
+	end
+end
+	
+	
+function on_punch_sound_update()
+	db.actor:set_fastcall(actor_derzkiy_update, db.actor)
+end
+
+--/ГГ старше по рангу
+function precond_actor_older(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+  local ActorRank = ranks.get_obj_rank_name(npc)
+  local NpcCntRank = actor:character_rank()
+  local ActorCntRank = npc:character_rank()
+	if NpcRank ~= ActorRank then
+	    if ActorCntRank > NpcCntRank then
+		    return true
+		else
+	        return false
+		end
+    end
+end
+
+--/ГГ младше по рангу
+function precond_actor_under_or_ravno(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+  local ActorRank = ranks.get_obj_rank_name(npc)
+  local NpcCntRank = actor:character_rank()
+  local ActorCntRank = npc:character_rank()
+	if NpcRank == ActorRank or ActorCntRank < NpcCntRank then
+		return true
+    else
+	    return false
+    end
+end
+--[[
+local tActorItems = {}
+function drop_rnd_items()
+  tActorItems = {}
+  db.actor:iterate_inventory(function(dummy,Item)
+      table.insert(tActorItems,Item:section())
+    end
+  ,nil)
+  drop_rnd_items_()
+end
+
+function drop_rnd_items_()
+    for i=1, math.random(1, 5) do
+      local dItem = tActorItems[math.random(1, table.getn(tActorItems))]
+	    if dItem ~= "wpn_knife" and dItem ~= "binocular_a" and dItem ~= "device_pda" and dItem ~= "device_torch" and dItem ~= "detector_simple" 
+		and dItem ~= "detector_advances" and dItem ~= "detector_elite" and dItem ~= "bolt" and dItem ~= "detector_advances" and dItem ~= "detector_advances" then
+		    local death_ini = ini_file("misc\\death_generic.ltx")
+            local n = death_ini:line_count("keep_items")
+                for i=0,n-1 do
+                  local qItem = death_ini:r_line("keep_items",i,"","")
+                        if dItem ~= qItem then
+		            db.actor:drop_item(db.actor:object(dItem))
+				end
+			end
+		end
+	end
+end
+]]
+function give_500(actor, npc)
+	dialogs.relocate_money(actor, 500, "out")
+end
+---------------------------- Диалоги ----------------------------
+local derzkiy_actor_dlg_1_0 = "Слышь, ты че тут встал!? Нука рассосался быстро!"
+local derzkiy_actor_dlg_1_1 = "Э, урод, ты ни чего часом не попутал? Ты на кого свой рот поднял!? Может, встряхнуть тебя надо?"
+local derzkiy_actor_dlg_1_2 = "Слушай, отстань от меня. Я с тобой не буду разговаривать."
+local derzkiy_actor_dlg_1_3 = "Ты че, бычара, сказал, а!? За базаром следи! Я тебя сам могу так встряхнуть, мало не покажется!"
+local derzkiy_actor_dlg_1_4 = "Да ладно. Я че, я ни че! Я побегу наверно ..."
+local derzkiy_actor_dlg_1_5 = "А! Ссышь, когда срашно? Ладно, лошара, до встречи."
+local derzkiy_actor_dlg_1_6 = "Слышь, хер с ручками, еще одно слово и я за себя не отвечаю! Даю тебе секунду, чтоб ты слинял нахрен от сюда!"
+local derzkiy_actor_dlg_1_7 = "Все-все, я уже бегу, меня тут нет."
+local derzkiy_actor_dlg_1_8 = "Твоя секунда прошла, че дальше, придурок?"
+
+
+local derzkiy_actor_dlg_2_0 = "Эй, баран, ты че тут ходишь? Ты че, дерзкий что ли, я е не понял!?"
+local derzkiy_actor_dlg_2_1 = "Оба! Это че, наезд? Ты дикий что ли? Вали лучше от сюда куда по дальше, а то рескуешь остаться без зубов!"
+local derzkiy_actor_dlg_2_2 = "Слушай, я понимаю, ты наверно выпил и я тут тебе под горячую руку попался ...Отвянь от меня."
+local derzkiy_actor_dlg_2_3 = "Ты мне угрожаешь что ли? Ты ртом тут не размахивай, пока рожу тебе не разшиб!"
+local derzkiy_actor_dlg_2_4 = "Да ладно, брат, не боись, не трону. А теперь свали с дорогои, я пойду дальше."
+local derzkiy_actor_dlg_2_5 = "Мне зубы нужны еще, я лучше пойду."
+local derzkiy_actor_dlg_2_6 = "Не, мужик, ты внатуре уже оборзел! Лови удар!"
+local derzkiy_actor_dlg_2_7 = "Эй, не-не-не! Стой! Я все понял! Извини. У побегу лучше."
+local derzkiy_actor_dlg_2_8 = "Только тронь, я тебе в башне дырку сделаю, как отверстие для третьего глаза служить будет.!"
+
+
+local derzkiy_actor_dlg_3_0 = "Слышь, уважаемый, вали нафиг с дороги! Не видишь, я иду!"
+local derzkiy_actor_dlg_3_1 = "Ты че, дикий что ли? Ты видишь, перед тобой мужик стоит, так что лучше беги от сюда, пока не схлопотал!"
+local derzkiy_actor_dlg_3_2 = "[Молчит]"
+local derzkiy_actor_dlg_3_3 = "Я перед собой мужика не вижу, вижу только угрожающую бабку с пукалкой!"
+local derzkiy_actor_dlg_3_4 = "Все-все, успокойся, я ухожу. Нервы у меня просто сдают уже."
+local derzkiy_actor_dlg_3_5 = "Че молчишь, э!? Испугался? Ладно, пойду я лучше, чем с лохами разговаривать."
+local derzkiy_actor_dlg_3_6 = "Тебе повезло, что я терпеливый. Но если ты еще чего пискнуть осмелишься, то это может обернуться для тебя летальным исходом!"
+local derzkiy_actor_dlg_3_7 = "Все, ухожу."
+local derzkiy_actor_dlg_3_8 = "Пищат крысы типа тебя, а я говорю!"
+
+
+local derzkiy_actor_dlg_4_0 = "Слышь, хочешь я тебе голову прострелю? Хочешь, а?"
+local derzkiy_actor_dlg_4_1 = "Ты пьяный что ли, э!? Хлестануть бы тебе по роже ... Ты иди отоспись, а потом приди и извинись, понял?"
+local derzkiy_actor_dlg_4_2 = "За что? Не надо, пожалуйста."
+local derzkiy_actor_dlg_4_3 = "Ты еще дерзить будешь? У тебе реально башку щас прострелю!"
+local derzkiy_actor_dlg_4_4 = "Я все понял, осознал. Извини."
+local derzkiy_actor_dlg_4_5 = "Бойся меня, а пошел."
+
+
+local derzkiy_actor_dlg_5_0 = "Слышь, пацанчик, хочешь отхватить по полной за бесплатно?"
+local derzkiy_actor_dlg_5_1 = "Эй, ты че, сучара, бессмертный что ли? Я тебе за бесплатно щас оформлю не забываемый полет в космос!"
+local derzkiy_actor_dlg_5_2 = "Нет, не хочу."
+local derzkiy_actor_dlg_5_3 = "А не боишься, что оформлялка не сработает? Я тебя с одного удара усыпить смогу!"
+local derzkiy_actor_dlg_5_4 = "Ладно, все, не кипишуй. Я лучше пойду по скорее от сюда."
+local derzkiy_actor_dlg_5_5 = "А жаль. Смотрю, зеленый ты еще, пожалею тебя."
+local derzkiy_actor_dlg_5_6 = "Ты, дрищь, меня с одного удара усыпить сможешь!? Ха-ха, ну ты и шутканул ...Короче, задрал ты меня уже. Я у тебя забираю пятихатку за твой косяк и если щас хоть что-нибудь против скажешь - отхватишь, как следует."
+local derzkiy_actor_dlg_5_7 = "Да ладно тебе, у меня просто юмор такой. Я лучше пойду."
+local derzkiy_actor_dlg_5_8 = "Ну все, щас ты ответишь за дрища. Я тебя на кубики порежу!"
+
+-----------------------------------------------------------------
+
+
+function init_derzkiy_actor_dlg_1(dlg)
+    phr0 = dlg:AddPhrase(derzkiy_actor_dlg_1_0, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(derzkiy_actor_dlg_1_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+		phr1:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr2 = dlg:AddPhrase(derzkiy_actor_dlg_1_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	phr3 = dlg:AddPhrase(derzkiy_actor_dlg_1_3, "3", "1", -10000)
+	phr4 = dlg:AddPhrase(derzkiy_actor_dlg_1_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(derzkiy_actor_dlg_1_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr6 = dlg:AddPhrase(derzkiy_actor_dlg_1_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr7 = dlg:AddPhrase(derzkiy_actor_dlg_1_7, "7", "6", -10000)
+	    phr7:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr8 = dlg:AddPhrase(derzkiy_actor_dlg_1_8, "8", "6", -10000)
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+end
+
+function init_derzkiy_actor_dlg_2(dlg)
+    phr0 = dlg:AddPhrase(derzkiy_actor_dlg_2_0, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(derzkiy_actor_dlg_2_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+		phr1:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr2 = dlg:AddPhrase(derzkiy_actor_dlg_2_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	phr3 = dlg:AddPhrase(derzkiy_actor_dlg_2_3, "3", "1", -10000)
+	phr4 = dlg:AddPhrase(derzkiy_actor_dlg_2_4, "4", "2", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(derzkiy_actor_dlg_2_5, "5", "1", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr6 = dlg:AddPhrase(derzkiy_actor_dlg_2_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr7 = dlg:AddPhrase(derzkiy_actor_dlg_2_7, "7", "6", -10000)
+	    phr7:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr8 = dlg:AddPhrase(derzkiy_actor_dlg_2_8, "8", "6", -10000)
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.npc_enemy_to_actor")
+end
+
+function init_derzkiy_actor_dlg_3(dlg)
+    phr0 = dlg:AddPhrase(derzkiy_actor_dlg_3_0, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(derzkiy_actor_dlg_3_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+		phr1:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr2 = dlg:AddPhrase(derzkiy_actor_dlg_3_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	phr3 = dlg:AddPhrase(derzkiy_actor_dlg_3_3, "3", "1", -10000)
+	phr4 = dlg:AddPhrase(derzkiy_actor_dlg_3_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(derzkiy_actor_dlg_3_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr6 = dlg:AddPhrase(derzkiy_actor_dlg_3_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr7 = dlg:AddPhrase(derzkiy_actor_dlg_3_7, "7", "6", -10000)
+	    phr7:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr8 = dlg:AddPhrase(derzkiy_actor_dlg_3_8, "8", "6", -10000)
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+end
+
+function init_derzkiy_actor_dlg_4(dlg)
+    phr0 = dlg:AddPhrase(derzkiy_actor_dlg_4_0, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(derzkiy_actor_dlg_4_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+		phr1:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr2 = dlg:AddPhrase(derzkiy_actor_dlg_4_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	phr3 = dlg:AddPhrase(derzkiy_actor_dlg_4_3, "3", "1", -10000)
+	    phr3:GetPhraseScript():AddAction("derzkiy_actor.npc_enemy_to_actor")
+	phr4 = dlg:AddPhrase(derzkiy_actor_dlg_4_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(derzkiy_actor_dlg_4_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+end
+
+function init_derzkiy_actor_dlg_5(dlg)
+    phr0 = dlg:AddPhrase(derzkiy_actor_dlg_5_0, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(derzkiy_actor_dlg_5_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+		phr1:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr2 = dlg:AddPhrase(derzkiy_actor_dlg_5_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	phr3 = dlg:AddPhrase(derzkiy_actor_dlg_5_3, "3", "1", -10000)
+	phr4 = dlg:AddPhrase(derzkiy_actor_dlg_5_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(derzkiy_actor_dlg_5_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr6 = dlg:AddPhrase(derzkiy_actor_dlg_5_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("derzkiy_actor.give_500")
+	    phr6:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+	phr7 = dlg:AddPhrase(derzkiy_actor_dlg_5_7, "7", "6", -10000)
+	    phr7:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr8 = dlg:AddPhrase(derzkiy_actor_dlg_5_8, "8", "6", -10000)
+--	    phr8:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+		phr8:GetPhraseScript():AddAction("derzkiy_actor.npc_enemy_to_actor")
+end
+
+
+--on_punch_sound_update()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+function start_add_spawn()
+random_spawn_01()
+end
+
+function random_spawn_01()
+
+local tbl = {{-238.727,-20.004,-157.588,14953,47},{-233.635,-20.033,-152.668,21331,47},{-236.217,-19.603,-157.678,20036,47},{-238.546,-20.028,-152.544,18738,47}}
+
+local items = {'af_dummy_battery','af_dummy_battery_red','af_dummy_battery_green','af_dummy_battery_blue'}      
+xr_effects.uni_random_spawn(items, tbl, kol)
+end

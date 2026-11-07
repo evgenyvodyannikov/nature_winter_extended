@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_killer_one()
+end
+
+function spawn_killer_one()
+local x= -180,884
+local y= -19,931
+local z= -165,708
+local level_vertex= 70144
+local game_vertex_id= 52
+alife():create("mil_stalker_respawn_5",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

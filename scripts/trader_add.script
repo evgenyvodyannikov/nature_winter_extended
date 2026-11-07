@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_trader_one()
+end
+
+function spawn_trader_one()
+local x= -214,154
+local y= -23,182
+local z= -122,244
+local level_vertex= 39269
+local game_vertex_id= 59
+alife():create("mil_stalker_respawn_4",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

@@ -1,0 +1,16 @@
+function check_wpn()
+   local pistol_in_slot=db.actor:item_in_slot(1)
+   local rifle_in_slot=db.actor:item_in_slot(2)
+   local pistol_contain
+   local rifle_contain
+   --//--
+   if pistol_in_slot~=nil then pistol_contain=pistol_in_slot:section() end
+   if rifle_in_slot~=nil  then rifle_contain=rifle_in_slot:section() end
+   --//--
+    if pistol_contain~=nil and pistol_in_slot~=nil then
+          if pistol_in_slot:condition()<1.1 then pistol_in_slot:set_condition(0.65) end
+   end
+   if rifle_contain~=nil and rifle_in_slot~=nil then
+          if rifle_in_slot:condition()<1.1 then rifle_in_slot:set_condition(0.61) end
+   end
+end

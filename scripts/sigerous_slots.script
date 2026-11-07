@@ -1,0 +1,40 @@
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------
+
+function slots_controler()
+   local active_slot=db.actor:active_slot()
+   local active_item=db.actor:active_item()
+   local pistol_in_slot=db.actor:item_in_slot(1)
+   local rifle_in_slot=db.actor:item_in_slot(2)
+   local outfit_in_slot=db.actor:item_in_slot(6)
+   local artefact_in_slot=db.actor:item_in_slot(3)
+   local actor=db.actor
+   local pistol_contain
+   local rifle_contain
+   local outfit_contain
+   local artefact_contain
+   --//--
+   if outfit_in_slot~=nil then outfit_contain=outfit_in_slot:section() end
+   if pistol_in_slot~=nil then pistol_contain=pistol_in_slot:section() end
+   if rifle_in_slot~=nil  then rifle_contain=rifle_in_slot:section()   end
+   if artefact_in_slot~=nil then artefact_contain=artefact_in_slot:section() end
+   --//--
+   if outfit_contain~=nil and outfit_in_slot~=nil and actor:object("af_tiski_cevlar") then
+          if outfit_in_slot:condition()<0.80 then outfit_in_slot:set_condition(0.90) end
+   end
+   if pistol_contain~=nil and pistol_in_slot~=nil and actor:object("af_tiski_iron") then
+          if pistol_in_slot:condition()<0.80 then pistol_in_slot:set_condition(0.90) end
+   end
+   if rifle_contain~=nil and rifle_in_slot~=nil and actor:object("af_tiski_titan") then
+          if rifle_in_slot:condition()<0.80 then rifle_in_slot:set_condition(0.90) end
+   end
+   if pistol_contain~=nil and pistol_in_slot~=nil and actor:object("af_tiski_cu") then
+          if pistol_in_slot:condition()<0.50 then pistol_in_slot:set_condition(0.70) end
+   end
+   if rifle_contain~=nil and rifle_in_slot~=nil and actor:object("af_tiski_al") then
+          if rifle_in_slot:condition()<0.50 then rifle_in_slot:set_condition(0.70) end
+   end
+   if outfit_contain~=nil and outfit_in_slot~=nil and actor:object("af_tiski_pb") then
+          if outfit_in_slot:condition()<0.50 then outfit_in_slot:set_condition(0.70) end
+   end
+end
+

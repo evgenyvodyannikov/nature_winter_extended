@@ -1,0 +1,27 @@
+function start_add_spawn()
+fracture1_create()
+fracture2_create()
+end
+
+function fracture1_create()
+local x= -98,768
+local y= -16,469
+local z= -21,582
+local level_vertex= 1762
+local game_vertex_id= 760
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function fracture2_create()
+local x= -69,729
+local y= -16,468
+local z= -43,078
+local level_vertex= 3443
+local game_vertex_id= 716
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
+
+

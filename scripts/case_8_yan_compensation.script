@@ -1,0 +1,17 @@
+function yan_compensation(actor, npc)
+dialogs.relocate_money(actor, 40000, "in")
+dialogs.relocate_item_section(actor, "protection_outfit", "in")
+end
+
+function yan_compensation_horror_one(actor, npc)
+dialogs.relocate_item_section(actor, "wpn_superx3", "in")
+dialogs.relocate_item_section(actor, "ammo_12x70_buck", "in")
+dialogs.relocate_item_section(actor, "ammo_12x76_zhekan", "in")
+dialogs.relocate_item_section(actor, "ammo_12x76_dart", "in")
+dialogs.relocate_item_section(actor, "bsx", "in")
+dialogs.relocate_item_section(actor, "ecolog_outfit", "in")
+end
+
+function yan_compensation_horror_two(actor, npc)
+dialogs.relocate_money(actor, 60000, "in")
+end

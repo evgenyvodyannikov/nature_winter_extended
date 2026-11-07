@@ -1,0 +1,6 @@
+
+
+function rdp_update()
+    loan_money.timer_loan()
+	derzkiy_actor.actor_derzkiy_update()
+end

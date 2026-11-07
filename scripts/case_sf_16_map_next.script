@@ -1,0 +1,16 @@
+function actor_have_pro_act(actor, npc)
+      return actor:object("ammo_5.45x39pro_activate") ~= nil
+end
+
+function have_again_pro(actor, npc)
+dialogs.relocate_item_section(actor, "ammo_5.45x39pro_activate", "in")
+end
+
+function delete_pro_act()
+    local obj= alife():create("csfbn_taynik",vector():set(-24.643,-7.371,-18.673),285452,1593)
+    local oItem = db.actor:object("ammo_5.45x39pro_activate")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+

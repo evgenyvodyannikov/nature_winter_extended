@@ -1,0 +1,94 @@
+local items={
+"wpn_m29_satan",
+"wpn_colt_m1",
+"wpn_anaconda",
+"wpn_ak74_military",
+"wpn_svi",
+"wpn_thompson",
+"wpn_sks",
+"wpn_groza_dolg",
+"wpn_m_134",
+"wpn_m_135"
+}
+
+function create()
+local v= "point_murder"
+           if db.actor:object(v) and db.actor:has_info("dm") and db.actor:money()>=50000 then
+	this.create_item(items[math.random(10)])
+	this.next_vis()
+           end
+           if not db.actor:object(v) then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас недостаточно баллов убийства - дл€ получени€ уникального предмета.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+           if db.actor:dont_has_info("dm") then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]¬ы не активировали раздел dM.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+           if db.actor:money()<50000 then 
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас не достаточно денег - дл€ получени€ уникального предмета.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+end
+
+function create_item(spawn_item, npc)
+  if npc==nil then 
+    npc=db.actor 
+  end
+  return alife():create(spawn_item, 
+      npc:position(),
+      npc:level_vertex_id(),  
+      npc:game_vertex_id(),
+      npc:id())
+end
+
+function next_vis()
+	db.actor:give_info_portion("em")
+                 ability_horror_money.del_money_three()
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,1,255,1]”никальный предмет получен.%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    local oItem = db.actor:object("point_murder") 
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+
+function creat_zombies()
+local v= "point_murder"
+           if db.actor:object(v) then
+	this.creat_zombies_begin()
+	this.next_vis_zombies()
+           end
+           if not db.actor:object(v) then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас недостаточно баллов убийства - дл€ спавна зомби.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+           end
+end
+
+function creat_zombies_begin()
+local pos = db.actor:position()
+alife():create("zombie_novice_4", pos, db.actor:level_vertex_id(), db.actor:game_vertex_id())
+alife():create("zombie_novice_5", pos, db.actor:level_vertex_id(), db.actor:game_vertex_id())
+alife():create("zombie_rusty_novice_1", pos, db.actor:level_vertex_id(), db.actor:game_vertex_id())
+end
+
+function next_vis_zombies()
+	db.actor:give_info_portion("am")
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,1,255,1]ѕо€вились зомби.%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    local oItem = db.actor:object("point_murder") 
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end

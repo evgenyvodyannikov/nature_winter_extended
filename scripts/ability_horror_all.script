@@ -1,0 +1,72 @@
+function kill_stalker(actor, npc)
+    npc:kill(npc) 
+end
+
+local items={
+"point_horror",
+"point_horror"
+}
+
+function actor_have_horror()
+this.create_item(items[math.random(2)])
+this.next_vis()
+end
+
+function create_item(spawn_item, npc)
+  if npc==nil then 
+    npc=db.actor 
+  end
+  return alife():create(spawn_item, 
+      npc:position(),
+      npc:level_vertex_id(),  
+      npc:game_vertex_id(),
+      npc:id())
+end
+
+function next_vis()
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,128,1]ѕолучен бал навыка%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_points]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+this.text_reminder()
+end
+
+
+local itemq={
+"point_murder",
+"point_murder"
+}
+
+function actor_have_murder()
+this.create_iteq(itemq[math.random(2)])
+this.next_viq()
+end
+
+function create_iteq(spawn_item, npc)
+  if npc==nil then 
+    npc=db.actor 
+  end
+  return alife():create(spawn_item, 
+      npc:position(),
+      npc:level_vertex_id(),  
+      npc:game_vertex_id(),
+      npc:id())
+end
+
+function next_viq()
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_weapons")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,128,1]ѕолучен бал навыка%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_points]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+this.text_reminder()
+end
+
+function text_reminder(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]„тобы открыть меню покупки за баллы навыка, нажмите кнопку - Tab%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 40000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

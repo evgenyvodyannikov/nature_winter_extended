@@ -1,0 +1,23 @@
+function actor_have_equipment_osv(actor, npc)
+	return actor:money() >= 20000
+end
+
+function actor_have_equipment(actor, npc)
+dialogs.relocate_money(npc, 20000, "out")
+dialogs.relocate_item_section(actor, "wpn_binoc", "in")
+dialogs.relocate_item_section(actor, "device_torch", "in")
+dialogs.relocate_item_section(actor, "wpn_knife", "in")
+end
+
+function actor_have_equipment_sidor(actor, npc)
+	return actor:money() >= 2000
+end
+
+function actor_have_equipment_two(actor, npc)
+dialogs.relocate_money(npc, 2000, "out")
+dialogs.relocate_item_section(actor, "wpn_binoc", "in")
+dialogs.relocate_item_section(actor, "device_torch", "in")
+dialogs.relocate_item_section(actor, "wpn_knife", "in")
+end
+
+

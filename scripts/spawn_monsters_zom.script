@@ -1,0 +1,37 @@
+function start_add_spawn()
+spawn_zombie1_one()
+spawn_zombie2_one()
+spawn_zombie3_one()
+end
+
+function spawn_zombie1_one()
+local x= -7,644
+local y= 4,188
+local z= 7,992
+local level_vertex= 1851
+local game_vertex_id= 1125
+alife():create("zombie_first_zom_one",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_zombie2_one()
+local x= 1,167
+local y= 4,180
+local z= -7,356
+local level_vertex= 2968
+local game_vertex_id= 1113
+alife():create("zombie_first_zom_two",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_first_zom_three",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_zombie3_one()
+local x= -2,137
+local y= 4,188
+local z= 6,816
+local level_vertex= 2429
+local game_vertex_id= 1125
+alife():create("zombie_first_zom_four",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_first_zom_five",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
+

@@ -1,0 +1,390 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : order_items.script
+ Description : Заказ предметов NW v2.0 QL BV
+ Copyright   : 2012 © Stalk15
+ Author      : Stalk15
+ Last update : 19.07.2012
+--]]----------------------------------------------------------------------------------------------------
+
+------------------------// Настройки(Settings) //------------------------
+local wpn_pistol_1 = "wpn_desert_eagle"  --/Пистолет, выдаваемый в 1 случае
+local wpn_pistol_2 = "wpn_fort"          --/Пистолет, выдаваемый в 2 случае
+
+local wpn_shotgun_1 = "wpn_toz34"   --/Дробовик, выдаваемый в 1 случае
+local wpn_shotgun_2 = "wpn_spas12"  --/Дробовик, выдаваемый в 2 случае
+
+local wpn_shturm_1 = "wpn_g36"      --/Штурмовое оружие, выдаваемое в 1 случае
+local wpn_shturm_2 = "wpn_groza"    --/Штурмовое оружие, выдаваемое в 2 случае
+
+local wpn_sniper_1 = "wpn_vintorez" --/Снайперское оружие, выдаваемое в 1 случае
+local wpn_sniper_2 = "wpn_svd"      --/Снайперское оружие, выдаваемое в 2 случае
+
+local wpn_outfit_1 = "protection_outfit"    --/Костюм, выдаваемый в 1 случае
+local wpn_outfit_2 = "svoboda_heavy_outfit" --/Костюм, выдаваемый в 2 случае
+
+local wpn_exo_1 = "exo_outfit"             --/Экзоскелет, выдаваемый в 1 случае
+local wpn_exo_2 = "exo_outfit"             --/Экзоскелет, выдаваемый в 2 случае
+
+-- local PerformerOrderFail = 0.9             --/Вероятность того, что исполнитель заказа может не выполнить его
+local Order_Completed = "Сталкер, твой заказ выполнен, можешь забирать товар."
+local Order_Failed = "Сталкер, извини, я не смог выполнить твоего заказа, если хочешь забрать свои деньги - подходи, верну."
+
+-------// Настройка времени ожидания заказов(Устанавливается рамдомно) //-------
+
+local time_wait_order_min = 30000  --/Минимальное время ожидания заказа. 30 сек. реального времени
+local time_wait_order_norm = 60000  --/Среднее время ожидания заказа. 1 мин. реального времени
+local time_wait_order_max = 90000 --/Максимальное время ожидания заказа. 1 мин. 30 сек. реального времени
+
+-------// Не юзать //-------
+
+local timer = 0
+local time_waiting_order = 0
+local have_order = false
+local random
+
+
+local have_order_pistol = false
+local have_order_weapon_for_close_combat = false
+local have_order_wpn_for_shturm = false
+local have_order_wpn_sniper = false
+local have_order_outfit = false
+local have_order_exo = false
+
+local waiting_order_complete = false
+local performer_order_fail = false
+---///-------------------------------------------------------------///---
+
+function give_have_order_pistol()
+	have_order_pistol = true  
+end
+
+function give_have_order_weapon_for_close_combat()
+    have_order_weapon_for_close_combat = true
+end
+
+function give_have_order_wpn_for_shturm()
+    have_order_wpn_for_shturm = true
+end
+
+function give_have_order_wpn_sniper()
+    have_order_wpn_sniper = true
+end
+
+function give_have_order_outfit()
+    have_order_outfit = true
+end
+
+function give_have_order_exo()
+    have_order_exo = true	
+end
+
+
+------------
+
+function precond_have_order_pistol()
+    if have_order_pistol == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_have_order_weapon_for_close_combat()
+    if have_order_weapon_for_close_combat == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_have_order_wpn_for_shturm()
+    if have_order_wpn_for_shturm == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_have_order_wpn_sniper()
+    if have_order_wpn_sniper == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_have_order_outfit()
+    if have_order_outfit == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_have_order_exo()
+    if have_order_exo == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_waiting_order_complete()
+    if waiting_order_complete == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+
+function precond_waiting_order_complete_not()
+    return not precond_waiting_order_complete()
+end
+
+function precond_have_order()
+    if have_order == true then	
+	    return true
+	 else
+	    return false
+	end
+end
+function precond_have_order_not()
+    return not precond_have_order()
+end
+---///-------------------------------------------------------------///---
+
+--/Даем задаток --и если НПС не выполнил заказ - забераем задаток
+function give_zadadok_on_order(actor, npc)
+	local zadatok = 0
+	if have_order_pistol then
+		zadatok = 700
+	elseif have_order_weapon_for_close_combat then
+		zadatok = 2000
+	elseif have_order_wpn_for_shturm then
+		zadatok = 4000
+	elseif have_order_wpn_sniper then
+		zadatok = 7000
+	elseif have_order_outfit then
+		zadatok = 8000
+	elseif have_order_exo then
+		zadatok = 12000
+	end
+	--if not performer_order_fail then
+	dialogs.relocate_money(npc, zadatok, "out")
+	    have_order = true
+    timer = time_global()
+	-- else
+	--  dialogs.relocate_money(actor, zadatok, "in")
+end
+
+--/Проверка задатка
+function have_zadatok_on_order(actor, npc)
+ 	local zadatok = 0
+	if have_order_pistol then
+		zadatok = 700
+	elseif have_order_weapon_for_close_combat then
+		zadatok = 2000
+	elseif have_order_wpn_for_shturm then
+		zadatok = 4000
+	elseif have_order_wpn_sniper then
+		zadatok = 7000
+	elseif have_order_outfit then
+		zadatok = 8000
+	elseif have_order_exo then
+		zadatok = 12000
+	end
+    return actor:money() >= zadatok		
+end
+
+--/Даем остальную сумму
+function give_money_on_order(actor, npc)
+	local money = 0
+	if have_order_pistol then
+		money = 2800
+	elseif have_order_weapon_for_close_combat then
+		money = 8000
+	elseif have_order_wpn_for_shturm then
+		money = 16000
+	elseif have_order_wpn_sniper then
+		money = 18000
+	elseif have_order_outfit then
+		money = 32000
+	elseif have_order_exo then
+		money = 48000
+	end
+	dialogs.relocate_money(npc, money, "out")	   
+end
+
+--/Проверка остальной суммы
+function have_money_on_order(actor, npc)
+ 	local money = 0
+	if have_order_pistol then
+		money = 2800
+	elseif have_order_weapon_for_close_combat then
+		money = 8000
+	elseif have_order_wpn_for_shturm then
+		money = 16000
+	elseif have_order_wpn_sniper then
+		money = 18000
+	elseif have_order_outfit then
+		money = 32000
+	elseif have_order_exo then
+		money = 48000
+	end
+    return actor:money() >= money		
+end
+
+--/Если передумали или типа "сброс"
+function peredumal_or_not_money_or_reset()
+    if have_order_pistol then
+	    have_order_pistol = false
+		
+	elseif have_order_weapon_for_close_combat then
+	    have_order_weapon_for_close_combat = false
+		
+	elseif have_order_wpn_for_shturm then
+	    have_order_wpn_for_shturm = false
+		
+	elseif have_order_wpn_sniper then
+	    have_order_wpn_sniper = false
+		
+	elseif have_order_outfit then
+	    have_order_outfit = false
+		
+	elseif have_order_exo then
+	    have_order_exo = false
+	end
+	time_waiting_order = 0
+end
+
+---///-------------------------------------------------------------///---
+
+--/Рамдомный предлог
+function joke_precondition2() 
+    random = math.random(1,2) 
+end
+
+function pc1() 
+    if random == r then 
+        return false 
+    elseif random == 1 then 
+        return true 
+      else 
+    return false 
+  end 
+end
+
+function pc2() 
+    if random == r then 
+        return false 
+    elseif random == 2 then 
+        return true 
+          else 
+		return false 
+    end 
+end
+
+---///-------------------------------------------------------------///---
+
+--/Полчаем заказанный итем
+function given_order_to_actor(trader, actor)          
+    if have_order_pistol and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_pistol_1, "in")   
+	elseif have_order_pistol and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_pistol_2, "in")   
+		
+    elseif have_order_weapon_for_close_combat and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_shotgun_1, "in")
+	elseif have_order_weapon_for_close_combat and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_shotgun_2, "in")
+		
+    elseif have_order_wpn_for_shturm and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_shturm_1, "in")
+	elseif have_order_wpn_for_shturm and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_shturm_2, "in")
+		
+    elseif have_order_wpn_sniper and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_sniper_1, "in")
+	elseif have_order_wpn_sniper and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_sniper_2, "in")
+		
+    elseif have_order_outfit and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_outfit_1, "in")
+	elseif have_order_outfit and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_outfit_2, "in")
+
+	elseif have_order_exo and random == 1 then
+        dialogs.relocate_item_section(trader, wpn_exo_1, "in")
+	elseif have_order_exo and random == 2 then
+	    dialogs.relocate_item_section(trader, wpn_exo_2, "in")
+    end  
+end
+
+---///-------------------------------------------------------------///---
+
+--/Получили любой из заказов
+function give_order_to_actor()
+    have_order = false
+	waiting_order_complete = false
+		--news_manager.send_tip(db.actor, "give_order_to_actor", 0, "trader", 4000)
+end
+
+function start_time_waiting_order()
+    if not waiting_order_complete then
+	    db.actor:set_fastcall(timer_waiting_order, db.actor)
+		--news_manager.send_tip(db.actor, "set_fastcallvvv", 0, "trader", 4000)
+	end
+end
+
+--/Установка рамдомного времени
+function random_time_wait_order()
+  local random_time = math.random(1,3)
+	if random_time == 1 then
+	    time_waiting_order = time_waiting_order + time_wait_order_min
+		--news_manager.send_tip(db.actor, "time_wait_order_min", 0, "trader", 5000)
+	elseif random_time == 2 then
+	    time_waiting_order = time_waiting_order + time_wait_order_max
+		--news_manager.send_tip(db.actor, "time_wait_order_max", 0, "trader", 5000)
+	  else  --/random_time == 3
+	    time_waiting_order = time_waiting_order + time_wait_order_norm
+		--news_manager.send_tip(db.actor, "5!", 0, "trader", 5000)
+	end	
+end
+
+--/Ждем заказ	
+function timer_waiting_order()
+    if not waiting_order_complete and have_order then
+        if time_global() - timer > time_waiting_order then
+		    news_manager.send_tip(db.actor, Order_Completed, 0, "stalker", 4000)
+	 	       waiting_order_complete = true
+			time_waiting_order = 0
+	    end
+	end
+end
+
+start_time_waiting_order()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

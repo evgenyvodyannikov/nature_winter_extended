@@ -1,0 +1,190 @@
+class "horror" (CUIScriptWnd)
+
+function horror:__init(owner,objid) super()
+    self.owner = owner
+    self:InitControls()
+    self:InitCallBacks()
+end
+
+function horror:__finalize()
+end
+
+function horror:check_btn(id)
+local number = 14
+if id <= number then
+return true
+else
+return false
+end
+end
+
+function horror:InitControls()
+    self:Init(300,200,550,450)
+    local xml=CScriptXmlInit()
+    xml:ParseFile("ui_horror.xml")
+    xml:InitStatic("background", self)
+    if self:check_btn(1) then
+    self:Register(xml:Init3tButton("btn_1",self),"btn_1")
+    end
+    if self:check_btn(2) then
+    self:Register(xml:Init3tButton("btn_2",self),"btn_2")
+    end
+    if self:check_btn(3) then
+    self:Register(xml:Init3tButton("btn_3",self),"btn_3")
+    end
+    if self:check_btn(4) then
+    self:Register(xml:Init3tButton("btn_4",self),"btn_4")
+    end
+    if self:check_btn(5) then
+    self:Register(xml:Init3tButton("btn_5",self),"btn_5")
+    end
+    if self:check_btn(6) then
+    self:Register(xml:Init3tButton("btn_6",self),"btn_6")
+    end
+    if self:check_btn(7) then
+    self:Register(xml:Init3tButton("btn_7",self),"btn_7")
+    end
+    if self:check_btn(8) then
+    self:Register(xml:Init3tButton("btn_8",self),"btn_8")
+    end
+    if self:check_btn(9) then
+    self:Register(xml:Init3tButton("btn_9",self),"btn_9")
+    end
+    if self:check_btn(10) then
+    self:Register(xml:Init3tButton("btn_10",self),"btn_10")
+    end
+    if self:check_btn(11) then
+    self:Register(xml:Init3tButton("btn_11",self),"btn_11")
+    end
+    if self:check_btn(12) then
+    self:Register(xml:Init3tButton("btn_12",self),"btn_12")
+    end
+    if self:check_btn(13) then
+    self:Register(xml:Init3tButton("btn_13",self),"btn_13")
+    end
+    if self:check_btn(14) then
+    self:Register(xml:Init3tButton("btn_14",self),"btn_14")
+    end
+end
+
+function horror:InitCallBacks()
+    if self:check_btn(1) then
+    self:AddCallback("btn_1", ui_events.BUTTON_CLICKED, self.horror_1, self)
+    end
+    if self:check_btn(2) then
+    self:AddCallback("btn_2", ui_events.BUTTON_CLICKED, self.horror_2, self)
+    end
+    if self:check_btn(3) then
+    self:AddCallback("btn_3", ui_events.BUTTON_CLICKED, self.horror_3, self)
+    end
+    if self:check_btn(4) then
+    self:AddCallback("btn_4", ui_events.BUTTON_CLICKED, self.horror_4, self)
+    end
+    if self:check_btn(5) then
+    self:AddCallback("btn_5", ui_events.BUTTON_CLICKED, self.horror_5, self)
+    end
+    if self:check_btn(6) then
+    self:AddCallback("btn_6", ui_events.BUTTON_CLICKED, self.horror_6, self)
+    end
+    if self:check_btn(7) then
+    self:AddCallback("btn_7", ui_events.BUTTON_CLICKED, self.horror_7, self)
+    end
+    if self:check_btn(8) then
+    self:AddCallback("btn_8", ui_events.BUTTON_CLICKED, self.horror_8, self)
+    end
+    if self:check_btn(9) then
+    self:AddCallback("btn_9", ui_events.BUTTON_CLICKED, self.horror_9, self)
+    end
+    if self:check_btn(10) then
+    self:AddCallback("btn_10", ui_events.BUTTON_CLICKED, self.horror_10, self)
+    end
+    if self:check_btn(11) then
+    self:AddCallback("btn_11", ui_events.BUTTON_CLICKED, self.horror_11, self)
+    end
+    if self:check_btn(12) then
+    self:AddCallback("btn_12", ui_events.BUTTON_CLICKED, self.horror_12, self)
+    end
+    if self:check_btn(13) then
+    self:AddCallback("btn_13", ui_events.BUTTON_CLICKED, self.horror_13, self)
+    end
+    if self:check_btn(14) then
+    self:AddCallback("btn_14", ui_events.BUTTON_CLICKED, self.horror_14, self)
+    end
+end
+
+
+function horror:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+	ability_horror.timer_st()
+end
+
+function horror:horror_1()
+    ability_horror.power_teleport()
+    self:on_quit()
+end
+
+function horror:horror_2()
+    ability_horror_n.press_money()
+    self:on_quit()
+end
+
+function horror:horror_3()
+    ability_horror_n.create()
+    self:on_quit()
+end
+
+function horror:horror_4()
+    ability_horror_p.new_dialog_sidor()
+    self:on_quit()
+end
+
+function horror:horror_5()
+    ability_horror_p.create()
+    self:on_quit()
+end
+
+function horror:horror_6()
+    ability_horror_r.buy_open_new_case()
+    self:on_quit()
+end
+
+function horror:horror_7()
+    ability_horror_t.buy_open_new_unique_case()
+    self:on_quit()
+end
+
+function horror:horror_8()
+    ability_horror_r.buy_horror()
+    self:on_quit()
+end
+
+function horror:horror_9()
+    ability_murder_p.creat_zombies()
+    self:on_quit()
+end
+
+function horror:horror_10()
+    ability_murder.power_teleport()
+    self:on_quit()
+end
+
+function horror:horror_11()
+    ability_murder_n.create()
+    self:on_quit()
+end
+
+function horror:horror_12()
+    ability_murder_n.new_dialog_barmen()
+    self:on_quit()
+end
+
+function horror:horror_13()
+    ability_murder_p.create()
+    self:on_quit()
+end
+
+function horror:horror_14()
+    ability_murder.buy_murder()
+    self:on_quit()
+end
+

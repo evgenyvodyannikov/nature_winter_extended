@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<horror>    
+    <background x="-300" y="-150" width="774" height="432" stretch="0">
+        <texture>ability_pda\ui_horror</texture>
+    </background>
+    
+    <btn_1 x="4" y="5" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+	<text>ui_horror_1</text>
+    </btn_1>
+
+    <btn_2 x="4" y="54" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_2</text>
+    </btn_2>
+
+    <btn_3 x="4" y="103" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_3</text>
+    </btn_3>
+
+    <btn_4 x="4" y="152" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_4</text>
+    </btn_4>
+
+    <btn_5 x="4" y="201" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_5</text>
+    </btn_5>
+
+    <btn_6 x="4" y="250" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_6</text>
+    </btn_6>
+
+    <btn_7 x="4" y="299" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_7</text>
+    </btn_7>
+
+    <btn_8 x="4" y="348" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_8</text>
+    </btn_8>
+
+    <btn_9 x="225" y="5" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_9</text>
+    </btn_9>
+
+    <btn_10 x="225" y="54" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_10</text>
+    </btn_10>
+
+    <btn_11 x="225" y="103" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_11</text>
+    </btn_11>
+
+    <btn_12 x="225" y="152" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_12</text>
+    </btn_12>
+
+    <btn_13 x="225" y="201" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_13</text>
+    </btn_13>
+
+    <btn_14 x="225" y="250" width="157" height="48">
+	<texture_e>ui_button_main02_e</texture_e>
+	<texture_t>ui_button_main02_t</texture_t>
+	<texture_h>ui_button_main02_h</texture_h>
+        <text>ui_horror_14</text>
+    </btn_14>
+</horror>

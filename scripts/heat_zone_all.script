@@ -1,0 +1,4 @@
+function warmed_health()
+	db.actor.health = 0.005
+	db.actor:disable_info_portion("space_heat_zone")
+end

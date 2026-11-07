@@ -1,0 +1,28 @@
+function actor_have_korobka_sigars(actor, npc)
+      return actor:object("korobka_sigars") ~= nil
+end
+
+function actor_have_rom(actor, npc)
+      return actor:object("rom") ~= nil
+end
+
+function actor_give_case_1del2_auditor(actor, npc)
+dialogs.relocate_item_section(npc, "korobka_sigars", "out")
+dialogs.relocate_item_section(npc, "rom", "out")
+dolg_add_all.start_add_spawn()
+end
+
+function get_case_1del2_auditor()
+treasure_manager.get_treasure_manager():give_treasure("treasure_889")
+end
+
+function search_case_1del2_auditor(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("korobka_sigars") and db.actor:object("rom") then
+            db.actor:give_info_portion("player_have_case_1del2_auditor")
+            return true
+        end
+    end
+return false
+end
+

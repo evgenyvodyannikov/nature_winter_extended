@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+    <string id="ui_horror_1">
+        <text>aH Телепорт на 5 м.</text>
+    </string>
+    <string id="ui_horror_2">
+        <text>bH Получить деньги</text>
+    </string>
+    <string id="ui_horror_3">
+        <text>cH Получить предмет</text>
+    </string>
+    <string id="ui_horror_4">
+        <text>dH Нов.диалог с Сидоровичем</text>
+    </string>
+    <string id="ui_horror_5">
+        <text>eH Получить уник.предмет</text>
+    </string>
+    <string id="ui_horror_6">
+        <text>fH Открыть квест</text>
+    </string>
+    <string id="ui_horror_7">
+        <text>gH Открыть уник.квест</text>
+    </string>
+    <string id="ui_horror_8">
+        <text>buy Купить балл 'Страх'</text>
+    </string>
+    <string id="ui_horror_9">
+        <text>aM Спавн зомби</text>
+    </string>
+    <string id="ui_horror_10">
+        <text>bM Телепорт на 5 м.</text>
+    </string>
+    <string id="ui_horror_11">
+        <text>cM Получить предмет</text>
+    </string>
+    <string id="ui_horror_12">
+        <text>dM Нов.диалог с Барменом</text>
+    </string>
+    <string id="ui_horror_13">
+        <text>eM Получить уник.предмет</text>
+    </string>
+    <string id="ui_horror_14">
+        <text>buy Купить балл 'Убийство'</text>
+    </string>
+</string_table>

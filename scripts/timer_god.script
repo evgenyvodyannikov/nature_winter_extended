@@ -1,0 +1,19 @@
+-- Rage Mod - Таймер на бессмертие 
+time_god = 0
+ 
+function time_update_god()
+ local timer = time_global()
+  if time_god < timer and not db.actor:has_info("god_mode") and db.actor:has_info("god_open") then
+    time_god = timer + 90000
+    ability_horror.godmod()
+    db.actor:disable_info_portion("god_open")
+   end
+end
+
+function time_second_update_god()
+ local timer = time_global()
+  if time_god < timer and db.actor:has_info("god_mode") then
+    time_god = timer + 90000
+    ability_horror.disable_godmod()
+   end
+end

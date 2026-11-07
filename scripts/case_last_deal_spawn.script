@@ -1,0 +1,26 @@
+function zombies_create()
+if db.actor:dont_has_info("actor_have_zomb") then
+	db.actor:give_info_portion("actor_have_zomb")
+local x= 20,866
+local y= 0,471
+local z= -68,936
+local level_vertex= 193723
+local game_vertex_id= 292
+alife():create("zombie_speed",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_ti",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+end
+
+function wolf_create()
+if db.actor:dont_has_info("actor_have_wolf") then
+	db.actor:give_info_portion("actor_have_wolf")
+local x= 88,768
+local y= 3,414
+local z= 397,135
+local level_vertex= 385913
+local game_vertex_id= 197
+alife():create("white_wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+end

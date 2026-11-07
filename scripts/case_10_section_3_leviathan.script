@@ -1,0 +1,98 @@
+function start_add_spawn_abb()
+spawn_monster_abc()
+spawn_monster_abf()
+spawn_monster_abb()
+spawn_monster_abn()
+end
+
+function spawn_monster_abc()
+local x= -147,852
+local y= 0,998
+local z= -472,154
+local level_vertex= 13678
+local game_vertex_id= 829
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abf()
+local x= -92,505
+local y= 0,304
+local z= -469,256
+local level_vertex= 66939
+local game_vertex_id= 830
+alife():create("wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abb()
+local x= -87,695
+local y= 0,842
+local z= -522,137
+local level_vertex= 72206
+local game_vertex_id= 837
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abn()
+local x= -120,801
+local y= 0,091
+local z= -457,462
+local level_vertex= 36541
+local game_vertex_id= 829
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function art_item_spawn()
+    local obj= alife():create("l_taynik",vector():set(-140.778,0.977,-522.677),18315,832)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="af_drops_gorgona_l" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Точка назначения")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="af_drops_gorgona_l" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+function actor_want_gun(actor, npc)
+dialogs.relocate_item_section(actor, "ammo_11.43x23silv", "in")
+dialogs.relocate_item_section(actor, "ammo_11.43x23silv", "in")
+end
+
+function actor_back_souls()
+    local cnt = db.actor:object_count()
+    local ch=0
+    for i=0, cnt-1 do
+        local item = db.actor:object(i)
+        if item:section() == "soul_zombie_n" then
+            local sobj = alife():object(item:id())
+            if sobj then 
+                alife():release(sobj,true)
+                ch = ch+1
+                if ch == 5 then 
+                break end 
+            end 
+        end
+    end 
+end

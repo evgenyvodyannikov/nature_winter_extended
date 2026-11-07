@@ -1,0 +1,50 @@
+function start_story_girl_memory_complete_part2()
+text_memory()
+again_animation()
+delete_s4f_from_actor()
+actor_have_s5f()
+get_treasure_with_story_girl()
+end
+
+function text_memory(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Доступно воспоминание", nil, nil, 30000)
+end
+
+function again_animation()
+    level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")   
+    level.add_pp_effector("alcohol.ppe", 999, false, "") 
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function delete_s4f_from_actor()
+    local oItem = db.actor:object("s4f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+function actor_have_s5f()
+            db.actor:give_info_portion("story_girl_memory_complete_part2")
+end
+
+local ObjId=0
+function get_treasure_with_story_girl()
+    local obj= alife():create("sgn_taynik",vector():set(37.0149993896484,-2.89599990844727,-9.76200008392334),326631,1585)
+    local text = "Интересно, что лежит тут?"
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+end
+
+function give_s5f_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "s5f", "in")
+end
+
+function delete_s5f_from_actor()
+    local oItem = db.actor:object("s5f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end

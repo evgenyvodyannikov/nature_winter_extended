@@ -1,0 +1,7 @@
+function teleport()
+    local a = vector()
+    a.x = -246,609
+    a.y = -24,793
+    a.z = -134,030
+    db.actor:set_actor_position(a)
+end

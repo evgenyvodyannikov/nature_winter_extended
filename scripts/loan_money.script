@@ -1,0 +1,298 @@
+
+
+
+local timer = 0
+
+
+local loan_money_dlg_0 = "Не мог бы ты мне занять денег?"
+local loan_money_dlg_1 = "Нет, я тебе не доверяю. А вдруг обманешь, кто тебя знает."
+local loan_money_dlg_2 = "Конечно, могу. Сколько тебе надо?"
+
+local loan_money_dlg_3 = "Мне нужно 1000 руб."
+local loan_money_dlg_4 = "Мне нужно 2000 руб."
+local loan_money_dlg_5 = "Мне нужно 3000 руб."
+local loan_money_dlg_6 = "Мне нужно 3500 руб."
+
+local loan_money_dlg_7 = "Мне нужно 3500 руб."
+local loan_money_dlg_8 = "Мне нужно 4500 руб."
+local loan_money_dlg_9 = "Мне нужно 7000 руб."
+local loan_money_dlg_10 = "Мне нужно 8500 руб."
+
+local loan_money_dlg_11 = "Мне нужно 8500 руб."
+local loan_money_dlg_12 = "Мне нужно 9500 руб."
+local loan_money_dlg_13 = "Мне нужно 10500 руб."
+local loan_money_dlg_14 = "Мне нужно 12000 руб."
+
+local loan_money_dlg_15 = "Мне нужно 12000 руб."
+local loan_money_dlg_16 = "Мне нужно 15000 руб."
+local loan_money_dlg_17 = "Мне нужно 17000 руб."
+local loan_money_dlg_18 = "Мне нужно 20000 руб."
+
+local loan_money_dlg_19 = "Хорошо, я дам тебе в долг. Ты должен вернуть мне деньги ровно через сутки."
+local loan_money_dlg_20 = "Верну. Давай деньги."
+local loan_money_dlg_21 = "Вот, держи."
+
+local loan_money_dlg_22 = "Я передумал."
+local loan_money_dlg_23 = "Ну, как хочешь."
+------------------------------------------
+local loan_money_out_dlg_0 = "Я по поводу своего долга, помнишь?"
+local loan_money_out_dlg_1 = "Да-да, помню. Принес деньги?"
+local loan_money_out_dlg_2 = "Да, принес, вот держи."
+local loan_money_out_dlg_3 = "Еще нет."
+local loan_money_out_dlg_4 = "Молодец, что вовремя вернул."
+
+
+function init_loan_money_dlg(dlg)
+    phr0 = dlg:AddPhrase(loan_money_dlg_0, "0", "-1", -10000)
+--	phr1 = dlg:AddPhrase(loan_money_dlg_1, "1", "0", -10000)
+	phr2 = dlg:AddPhrase(loan_money_dlg_2, "2", "0", -10000)
+	phr3 = dlg:AddPhrase(loan_money_dlg_3, "3", "2", -10000)
+	    phr3:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_novice")
+        phr3:GetPhraseScript():AddAction("loan_money.set_money1000")
+	phr4 = dlg:AddPhrase(loan_money_dlg_4, "4", "2", -10000)
+	    phr4:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_novice")
+        phr4:GetPhraseScript():AddAction("loan_money.set_money2000")
+	phr5 = dlg:AddPhrase(loan_money_dlg_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_novice")
+        phr5:GetPhraseScript():AddAction("loan_money.set_money3000")
+	phr6 = dlg:AddPhrase(loan_money_dlg_6, "6", "2", -10000)
+	    phr6:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_novice")
+        phr6:GetPhraseScript():AddAction("loan_money.set_money3500")
+	phr7 = dlg:AddPhrase(loan_money_dlg_7, "7", "2", -10000)
+	    phr7:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_experienced")
+        phr7:GetPhraseScript():AddAction("loan_money.set_money3500")
+	phr8 = dlg:AddPhrase(loan_money_dlg_8, "8", "2", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_experienced")
+        phr8:GetPhraseScript():AddAction("loan_money.set_money4500")
+	phr9 = dlg:AddPhrase(loan_money_dlg_9, "9", "2", -10000)
+	    phr9:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_experienced")
+        phr9:GetPhraseScript():AddAction("loan_money.set_money7000")
+	phr10 = dlg:AddPhrase(loan_money_dlg_10, "10", "2", -10000)
+	    phr10:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_experienced")
+        phr10:GetPhraseScript():AddAction("loan_money.set_money8500")
+	phr11 = dlg:AddPhrase(loan_money_dlg_11, "11", "2", -10000)
+	    phr11:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_veteran")
+        phr11:GetPhraseScript():AddAction("loan_money.set_money8500")
+	phr12 = dlg:AddPhrase(loan_money_dlg_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_veteran")
+        phr12:GetPhraseScript():AddAction("loan_money.set_money98500")
+	phr13 = dlg:AddPhrase(loan_money_dlg_13, "13", "2", -10000)
+	    phr13:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_veteran")
+        phr13:GetPhraseScript():AddAction("loan_money.set_money10500")
+	phr14 = dlg:AddPhrase(loan_money_dlg_14, "14", "2", -10000)
+	    phr14:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_veteran")
+        phr14:GetPhraseScript():AddAction("loan_money.set_money12000")
+	phr15 = dlg:AddPhrase(loan_money_dlg_15, "15", "2", -10000)
+	    phr15:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_master")
+        phr15:GetPhraseScript():AddAction("loan_money.set_money12000")
+	phr16 = dlg:AddPhrase(loan_money_dlg_16, "16", "2", -10000)
+	    phr16:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_master")
+        phr16:GetPhraseScript():AddAction("loan_money.set_money15000")
+	phr17 = dlg:AddPhrase(loan_money_dlg_17, "17", "2", -10000)
+	    phr17:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_master")
+        phr17:GetPhraseScript():AddAction("loan_money.set_money17000")
+	phr18 = dlg:AddPhrase(loan_money_dlg_18, "18", "2", -10000)
+	    phr18:GetPhraseScript():AddPrecondition("loan_money.pre_loaner_master")
+        phr18:GetPhraseScript():AddAction("loan_money.set_money20000")
+
+	
+	
+	phr19 = dlg:AddPhrase(loan_money_dlg_19, "19", "3", -10000)
+	    phr19:GetPhraseScript():AddAction("loan_money.save_npc_data")
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "4", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "5", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "6", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "7", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "8", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "9", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "10", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "11", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "12", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "13", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "14", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "15", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "16", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "17", -10000)
+	phr19Dublicate = dlg:AddPhrase(loan_money_dlg_19, "19", "18", -10000)
+	
+		
+	phr20 = dlg:AddPhrase(loan_money_dlg_20, "20", "19", -10000)
+	     phr20:GetPhraseScript():AddAction("loan_money.on_timer_loan")
+	phr21 = dlg:AddPhrase(loan_money_dlg_21, "21", "20", -10000)
+	    phr21:GetPhraseScript():AddAction("loan_money.give_money")
+		
+	phr22 = dlg:AddPhrase(loan_money_dlg_22, "22", "2", -10000)
+	phr22Dublicate = dlg:AddPhrase(loan_money_dlg_22, "22", "19", -10000)
+	phr23 = dlg:AddPhrase(loan_money_dlg_23, "23", "22", -10000)
+end
+
+function init_loan_money_out_dlg(dlg)
+    phr0 = dlg:AddPhrase(loan_money_out_dlg_0, "0", "-1", -10000)
+    phr1 = dlg:AddPhrase(loan_money_out_dlg_1, "1", "0", -10000)
+    phr2 = dlg:AddPhrase(loan_money_out_dlg_2, "2", "1", -10000)
+	    phr2:GetPhraseScript():AddAction("loan_money.give_money_to_npc")
+    phr3 = dlg:AddPhrase(loan_money_out_dlg_3, "3", "1", -10000)
+    phr4 = dlg:AddPhrase(loan_money_out_dlg_4, "4", "2", -10000)
+end
+
+
+function save_npc_data(first_speaker, second_speaker)
+	tmp = xr_logic.pstor_retrieve(db.actor, "npcloanuserdata", 0)
+	tmp = first_speaker:id()
+	xr_logic.pstor_store(db.actor, "npcloanuserdata", tmp)
+end
+
+function set_money1000()
+	InMoney = 1000
+end
+
+function set_money2000()
+	InMoney = 2000
+end
+
+function set_money3000()
+	InMoney = 3000
+end
+
+function set_money3500()
+	InMoney = 3500
+end
+
+function set_money4500()
+	InMoney = 4500
+end
+
+function set_money7000()
+	InMoney = 7000
+end
+
+function set_money8500()
+	InMoney = 8500
+end
+
+function set_money9500()
+	InMoney = 9500
+end
+
+function set_money10500()
+	InMoney = 10500
+end
+
+function set_money12000()
+	InMoney = 12000
+end
+
+function set_money15000()
+	InMoney = 15000
+end
+
+function set_money17000()
+	InMoney = 17000
+end
+
+function set_money20000()
+	InMoney = 20000
+end
+
+function give_money_to_npc(actor, npc)
+    local many = xr_logic.pstor_retrieve(db.actor, "loan_money", 0)
+	dialogs.relocate_money(npc, many, "out")
+	db.actor:disable_info_portion("have_loan_money")
+	db.actor:disable_info_portion("loaner_first_messege")
+	db.actor:disable_info_portion("loaner_second_messege")
+end
+
+function give_money(actor, npc)
+    local loan
+	loan = xr_logic.pstor_retrieve(db.actor, "loan_money", 0)
+    loan = InMoney
+    xr_logic.pstor_store(db.actor, "loan_money", loan) 
+	dialogs.relocate_money(actor, InMoney, "in")
+	timer = time_global()
+	db.actor:give_info_portion("have_loan_money")
+end
+
+function have_loan_money()
+    if has_alife_info("have_loan_money") then	
+	  local loaner = xr_logic.pstor_retrieve(db.actor, "npcloanuserdata", 0)
+      local cLoaner = level.object_by_id(loaner)
+	    if cLoaner:position():distance_to(db.actor:position()) <= 2 then
+	        return true
+	    else
+	        return false
+		end
+	end
+end
+
+function dont_have_loan_money()
+	return not has_alife_info("have_loan_money")
+end
+
+function pre_loaner_novice(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+    if NpcRank == "novice" then
+	    return true
+	else
+	    return false	
+    end 
+end	
+
+function pre_loaner_experienced(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+    if NpcRank == "experienced" then
+	    return true
+	else
+	    return false	
+    end 
+end	
+
+function pre_loaner_veteran(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+    if NpcRank == "veteran" then
+	    return true
+	else
+	    return false	
+    end 
+end	
+
+function pre_loaner_master(actor, npc)
+  local NpcRank = ranks.get_obj_rank_name(actor)
+    if NpcRank == "master" then
+	    return true
+	else
+	    return false	
+    end 
+end	
+
+
+function timer_loan()
+    if has_alife_info("have_loan_money") then
+	    if time_global() - timer > 3600/2*1000 then
+		    timer_loan__()
+			timer = time_global()
+		end
+	end
+end
+
+function timer_loan__()
+    if not has_alife_info("loaner_first_messege") then
+        news_manager.send_tip(db.actor, "Привет, Сталкер. Ты не забывай, что ты мне денег должен. Я жду.", 0, "stalker", 20000)
+		db.actor:give_info_portion("loaner_first_messege")
+		
+	elseif has_alife_info("loaner_first_messege") then
+	    db.actor:disable_info_portion("have_loan_money")
+	    db.actor:disable_info_portion("loaner_first_messege")
+	    db.actor:disable_info_portion("loaner_second_messege")
+        db.actor:change_character_reputation(db.actor:character_reputation() - 100)
+        news_manager.send_tip(db.actor, "Это я, помнишь меня? Ты у меня деньги занял, так и не вернул ни фига, придурок. Подавись ты этими деньгами!", 0, "stalker", 20000)
+    end
+end
+
+
+
+
+
+
+
+
+

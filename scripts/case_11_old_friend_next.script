@@ -1,0 +1,50 @@
+function text_memory()
+text_memory_next()
+again_animation()
+get_case_cache()
+get_info()
+end
+
+function text_memory_next(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Доступно воспоминание", nil, nil, 30000)
+end
+
+function again_animation()
+    level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")   
+    level.add_pp_effector("alcohol.ppe", 999, false, "") 
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+local ObjId=0
+function get_case_cache()
+    local obj= alife():create("cen_taynik",vector():set(199.404998779297,-1.35899996757507,208.509002685547),261108,2219)
+    local text = "Мне кажется, что этот тайник я уже проверял."
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+end
+
+function get_info()
+db.actor:give_info_portion("player_take_wpn_from_case_11_old_friend")
+end
+
+function actor_have_case_eleven_sf(actor, npc)
+dialogs.relocate_item_section(actor, "s14f", "in")
+end
+
+function delete_sf_from_actor_next()
+delete_sf_from_actor_next_one()
+get_info_next()
+end
+
+function delete_sf_from_actor_next_one()
+    local oItem = db.actor:object("s14f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+function get_info_next()
+db.actor:give_info_portion("case_11_old_friend_started")
+end

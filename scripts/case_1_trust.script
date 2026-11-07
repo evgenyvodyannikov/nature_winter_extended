@@ -1,0 +1,51 @@
+function case_1_trust_money(actor, npc)
+dialogs.relocate_money(actor, 10000, "in")
+end
+
+function case_1_trust_money_dolg(actor, npc)
+	return actor:money() >= 10000
+end
+
+function case_1_trust_give_money_good(actor, npc)
+dialogs.relocate_money(npc, 10000, "out")
+end
+
+function case_1_trust_give_money_bad(actor, npc)
+dialogs.relocate_money(npc, 9000, "out")
+dialogs.relocate_item_section(actor, "player", "in")
+dialogs.relocate_item_section(actor, "ogg_flash_2", "in")
+end
+
+function case_1_trust_give_money_good_complete(actor, npc)
+dialogs.relocate_money(actor, 1000, "in")
+dialogs.relocate_item_section(actor, "af_cristall_flower", "in")
+dialogs.relocate_item_section(actor, "player", "in")
+dialogs.relocate_item_section(actor, "ogg_flash_2", "in")
+end
+
+function case_1_trust_give_money_complete_kill_volk(actor, npc)
+dialogs.relocate_money(actor, 1500, "in")
+dialogs.relocate_item_section(npc, "wpn_ak74_volk", "out")
+end
+
+function search_case_1_trust_wpn_kill_volk(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("wpn_ak74_volk") then
+            db.actor:give_info_portion("player_take_wolf_wpn")
+            return true
+        end
+    end
+return false
+end
+
+function actor_have_wpn_ak74_volk(actor, npc)
+      return actor:object("wpn_ak74_volk") ~= nil
+end
+
+function text_kill_volk()
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_esc_trader_job")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,128,1]Вернуться к Сидоровичу%c[default]")..""
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 35000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_change]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

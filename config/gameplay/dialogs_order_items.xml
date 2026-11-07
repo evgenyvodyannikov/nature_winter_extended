@@ -1,0 +1,348 @@
+<!--------------------------------------------------------------------------------------------------------
+ File        : order_items.script
+ Description : Заказ предметов
+ Copyright   : 2010 © Stalk15
+ Author      : Stalk15
+ Last update : 12.09.2010 
+-------------------------------------------------------------------------------------------------------->
+
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="dialog_order_items">
+	<precondition>order_items.precond_have_order_not</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_order_items_0</text>
+				<action>order_items.random_time_wait_order</action>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_order_items_1</text>
+                <next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+				<next>7</next>
+				<next>13</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_order_items_2</text>
+				<action>order_items.give_have_order_pistol</action>
+				<next>8</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_order_items_3</text>
+				<action>order_items.give_have_order_weapon_for_close_combat</action>
+				<next>15</next>
+            </phrase>
+            <phrase id="4">
+                <text>dialog_order_items_4</text>
+				<action>order_items.give_have_order_wpn_for_shturm</action>
+				<next>16</next>
+            </phrase>
+            <phrase id="5">
+                <text>dialog_order_items_5</text>
+				<action>order_items.give_have_order_wpn_sniper</action>
+				<next>17</next>
+            </phrase>
+            <phrase id="6">
+                <text>dialog_order_items_6</text>
+				<action>order_items.give_have_order_outfit</action>
+				<next>18</next>
+            </phrase>
+            <phrase id="7">
+                <text>dialog_order_items_7</text>
+				<action>order_items.give_have_order_exo</action>
+				<next>19</next>
+            </phrase>
+            <phrase id="8">
+                <text>dialog_order_items_8</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+            <phrase id="9">
+                <text>dialog_order_items_9</text>
+				<precondition>order_items.have_zadatok_on_order</precondition>
+				<action>order_items.give_zadadok_on_order</action>
+				<next>11</next>
+            </phrase>
+            <phrase id="10">
+                <text>dialog_order_items_10</text>
+			<!--	<disable_info>have_order_pistol</disable_info> -->
+			    <action>order_items.peredumal_or_not_money_or_reset</action>
+				<next>12</next>
+            </phrase>
+            <phrase id="11">
+                <text>dialog_order_items_11</text>
+			<!--	<give_info>kvest_pick_up_order</give_info>  -->
+            </phrase>
+            <phrase id="12">
+                <text>dialog_order_items_12</text>
+            </phrase>
+            <phrase id="13">
+                <text>dialog_order_items_13</text>
+				<action>order_items.peredumal_or_not_money_or_reset</action>
+				<next>14</next>
+            </phrase>
+           <phrase id="14">
+                <text>dialog_order_items_14</text>
+            </phrase>
+             <phrase id="15">
+                <text>dialog_order_items_15</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+           <phrase id="16">
+                <text>dialog_order_items_16</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+           <phrase id="17">
+                <text>dialog_order_items_17</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+           <phrase id="18">
+                <text>dialog_order_items_18</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+           <phrase id="19">
+                <text>dialog_order_items_19</text>
+				<next>9</next>
+				<next>10</next>
+				<next>13</next>
+            </phrase>
+        </phrase_list>
+     </dialog>
+	 
+	 
+    <dialog id="dialog_order_items_pick_up_order">
+	<precondition>order_items.precond_have_order</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_order_items_pick_up_order_0</text>
+				<action>order_items.joke_precondition2</action>
+                <next>1</next>
+				<next>2</next>
+				<next>12</next>
+				<next>13</next>
+				<next>14</next>
+				<next>15</next>
+				<next>16</next>
+				<next>17</next>
+				<next>18</next>
+				<next>19</next>
+				<next>20</next>
+				<next>21</next>
+				<next>10</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_order_items_pick_up_order_1</text>
+				<precondition>order_items.precond_have_order_pistol</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_order_items_pick_up_order_2</text>
+				<precondition>order_items.precond_have_order_pistol</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_order_items_pick_up_order_3</text>
+				<precondition>order_items.have_money_on_order</precondition>
+				<action>order_items.give_money_on_order</action>
+				<next>9</next>
+            </phrase>	
+            <phrase id="4">
+                <text>dialog_order_items_pick_up_order_4</text>
+				<next>6</next>
+            </phrase>
+            <phrase id="5">
+                <text>dialog_order_items_pick_up_order_5</text>
+            </phrase>
+            <phrase id="6">
+                <text>dialog_order_items_pick_up_order_6</text>
+				<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>dialog_order_items_pick_up_order_7</text>
+				<next>8</next>
+            </phrase>		
+            <phrase id="8">
+                <text>dialog_order_items_pick_up_order_8</text>
+            </phrase>	
+            <phrase id="9">
+                <text>dialog_order_items_pick_up_order_9</text>
+			<!--	<action>order_items.peredumal_or_not_money_or_reset</action>  -->
+				<action>order_items.given_order_to_actor</action>  
+				<action>order_items.give_order_to_actor</action>
+				<next>11</next>
+            </phrase>		
+            <phrase id="10">
+                <text>dialog_order_items_pick_up_order_10</text>
+				<precondition>order_items.precond_waiting_order_complete_not</precondition>
+            </phrase>	
+            <phrase id="11">
+                <text>dialog_order_items_pick_up_order_11</text>
+				<action>order_items.peredumal_or_not_money_or_reset</action>
+            </phrase>		
+            <phrase id="12">
+                <text>dialog_order_items_pick_up_order_12</text>
+				<precondition>order_items.precond_have_order_weapon_for_close_combat</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="13">
+                <text>dialog_order_items_pick_up_order_13</text>
+				<precondition>order_items.precond_have_order_weapon_for_close_combat</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>	
+            <phrase id="14">
+                <text>dialog_order_items_pick_up_order_14</text>
+				<precondition>order_items.precond_have_order_wpn_for_shturm</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="15">
+                <text>dialog_order_items_pick_up_order_15</text>
+				<precondition>order_items.precond_have_order_wpn_for_shturm</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="16">
+                <text>dialog_order_items_pick_up_order_16</text>
+				<precondition>order_items.precond_have_order_wpn_sniper</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="17">
+                <text>dialog_order_items_pick_up_order_17</text>
+				<precondition>order_items.precond_have_order_wpn_sniper</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+			</phrase>
+            <phrase id="18">
+                <text>dialog_order_items_pick_up_order_18</text>
+				<precondition>order_items.precond_have_order_outfit</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="19">
+                <text>dialog_order_items_pick_up_order_19</text>
+				<precondition>order_items.precond_have_order_outfit</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+			</phrase>
+            <phrase id="20">
+                <text>dialog_order_items_pick_up_order_20</text>
+				<precondition>order_items.precond_have_order_exo</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>		
+            <phrase id="21">
+                <text>dialog_order_items_pick_up_order_21</text>
+				<precondition>order_items.precond_have_order_exo</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc2</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>			
+        </phrase_list>
+     </dialog>	 
+	 
+	 
+	 
+<!--    <dialog id="dialog_order_items_pick_up_zadatok">
+	<precondition>order_items.precond_have_order</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_order_items_pick_up_order_0</text>
+				<action>order_items.joke_precondition2</action>
+                <next>1</next>
+				<next>2</next>
+				<next>12</next>
+				<next>13</next>
+				<next>14</next>
+				<next>15</next>
+				<next>16</next>
+				<next>17</next>
+				<next>18</next>
+				<next>19</next>
+				<next>20</next>
+				<next>21</next>
+				<next>10</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_order_items_pick_up_order_1</text>
+				<precondition>order_items.precond_have_order_pistol</precondition>
+				<precondition>order_items.precond_waiting_order_complete</precondition>
+				<precondition>order_items.pc1</precondition>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+            </phrase>	 -->
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+</game_dialogs>

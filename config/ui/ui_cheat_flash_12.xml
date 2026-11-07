@@ -1,0 +1,52 @@
+	<?-- Vergas подписи кнопок выбора музыкального файла В слоте флешка 12--?>
+	<background_f12_t1 x="187" y="128" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Black Label Society: Just Killing Time</text>
+	</background_f12_t1>
+	
+	<background_f12_t2 x="187" y="149" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Guns n`Roses: Don`t Cry </text>
+	</background_f12_t2>
+
+	<background_f12_t3 x="187" y="170" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Алиса: Мама </text>
+	</background_f12_t3>
+
+	<background_f12_t4 x="187" y="191" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Metallica: The Unforgiven</text>
+	</background_f12_t4>
+
+	<background_f12_t5 x="187" y="212" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Ozzy Osbourne: Mama I`m Coming Home</text>
+	</background_f12_t5>
+	
+	<background_f12_t6 x="187" y="233" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Маврик: Одиночество</text>
+	</background_f12_t6>
+
+	<background_f12_t7 x="187" y="255" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t7>
+	
+	<background_f12_t8 x="187" y="275" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t8>
+	
+	<background_f12_t9 x="187" y="296" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t9>
+	
+	<background_f12_t10 x="187" y="317" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t10>
+	
+	<background_f12_t11 x="187" y="338" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t11>
+	
+	<background_f12_t12 x="187" y="359" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f12_t12>
+	
+	<background_38 x="473" y="308" width="50" height="35">
+		<text font="letterica18"  r="238" g="154" b="0" a="255" align="l">Флешка №12</text>
+	</background_38>

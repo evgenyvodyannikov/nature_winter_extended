@@ -1,0 +1,66 @@
+function start_add_spawn_abb()
+spawn_monster_abc()
+spawn_monster_abf()
+spawn_monster_abb()
+spawn_monster_abn()
+end
+
+function spawn_monster_abc()
+local x= 5,460
+local y= -4,809
+local z= -290,357
+local level_vertex= 180366
+local game_vertex_id= 842
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abf()
+local x= -14,329
+local y= -4,087
+local z= -301,596
+local level_vertex= 157542
+local game_vertex_id= 850
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abb()
+local x= -36,718
+local y= -4,277
+local z= -294,729
+local level_vertex= 132159
+local game_vertex_id= 853
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monster_abn()
+local x= -27,697
+local y= -4,258
+local z= -273,208
+local level_vertex= 141735
+local game_vertex_id= 853
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function actor_have_art_case(actor, npc)
+      return actor:object("af_drops_gorgona") ~= nil
+end
+
+function actor_give_art_and_have_case(actor, npc)
+dialogs.relocate_item_section(actor, "ammo_11.43x23silv", "in")
+dialogs.relocate_money(db.actor,math.random(10000,15000),"in")
+this.delete_af_drops_gorgona_from_actor()
+end
+
+function delete_af_drops_gorgona_from_actor()
+    local oItem = db.actor:object("af_drops_gorgona")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+function actor_give_gun_supnat(actor, npc)
+dialogs.relocate_item_section(actor, "wpn_supernatural_colt", "in")
+dialogs.relocate_item_section(actor, "ammo_11.43x23silv", "in")
+end
+
+

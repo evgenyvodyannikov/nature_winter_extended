@@ -1,0 +1,52 @@
+	<?-- Vergas подписи кнопок выбора музыкального файла В слоте флешка 16--?>
+	<background_f16_t1 x="187" y="128" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Алиса: Веретено</text>
+	</background_f16_t1>
+	
+	<background_f16_t2 x="187" y="149" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >AC/DC : Thunderstruck</text>
+	</background_f16_t2>
+
+	<background_f16_t3 x="187" y="170" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >ДДТ: Осенняя</text>
+	</background_f16_t3>
+
+	<background_f16_t4 x="187" y="191" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Кино: В наших глазах</text>
+	</background_f16_t4>
+
+	<background_f16_t5 x="187" y="212" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Маврик: Рожденные жить</text>
+	</background_f16_t5>
+	
+	<background_f16_t6 x="187" y="233" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Игорь Тальков: Я вернусь</text>
+	</background_f16_t6>
+
+	<background_f16_t7 x="187" y="255" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t7>
+	
+	<background_f16_t8 x="187" y="275" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t8>
+	
+	<background_f16_t9 x="187" y="296" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t9>
+	
+	<background_f16_t10 x="187" y="317" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t10>
+	
+	<background_f16_t11 x="187" y="338" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t11>
+	
+	<background_f16_t12 x="187" y="359" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f16_t12>
+	
+	<background_44 x="473" y="308" width="50" height="35">
+		<text font="letterica18"  r="238" g="154" b="0" a="255" align="l">Флешка №16</text>
+	</background_44>

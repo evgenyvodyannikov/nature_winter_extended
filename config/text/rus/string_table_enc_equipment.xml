@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+#include "text\rus\string_table_ogg_player.xml"
+
+	<string id="Antirad">
+		<text>Антирадиационные препараты</text>
+	</string>
+	<string id="Antir1d">
+		<text>Антивирус-T</text>
+	</string>
+	<string id="Arm-heavy">
+		<text>Тяжёлое сталкеровское снаряжение</text>
+	</string>
+	<string id="Arm-light">
+		<text>Лёгкое сталкеровское снаряжение</text>
+	</string>
+	<string id="Arm-medium">
+		<text>Среднее сталкеровское снаряжение</text>
+	</string>
+	<string id="bandage">
+		<text>Бинт</text>
+	</string>
+	<string id="Binocul">
+		<text>Бинокль</text>
+	</string>
+	<string id="Bread">
+		<text>Хлеб</text>
+	</string>
+	<string id="cit_deadcity_maps_desc">
+		<text>Подробная карта Мёртвого города, содержащая схему расположения позиций наёмников</text>
+	</string>
+	<string id="cit_deadcity_maps_name">
+		<text>Карта Мёртвого города</text>
+	</string>
+	<string id="cit_doctors_key_desc">
+		<text>Ключ Доктора от тайника в Припяти</text>
+	</string>
+	<string id="cit_doctors_key_short_desc">
+		<text>Ключ Доктора</text>
+	</string>
+	<string id="Conserva">
+		<text>"Радость туриста"</text>
+	</string>
+	<string id="Detect1">
+		<text>Детектор аномалий</text>
+	</string>
+	<string id="Devic">
+		<text>Приборы и устройства</text>
+	</string>
+	<string id="device-PDA">
+		<text>КПК</text>
+	</string>
+	<string id="device-torch">
+		<text>Фонарик</text>
+	</string>
+	<string id="enc_equipment_armors_arm-heavy">
+		<text>Защитный костюм. Вес - 18 кг. Особенности: защищает тело от "студня", "жгучего пуха", большинства аномалий и механических повреждений. Грудная клетка и спина защищены встроенными биометаллическими пластинами. Оборудован герметичным металлопластиковым шлемом и двумя кислородными баллонами. Внимание: при продолжительном использовании приходит в негодность - повреждается и рвётся.</text>
+	</string>
+	<string id="enc_equipment_armors_arm-light">
+		<text>Защитный костюм. Вес - 8 кг. Особенности: защищает тело от воздействия слабых аномалий и механических повреждений. Оборудован кислородной маской. Внимание: при продолжительном использовании приходит в негодность - повреждается и рвётся.</text>
+	</string>
+	<string id="enc_equipment_armors_arm-medium">
+		<text>Защитный костюм. Вес - 12 кг. Особенности: защищает тело от "студня", "жгучего пуха", многих аномалий и механических повреждений. Оборудован герметичным шлемом и кислородным баллоном. Внимание: при продолжительном использовании приходит в негодность - повреждается и рвётся.</text>
+	</string>
+	<string id="enc_equipment_armors_sci2">
+		<text>Защитный скафандр красного цвета с герметичным шлемом. Вес - 11 кг. Особенности: защищает тело от огня, кислот, газов, воздействия разнообразных аномалий, "жгучего пуха" и механических повреждений. Оборудован двумя кислородными баллонами. Внимание: при продолжительном использовании приходит в негодность - повреждается и рвётся.</text>
+	</string>
+	<string id="enc_equipment_devic_binocul1">
+		<text>Армейский портативный бинокль.</text>
+	</string>
+	<string id="enc_equipment_devic_guitar">
+		<text>Обычная гитара.</text>
+	</string>
+	<string id="enc_equipment_devic_harmonica">
+		<text>Обычная губная гармоника.</text>
+	</string>
+	<string id="enc_equipment_devic_detect1">
+		<text>Устройство, определяющее наличие аномальных полей и возмущений и сообщающее о них звуковым сигналом. Для работы необходимо активировать, разместив прибор на поясе.</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda1">
+		<text>Карманный персональный компьютер - незаменимое устройство в Зоне.</text>
+	</string>
+	<string id="enc_equipment_devic_device-torch1">
+		<text>Фонарик с довольно мощной лампой. Весьма полезная вещь в условиях недостаточной освещённости.</text>
+	</string>
+	<string id="enc_equipment_devic_device-torch1_m1">
+		<text>Фонарик с довольно мощной лампой. Благодаря усовершенствованному трансформатору уменьшено время зарядки аккумулятора.</text>
+	</string>
+	<string id="enc_equipment_devic_device-hand_radio_f">
+		<text>Позволяет общаться с другими сталкерами в пределах досягаемости</text>
+	</string>
+	<string id="enc_equipment_devic_device-bullion_gild">
+		<text>Золотой слиток\nПроба благородного металла - 999.9 (такая проба обычно используется в космической промышленности)\nКлеймо драгоценного металла  - Bank Swiss Corporation\nВес - 1 кг.</text>
+	</string>
+	<string id="enc_equipment_devic_device-repair_kit">
+		<text>Ремонтный набор для оружия и брони.</text>
+	</string>
+	<string id="enc_equipment_devic_device-explosive">
+		<text>Взрывчатка с часовым механизмом. Таймер работает - 10 секунд.</text>
+	</string>
+	<string id="enc_equipment_devic_device-dist_pult">
+		<text>Электронное устройство для удалённого (дистанционного) управления бомбой. Установка таймера производится через меню.</text>
+	</string>
+	<string id="enc_equipment_devic_device-atomic_bomb">
+		<text>Атомный снаряд или ядерный боеприпас - оружие взрывного действия, основанное на использовании ядерной энергии, высвобождающейся при цепной ядерной реакции деления тяжёлых ядер или термоядерной реакции синтеза лёгких ядер.\n"...При уничтожении группы монолитовцев в г. Припять было найдено 20 таких снарядов. Как попало к ним данное оружие - неизвестно..."\nЦитата из секретных отчетов военных.</text>
+	</string>
+	<string id="enc_equipment_energydrink">
+		<text>Отличный энергетический напиток "Non Stop". Содержит кофеин, таурин и мощный витаминный комплекс, снимающие усталость и прибавляющие силы. Не в состоянии сделать даже шаг? Тогда это именно то, что нужно.</text>
+	</string>
+	<string id="enc_equipment_food_bread1">
+		<text>Неизвестно, кто умудряется печь батоны на территории Зоны, однако этот хлеб не заражен и вполне съедобен. Во всяком случае, никто из сталкеров пока не жаловался.</text>
+	</string>
+	<string id="enc_equipment_food_conserva1">
+		<text>Консервы с растащенного сталкерами армейского продовольственного склада. Срок годности вроде бы не истёк.</text>
+	</string>
+	<string id="enc_equipment_food_kolbasa1">
+		<text>Часто за неимением лучшего эта колбаса - смесь курятины и соевого заменителя - завтрак, обед и ужин сталкера.</text>
+	</string>
+	<string id="enc_equipment_food_sandwich1">
+		<text>Обычный бутерброд с колбасой.</text>
+	</string>
+	<string id="enc_equipment_food_nuts1">
+		<text>Орешки. Очень сытно и питательно.</text>
+	</string>
+	<string id="enc_equipment_food_processed_cheese1">
+		<text>Плавленый сыр не менее питателен, чем консервы, но значительно легче по весу.</text>
+	</string>
+	<string id="enc_equipment_food_paek1">
+		<text>Армейский сухпаёк - рацион питания, предназначенный для военнослужащих. Такой сухпаёк выдают рядовым солдатам.</text>
+	</string>
+	<string id="enc_equipment_food_paek2">
+		<text>Улучшенный армейский сухпаёк - рацион питания, предназначенный для военнослужащих. Такой сухпаёк выдают офицерам и выше по званию. 2 порции.</text>
+	</string>
+	<string id="enc_equipment_food_yogurt1">
+		<text>Неизвестно, каким способом йогурт попал в Зону, но уже заслужил рейтинг среди сталкеров.</text>
+	</string>
+	<string id="enc_equipment_food_condensed_milk1">
+		<text>Сгущённое молоко - концентрированное молоко, обычно с сахаром.</text>
+	</string>
+	<string id="enc_equipment_food_vodka1">
+		<text>Водка производства компании "GSC". Хорошо пьётся, заметно снижает воздействие радиации, однако злоупотреблять ей не следует.</text>
+	</string>
+	<string id="enc_equipment_medi_antirad1">
+		<text>Снижают воздействие радиации на организм.</text>
+	</string>
+	<string id="enc_equipment_medi_antir1d1">
+		<text>Препарат уничтожающий Т-вирус на атомном уровне. После уничтожения вируса начинает происходить востановление и иммунизация организма, вследствии этого человек полностью становится устойчив к этому вирусу.</text>
+	</string>
+	<string id="enc_equipment_medi_bandage1">
+		<text>Перевязочный материал. Помогает остановить кровотечение.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit1">
+		<text>Универсальный медицинский набор. Позволяет справляться с травмами различного вида и степени сложности - ранениями, ожогами, отравлениями и прочим.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit2">
+		<text>Специализированный медицинский набор для борьбы с физическими повреждениями и кровотечением. В него входят компоненты для ускорения свертывания крови, обезболивающие, антибиотики и иммунные стимуляторы.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit3">
+		<text>Медицинский набор, разработанный специально для работы в условиях Зоны. Состав набора подобран как для борьбы с ранениями, так и для вывода радионуклидов из организма. Препятствует развитию лучевой болезни, а также снижает дозу накопленной радиации.</text>
+	</string>
+	<string id="enc_equipment_devic_device-dolg_pda_case_2_racket1">
+		<text>Карманный персональный компьютер - портативное вычислительное устройство, обладающее широкими функциональными возможностями.</text>
+	</string>
+	<string id="enc_equipment_devic_device-document1_case_6_protocol_weapons1">
+		<text>Закодированные данные и координаты. Пакет информации №54.</text>
+	</string>
+	<string id="enc_equipment_devic_device-document2_case_6_protocol_weapons1">
+		<text>Закодированные данные и координаты. Пакет информации №108.</text>
+	</string>
+	<string id="enc_equipment_devic_device-memory1">
+		<text>Объект или событие, сохранившееся в памяти.</text>
+	</string>
+	<string id="enc_equipment_devic_device-memor11">
+		<text>Объект или событие, сохранившееся в памяти.</text>
+	</string>
+	<string id="enc_equipment_devic_device-memor21">
+		<text>Объект или событие, сохранившееся в памяти.</text>
+	</string>
+	<string id="enc_equipment_devic_device-photo1">
+		<text>Моментальный снимок фотоаппарата, принадлежащего компании Polaroid.</text>
+	</string>
+	<string id="enc_equipment_devic_device-old_letter1">
+		<text>Чернила свежие, а бумага старая.</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda_kill_the_strelok1">
+		<text>Карманный персональный компьютер. Найти и убить Стрелка - единственное активное задание.</text>
+	</string>
+	<string id="enc_equipment_devic_device-amulet_case_7_kill_volkodav1">
+		<text>Верящие в магическую силу приписывают этому амулету необычные свойства: он может принести счастье, защитить от всех злых духов, даже может воскресить мертвого человека. Носитель становится не уязвимым ко всем болезням... Волкодав верил в это. Но амулет не смог защитить только от одного - пули в лоб.</text>
+	</string>
+	<string id="enc_equipment_devic_device-energon1">
+		<text>Вещество, представляющее собой сверхкритический флюид. При детонации высвобождает энергию, равную 100 кг тротила.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_9_method_of_teleportation_doc1">
+		<text>1)взять ящик пива,\n2)ящик водки,\n3)cказать Петровичу, чтобы принес 2 ящика консерв.</text>
+	</string>
+	<string id="enc_equipment_devic_device-msmo1">
+		<text>Модуль для пространственного перемещение объекта. Капсула, наполненная заряженным энергоном. Телепортация объекта координируется с пульта управления.</text>
+	</string>
+	<string id="enc_equipment_devic_device-msmo_empty1">
+		<text>Модуль для пространственного перемещение объекта. Капсула пуста</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_mutation_doc1">
+		<text>Системные данные:\nКорпускулярно-волновой дуализм - принцип, согласно которому любой объект может проявлять как волновые, так и корпускулярные свойства. Дальнейшим развитием принципа корпускулярно-волнового дуализма стала концепция квантованных полей в квантовой теории поля.\nКоординированное положение совещания: -14.424,-4.787,-265.384,156775,853.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_11_old_friend_doc1">
+		<text>Привет! Если захочешь встретиться, я направляюсь к ЧАЭС. Слышал байку, что два сталкера все-таки разгадали секрет "Монолита". Обоем предложили присоединится к Зоне какие-то ученые. Первый отказался, откуда, наверно, и появилась эта байка, а второй, как бы по-мягкому выразиться, чуток на голову больной. Короче, его засунули в капсулу, закрыли и пустили кислоту. Сталкера как и не было. Сказка или настоящий факт - не знаю. Спрашиваешь, чего я туда прусь? Хочу собрать гаусс-винтовки и продать, как говорят "нажиться хабара". Хе-хе.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_11_old_friend_doc_next1">
+		<text>Встретимся в Баре. Если меня не будет, спроси у Бармена про Лося.</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda_green1">
+		<text>%c[255,1,255,1]Информация:\n%c[default]Привет! Шрам не узнал тебя? А то бы пришил! Хе-хе. Долго ты добираешься. Решил без тебя пойти. Заблокированные координаты на этом КПК отдай Бармену. Всё, до связи!</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda_code_bar_sf1">
+		<text>%c[255,1,255,1]Информация:\n%c[default]Объект принести Сахарову. Найдете "Свободных" людей, они, кстати, тоже ищут, убить, не раздумывая.</text>
+	</string>
+	<string id="enc_equipment_devic_device-screwdriver_bandit_borov1">
+		<text>Ее Боров использовал, чтобы открыть дверь в лабораторию. Прекрасное применение инструмента.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_11_old_friend_begin1">
+		<text>Ты пошел туда, а зачем? Что? Девять-девять. Дикий путь.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_12_blood_dream_begin1">
+		<text>Спускайся в лабораторию X-18. Я, надеюсь, ты взял у Бармена телепорт-устройство? Если нет, то ключ от лаборатории, по слухам, у Борова.</text>
+	</string>
+	<string id="enc_equipment_devic_device-bloodied_note1">
+		<text>Между пятнами крови просматриваются три цифры - 934. Возможно, это код для открытия двери.</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda_green_elk1">
+		<text>%c[255,1,255,1]Сообщения\Черновики:\n%c[default]Меченый, последняя часть кода 333. Не забудь одеть защитный костюм. В тайнике бери артефакт. Всё идет по плану. Будь готов, вниз пока не спускайся. Нечисть и Хронос скоро припрутся.</text>
+	</string>
+	<string id="enc_equipment_devic_device-pda_kill_the_elk1">
+		<text>Последнее сообщение:\nЗадержать... Что я говорю?! Убить этого сталкера и забрать часть кода. Сообщите, когда все будет сделано.</text>
+	</string>
+	<string id="enc_equipment_devic_device-unknown_blood_dream1">
+		<text>В записке оговаривается, что это прототип.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_12_blood_dream_elephant1">
+		<text>333</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_12_blood_dream_last1">
+		<text>Выбирайся оттуда! Быстрее! Мой костюм тебя защитит, от pml - лучей. Отнеси Прототип Сахарову. До встречи!</text>
+	</string>
+      	<string id="enc_equipment_medi_medkit_elite">
+		<text>Элитный медицинский набор, разработанный специально для работы в условиях Зоны. Состав набора подобран как для борьбы с ранениями, так и для вывода радионуклидов из организма. Препятствует развитию лучевой болезни и востанавливает енергию, а также снижает дозу накопленной радиации.</text>
+	</string>
+      	<string id="enc_equipment_food_thermos_coffee1">
+		<text>Специальный термос на 0,5 л. Приятный вкус и аромат. Осторожно: кофе горячий.</text>
+	</string>
+      	<string id="enc_equipment_food_thermos_water1">
+		<text>Специальный термос на 2 л. Внешняя оболочка термоса из свинца, что свидетельствует об отсутствие в воде радионуклидов. 2 порции.</text>
+	</string>
+	<string id="energy_drink_name">
+		<text>Энергетический напиток "Non Stop"</text>
+	</string>
+	<string id="energy_drink_short_name">
+		<text>Энергетический напиток "Non Stop"</text>
+	</string>
+	<string id="enc_point_horror">
+		<text>Выдана за вживление страхов в голову собеседника.</text>
+	</string>
+	<string id="enc_point_murder">
+		<text>Получено за убийство сталкера, путем внедрения ему в голову мысли о самоубийстве.</text>
+	</string>
+	<string id="enc_equipment_food_korobka_sigars">
+		<text>Дорогая и редкая вещь. Настоящие кубинские сигары.</text>
+	</string>
+	<string id="enc_equipment_food_rom">
+		<text>Выдержанный ром класса премиум. Самый дорогой и качественный алкоголь.</text>
+	</string>
+	<string id="enc_pink_letter">
+		<text>Розовый лист - это упоминание о бонусе. Каком - неизвестно. Принесите это торговцу. И узнайте, что за подарок таится за этим листом.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_false_one1">
+		<text>В зависимости от того, обычный или "биометрический" паспорт вы собираетесь получать, вам понадобятся разные комплекты документов. Они схожи, но различаются форматами анкеты, сумма пошлины и количество предоставляемых фотографий.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_false_two1">
+		<text>Основан 4 февраля 1970 года. Статус города Припять получил в 1979 году на основании постановления Верховного Совета Украинской ССР № 1264/686. Генеральным поводом основания города стало строительство и последующая эксплуатация одной из самых крупных в Европе атомных электростанций, Чернобыльской — градообразующего предприятия, которое и дало Припяти звание города атомщиков. Припять стал девятым в Советском Союзе атомоградом.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_false_three1">
+		<text>Группировка "Инквизиция" (Инквизиторы). Их видели лишь во время прорыва на ЧАЭС. Похоже, что это группировка сотрудничает с монолитовцами или является их особыми войсками.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_false_four1">
+		<text>Чёрный пёс Чернобыля. Говорят, что это мутировавшая разновидность дога. Агрессивен и безстрашен, особенно в стаях. Шкура более устойчива к повреждениям, чем у обычных псов, а укусы, нанесённые им, значительно дольше заживают.</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_false_five1">
+		<text>Розовые листы - необходимая вещь. За них торговцы дают оружие, а иногда и костюм. Но зачем они им?</text>
+	</string>
+	<string id="enc_equipment_devic_device-case_10_section_2_diary_true1">
+		<text>Дневник Джона Винчестера содержит информацию о паранормальных существах. Практически всё написано на латинском языке.</text>
+	</string>
+	<string id="enc_equipment_devic_device-map_code_case1">
+		<text>Чтобы увидеть карту, переместите ее в пистолетный слот.</text>
+	</string>
+	<string id="enc_equipment_devic_device-easter_egg1">
+		<text>Чтобы увидеть документ, переместите его в пистолетный слот.</text>
+	</string>
+	<string id="enc_equipment_devic_device-easter_egg2">
+		<text>....\n-Ты мне что-то недоговариваешь! Мой указательный палец правой руки стал дёргаться на спусковом крючке. Даю тебе пять секунд. Если не заговоришь, то кранты твоему черепу! Я уже представляю, как твои мозги текут по стене этой каморки.\n-Ладно-ладно. Я из 50-х годов 21 века. Работаю в лаборатории Х-20 под руководством профессора Кирилова. Он подчиняется организации "Монолит". Мы изготавливаем мощное оружие повышенного радиуса действия.\n-Конкретнее!\n-Вакуумный субкаталитический заряд.\n-Что это за фигня?\n-Ну, как тебе обьяснить, раньше мы применяли атомные заряды, так называемые - "Грязные бомбы". Но после их применения, остаётся зона радиактивного заражения. И лет пять там нельзя было жить. Поэтому было принято решение сделать альтернативный заряд, равный по мощности, но не оставляющий после активации зон заражения. Такие заряды применили для уничтожения населения зоны отчуждения - эффект потрясающий! После активации над эпицентром взрыва выросла полусфера огромного избыточного давления диаметром 3 км и в высоту 1,5 км. В результате, всё что попало туда сплющивается. Например УАЗик становится со спичечную коробку. Спустя 5 сек. вся эта полусфера переходит в состояние глубокого вакуума и все предметы собираются в эпицентре взрыва в небольшую кучку мусора. Чисто, красиво и уборкой заниматься не надо!\n-Сука, ты ещё гордишся этим!\n-Я подневольный человек, что мне приказывают, я то и делаю!\n-Дальше рассказывай!\n-Сейчас мы готовим принципиально новый образец такого оружия, способный уничтожить Киев. Радиус поражения возможен до 100 км.\n-На основе чего была достигнута...\n....</text>
+	</string>
+	<string id="enc_equipment_devic_device-easter_egg3">
+		<text>...\n-Зачем ты сюда вообще пришел?\n-У нас появилось подозрение, что кто-то из "наших" стал перемещаться во времени несанкционированно. Было принято решение отправить несколько научных сотрудников в разное времнное измерение. Я попал к вам. Только с помощью этих артов можно было определить в какое измерение перемещался неизвестный. Ну а то, что после прикосновения к этому артефакту или предмету из нашего времени, появляются необычные для вас монстры - так это неизбежно. Мы сами не хотели, чтобы они тут появились, но ничего сделать не могли. Такова природа этих артов. Остальное ты знаешь - Хронос и есть тот сотрудник, который перемещался в ваше временное измерение.\n...</text>
+	</string>
+	<string id="enc_desert_sand">
+		<text>Песок из пустыни. Но чрезвычайно чистый.</text>
+	</string>
+	<string id="enc_ammo_false_why">
+		<text>%c[255,255,1,1]Made in China.\n%c[default]Проблемы?</text>
+	</string>
+	<string id="enc_equipment_devic_device-nature_winter_ql_tasks1">
+		<text>%c[255,1,255,1]Задачи в FreePlay:\n%c[default]1) Найти 2 черных ящика NW\n2) Открыть 4 закодированных тайника\n3) Открыть все разделы способностей Меченого\n4) Узнать тайну прототип патронов.</text>
+	</string>
+	<string id="enc_pda_from_sos_monol">
+		<text>Когда уничтожите цель, убейте свидетеля. Он слишком много знает. После, отправляйтесь на координированную точку объектарного содержания. Конец связи.\n(Подсказка: используйте предмет)</text>
+	</string>
+	<string id="enc_pda_from_sos_monol_last">
+		<text>Активировать из укрытия заряд и ждать прибытия подкрепления.</text>
+	</string>
+	<string id="enc_aergelatus">
+		<text>Новый класс материала, представляющего собой гель, в котором жидкая фаза полностью замещена газообразной. Такой материал обладает рекордно низкой плотностью и демонстрируют ряд уникальных свойств: твёрдость, прозрачность, жаропрочность, чрезвычайно низкую теплопроводность. Например: аэрогель массой 2,38 г способен выдержать кирпич массой 2,5 кг, т.е. в 1000 раз больше вес.</text>
+	</string>
+	<string id="enc_scan_device_nw">
+		<text>Устройство, сканирующее пространство. Таким пользуюутся военные структуры, чтобы находить определенного человека, а именно сигнал его КПК.</text>
+	</string>
+	<string id="enc_sensory_glob">
+		<text>Дорогая игрушка. По типу Google Earth. Прикоснувшись к поверхности глобуса можно рассмотреть в деталях поверхность Калифорнии или же Москвы. В отличии от проекта Google, запрещенные места не повреждены на карте.</text>
+	</string>
+	<string id="enc_pda_from_dmitry">
+		<text>Последнее сообщение: "Если ты не успеешь - песок и устройство уничтожатся навсегда, и ты не вернешься в будущее никогда. И кстати, ты умрешь тогда.</text>
+	</string>
+	<string id="enc_medalten">
+		<text>Ну как Вам ходячий мертвец? Вы выжили после первого в своей жизни нападения. 1 убийство - 1 медаль. Поздравляем.</text>
+	</string>
+	<string id="enc_medal9">
+		<text>Вы убили 10 ходячих. Вы преодолели первую ступень своего страха за это вы получили повышение. Расслабляться не время, трудности только впереди.</text>
+	</string>
+	<string id="enc_medal8">
+		<text>За убийство 35 оживших трупов Вы заслуживаете поощрение в виде нового ранга. Познокомились с чумным зомби?</text>
+	</string>
+	<string id="enc_medal7">
+		<text>Многие, кто дошел до этого ранга, находили из этого ада только единственный выход - пуля в голову. А Вы сможете продолжать бороться или Вам слабо? А пока поздравляем, теперь Вы - Сталкер.</text>
+	</string>
+	<string id="enc_medal6">
+		<text>Вы достойны уважения. У Вас даже не было мысли перестать бороться. 85 цифра хорошая - пусть ходячие знают, что Вы за ними идете. </text>
+	</string>
+	<string id="enc_medal5">
+		<text>Теперь Вы не убегаете от зомби, а жаждите их смерти. Ведь Вы теперь - охотник.</text>
+	</string>
+	<string id="enc_medal4">
+		<text>Более ста двадцати пяти трупов зомби на Вашем опыте! Сколько у Вас душ невидимого зомби?</text>
+	</string>
+	<string id="enc_medal3">
+		<text>Вы больше не затариваетесь патронами, аптечками и бинтами до предела. Ваше любимое выражение: "Один патрон - два трупа".</text>
+	</string>
+	<string id="enc_medal2">
+		<text>Вы знаете ходячих повадки. Знаете, когда они могут атаковать. Знаете, какая у них скорость и что от них ждать. Вы можете с одним ножом пойти на толпу и выжить, ведь это Вы не раз делали. Осталась одна цель: достигнуть первого ранга. Или Вы сдаётесь?</text>
+	</string>
+	<string id="enc_medal1">
+		<text>Зомби теперь Вас избегают, ведь Вы можете их приготовить и съесть. Здравствуйте, Беар Гриллс! Добро пожаловать в мир Сталкера.</text>
+	</string>
+	<string id="enc_medalh1">
+		<text>Принадлежать к семье высочайших рангов - очень престижно. Думаете, что Вы самый лучший? Нет, остался только один ранг отделяющий Вас от господства. Сдавайтесь, Вам не победить.</text>
+	</string>
+	<string id="enc_medalh2">
+		<text>Вы не остановились, когда достигли первого ранга. Неистово Вы уничтожали ходячих, Вы - Мясник! Хотя ранги еще есть или Вам слабо?</text>
+	</string>
+	<string id="enc_medalcheat">
+		<text>Вы достигли максимально-возможного количества убийств зараженных! Вам нужно памятник поставить при жизни! Это просто невообразимо: 750. Цифра - огромна! Поздравлем!</text>
+	</string>
+	<string id="Medalh1">
+		<text>Медаль высочайшего ранга 1-ой степени</text>
+	</string>
+	<string id="Medalh2">
+		<text>Медаль высочайшего ранга 2-ой степени</text>
+	</string>
+	<string id="Medalcheat">
+		<text>Медаль - Nature Winter</text>
+	</string>
+	<string id="Medal1">
+		<text>Медаль 1 ранга</text>
+	</string>
+	<string id="Medal2">
+		<text>Медаль 2 ранга</text>
+	</string>
+	<string id="Medal3">
+		<text>Медаль 3 ранга</text>
+	</string>
+	<string id="Medal4">
+		<text>Медаль 4 ранга</text>
+	</string>
+	<string id="Medal5">
+		<text>Медаль 5 ранга</text>
+	</string>
+	<string id="Medal6">
+		<text>Медаль 6 ранга</text>
+	</string>
+	<string id="Medal7">
+		<text>Медаль 7 ранга</text>
+	</string>
+	<string id="Medal8">
+		<text>Медаль 8 ранга</text>
+	</string>
+	<string id="Medal9">
+		<text>Медаль 9 ранга</text>
+	</string>
+	<string id="Medalten">
+		<text>Медаль 10 ранга</text>
+	</string>
+	<string id="Equipment">
+		<text>Экипировка и еда</text>
+	</string>
+	<string id="Food">
+		<text>Продукты питания</text>
+	</string>
+	<string id="Kolbasa">
+		<text>Колбаса "Практическая"</text>
+	</string>
+	<string id="Sandwich">
+		<text>Бутерброд</text>
+	</string>
+	<string id="Medi">
+		<text>Медицинские препараты</text>
+	</string>
+	<string id="Medkit">
+		<text>Аптечка</text>
+	</string>
+	<string id="Medkit_army">
+		<text>Армейская аптечка</text>
+	</string>
+	<string id="Medkit_scientific">
+		<text>Научная аптечка</text>
+	</string>
+	<string id="Sci2">
+		<text>Научный EXP-4</text>
+	</string>
+	<string id="Vodka">
+		<text>Водка "Казаки"</text>
+	</string>
+	<string id="st_detector">
+		<text>Детектор аномалий</text>
+	</string>
+	<string id="st_detector_descr">
+		<text>Предназначен для обнаружения аномальных зон, а также очагов радиоактивного загрязнения.</text>
+	</string>
+	<string id="st_grenade_gd5">
+		<text>Дымовая граната</text>
+	</string>
+	<string id="Guitar">
+		<text>Гитара</text>
+	</string>
+	<string id="Harmonica">
+		<text>Губная гармоника</text>
+	</string>
+	<string id="Hand_radio_f">
+		<text>Рация</text>
+	</string>
+	<string id="Bullion_gild">
+		<text>Золотой слиток</text>
+	</string>
+	<string id="Atomic_bomb">
+		<text>Атомный снаряд</text>
+	</string>
+	<string id="Repair_kit">
+		<text>Ремонтный комплект</text>
+	</string>
+	<string id="Explosive">
+		<text>Взрывчатка</text>
+	</string>
+	<string id="Dist_pult">
+		<text>Пульт дистанционного управления</text>
+	</string>
+	<string id="Nuts">
+		<text>Орешки</text>
+	</string>
+	<string id="Processed_cheese">
+		<text>Плавленый сыр</text>
+	</string>
+	<string id="Paek1">
+		<text>Армейский сухпаёк</text>
+	</string>
+	<string id="Paek2">
+		<text>Улучшенный армейский сухпаёк</text>
+	</string>
+	<string id="Yogurt">
+		<text>Фруктовый йогурт</text>
+	</string>
+	<string id="Condensed_milk">
+		<text>Сгущённое молоко</text>
+	</string>
+	<string id="Dolg_pda_case_2_racket">
+		<text>КПК Прапора</text>
+	</string>
+	<string id="Document1_case_6_protocol_weapons">
+		<text>1-й протокол</text>
+	</string>
+	<string id="Document2_case_6_protocol_weapons">
+		<text>2-й протокол</text>
+	</string>
+	<string id="Memory">
+		<text>Воспоминание</text>
+	</string>
+	<string id="Memor1">
+		<text>Воспоминание</text>
+	</string>
+	<string id="Memor2">
+		<text>Воспоминание</text>
+	</string>
+	<string id="Photo">
+		<text>Фотография</text>
+	</string>
+	<string id="Old_letter">
+		<text>Письмо</text>
+	</string>
+	<string id="Pda_kill_the_strelok">
+		<text>КПК</text>
+	</string>
+	<string id="Amulet_case_7_kill_volkodav">
+		<text>Амулет Волкодава</text>
+	</string>
+	<string id="Energon">
+		<text>Энергон</text>
+	</string>
+	<string id="Case_9_method_of_teleportation_doc">
+		<text>Старая записка</text>
+	</string>
+	<string id="Msmo">
+		<text>МППО</text>
+	</string>
+	<string id="Msmo_empty">
+		<text>МППО</text>
+	</string>
+	<string id="Case_10_mutation_doc">
+		<text>Старый документ</text>
+	</string>
+	<string id="Case_11_old_friend_doc">
+		<text>Помятая записка</text>
+	</string>
+	<string id="Case_11_old_friend_doc_next">
+		<text>Записка</text>
+	</string>
+	<string id="Pda_green">
+		<text>Усовершенствованный КПК</text>
+	</string>
+	<string id="Case_11_old_friend_begin">
+		<text>Записка Меченому</text>
+	</string>
+	<string id="Screwdriver_bandit_borov">
+		<text>Отвертка</text>
+	</string>
+	<string id="Case_12_blood_dream_begin">
+		<text>Записка</text>
+	</string>
+	<string id="Bloodied_note">
+		<text>Окровавленная записка</text>
+	</string>
+	<string id="Pda_green_elk">
+		<text>Усовершенствованный КПК, принадлежащий Лосю</text>
+	</string>
+	<string id="Case_12_blood_dream_elephant">
+		<text>Записка</text>
+	</string>
+	<string id="Unknown_blood_dream">
+		<text>Неизвестно</text>
+	</string>
+	<string id="Pda_kill_the_elk">
+		<text>КПК</text>
+	</string>
+	<string id="Case_12_blood_dream_last">
+		<text>Старая записка</text>
+	</string>
+      	<string id="Medkit_elite">
+		<text>Элитная аптечка</text>
+	</string>
+      	<string id="Thermos_coffee">
+		<text>Термос с кофе</text>
+	</string>
+      	<string id="Thermos_water">
+		<text>Термос с очищенной водой</text>
+	</string>
+      	<string id="Point_horror">
+		<text>Балл "Страх"</text>
+	</string>
+      	<string id="Point_murder">
+		<text>Балл "Убийство"</text>
+	</string>
+      	<string id="Korobka_sigars">
+		<text>Коробка кубинских сигар</text>
+	</string>
+      	<string id="Rom">
+		<text>Ром</text>
+	</string>
+      	<string id="Pink_letter">
+		<text>Розовый лист</text>
+	</string>
+      	<string id="Case_10_section_2_diary_false_one">
+		<text>Старый документ</text>
+	</string>
+      	<string id="Case_10_section_2_diary_false_two">
+		<text>Старый документ</text>
+	</string>
+      	<string id="Case_10_section_2_diary_false_three">
+		<text>Старый документ</text>
+	</string>
+      	<string id="Case_10_section_2_diary_false_four">
+		<text>Старый документ</text>
+	</string>
+      	<string id="Case_10_section_2_diary_false_five">
+		<text>Старый документ</text>
+	</string>
+      	<string id="Case_10_section_2_diary_true">
+		<text>Дневник Джона Винчестера</text>
+	</string>
+      	<string id="Map_code_case">
+		<text>Карта</text>
+	</string>
+      	<string id="Easter_egg">
+		<text>Документ</text>
+	</string>
+      	<string id="Desert_sand">
+		<text>Песок</text>
+	</string>
+      	<string id="Ammo_false_why">
+		<text>Патроны 9x19mm PBP</text>
+	</string>
+      	<string id="Nature_winter_ql_tasks">
+		<text>Задачи в FreePlay NW v2.0 QL</text>
+	</string>
+      	<string id="Pda_from_sos_monol">
+		<text>КПК Монолита</text>
+	</string>
+      	<string id="Mp3_player_name">
+		<text>Mp3 player</text>
+	</string>
+      	<string id="Pda_from_sos_monol_last">
+		<text>КПК Монолита</text>
+	</string>
+      	<string id="Sensory_glob">
+		<text>Сенсорный глобус</text>
+	</string>
+     	<string id="Scan_device_nw">
+		<text>Скан-устройство</text>
+	</string>
+     	<string id="Aergelatus">
+		<text>Аэрогель</text>
+	</string>
+     	<string id="Pda_from_dmitry">
+		<text>КПК Дмитрия Падалеки</text>
+	</string>
+</string_table>

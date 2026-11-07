@@ -1,0 +1,12 @@
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------
+
+function addition_params()
+     local level_name=level.name()
+     local wolf_npc=level_object_by_sid(006)
+     if (not has_alife_info("esc_wolf_dead")) and level_name=="l01_escape" and wolf_npc~=nil then
+        if wolf_npc:alive() and wolf_npc.health <= 0.9 then
+           wolf_npc.health=1.0
+        end
+     end
+end
+

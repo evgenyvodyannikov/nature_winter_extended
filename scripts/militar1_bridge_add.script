@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_militar1_bridge_one()
+end
+
+function spawn_militar1_bridge_one()
+local x= 39,328
+local y= 17,899
+local z= 153,277
+local level_vertex= 308460
+local game_vertex_id= 94
+alife():create("mil_stalker_respawn_8",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

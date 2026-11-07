@@ -1,0 +1,24 @@
+function del_money_one()
+local money = db.actor:money() 
+db.actor:give_money(-10000)
+end
+
+function del_money_two()
+local money = db.actor:money() 
+db.actor:give_money(-15000)
+end
+
+function del_money_three()
+local money = db.actor:money() 
+db.actor:give_money(-50000)
+end
+
+function del_money_four()
+local money = db.actor:money() 
+db.actor:give_money(-100000)
+end
+
+function del_money_five()
+local money = db.actor:money() 
+db.actor:give_money(-500000)
+end

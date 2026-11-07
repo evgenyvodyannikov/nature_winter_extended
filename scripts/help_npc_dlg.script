@@ -1,0 +1,169 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : help_npc_dlg.script
+ Description : Игрок может подсобить НПС медикаментами и НПС так же
+ Copyright   : 2011 © Stalk15
+ Author      : Stalk15
+ Last update : 07.01.2011 
+--]]----------------------------------------------------------------------------------------------------
+
+function npc_malo_med(actor, npc)
+    if not actor:object("medkit") and not actor:object("medkit_army") and not actor:object("medkit_scientic") then
+	    return true
+    else
+ 	     return false
+	end
+end
+
+function npc_not_malo_med(actor, npc)	
+    return not npc_malo_med(actor, npc)
+end
+
+function actor_bad_reputation()
+    return db.actor:character_reputation() < 0
+end
+
+function actor_not_bad_reputation()
+    return not actor_bad_reputation()
+end
+
+function actor_bleeding()
+    return db.actor:get_bleeding() > 0.01
+end
+
+function actor_no_medkits()
+    if db.actor:object("medkit") or db.actor:object("medkit_army") or db.actor:object("medkit_scientic") then
+--	  if db.actor.health >= 0.8 == true then
+	    return false
+    else
+        return true
+--	  end
+   end
+end
+
+function npc_have_medkits(actor, npc)
+    if actor:object("medkit") or actor:object("medkit_army") or actor:object("medkit_scientic") then
+	    return true
+    else
+        return false
+    end
+end
+
+function actor_have_medkit()
+    if db.actor:object("medkit") or db.actor:object("medkit_army") or db.actor:object("medkit_scientic") then
+	    return true
+    else
+        return false
+    end
+end
+
+function npc_dont_have_medkits(actor, npc)
+    return not npc_have_medkits(actor, npc)
+end
+
+function actor_malo_hp()
+    return db.actor.health < 0.5 and actor_no_medkits()
+end
+
+function give_medkit_to_actor(actor, npc)
+  local Rnd
+  Rnd = math.random(1, 2)
+  local medkit
+  local NpcRank = ranks.get_obj_rank_name(actor)
+  
+    if NpcRank == "novice" then
+        medkit = "medkit"
+		
+    elseif NpcRank == "experienced" then
+	    medkit = "medkit"
+	    if Rnd == 2 then
+            medkit = "medkit_army"
+		end
+		
+	elseif  NpcRank == "veteran" then
+	    medkit = "medkit_army"
+		
+    elseif NpcRank == "master" then
+	    medkit = "medkit_army"
+	    if Rnd == 2 then
+            medkit = "medkit_scientic"
+		end
+	 end
+   dialogs.relocate_item_section(actor, medkit, "in")
+end
+
+function give_medkit_to_npc(actor, npc)
+    if db.actor:object("medkit") then
+	     dialogs.relocate_item_section(npc, "medkit", "out")
+    elseif db.actor:object("medkit_army") then
+	     dialogs.relocate_item_section(npc, "medkit_army", "out")
+    elseif db.actor:object("medkit_scientic") then
+	     dialogs.relocate_item_section(npc, "medkit_scientic", "out")
+	end
+end
+
+function npc_friend_to_actor(first_speaker, second_speaker)
+    second_speaker:set_relation(game_object.friend, first_speaker)
+end
+-------------------------------
+
+local help_to_actor_dlg_1_0 = "Сталкер, помоги. Хреновато мне что-то и аптечки даже нет. Не поможешь аптечкой?"
+local help_to_actor_dlg_1_1 = "Да, конечно, держи. Поправляйся."
+local help_to_actor_dlg_1_2 = "Я бы рад помочь, но у меня у самого нету аптечки."
+local help_to_actor_dlg_1_3 = "Нет, не дам я тебе аптечку."
+local help_to_actor_dlg_1_4 = "Спасибо тебе, выручаешь."
+local help_to_actor_dlg_1_5 = "Жаль. Ну, ладно тогда."
+
+
+
+local help_to_npc_dlg_1_0 = "Что-то ты бледный, взъерошенный какой-то. Тебе помощь не нужна?"
+local help_to_npc_dlg_1_1 = "Нет, у меня все нормально."
+local help_to_npc_dlg_1_2 = "Мне бы аптечка не помешала, чтоб здоровье поправить."
+local help_to_npc_dlg_1_3 = "У меня нет аптечки."
+local help_to_npc_dlg_1_4 = "Вот, держи аптечку. Поправляйся."
+local help_to_npc_dlg_1_5 = "Не дам я тебе аптечку."
+
+local help_to_npc_dlg_1_6 = "Спасибо большое, сталкер, я этого тебе не забуду."
+local help_to_npc_dlg_1_7 = help_to_actor_dlg_1_5
+local help_to_npc_dlg_1_8 = "Жлоб ты!"
+
+
+
+function init_help_to_actor_dlg_1(dlg)
+    phr0 = dlg:AddPhrase(help_to_actor_dlg_1_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddPrecondition("help_npc_dlg.actor_no_medkits")
+	phr1 = dlg:AddPhrase(help_to_actor_dlg_1_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("help_npc_dlg.npc_have_medkits")
+		phr1:GetPhraseScript():AddPrecondition("help_npc_dlg.actor_not_bad_reputation")
+	    phr1:GetPhraseScript():AddAction("help_npc_dlg.give_medkit_to_actor")
+	phr2 = dlg:AddPhrase(help_to_actor_dlg_1_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("help_npc_dlg.npc_dont_have_medkits")
+	phr3 = dlg:AddPhrase(help_to_actor_dlg_1_3, "3", "0", -10000)
+	    phr3:GetPhraseScript():AddPrecondition("help_npc_dlg.actor_bad_reputation")
+	phr4 = dlg:AddPhrase(help_to_actor_dlg_1_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5 = dlg:AddPhrase(help_to_actor_dlg_1_5, "5", "2", -10000)
+	    phr5:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr5Dublicate = dlg:AddPhrase(help_to_actor_dlg_1_5, "5", "3", -10000)
+end
+
+
+function init_help_to_npc_dlg_1(dlg)
+    phr0 = dlg:AddPhrase(help_to_npc_dlg_1_0, "0", "-1", -10000)
+    phr1 = dlg:AddPhrase(help_to_npc_dlg_1_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("help_npc_dlg.npc_not_malo_med")
+	phr2 = dlg:AddPhrase(help_to_npc_dlg_1_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("help_npc_dlg.npc_malo_med")
+	phr3 = dlg:AddPhrase(help_to_npc_dlg_1_3, "3", "2", -10000)
+	phr4 = dlg:AddPhrase(help_to_npc_dlg_1_4, "4", "2", -10000)
+	    phr4:GetPhraseScript():AddPrecondition("help_npc_dlg.actor_have_medkit")
+	    phr4:GetPhraseScript():AddAction("help_npc_dlg.give_medkit_to_npc")
+		phr4:GetPhraseScript():AddAction("help_npc_dlg.npc_friend_to_actor")
+	phr5 = dlg:AddPhrase(help_to_npc_dlg_1_5, "5", "2", -10000)
+	phr6 = dlg:AddPhrase(help_to_npc_dlg_1_6, "6", "4", -10000)
+	phr7 = dlg:AddPhrase(help_to_npc_dlg_1_7, "7", "3", -10000)
+	phr8 = dlg:AddPhrase(help_to_npc_dlg_1_8, "8", "5", -10000)
+end
+
+

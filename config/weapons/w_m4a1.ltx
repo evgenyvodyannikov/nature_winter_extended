@@ -1,0 +1,210 @@
+[wpn_m4a1]:identity_immunities
+GroupControlSection     = spawn_group
+discovery_dependency = 
+$spawn                  = "weapons\m4a1"               ; option for Level Editor
+$npc                 	= on           ; option for Level Editor
+$prefetch               = 8
+scheduled               = off                                ; option for ALife Simulator
+cform                   = skeleton
+class                   = WP_AK74
+ef_main_weapon_type     = 2
+ef_weapon_type          = 6
+
+sprint_allowed          = true
+weapon_class            = assault_rifle
+;-----------[Главные параметры]----------------;
+cost				= 16000
+inv_weight              = 2.6
+inv_name             	= wpn-m4a1
+inv_name_short          = wpn-m4a1
+
+description             = enc_weapons_wpn-m4a1
+
+inv_grid_width		= 5
+inv_grid_height		= 2
+inv_grid_x		= 15
+inv_grid_y		= 33
+
+ammo_elapsed            = 30
+ammo_mag_size        	= 1
+
+fire_modes					= 1, 3, -1
+
+ammo_class				= mag_30_5.56x45_ss190, mag_30_5.56x45_ap
+
+grenade_class		= ammo_m209
+
+scope_status            = 2
+silencer_status         = 2
+grenade_launcher_status = 2
+zoom_enabled            = true                          
+zoom_rotate_time        = 0.25
+scope_zoom_factor       = 50
+scope_name 		= wpn_addon_acog
+scope_x 		= 58
+scope_y 	        = 0
+silencer_name           = wpn_addon_silencer
+silencer_x              = 184
+silencer_y              = 14
+grenade_launcher_name      = wpn_addon_grenade_launcher_m203; section name for the attachable grenade launcher
+grenade_launcher_x         = 109                ; offset in inventory icon
+grenade_launcher_y         = 30
+
+;--------------[Убойность]---------------------;
+hit_power               = 0.75
+hit_impulse             = 75
+hit_type                = fire_wound
+hit_rate	        	= 1.84
+fire_distance           = 650
+bullet_speed            = 800
+rpm                     = 850
+rpm_empty_click         = 200
+silencer_hit_power      = 0.70
+silencer_hit_impulse    = 650
+silencer_fire_distance  = 600
+silencer_bullet_speed   = 700
+launch_speed            = 0
+;------------------------------ S.T.A.L.K.E.R`s sound remake ------------------------------
+;звуки
+snd_draw					= weapons\lr300\lr300_draw, 0.7
+snd_holster				= weapons\lr300\rifle_holster, 0.7
+snd_shoot					= weapons\lr300\lr300_shoot
+snd_empty					= weapons\lr300\lr300_empty, 0.5
+snd_reload					= weapons\lr300\lr300_reload
+snd_shoot_grenade			= weapons\lr300\M203_shot
+snd_reload_grenade			= weapons\lr300\M203_reload
+snd_switch					= weapons\lr300\M203_switch
+snd_silncer_shot        = weapons\lr300\lr300_shot_sil
+;--------------[Дисперсия]---------------------;
+fire_dispersion_base	= 0.21
+control_inertion_factor	= 1.2f
+cam_relax_speed         = 5	;скорость возврата в исходное положение
+cam_relax_speed_ai      = 360
+cam_dispersion          = 0.4	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc      = 0.16	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac     = 0.8	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle        	= 15.0 	;максимальный угол отдачи
+cam_max_angle_horz      = 10.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz     = 2.0	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor = 16
+;--------[Держания ствола в руках НПС]---------;
+strap_position         	= -0.15,-0.32,0.2			; position (offset) and orientation of the weapon when it is strapped
+strap_orientation      	= -10,-5,10					; (3rd person view in degrees)
+strap_bone0             = bip01_spine2
+strap_bone1             = bip01_spine1
+normal                   	= 0, 1, 0
+position                = -0.026, -0.130, 0.0
+orientation              	= 0.0, 0.0, 0.0
+;-----------[Другие параметры]-----------------;
+direction                	= 0, 0, 1
+use_aim_bullet          = true                ;Поддерживается ли первая суппер пуля
+time_to_aim             = 2.0
+hud                     = wpn_m4a1_hud
+misfire_probability     = 0.005
+misfire_condition_k			= 0.05 
+
+condition_shot_dec      = 0.0008
+hand_dependence         = 1
+single_handed           = 0
+PDM_disp_base 		= 0.5
+PDM_disp_vel_factor 	= 2.0
+PDM_disp_accel_factor 	= 2.0
+PDM_disp_crouch	 	= 1.0
+PDM_disp_crouch_no_acc 	= 1.0
+
+min_radius              = 0
+max_radius              = 100
+
+kill_msg_x		= 80
+kill_msg_y		= 59
+kill_msg_width		= 87
+kill_msg_height		= 24
+
+slot 			= 2
+animation_slot		= 2
+
+grenade_flame_particles		= weapons\generic_weapon01
+flame_particles				= weapons\generic_weapon05
+smoke_particles         	= weapons\generic_shoot_00
+
+visual                   	= weapons\m4a1\wpn_m4a1.ogf
+
+fire_point              = 0.0, 0.199, 0.655
+fire_point2             = 0.0, 0.199, 0.575
+
+shell_point             = 0.120000,0.000000,0.070000
+shell_dir               = 0.0, 0.0, 0.4
+shell_particles	 			= weapons\generic_shells
+
+startup_ammo            = 90
+visual                  = weapons\m4a1\wpn_m4a1.ogf
+light_disabled          = false
+light_color             = 0.6,0.5,0.3
+light_range             = 5
+light_var_color         = 0.05
+light_var_range         = 0.1
+light_time              = 0.2
+ph_mass                 = 3
+silencer_light_color    = 0.6,0.5,0.3
+silencer_light_range    = 0.01
+silencer_light_var_color= 0.05
+silencer_light_var_range= 0.5
+silencer_light_time     = 0.2
+
+[wpn_m4a1_hud]
+zoom_hide_crosshair     = true
+visual           	        = weapons\m4a1\wpn_m4a1_hud.ogf
+
+shell_point	        = 0.028,0.078,0.113
+shell_dir               = 0.0, 1.0, 0.0
+fire_point		= 0.115,-0.01,0.6
+fire_bone               = wpn_body
+fire_point2		= 0.0,-0.03,0.601
+fire_bone2              = wpn_body
+position         	        = -0.05,-0.15,0.12
+orientation      	        = 0, 0, 0
+
+grenade_bone            	= grenade
+
+anim_idle			= idle
+anim_idle_aim		= idle_aim
+anim_reload			= reload
+anim_draw			= draw
+anim_holster		= holster
+anim_shoot			= shoot
+anim_idle_sprint			= idle_sprint
+
+anim_idle_g					= idle_gl
+anim_idle_g_aim				= idle_gl
+anim_reload_g				= reload_gl
+anim_shoot_g				= shoot_gl
+anim_switch_grenade_on			= switch_on
+anim_switch_grenade_off			= switch_off
+anim_draw_g					= draw_gl
+anim_holster_g				= holster_gl
+
+;(режим обычной стрельбы)			  
+anim_idle_gl				= idle_w_gl
+anim_idle_gl_aim				= idle_w_gl
+anim_reload_gl				= reload_w_gl
+anim_draw_gl				= draw_w_gl
+anim_holster_gl				= holster_w_gl
+anim_shoot_gl				= shoot_w_gl
+
+;смещения HUD для режима приближения
+zoom_offset			= -0.117,0.05,-0.1
+zoom_rotate_x		= 0.12
+zoom_rotate_y		= 0.0
+
+;прячем перекрестие прицела в зуме
+zoom_hide_crosshair	= true
+
+;режим подствольника
+grenade_zoom_offset			= 0,0,0
+grenade_zoom_rotate_x		= 0
+grenade_zoom_rotate_y		= 0
+
+grenade_normal_zoom_offset		= -0.117,0.01,-0.1
+grenade_normal_zoom_rotate_x	= 0.0
+grenade_normal_zoom_rotate_y	= 0.0

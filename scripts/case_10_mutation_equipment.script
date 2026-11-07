@@ -1,0 +1,11 @@
+function actor_have_msmo(actor, npc)
+dialogs.relocate_item_section(actor, "msmo", "in")
+end
+
+function actor_have_msmo_in(actor, npc)
+      return actor:object("msmo") ~= nil
+end
+
+function actor_give_msmo(actor, npc)
+dialogs.relocate_item_section(npc, "msmo", "out")
+end

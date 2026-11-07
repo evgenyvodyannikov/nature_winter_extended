@@ -1,0 +1,27 @@
+function start_add_spawn()
+spawn_deathclaw()
+text_one()
+text_one_one_end()
+end
+
+function spawn_deathclaw()
+local x= 160,433
+local y= -21,058
+local z= 111,743
+local level_vertex= 41893
+local game_vertex_id= 1183
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function text_one(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsNpc_barman")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение от Бармена:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Меченый, потерпи. Я пытаюсь перенастроить координаты.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+end
+
+function text_one_one_end(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsNpc_barman")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение от Бармена:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Меченый, они уже на поверхности... Я думал это миф. Это левиафаны. Мне нужно их изучить. Принеси мне глаз этой твари. Награда соответствующая.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 45000)
+end

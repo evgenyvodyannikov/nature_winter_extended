@@ -1,0 +1,11 @@
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------
+
+function sigerous_mod_init()
+   sigerous_mod_loader()
+end
+
+function sigerous_mod_loader()
+sigerous_slots.slots_controler()
+sigerous_immortal.addition_params()
+begin_no_access.check_access()
+end

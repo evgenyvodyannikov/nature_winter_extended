@@ -1,0 +1,95 @@
+function actor_have_af_medusa(actor, npc)
+      return actor:object("af_medusa") ~= nil
+end
+
+function experiments_artifacts_af_medusa(actor, npc)
+	return actor:money() >= 2500
+end
+
+function actor_return_money(actor, npc)
+dialogs.relocate_money(npc, 2500, "out")
+end
+
+function actor_have_af_fireball(actor, npc)
+      return actor:object("af_fireball") ~= nil
+end
+
+function experiments_artifacts_af_fireball(actor, npc)
+	return actor:money() >= 2500
+end
+
+function actor_have_af_dummy_pellicle(actor, npc)
+      return actor:object("af_dummy_pellicle") ~= nil
+end
+
+function experiments_artifacts_af_dummy_pellicle(actor, npc)
+	return actor:money() >= 2500
+end
+
+function actor_return_money_2st_experiment(actor, npc)
+dialogs.relocate_money(npc, 5000, "out")
+end
+
+function actor_have_af_fireball_adegansky_crystall_01(actor, npc)
+      return actor:object("af_fireball_adegansky_crystall_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_adegansky_crystall_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_carbonyl_01(actor, npc)
+      return actor:object("af_fireball_carbonyl_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_carbonyl_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_cortosis_01(actor, npc)
+      return actor:object("af_fireball_cortosis_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_cortosis_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_cosmi_01(actor, npc)
+      return actor:object("af_fireball_cosmi_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_cosmi_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_plastal_01(actor, npc)
+      return actor:object("af_fireball_plastal_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_plastal_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_metatsianid_01(actor, npc)
+      return actor:object("af_fireball_metatsianid_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_metatsianid_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_elerium_115_01(actor, npc)
+      return actor:object("af_fireball_elerium-115_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_elerium_115_01(actor, npc)
+	return actor:money() >= 5000
+end
+
+function actor_have_af_fireball_adamantane_01(actor, npc)
+      return actor:object("af_fireball_adamantane_01") ~= nil
+end
+
+function experiments_artifacts_af_fireball_adamantane_01(actor, npc)
+	return actor:money() >= 5000
+end

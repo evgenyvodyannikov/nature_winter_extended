@@ -1,0 +1,50 @@
+function show_time()
+    local hud = get_hud()
+    local cs = hud:GetCustomStatic("hud_show_time")
+    if cs == nil then
+        hud:AddCustomStatic("hud_time_static", true)
+        hud:AddCustomStatic("hud_show_time", true)
+        cs = hud:GetCustomStatic("hud_show_time")
+    end
+ 
+    local time_h = level.get_time_hours()
+    local time_m = level.get_time_minutes()
+    local msg
+    if time_m >= 10 then
+        msg = string.format(" %02d:%02d\n", time_h, time_m)
+    else
+        msg = string.format(" %02d:%02d\n", time_h, time_m)
+    end
+ 
+    if cs ~= nil then cs:wnd():SetText(msg) end
+end
+
+function teleport()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "") 
+    level.add_pp_effector("peace_fade.ppe", 999, false, "") 
+    local a = vector()
+    a.x = -7,782
+    a.y = 18,047
+    a.z = 0,802
+    db.actor:set_actor_position(a)
+end
+
+function case_1del4_date_with_death_return_give(actor, npc)
+dialogs.relocate_item_section(actor, "antir1d", "in")
+dialogs.relocate_money(actor, 1500, "in")
+end
+
+function case_1del4_date_with_death_return_have_antir1d(actor, npc)
+dialogs.relocate_item_section(actor, "antir1d", "in")
+end
+
+function actor_have_esc_wounded_flash(actor, npc)
+      return actor:object("esc_wounded_flash") ~= nil
+end
+
+function actor_have_award(actor, npc)
+dialogs.relocate_item_section(npc, "esc_wounded_flash", "out")
+dialogs.relocate_money(actor, 2500, "in")
+end

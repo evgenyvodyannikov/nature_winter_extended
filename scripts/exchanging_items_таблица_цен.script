@@ -1,0 +1,700 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : exchanging_items.script
+ Description : Обмен предметами с НПС
+ Copyright   : 2011 © Stalk15
+ Author      : Stalk15
+ Last edit : 01.01.2011
+--]]----------------------------------------------------------------------------------------------------
+
+
+------------------  Таблицы итемов  ------------------
+local all_items = 
+{
+	[1.0] = "bread", 
+	[1.2] = "sandwich",
+	[1.3] = "kolbasa", 
+	[1.5] = "conserva", 
+	[2.7] = "vodka", 
+	[2.1] = "guitar_a", 
+	[2.0] = "harmonica_a", 
+	[3.3] = "antirad", 
+	[2.9] = "medkit", 
+	[3.4] = "medkit_army", 
+	[3.9] = "medkit_scientic", 
+	[2.5] = "energy_drink", 
+	[2.6] = "bandage",
+
+        [2.2] = "grenade_rgd5",			100
+	[2.8] = "grenade_f1",		210
+	[4.316] = "wpn_pm",		280
+	[4.3] = "wpn_pb",			300
+	[4.2] = "wpn_fort",			350
+	[4.5] = "wpn_bm16",		400
+	[4.7] = "wpn_walther",		800
+	[5.6] = "wpn_ak74u",		1 000
+	[4.1] = "wpn_colt1911",		1 100
+	[5.0] = "wpn_mp5",			1 100
+	[4.9] = "wpn_sig220",		1 200
+	[4.4] = "wpn_usp",			1 500
+	[6.0] = "wpn_spas12",		2 000
+	[6.1] = "wpn_ak74",		2 000
+	[5.5] = "wpn_wincheaster1300",	2 150
+	[4.8] = "wpn_desert_eagle",		2 500	
+	[6.5] = "wpn_abakan",		2 500
+	[6.9] = "wpn_glock_1",		3 500
+	[6.91] = "wpn_glock_2",		3 500
+	[6.95] = "wpn_glock_3",		3 500
+	[7.0] = "wpn_l85",			4 000
+	[7.2] = "wpn_s11",			5 000
+	[7.4] = "wpn_lr300",		5 000
+	[7.3] = "wpn_sig550",		6 500
+	[7.5] = "wpn_gk-700",		6 500
+	[8.1] = "wpn_tec9",			7 000
+	[8.2] = "wpn_glock_1a",		7 000
+	[8.21] = "wpn_glock_2a",		7 000
+	[8.25] = "wpn_glock_3a",		7 000
+	[8.4] = "wpn_glock_1b",		14 000
+	[8.41] = "wpn_glock_2b",		14 000
+	[8.45] = "wpn_glock_3b",		14 000
+	[8.8] = "wpn_anaconda",		7 000
+	[8.9] = "wpn_remington870",		8 600
+	[9.0] = "wpn_val",			9 000
+
+	[8.3] = "wpn_svu",			10 000
+	[8.5] = "wpn_groza",		10 000
+	[9.5] = "wpn_ak101",		10 000	
+	[9.9] = "wpn_rpg7",			10 000
+	[9.3] = "wpn_and",			12 000
+	[9.4] = "wpn_vintorez",		12 000
+	[9.99] = "wpn_rg-6",		12 000
+	[9.0] = "wpn_anaconr1",		14 000
+	[9.01] = "wpn_steyr_tmp",		15 000
+	[9.03] = "wpn_m4",			15 000
+	[9.04] = "wpn_kriss_super_v",	15 000
+	[9.05] = "wpn_ak9",		15 000
+	[9.35] = "wpn_g11",		15 000
+	[9.1] = "wpn_svd",			15 000
+	[9.2] = "wpn_m4a1",		16 000
+	[9.3] = "wpn_fn2000",		17 000
+
+
+	[9.4] = "wpn_ak104s",		20 000
+	[9.5] = "wpn_ak10a",		20 000
+	[9.55] = "wpn_mp7a3",		20 000
+	[9.6] = "wpn_ak104t",		20 000
+	[9.7] = "wpn_groz1",		20 000
+	[9.75] = "wpn_bm_anom",		21 000
+	[9.8] = "wpn_sg552",		25 000
+	[10.0] = "wpn_gauss",		25 000
+	[10.05] = "wpn_saiga12c",		27 000
+	[10.15] = "wpn_p90",		27 000
+	[10.19] = "wpn_auto_mag",		28 000
+	[10.2] = "wpn_anaconr2",		28 000
+	[10.4] = "wpn_steyr_t10",		30 000
+	[10.45] = "wpn_ak74_military",	30 000
+	[10.49] = "wpn_groza_dolg",		30 000
+	[10.5] = "wpn_fn2001",		34 000
+	[10.6] = "wpn_fw900k",		35 000
+	[10.7] = "wpn_ak10b",		35 000
+	[10.8] = "wpn_l86",			35 000
+	[10.9] = "wpn_walther00",		35 000
+	[11.0] = "wpn_ak47_camo1",		36 000
+	[11.01] = "wpn_ak2012",		36 000
+	[11.1] = "wpn_g37",		36 000
+	[11.2] = "wpn_groz2",		40 000	
+
+	[11.4] = "wpn_grom",		45 000
+	[11.5] = "wpn_steyr_t1a",		45 000
+	[11.55] = "wpn_svi",		46 000	
+	[11.6] = "wpn_mg42",		46 000	
+	[11.7] = "wpn_aks74_m1_camo1",	48 000
+	[11.9] = "wpn_b94",		49 000
+	[12.0] = "wpn_rpk74",		50 000
+	[12.1] = "wpn_m_134",		50 000
+	[12.2] = "wpn_bizon1",		56 000
+	[12.25] = "wpn_svi_dragoon",	58 000
+	[12.3] = "wpn_groz3",		60 000
+	[12.4] = "wpn_twinbow",		61 000
+	[12.45] = "wpn_xm110",		65 000
+	[12.5] = "wpn_fn2002",		68 000
+	[12.6] = "wpn_l87",			70 000
+	[12.7] = "wpn_ak47_camo2", 	72 000
+	[12.8] = "wpn_galil", 		72 000
+	[12.9] = "wpn_g38", 		72 000
+	[13.0] = "wpn_ak10c", 		75 000
+	[16.1] = "wpn_aks74_m1_camo2", 	96 000
+	[16.7] = "wpn_famas_f1", 		99 000
+	[16.8] = "wpn_xm8b", 		99 000
+	[16.9] = "wpn_rpk75", 		100 000
+	[17.0] = "wpn_m_135", 		100 000
+	[17.3] = "wpn_mg36", 		101 000
+	[17.4] = "wpn_xm8_para", 		105 000
+
+	[17.8] = "wpn_famas_g2", 		109 000
+	[18.8] = "wpn_famas_p3", 		119 000
+	[19.3] = "wpn_xm0b", 		120 000
+	[19.9] = "wpn_famas_fa", 		120 000
+	[20.1] = "wpn_xm9b", 		120 000
+	[20.3] = "wpn_twinbo1", 		122 000
+	[20.5] = "wpn_kac_pdw", 		129 000
+	[21.0] = "wpn_bizon2", 		132 000
+	[22.1] = "wpn_fn2003", 		136 000
+
+	[23.5] = "wpn_l88", 		140 000
+	[23.9] = "wpn_grozz", 		140 000
+	[23.9] = "wpn_gro1z", 		140 000
+	[23.9] = "wpn_gro2z", 		140 000
+	[23.9] = "wpn_gro3z", 		140 000
+	[24.6] = "wpn_ak47_camo3",		144 000
+	[25.6] = "wpn_g39",		144 000
+	[28.9] = "wpn_vintorez_m",		186 000
+	[29.1] = "wpn_kac_pd1",		189 000
+	[32.9] = "wpn_aks74_m1_camo3",	192 000
+	[33.6] = "wpn_rpk76",		200 000
+	[33.8] = "wpn_m_136",		200 000
+	[34.6] = "wpn_colt1912",		203 000
+	[34.7] = "wpn_kac_pd2",		209 000
+	[37.0] = "wpn_binachi",		230 000
+	[40.2] = "wpn_twinbo2",		244 000
+	[42.1] = "wpn_bizon3",		264 000
+	[43.0] = "wpn_oicw",		280 000
+	[46.3] = "wpn_ak47_camo4",		288 000	
+	[47.2] = "wpn_aks74_m1_camo4",	292 000	
+	[48.0] = "wpn_bizon4",		299 000
+	[69.0] = "wpn_rpk77",		400 000	
+	[70.0] = "wpn_m_137",		400 000	
+
+
+
+
+
+
+
+	[2.2] = "wpn_addon_scope",
+	[3.0] = "wpn_addon_scope_susat",
+	[3.6] = "wpn_addon_silencer",
+	[4.71] = "wpn_addon_grenade_launcher_m203",
+	
+	
+	[4.11] = "af_cristall_flower",		2500
+	[4.41] = "af_gravi",			2500
+	[7.02] = "af_gold_fish", 		8000	
+	[6.11] = "af_drops",			2000
+	[4.72] = "af_fireball",			3500
+	[1.1] = "af_cristall",			12000
+	[5.2] = "af_blood",			1000
+	[5.4] = "af_mincer_meat",		2500
+	[5.61] = "af_electra_sparkler",		2000
+	[5.7] = "af_electra_flash",		4500	
+	[5.8] = "af_ameba_slime",		1000	
+	[5.3] = "af_ameba_slug",		2500
+	[5.41] = "af_ameba_mica",		7000
+	[6.01] = "af_dummy_dummy",		30000
+	[6.12] = "af_dummy_battery",		30000
+	[1.2] = "af_dummy_pellicle", 		30000
+	[6.76] = "af_dummy_glassbeads", 	30000
+	[5.51] = "af_rusty_thorn",		1000
+	[5.9] = "af_fuzz_kolobok",		15000
+	[7.07] = "af_electra_moonligh1",		30000
+	[7.11] = "af_electra_moonligh2", 	60000
+	[6.2] = "af_radiation_crystall",		12000
+	[6.21] = "af_telepatic_crystall",		8000	
+	[6.22] = "af_strike_crystall",		10000
+	[6.23] = "af_burn_crystall",		8000
+	[6.24] = "af_explosion_crystall",		8000
+	[6.25] = "af_firewound_crystall",		12000
+	[6.26] = "af_shock_crystall",		10000
+	[6.27] = "af_chemical-burn_crystall",	10000
+	[6.28] = "af_bleeding_crystall",		5000
+	[6.29] = "af_satiety_crystall",		5000
+	
+	
+	[4.91] = "bandit_outfit",
+	[5.3] = "killer_outfit",
+	[5.81] = "monolit_outfit",
+	[5.53] = "specops_outfit",		
+	[6.8] = "military_outfit",			
+	[6.4] = "stalker_outfit",			
+	[7.09] = "scientific_outfit",	
+	[10.1] = "exo_outfit",
+	[6.7] = "svoboda_light_outfit",
+	[7.7] = "svoboda_heavy_outfit",
+	[6.84] = "dolg_outfit",
+	[8.0] = "dolg_scientific_outfit",
+	[7.2] = "ecolog_outfit",
+	[7.5] = "protection_outfit"	
+}
+
+
+local items_table_novice = 
+{
+	[1.0] = "bread", 
+	[1.2] = "sandwich",
+	[1.3] = "kolbasa", 
+	[1.5] = "conserva", 
+	[2.1] = "guitar_a", 
+	[2.0] = "harmonica_a", 
+	[2.9] = "medkit", 
+	[2.5] = "energy_drink", 
+	[2.7] = "bandage"
+}
+	
+local items_table_experienced = 
+{
+	[1.0] = "bread",
+	[1.2] = "sandwich", 
+	[1.3] = "kolbasa", 
+	[1.5] = "conserva", 
+	[2.7] = "vodka", 
+	[2.1] = "guitar_a", 
+	[2.0] = "harmonica_a", 
+	[3.3] = "antirad", 
+	[2.9] = "medkit", 
+	[2.5] = "energy_drink", 
+	[2.6] = "bandage"
+}
+
+local items_table_veteran = 
+{
+	[1.0] = "bread", 
+	[1.2] = "sandwich",
+	[1.3] = "kolbasa", 
+	[1.5] = "conserva", 
+	[2.7] = "vodka", 
+	[2.1] = "guitar_a", 
+	[2.0] = "harmonica_a", 
+	[3.3] = "antirad", 
+	[2.9] = "medkit", 
+	[3.4] = "medkit_army", 
+	[3.9] = "medkit_scientic", 
+	[2.5] = "energy_drink", 
+	[2.7] = "bandage"
+}
+
+local items_table_master = items_table_veteran
+
+	
+local weapons_table_novice = 
+{
+	[4.3] = "wpn_pb",
+	[3.6] = "wpn_addon_silencer",
+	[4.2] = "wpn_fort",
+	[4.7] = "wpn_walther",
+	[4.5] = "wpn_bm16",		
+	[5.0] = "wpn_mp5"
+}
+
+local weapons_table_experienced = 
+{
+	[4.9] = "wpn_sig220",
+	[4.1] = "wpn_colt1911",
+	[3.6] = "wpn_addon_silencer",
+	[5.5] = "wpn_wincheaster1300",
+	[2.3] = "wpn_addon_scope",
+	[5.6] = "wpn_ak74u",
+	[6.0] = "wpn_ak74",
+	[6.5] = "wpn_abakan",
+	[7.0] = "wpn_l85",
+    [2.2] = "grenade_rgd5"
+}
+
+local weapons_table_veteran = 
+{
+	[3.6] = "wpn_addon_silencer",
+	[4.4] = "wpn_usp",
+	[4.9] = "wpn_desert_eagle",
+	[6.0] = "wpn_spas12",
+	[2.2] = "wpn_addon_scope",
+	[7.0] = "wpn_l85",
+	[7.4] = "wpn_lr300",
+	[4.7] = "wpn_addon_grenade_launcher_m203",
+	[3.0] = "wpn_addon_scope_susat",
+	[7.3] = "wpn_sig550",	
+    [2.2] =  "grenade_rgd5",
+	[2.8] = "grenade_f1",
+	[8.3] = "wpn_svu",
+	[8.5] = "wpn_groza"
+}
+
+local weapons_table_master = 
+{
+	[3.6] = "wpn_addon_silencer",
+	[4.9] = "wpn_desert_eagle",	
+	[6.0] = "wpn_spas12",
+	[4.7] = "wpn_addon_grenade_launcher_m203",
+	[3.0] = "wpn_addon_scope_susat",	
+	[9.0] = "wpn_val",
+	[9.4] = "wpn_vintorez",
+	[9.1] = "wpn_svd",
+	[9.99] = "wpn_rg-6",
+	[9.9] = "wpn_rpg7",
+    [2.2] =  "grenade_rgd5",
+	[2.8] = "grenade_f1",
+	[9.7] = "wpn_fn2000",
+	[10.0] = "wpn_gauss"
+} 
+
+
+local arts_table_novice = 
+{
+	[4.0] = "af_medusa",
+	[4.1] = "af_cristall_flower"
+}  
+
+local arts_table_experienced = 
+{
+	[4.0] = "af_medusa",
+	[4.1] = "af_cristall_flower",
+	[4.4] = "af_gravi",
+	[4.7] = "af_fireball",
+	[5.4] = "af_mincer_meat",
+	[5.7] = "af_ameba_slime",
+	[5.9] = "af_rusty_thorn"
+}
+
+local arts_table_veteran = 
+{
+	[4.0] = "af_medusa",
+	[4.1] = "af_cristall_flower",
+	[4.4] = "af_gravi",
+	[6.1] = "af_drops",
+	[4.7] = "af_fireball",
+	[5.2] = "af_blood",
+	[5.4] = "af_mincer_meat",
+	[5.7] = "af_ameba_slime",
+	[5.3] = "af_ameba_slug",
+	[5.6] = "af_ameba_mica",
+	[5.5] = "af_rusty_thorn",
+	[5.9] = "af_fuzz_kolobok",
+	[7.07] = "af_electra_moonligh1",
+	[6.2] = "af_radiation_crystall",
+	[6.21] = "af_telepatic_crystall",
+	[6.22] = "af_strike_crystall",
+	[6.23] = "af_burn_crystall",
+	[6.24] = "af_explosion_crystall",
+	[6.25] = "af_firewound_crystall",
+	[6.26] = "af_shock_crystall",
+	[6.27] = "af_chemical-burn_crystall",
+	[6.28] = "af_bleeding_crystall",
+	[6.29] = "af_satiety_crystall"
+}
+
+local arts_table_master = 
+{
+	[4.0] = "af_medusa",
+	[4.1] = "af_cristall_flower",
+	[4.4] = "af_gravi",
+	[7.0] = "af_gold_fish",
+	[6.1] = "af_drops",
+	[4.7] = "af_fireball",
+	[5.2] = "af_blood",
+	[5.4] = "af_mincer_meat",
+	[5.6] = "af_electra_sparkler",
+	[5.7] = "af_electra_flash",
+	[5.8] = "af_ameba_slime",
+	[5.3] = "af_ameba_slug",
+	[5.4] = "af_ameba_mica",
+	[6.0] = "af_dummy_dummy",
+	[6.1] = "af_dummy_battery",
+	[6.7] = "af_dummy_glassbeads",
+	[5.5] = "af_rusty_thorn",
+	[5.9] = "af_fuzz_kolobok",
+	[7.07] = "af_electra_moonligh1",
+	[7.11] = "af_electra_moonligh2",
+	[6.2] = "af_radiation_crystall",
+	[6.21] = "af_telepatic_crystall",
+	[6.22] = "af_strike_crystall",
+	[6.23] = "af_burn_crystall",
+	[6.24] = "af_explosion_crystall",
+	[6.25] = "af_firewound_crystall",
+	[6.26] = "af_shock_crystall",
+	[6.27] = "af_chemical-burn_crystall",
+	[6.28] = "af_bleeding_crystall",
+	[6.29] = "af_satiety_crystall"
+}
+
+
+local outfits_table_novice = 
+{
+	[5.0] = "novice_outfit",
+	[4.9] = "bandit_outfit"
+}
+
+local outfits_table_experienced = 
+{
+	[5.0] = "novice_outfit",
+	[4.9] = "bandit_outfit",
+	[5.3] = "killer_outfit",		
+	[6.8] = "military_outfit",			
+	[6.4] = "stalker_outfit",			
+	[6.7] = "svoboda_light_outfit",
+	[6.8] = "dolg_outfit"
+}
+
+local outfits_table_veteran = 
+{
+	[5.8] = "monolit_outfit",
+	[6.95] = "specops_outfit",					
+	[6.4] = "stalker_outfit",					
+	[7.7] = "svoboda_heavy_outfit",
+	[8.0] = "dolg_scientific_outfit",
+	[7.2] = "ecolog_outfit",
+	[7.5] = "protection_outfit"	
+}
+
+local outfits_table_master = 
+{
+	[5.5] = "specops_outfit",
+	[6.8] = "military_outfit",									
+	[10.0] = "exo_outfit",
+	[7.7] = "svoboda_heavy_outfit",
+	[8.0] = "dolg_scientific_outfit",
+	[7.5] = "protection_outfit"	
+}
+
+function GetTable_all_items()
+    return all_items
+end
+---------------------------------------
+
+tActorItems = {}
+local Pre = 0
+
+local InArt, InOutf, InItm, InWpn, InItem, ProposedArtRank, ProposedOutfRank, ProposedItmRank, ProposedWpnRank
+
+	
+--------------------------- Dialog ---------------------------
+local exchanging_items_intro_phrase = 
+{
+    "Эй, Сталкер, поменяемся?",
+    "Меняться будем, Сталкер?",
+    "Есть чего на обмен выдвинуть?",
+    "Махнемся не глядя?",
+    "Меняться будешь?",
+    "Не найдется желания обменяться?",
+    "Здраствуй, Сталкер! Махнемся не глядя?",
+    "Приветствую! Обменяться не хочешь?",
+    "Эй, брат, привет! Может махнемся?"
+}
+
+local exchanging_items_phr_1 = "А чтож не поменяться? Давай поменяемся. Смотри, что могу тебе предложить, выбирай: "
+local exchanging_items_phr_2 = "Не-не, не буду я с тобой меняться."
+
+local exchanging_items_phr_3 = "Я бы артефакт взял ..."
+local exchanging_items_phr_4 = "Я бы оружие взял ..."
+local exchanging_items_phr_5 = "Я бы костюм взял ..."
+local exchanging_items_phr_6 = "Я бы предмет взял ..."
+
+local exchanging_items_phr_7 = "Хорошо. А в замен я у тебя возьму во это: "
+local exchanging_items_phr_8 = "Думаю, ни какого обмена у нас с тобой не будет и быть не может. Смотрю, у тебя нечего путного взять. Подваливай, когда разбогатеешь."
+
+local exchanging_items_phr_9 = "Хорошо, я согласен, меняемся. Держи, это тебе."
+local exchanging_items_phr_10 = "Вот и славненько. Заберай свое: "
+
+local exchanging_items_phr_11 = "Я передумал меняться."
+local exchanging_items_phr_12 = "Дело твое."
+
+function init_exchanging_items_dialog(dlg)
+   local intro_phrase = exchanging_items_intro_phrase[math.random(1, table.getn(exchanging_items_intro_phrase))]
+    phr0 = dlg:AddPhrase(intro_phrase, "0", "-1", -10000)
+	phr1 = dlg:AddPhrase(exchanging_items_phr_1, "1", "0", -10000)
+--        phr1:GetPhraseScript():AddPrecondition("exchanging_items.exchange_enabled")
+	    phr1:GetPhraseScript():AddAction("exchanging_items.give_message_proposed_items")
+--	phr2 = dlg:AddPhrase(exchanging_items_phr_2, "2", "0", -10000)
+--        phr2:GetPhraseScript():AddPrecondition("exchanging_items.refusal_to_exchange")
+	phr3 = dlg:AddPhrase(exchanging_items_phr_3, "3", "1", -10000)
+	    phr3:GetPhraseScript():AddAction("exchanging_items.SelectArt")
+	phr4 = dlg:AddPhrase(exchanging_items_phr_4, "4", "1", -10000)
+	    phr4:GetPhraseScript():AddAction("exchanging_items.SelectWpn")
+	phr5 = dlg:AddPhrase(exchanging_items_phr_5, "5", "1", -10000)
+	    phr5:GetPhraseScript():AddAction("exchanging_items.SelectOutf")
+	phr6 = dlg:AddPhrase(exchanging_items_phr_6, "6", "1", -10000)
+	    phr6:GetPhraseScript():AddAction("exchanging_items.SelectItm")
+	
+	phr7 = dlg:AddPhrase(exchanging_items_phr_7, "7", "3", -10000)
+        phr7:GetPhraseScript():AddPrecondition("exchanging_items.PrecondActorItems")
+		phr7:GetPhraseScript():AddAction("exchanging_items.MssgAbstractedItem")
+	phr7Dublicate = dlg:AddPhrase(exchanging_items_phr_7, "7", "4", -10000)
+	phr7Dublicate = dlg:AddPhrase(exchanging_items_phr_7, "7", "5", -10000)
+	phr7Dublicate = dlg:AddPhrase(exchanging_items_phr_7, "7", "6", -10000)
+	
+	phr8 = dlg:AddPhrase(exchanging_items_phr_8, "8", "3", -10000)
+       phr8:GetPhraseScript():AddPrecondition("exchanging_items.PrecondActorItems__")
+	phr8Dublicate = dlg:AddPhrase(exchanging_items_phr_8, "8", "4", -10000)
+	phr8Dublicate = dlg:AddPhrase(exchanging_items_phr_8, "8", "5", -10000)
+	phr8Dublicate = dlg:AddPhrase(exchanging_items_phr_8, "8", "6", -10000)
+	
+	phr9 = dlg:AddPhrase(exchanging_items_phr_9, "9", "7", -10000)
+		phr9:GetPhraseScript():AddAction("exchanging_items.give_item_to_npc")
+	phr10 = dlg:AddPhrase(exchanging_items_phr_10, "10", "9", -10000)
+		phr10:GetPhraseScript():AddAction("exchanging_items.give_item_to_actor")
+	
+	phr11 = dlg:AddPhrase(exchanging_items_phr_11, "11", "1", -10000)
+	phr11Dublicate = dlg:AddPhrase(exchanging_items_phr_11, "11", "7", -10000)
+	phr12 = dlg:AddPhrase(exchanging_items_phr_12, "12", "11", -10000)
+end
+
+-------------------------------------------------------------
+
+function give_message_proposed_items(first_speaker, second_speaker)	
+ local Art, Item, Outfit, Wpn, TxtArt, TxtItm, TxtOutfit, TxtWpn
+ local npc_rank = ranks.get_obj_rank_name(first_speaker) 
+    if npc_rank == "novice" then		
+        Art = GetRndItemFromTable(arts_table_novice)
+		Outfit = GetRndItemFromTable(outfits_table_novice)
+		Item = GetRndItemFromTable(items_table_novice)
+		Wpn = GetRndItemFromTable(weapons_table_novice)
+
+	    ProposedArtRank = Get_Number_Item(Art, arts_table_novice)
+        ProposedOutfRank = Get_Number_Item(Outfit, outfits_table_novice)
+        ProposedItmRank = Get_Number_Item(Item, items_table_novice)
+        ProposedWpnRank = Get_Number_Item(Wpn, weapons_table_novice)
+		
+    elseif npc_rank == "experienced" then		
+        Art = GetRndItemFromTable(arts_table_experienced)
+		Outfit = GetRndItemFromTable(outfits_table_experienced)
+		Item = GetRndItemFromTable(items_table_experienced)
+		Wpn = GetRndItemFromTable(weapons_table_experienced)
+		
+	    ProposedArtRank = Get_Number_Item(Art, arts_table_experienced)
+        ProposedOutfRank = Get_Number_Item(Outfit, outfits_table_experienced)
+        ProposedItmRank = Get_Number_Item(Item, items_table_experienced)
+        ProposedWpnRank = Get_Number_Item(Wpn, weapons_table_experienced)
+		
+    elseif npc_rank == "veteran" then
+        Art = GetRndItemFromTable(arts_table_veteran)
+		Outfit = GetRndItemFromTable(outfits_table_veteran)
+		Item = GetRndItemFromTable(items_table_veteran)
+		Wpn = GetRndItemFromTable(weapons_table_veteran)
+
+	    ProposedArtRank = Get_Number_Item(Art, arts_table_veteran)
+        ProposedOutfRank = Get_Number_Item(Outfit, outfits_table_veteran)
+        ProposedItmRank = Get_Number_Item(Item, items_table_veteran)
+        ProposedWpnRank = Get_Number_Item(Wpn, weapons_table_veteran)
+		
+    elseif npc_rank == "master" then
+        Art = GetRndItemFromTable(arts_table_master)
+		Outfit = GetRndItemFromTable(outfits_table_master)
+		Item = GetRndItemFromTable(items_table_master)
+		Wpn = GetRndItemFromTable(weapons_table_master)
+	
+	    ProposedArtRank = Get_Number_Item(Art, arts_table_master)
+        ProposedOutfRank = Get_Number_Item(Outfit, outfits_table_master)
+        ProposedItmRank = Get_Number_Item(Item, items_table_master)
+        ProposedWpnRank = Get_Number_Item(Wpn, weapons_table_master)
+	end
+	    TxtArt = game.translate_string(get_inv_name(Art))
+		TxtOutfit = game.translate_string(get_inv_name(Outfit))
+	    TxtItm = game.translate_string(get_inv_name(Item))
+		TxtWpn = game.translate_string(get_inv_name(Wpn))
+		
+		InArt = Art
+		InOutf = Outfit
+		InItm = Item
+		InWpn = Wpn
+	  db.actor:give_talk_message("%c[255,250,194,87]Артефакт:%c[255,87,250,240] "..TxtArt, "ui\\ui_iconstotal", Frect():set(0,188,83,47), "iconed_answer_item")
+	  db.actor:give_talk_message("%c[255,250,194,87]Костюм:%c[255,87,250,240] "..TxtOutfit, "ui\\ui_iconstotal", Frect():set(0,329,83,47), "iconed_answer_item")
+	  db.actor:give_talk_message("%c[255,250,194,87]Предмет:%c[255,87,250,240] "..TxtItm, "ui\\ui_iconstotal", Frect():set(0,423,83,47), "iconed_answer_item")
+	  db.actor:give_talk_message("%c[255,250,194,87]Оружие:%c[255,87,250,240] "..TxtWpn, "ui\\ui_iconstotal", Frect():set(0,517,83,47), "iconed_answer_item")
+end
+
+function MssgAbstractedItem()
+    local item = tActorItems[math.random(1, table.getn(tActorItems))]
+    OutItem = item
+    local text = game.translate_string(get_inv_name(item))
+    db.actor:give_talk_message(text, "ui\\ui_iconstotal", Frect():set(0,282,83,47), "iconed_answer_item")
+end
+--[[
+function get_inv_name(section)
+  local ini = system_ini()
+    if ini:line_exist(section,"inv_name") then
+        return ini:r_string(section,"inv_name") or "Нет"
+    else
+        return "Нет"
+    end
+end	
+]]
+function get_inv_name(section)
+    return system_ini():r_string(section, "inv_name")
+end
+
+function PrecondActorItems()
+	return Pre == 1
+end
+
+function PrecondActorItems__()
+	return Pre == 0
+end
+
+---------------------------------
+function SelectArt()
+    StoreActorItemsInTable(ProposedArtRank)
+	InItem = InArt
+end
+
+function SelectOutf()
+	StoreActorItemsInTable(ProposedOutfRank)
+	InItem = InOutf
+end
+
+function SelectItm()
+	StoreActorItemsInTable(ProposedItmRank)
+	InItem = InItm
+end
+
+function SelectWpn()
+	StoreActorItemsInTable(ProposedWpnRank)
+	InItem = InWpn
+end
+
+function StoreActorItemsInTable(ItemRank)
+  Pre = 0
+    db.actor:iterate_inventory(function(dummy, Item)
+      for k, v in pairs(all_items) do
+        if k >= ItemRank - 0.5 then
+            if Item:section() == v then
+                Pre = 1
+				tActorItems = {}
+			    table.insert(tActorItems, v)
+            end
+          end
+       end
+     end
+   ,nil)
+end
+---------------------------------
+
+function give_item_to_npc(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, OutItem, "out")
+end
+
+function give_item_to_actor(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, InItem, "in")
+end
+
+function Get_Number_Item(ItemSec, Table)
+    for k, v in pairs(Table) do
+        if v == ItemSec then
+            return k
+        end
+    end 
+end	
+
+function GetRndItemFromTable(table)
+  local t = {}
+    for _, v in pairs(table) do
+        t[#t+1] = v
+    end
+    if next(t) then
+        return t[math.random(#t)]
+    end
+end  
+
+
+
+
+
+
+

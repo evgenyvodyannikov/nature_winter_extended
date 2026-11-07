@@ -1,0 +1,24 @@
+function actor_have_case_10_mutation_doc(actor, npc)
+      return actor:object("case_10_mutation_doc") ~= nil
+end
+
+function actor_done_case_10_mutation(actor, npc)
+dialogs.relocate_money(actor, 17000, "in")
+dialogs.relocate_item_section(npc, "case_10_mutation_doc", "out")
+end
+
+function actor_have_mutant_deathclaw_glas(actor, npc)
+      return actor:object("mutant_deathclaw_glas") ~= nil
+end
+
+function actor_done_mutant_deathclaw_glas(actor, npc)
+dialogs.relocate_money(actor, 10000, "in")
+this.delete_mutant_deathclaw_glas_from_actor()
+end
+
+function delete_mutant_deathclaw_glas_from_actor()
+    local oItem = db.actor:object("mutant_deathclaw_glas")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end

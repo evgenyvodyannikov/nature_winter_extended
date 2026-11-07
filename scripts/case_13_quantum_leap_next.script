@@ -1,0 +1,129 @@
+local ObjId=0
+function get_case_13_cache()
+    local obj= alife():create("last_taynik",vector():set(150.698,4.273,-461.579),349612,941)
+    local text = "Точка назначения"
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+this.text_one_one()
+end
+
+function start_spawn_deception_ql()
+    local obj= alife():create("npc_nw_1876",vector():set(151.999,0.127,52.662),251749,912)
+    local text = "Падалеки?"
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+this.text_one_found()
+end
+
+function text_one_one(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Карта обновлена. Новая цель. До нее 250 метров!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 45000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+this.on_del()
+end
+
+function text_one_found(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Карта обновлена. Цель найдена. До нее 1250 метров!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 45000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+
+function on_del()
+text_del()
+delete_unk()
+delete_info()
+end
+
+function text_del(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Прототип уничтожился!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function delete_unk()
+    local oItem = db.actor:object("unknown_blood_dream")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+function delete_info()
+	db.actor:disable_info_portion("player_complete_case_12_blood_dream_part_last")
+end
+
+function start_add_spawn()
+case_ql_create()
+case_ql_create_one()
+case_ql_create_two()
+case_ql_create_three()
+case_ql_w_create()
+case_ql_w_create_one()
+end
+
+function case_ql_create()
+local x= 120,850
+local y= 3,000
+local z= -478,908
+local level_vertex= 317616
+local game_vertex_id= 948
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function case_ql_create_one()
+local x= 73,064
+local y= 0,597
+local z= -470,260
+local level_vertex= 263288
+local game_vertex_id= 949
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function case_ql_create_two()
+local x= 64,293
+local y= 0,459
+local z= -501,461
+local level_vertex= 253565
+local game_vertex_id= 951
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function case_ql_create_three()
+local x= 138,678
+local y= 4,076
+local z= -457,403
+local level_vertex= 336056
+local game_vertex_id= 948
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_master_3",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function case_ql_w_create()
+local x= 139,308
+local y= 10,361
+local z= -408,523
+local level_vertex= 336884
+local game_vertex_id= 943
+alife():create("white_wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function case_ql_w_create_one()
+local x= 158,819
+local y= 13,681
+local z= -367,560
+local level_vertex= 358810
+local game_vertex_id= 938
+alife():create("white_wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
+

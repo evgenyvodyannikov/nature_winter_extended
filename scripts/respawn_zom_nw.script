@@ -1,0 +1,23 @@
+function start_add_spawn()
+zombie_1_create()
+zombie_2_create()
+end
+
+function zombie_1_create()
+local x= -165,949
+local y= -2,720
+local z= -4,368
+local level_vertex= 84211
+local game_vertex_id= 69
+alife():create("zombie_first_zom_one",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
+function zombie_2_create()
+local x= 141,371
+local y= 0,217
+local z= 340,887
+local level_vertex= 446389
+local game_vertex_id= 232
+alife():create("zombie_first_zom_two",vector():set(x,y,z),level_vertex,game_vertex_id)
+end

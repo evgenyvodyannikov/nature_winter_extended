@@ -1,0 +1,64 @@
+function use_item(obj)
+    if obj then 
+        if obj:section() == "pda_from_sos_monol" then
+        this.text1()
+        end
+    end
+end
+
+function text1(first_speaker, second_speaker)
+	db.actor:give_info_portion("over_sos_next_pda")
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_kill_stalker")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Меченый, загляни к нам на огонек. Есть дело к тебе.%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 45000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+
+function spawn_item()
+spawn_bomb()
+end
+
+function spawn_npc()
+spawn_monolit_one()
+spawn_monolit_two()
+end
+
+function spawn_monolit_one()
+local x= -74,000
+local y= -12,593
+local z= -273,227
+local level_vertex= 12921
+local game_vertex_id= 1449
+alife():create("npc_nw_1879",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("pri_monolith_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_monolit_two()
+local x= -103,842
+local y= -12,258
+local z= -246,267
+local level_vertex= 5624
+local game_vertex_id= 1486
+alife():create("pri_monolith_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("pri_monolith_respawn_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_bomb()
+local x= -54,489
+local y= -12,406
+local z= -249,685
+local level_vertex= 20203
+local game_vertex_id= 1454
+alife():create("atom_bomb_sos",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function text_next(first_speaker, second_speaker)
+	db.actor:give_info_portion("over_sos_next_pda")
+               local task_texture, task_rect = get_texture_info("ui_iconsNpc_ucheniy_2")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Меченый, ты опять пальбу устроил рядом с бункером - работать мешаешь!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

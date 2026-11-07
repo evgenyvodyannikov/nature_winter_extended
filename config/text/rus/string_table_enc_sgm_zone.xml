@@ -1,0 +1,330 @@
+      <string id="af-electra-touster">
+		<text>"Статический шар"</text>
+      </string>
+      <string id="enc_zone_artifact_af-electra-touster">
+		<text>Вырожденный случай активности аномалии «Электра». Видимо, такую замечательную округлую форму можно получить, если подвергнуть аномалию термовоздействию. Дорогой артефакт.</text>
+      </string>
+        <string id="af-radiation-crystall_mod_1">
+		<text>"Светло-желтый кристалл"(1-й опыт)</text>
+        </string>
+        <string id="af-telepatic-crystall_mod_1">
+		<text>"Пурпурный кристалл"(1-й опыт)</text>
+        </string>
+        <string id="af-strike-crystall_mod_1">
+		<text>"Салатовый кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-burn-crystall_mod_1">
+		<text>"Синий кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-explosion-crystall_mod_1">
+		<text>"Красный кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-firewound-crystall_mod_1">
+		<text>"Зеленый кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-shock-crystall_mod_1">
+		<text>"Фиолетовый кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-chemical-burn-crystall_mod_1">
+		<text>"Голубой кристалл"(1-й опыт)</text>
+	</string>
+        <string id="af-radiation-crystall_mod_2">
+		<text>"Светло-желтый кристалл"(2-й опыт)</text>
+        </string>
+        <string id="af-telepatic-crystall_mod_2">
+		<text>"Пурпурный кристалл"(2-й опыт)</text>
+        </string>
+        <string id="af-strike-crystall_mod_2">
+		<text>"Салатовый кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-burn-crystall_mod_2">
+		<text>"Синий кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-explosion-crystall_mod_2">
+		<text>"Красный кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-firewound-crystall_mod_2">
+		<text>"Зеленый кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-shock-crystall_mod_2">
+		<text>"Фиолетовый кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-chemical-burn-crystall_mod_2">
+		<text>"Голубой кристалл"(2-й опыт)</text>
+	</string>
+        <string id="af-radiation-crystall_mod_3">
+		<text>"Светло-желтый кристалл"(3-й опыт)</text>
+        </string>
+        <string id="af-telepatic-crystall_mod_3">
+		<text>"Пурпурный кристалл"(3-й опыт)</text>
+        </string>
+        <string id="af-strike-crystall_mod_3">
+		<text>"Салатовый кристалл"(3-й опыт)</text>
+	</string>
+        <string id="af-burn-crystall_mod_3">
+		<text>"Синий кристалл"(3-й опыт)</text>
+	</string>
+        <string id="af-explosion-crystall_mod_3">
+		<text>"Красный кристалл"(3-й опыт)</text>
+	</string>
+        <string id="af-firewound-crystall_mod_3">
+		<text>"Зеленый кристалл"(3-й опыт)</text>
+	</string>
+        <string id="af-shock-crystall_mod_3">
+		<text>"Фиолетовый кристалл"(3-й опыт)</text>
+	</string>
+        <string id="af-chemical-burn-crystall_mod_3">
+		<text>"Голубой кристалл"(3-й опыт)</text>
+	</string>
+      <string id="af-fuzz-kolobok_mod_1">
+		<text>"Колобок"(1-й опыт)</text>
+      </string>
+      <string id="af-fuzz-kolobok_mod_2">
+		<text>"Колобок"(2-й опыт)</text>
+      </string>
+      <string id="af-fuzz-kolobok_mod_3">
+		<text>"Колобок"(3-й опыт)</text>
+      </string>
+      <string id="af-rusty-kristall_mod_1">
+		<text>"Кристалическая решотка"(1-й опыт)</text>
+      </string>
+      <string id="af-rusty-sea-urchin_mod_1">
+		<text>"Морской ёж"(1-й опыт)</text>
+      </string>
+      <string id="af-rusty-thorn_mod_1">
+		<text>"Колючка"(1-й опыт)</text>
+      </string>
+      <string id="af-rusty-kristall_mod_2">
+		<text>"Кристалическая решотка"(2-й опыт)</text>
+      </string>
+      <string id="af-rusty-sea-urchin_mod_2">
+		<text>"Морской ёж"(2-й опыт)</text>
+      </string>
+      <string id="af-rusty-thorn_mod_2">
+		<text>"Колючка"(2-й опыт)</text>
+      </string>
+      <string id="af-rusty-kristall_mod_3">
+		<text>"Кристалическая решотка"(3-й опыт)</text>
+      </string>
+      <string id="af-rusty-sea-urchin_mod_3">
+		<text>"Морской ёж"(3-й опыт)</text>
+      </string>
+      <string id="af-rusty-thorn_mod_3">
+		<text>"Колючка"(3-й опыт)</text>
+      </string>
+      <string id="af-dummy-battery_mod_1">
+		<text>"Батарейка"(1-й опыт)</text>
+      </string>
+      <string id="af-dummy-dummy_mod_1">
+		<text>"Пустышка"(1-й опыт)</text>
+      </string>
+      <string id="af-dummy-glassbeads_mod_1">
+		<text>"Мамины бусы"(1-й опыт)</text>
+      </string>
+      <string id="af-dummy-pellicle_mod_1">
+		<text>"Плёнка"(1-й опыт)</text>
+      </string>
+      <string id="af-dummy-spring_mod_1">
+		<text>"Пружина"(1-й опыт)</text>
+      </string>
+      <string id="af-dummy-battery_mod_2">
+		<text>"Батарейка"(2-й опыт)</text>
+      </string>
+      <string id="af-dummy-dummy_mod_2">
+		<text>"Пустышка"(2-й опыт)</text>
+      </string>
+      <string id="af-dummy-glassbeads_mod_2">
+		<text>"Мамины бусы"(2-й опыт)</text>
+      </string>
+      <string id="af-dummy-pellicle_mod_2">
+		<text>"Плёнка"(2-й опыт)</text>
+      </string>
+      <string id="af-dummy-spring_mod_2">
+		<text>"Пружина"(2-й опыт)</text>
+      </string>
+      <string id="af-dummy-battery_mod_3">
+		<text>"Батарейка"(3-й опыт)</text>
+      </string>
+      <string id="af-dummy-dummy_mod_3">
+		<text>"Пустышка"(3-й опыт)</text>
+      </string>
+      <string id="af-dummy-glassbeads_mod_3">
+		<text>"Мамины бусы"(3-й опыт)</text>
+      </string>
+      <string id="af-dummy-pellicle_mod_3">
+		<text>"Плёнка"(3-й опыт)</text>
+      </string>
+      <string id="af-dummy-spring_mod_3">
+		<text>"Пружина"(3-й опыт)</text>
+      </string>
+      <string id="af-ameba-mica_mod_1">
+		<text>"Слюда"(1-й опыт)</text>
+      </string>
+      <string id="af-ameba-mica_mod_2">
+		<text>"Слюда"(2-й опыт)</text>
+      </string>
+      <string id="af-ameba-mica_mod_3">
+		<text>"Слюда"(3-й опыт)</text>
+      </string>
+      <string id="af-ameba-slime_mod_1">
+		<text>"Слизняк"(1-й опыт)</text>
+      </string>
+      <string id="af-ameba-slime_mod_2">
+		<text>"Слизняк"(2-й опыт)</text>
+      </string>
+      <string id="af-ameba-slime_mod_3">
+		<text>"Слизняк"(3-й опыт)</text>
+      </string>
+      <string id="af-ameba-slug_mod_1">
+		<text>"Слизь"(1-й опыт)</text>
+      </string>
+      <string id="af-ameba-slug_mod_2">
+		<text>"Слизь"(2-й опыт)</text>
+      </string>
+      <string id="af-ameba-slug_mod_3">
+		<text>"Слизь"(3-й опыт)</text>
+      </string>
+      <string id="af-electra-touster_mod_1">
+		<text>"Статический шар"(1-й опыт)</text>
+      </string>
+      <string id="af-electra-touster_mod_2">
+		<text>"Статический шар"(2-й опыт)</text>
+      </string>
+      <string id="af-electra-touster_mod_3">
+		<text>"Статический шар"(3-й опыт)</text>
+      </string>
+      <string id="af-electra-flash_mod_1">
+		<text>"Вспышка"(1-й опыт)</text>
+      </string>
+      <string id="af-electra-flash_mod_2">
+		<text>"Вспышка"(2-й опыт)</text>
+      </string>
+      <string id="af-electra-flash_mod_3">
+		<text>"Вспышка"(3-й опыт)</text>
+      </string>
+      <string id="af-electra-moonlight_mod_1">
+		<text>"Лунный свет"(1-й опыт)</text>
+      </string>
+      <string id="af-electra-moonlight_mod_2">
+		<text>"Лунный свет"(2-й опыт)</text>
+      </string>
+      <string id="af-electra-moonlight_mod_3">
+		<text>"Лунный свет"(3-й опыт)</text>
+      </string>
+      <string id="af-electra-sparkler_mod_1">
+		<text>"Бенгальский огонь"(1-й опыт)</text>
+      </string>
+      <string id="af-electra-sparkler_mod_2">
+		<text>"Бенгальский огонь"(2-й опыт)</text>
+      </string>
+      <string id="af-electra-sparkler_mod_3">
+		<text>"Бенгальский огонь"(3-й опыт)</text>
+      </string>
+      <string id="af-blood_mod_1">
+		<text>"Кровь камня"(1-й опыт)</text>
+      </string>
+      <string id="af-blood_mod_2">
+		<text>"Кровь камня"(2-й опыт)</text>
+      </string>
+      <string id="af-blood_mod_3">
+		<text>"Кровь камня"(3-й опыт)</text>
+      </string>
+      <string id="af-mincer-meat_mod_1">
+		<text>"Ломоть мяса"(1-й опыт)</text>
+      </string>
+      <string id="af-mincer-meat_mod_2">
+		<text>"Ломоть мяса"(2-й опыт)</text>
+      </string>
+      <string id="af-mincer-meat_mod_3">
+		<text>"Ломоть мяса"(3-й опыт)</text>
+      </string>
+      <string id="af-soul_mod_1">
+		<text>"Душа"(1-й опыт)</text>
+      </string>
+      <string id="af-soul_mod_2">
+		<text>"Душа"(2-й опыт)</text>
+      </string>
+      <string id="af-soul_mod_3">
+		<text>"Душа"(3-й опыт)</text>
+      </string>
+      <string id="af-drops_mod_1">
+		<text>"Капли"(1-й опыт)</text>
+      </string>
+      <string id="af-drops_mod_2">
+		<text>"Капли"(2-й опыт)</text>
+      </string>
+      <string id="af-drops_mod_3">
+		<text>"Капли"(3-й опыт)</text>
+      </string>
+      <string id="af-fireball_mod_1">
+		<text>"Огненный шар"(1-й опыт)</text>
+      </string>
+      <string id="af-fireball_mod_2">
+		<text>"Огненный шар"(2-й опыт)</text>
+      </string>
+      <string id="af-fireball_mod_3">
+		<text>"Огненный шар"(3-й опыт)</text>
+      </string>
+      <string id="af-cristall_mod_1">
+		<text>"Кристалл"(1-й опыт)</text>
+      </string>
+      <string id="af-cristall_mod_2">
+		<text>"Кристалл"(2-й опыт)</text>
+      </string>
+      <string id="af-cristall_mod_3">
+		<text>"Кристалл"(3-й опыт)</text>
+      </string>
+      <string id="af-gold-fish_mod_1">
+		<text>"Золотая рыбка"(1-й опыт)</text>
+      </string>
+      <string id="af-gold-fish_mod_2">
+		<text>"Золотая рыбка"(2-й опыт)</text>
+      </string>
+      <string id="af-gold-fish_mod_3">
+		<text>"Золотая рыбка"(3-й опыт)</text>
+      </string>
+      <string id="af-gravi_mod_1">
+		<text>"Грави"(1-й опыт)</text>
+      </string>
+      <string id="af-gravi_mod_2">
+		<text>"Грави"(2-й опыт)</text>
+      </string> 
+      <string id="af-gravi_mod_3">
+		<text>"Грави"(3-й опыт)</text>
+      </string>
+      <string id="af-vyvert_mod_1">
+		<text>"Выверт"(1-й опыт)</text>
+      </string>
+      <string id="af-vyvert_mod_2">
+		<text>"Выверт"(2-й опыт)</text>
+      </string>
+      <string id="af-vyvert_mod_3">
+		<text>"Выверт"(3-й опыт)</text>
+      </string>
+      <string id="af-night-star_mod_1">
+		<text>"Ночная звезда"(1-й опыт)</text>
+      </string>
+      <string id="af-night-star_mod_2">
+		<text>"Ночная звезда"(2-й опыт)</text>
+      </string>
+      <string id="af-night-star_mod_3">
+		<text>"Ночная звезда"(3-й опыт)</text>
+      </string>
+      <string id="af-cristall-flower_mod_1">
+		<text>"Кристалическая фиалка"(1-й опыт)</text>
+      </string>
+      <string id="af-cristall-flower_mod_2">
+		<text>"Кристалическая фиалка"(2-й опыт)</text>
+      </string>
+      <string id="af-cristall-flower_mod_3">
+		<text>"Кристалическая фиалка"(3-й опыт)</text>
+      </string>
+      <string id="af-medusa_mod_1">
+		<text>"Медуза"(1-й опыт)</text>
+      </string>
+      <string id="af-medusa_mod_2">
+		<text>"Медуза"(2-й опыт)</text>
+      </string>
+      <string id="af-medusa_mod_3">
+		<text>"Медуза"(3-й опыт)</text>
+      </string>

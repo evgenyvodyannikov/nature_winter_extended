@@ -1,0 +1,59 @@
+function get_case_11_cache()
+get_case_cache()
+text_memory()
+again_animation()
+end
+
+local ObjId=0
+function get_case_cache()
+    local obj= alife():create("ce_taynik",vector():set(115.926,30.646,-15.654),7088,1543)
+    local text = "Этот тайник, по идее, я сам оставил."
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+end
+
+function text_memory(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Доступно воспоминание", nil, nil, 30000)
+end
+
+function again_animation()
+    level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")   
+    level.add_pp_effector("alcohol.ppe", 999, false, "") 
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function actor_have_case_11_sf(actor, npc)
+dialogs.relocate_item_section(actor, "s13f", "in")
+dialogs.relocate_item_section(actor, "case_11_old_friend_begin", "in")
+end
+
+function delete_s13f_from_actor()
+delete_sf_from_actor_next()
+start_timer_five_seconds()
+end
+
+function delete_sf_from_actor_next()
+    local oItem = db.actor:object("s13f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+local iTimer
+function start_timer_five_seconds()
+    iTimer = time_global() + 5*1000 
+end
+
+function timer_five_seconds() 
+    if iTimer and iTimer < time_global() then 
+        iTimer = nil 
+        case_11_old_friend_next.text_memory()
+    end
+end
+
+function actor_have_case_11_old_friend_doc_next(actor, npc)
+dialogs.relocate_item_section(actor, "case_11_old_friend_doc_next", "in")
+dialogs.relocate_item_section(actor, "wpn_gauss_improved", "in")
+end

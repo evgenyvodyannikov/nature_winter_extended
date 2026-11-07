@@ -1,0 +1,239 @@
+-- Project        : Dot
+-- File             : d2hud.script
+-- Description  : 2D HUD Viewer
+-- Last edit     : 2011.09.15 (by ...)
+
+local slot = nil
+local file_name = nil
+local monoimage = nil
+local pages = nil
+local pos_x = nil
+local pos_y = nil
+local d_x = nil
+local d_y = nil
+local current_page = nil
+local page_static = nil
+local changing_flag = false
+local st_wnd = nil
+local item_view_prev = nil
+
+local flag = nil
+local scriptname = nil
+local prevpage = nil
+local bufer_page = 1
+local item_s3f = nil
+local item_slot012 = nil
+local item_slot012_prev = nil
+local slot_start = nil
+local slot_stop = nil
+
+function start(slot,section)
+	if slot and section then
+		local sim = alife()
+		local actor = db.actor
+
+		local obj = actor:item_in_slot(slot)
+		if obj then
+			item_slot012_prev = obj:section()
+			local sObj = sim:object(obj:id())
+			if sObj then 
+				sim:release(sObj, true)
+			end
+--			msg(tostring(item_slot012_prev).." в "..tostring(slot).." слоте уничтожили, секцию запомнили")
+		end
+		item_slot012 = sim:create(section, actor:position(), actor:level_vertex_id(), actor:game_vertex_id(), 0)
+		slot_start = slot
+	end
+end
+
+function stop(slot)
+	local actor = db.actor
+	local sim = alife()
+
+	actor:hide_weapon()
+	if item_slot012 then
+		sim:release(item_slot012, true)
+		if item_slot012_prev then
+			sim:create(item_slot012_prev, actor:position(), actor:level_vertex_id(), actor:game_vertex_id(), 0)
+		end
+		item_slot012 = nil
+		item_slot012_prev = nil
+	end
+
+	slot_stop = slot
+end
+
+function Init(section)
+
+	--if db.actor:item_in_slot(3) == nil then
+		--item_s3f = alife():create("s3f", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), 0)
+	--end
+
+	scriptname = section
+	file_name = system_ini():r_string(section, "img_path")
+	if file_name == "auto" then file_name = "d2hud\\"..section end
+	monoimage = system_ini():r_bool(section, "monoimage")
+	slot = system_ini():r_s32(section,"slot") -- !!!
+	pages = system_ini():r_s32(section,"pages")
+	pos_x = system_ini():r_s32(section,"pos_x")
+	pos_y = system_ini():r_s32(section,"pos_y")
+	d_x = system_ini():r_s32(section,"d_x")
+	d_y = system_ini():r_s32(section,"d_y")
+	current_page = 1
+	prevpage = 1
+	SetPage(1)
+end
+
+function NextPage()
+	if current_page then
+		prevpage = current_page
+		current_page = current_page + 1
+		if current_page > pages then current_page = 1 end
+		SetPage(current_page)
+	end
+end
+
+function PrevPage()
+	if current_page then
+		prevpage = current_page
+		current_page = current_page - 1
+		if current_page == 0 then current_page = pages end
+		SetPage(current_page)
+	end
+end
+
+function SetPage(page)
+
+	if st_wnd then
+
+		if flag == 1 then
+			if page == -1 then prevpage = current_page end
+			if loadstring("return "..scriptname)() and loadstring("return "..scriptname..".off")() then
+				loadstring(scriptname..".off("..prevpage..")")()
+			end
+			bufer_page = page
+			flag = 2
+--			msg("удалил динамику старой страницы")
+			return
+		end
+	
+		if page_static then
+--			msg("!!! - есть page_static старой страницы - начинаем удалять")
+			st_wnd:DetachChild(page_static)
+			page_static = nil
+--			msg("удалил page_static старой страницы")
+--		else 
+--			msg("нет page_static для удаления")
+		end
+
+		if page < 0 then
+			return
+		end
+	
+		page_static = CUIStatic()
+		st_wnd:AttachChild(page_static)
+		local page_file
+		if monoimage == false then 
+			page_file = file_name.."_"..page
+		else
+			page_file = file_name.."_"..1
+		end
+		page_static:SetStretchTexture(true)
+		page_static:Init(page_file, pos_x, pos_y, d_x, d_y)
+	
+		if loadstring("return "..scriptname)() and loadstring("return "..scriptname..".on")() then
+			flag = loadstring("return "..scriptname..".on("..page..")")()
+		end
+--		msg("создал новую страницу")
+
+	end
+end
+
+function menu_run()
+	if loadstring("return "..scriptname)() and loadstring("return "..scriptname..".menu")() then
+		loadstring("return "..scriptname..".menu("..current_page..")")()
+	end
+end
+
+function update()
+
+	if slot_start then
+		if db.actor:active_slot() ~= slot_start then db.actor:activate_slot(slot_start) end
+		slot_start = nil
+	end
+	
+	if flag == 1 then
+		-- здесь проверять не надо - проверено при установке flag-a  в "1"
+		loadstring("return "..scriptname..".update("..current_page..")")()
+		end
+	if flag == 2 then
+		flag = nil
+		SetPage(bufer_page)
+		return
+		end
+
+	if db.actor:has_info("ui_inventory_hide") then
+
+		local active_slot = db.actor:active_slot()
+		if active_slot == 1 or active_slot == 2 or active_slot == 0 then
+			changing_flag = false
+			if db.actor:active_item() then
+				local item_view = db.actor:active_item():section()
+				if system_ini():line_exist(item_view, "d2hud") then
+					if item_view ~= item_view_prev then
+						if not st_wnd then st_wnd = get_hud():AddCustomStatic("d2hud", true):wnd() end
+--						msg("создан основной статик")
+						Init(item_view)
+						item_view_prev = item_view
+					end
+				end
+			end
+		else
+			if item_view_prev then
+				if active_slot == 5 then
+					if not changing_flag then
+						NextPage()
+						changing_flag = true
+					end
+					db.actor:activate_slot(slot)
+				elseif active_slot == 4 then
+					if not changing_flag then
+						PrevPage()
+						changing_flag = true
+					end
+					db.actor:activate_slot(slot)
+				elseif active_slot == 3 then
+					if not changing_flag then
+--						msg("была активирована клавиша 4")
+						menu_run()
+						changing_flag = true
+					end
+--					msg("активируется слот: "..tostring(slot))
+					db.actor:activate_slot(slot)
+				else
+--					msg("вызов деактивации")
+					SetPage(-1)
+					if get_hud():GetCustomStatic("d2hud") then
+						get_hud():RemoveCustomStatic("d2hud")
+						st_wnd = nil
+--						msg("уничтожен основной статик")
+					end
+					item_view_prev = nil
+
+					slot = nil
+					if item_s3f then alife():release(item_s3f, true) end
+					db.actor:restore_weapon()
+
+--					msg("деактивация закончена")
+				end
+			end
+		end
+	end
+end
+
+
+--\\
+
+function msg(text)
+	db.actor:give_game_news(text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+end

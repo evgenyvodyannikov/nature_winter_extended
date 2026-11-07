@@ -1,0 +1,20 @@
+function start_add_spawn()
+spawn_killer5_one()
+end
+
+function spawn_killer5_one()
+local x= -220,273
+local y= -0,001
+local z= -42,218
+local level_vertex= 21703
+local game_vertex_id= 1401
+alife():create("cit_killer_respawn_4",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function save_variable(variable_name, value)
+xr_logic.pstor_store(db.actor, variable_name, value)
+end
+function load_variable(variable_name, value_if_not_found)
+return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+

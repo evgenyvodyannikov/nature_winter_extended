@@ -1,0 +1,158 @@
+local ini = system_ini()
+local autopickup = {}
+local dropped = {}
+
+function on_take (obj)
+	if obj then
+		local takesect = obj:section()
+		local takeid = obj:id()
+		--qqq("taken object: "..takesect.." id = "..takeid.." time = "..time_global())
+		if string.find(takesect,"dark_matter_container") and obj:get_ammo_in_magazine() == 65535 then
+			obj:unload_magazine()
+		end
+		-- проверка веро€тного пр€мого попадани€ на по€с
+		if not inv.is_exchange_ui_open() then -- если инвентарь/торговл€/обыск не открыты
+			if ini:line_exist(takesect,"belt") and ini:r_string(takesect,"belt") == "true" then -- если по€с доступен дл€ объекта
+				if ini:line_exist(takesect,"default_to_ruck") and ini:r_string(takesect,"default_to_ruck") == "false" then -- и он пытаетс€ попасть туда автоматом
+					inv.update_belt_init() -- спавним разделитель
+				end
+			end
+		end
+		--[[ дл€ —ол€нки
+		if takesect == "ammo_7.62x54r" then
+			local sect = "belt_100_7.62x54_ap"
+			local asect = "ammo_7.62x54_ap"
+			local ammo = inv.get_ammo_in_box(takeid)
+			if ini:r_u32(takesect,"box_size") == ammo then
+				ammo_manager.give_loaded(sect)
+			else
+				spawn.inv(sect.."_e")
+				se_respawn.create_ammo(asect,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),ammo)
+			end
+			alife():release(alife():object(takeid),true)
+		elseif takesect == "ammo_7.62x51box" then
+			local sect = "belt_50_7.62x51_fmj"
+			local asect = "ammo_7.62x51_fmj"
+			local ammo = inv.get_ammo_in_box(takeid)
+			if ini:r_u32(takesect,"box_size") == ammo then
+				ammo_manager.give_loaded(sect)
+			else
+				spawn.inv(sect.."_e")
+				se_respawn.create_ammo(asect,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),ammo)
+			end
+			alife():release(alife():object(takeid),true)
+		elseif takesect == "ammo_minigun" or takesect == "ammo_7.62x45_fmj" then
+			local sect = "belt_150_minigun"
+			ammo_manager.give_loaded(sect)
+			alife():release(alife():object(takeid),true)
+		end
+		--]]
+		if db.actor:is_talking() then -- получение предмета в диалоге или при торговле
+			if ini:line_exist(takesect,"ammo_class") then
+				local a_class = parse_data(ini:r_string(takesect,"ammo_class"))
+				local def_ammo = a_class[1]
+				if ini:line_exist(def_ammo,"mag_size") then
+					obj:set_ammo_elapsed(ini:r_u32(def_ammo,"mag_size"))
+					if (ini:line_exist(def_ammo,"speedloader") and ini:r_bool(def_ammo,"speedloader") == true) then
+						local speedloader = def_ammo.."_e"
+						spawn.inv(speedloader)
+					end
+				end
+			end
+			if inv.exchange_ui == "trade" and ini:line_exist(takesect,"trade_bonus") then -- только при торговле
+				local bonus_table = parse_data(ini:r_string(takesect,"trade_bonus"))
+				for k,v in pairs (bonus_table) do
+					spawn.inv(v)
+				end
+			end
+		end
+		-- ночные прицелы
+		if string.sub(takesect,1,10) == "wpn_addon_" then
+			--item_effects.convert_addon(takesect,takeid)
+		-- цинки с патронами
+		elseif string.sub(takesect,1,5) == "zink_" and string.sub(takesect,8,10) == "_0_" then
+			--alife():release(alife():object(takeid),true)
+		-- питание оружи€ из магазинов, нужен по€с
+		elseif string.sub(takesect,1,4) == "mag_" or string.sub(takesect,1,5) == "clip_" or string.sub(takesect,1,5) == "belt_" then
+			ammo_manager.process_new_ammo(obj,takesect,takeid)
+		elseif string.sub(takesect,1,3) == "wm_" then
+			ammo_manager.process_new_wm(obj,takesect,takeid)
+		-- предметы на по€се
+		elseif takesect == "inv_separator" then
+			inv.update_belt_main() -- обновл€ем инфу о содержимом по€са
+		end
+		inv.inv_mass = nil
+	end
+end
+
+----------------------------------------------------------------------------------------------------------------------
+function on_drop (obj)
+	local objid, sect
+	if obj then
+		sect = obj:section()
+		objid = obj:id()
+		--qqq("lost object: "..sect.." id = "..objid.." time = "..time_global())
+		-- питание оружи€ из магазинов
+		if string.sub(sect,1,4) == "mag_" or string.sub(sect,1,5) == "clip_" or string.sub(sect,1,5) == "belt_" then
+			ammo_manager.on_lost_ammo(obj,sect,obj:condition())
+		end
+		-- проверка исчезновени€ с по€са
+		if not inv.is_exchange_ui_open() then -- если инвентарь/торговл€/обыск не открыты
+			local n = nil
+			for k,v in pairs (inv.belt) do
+				if v:id() == objid then
+					n = k
+					break
+				end
+			end
+			if n then
+				table.remove(inv.belt,n)
+			end
+		end
+		--xr_logic.pstor_store(db.actor, "dropid", objid) 
+		--xr_logic.pstor_store(db.actor, "dropsect", sect)
+		dropped[objid] = sect
+		inv.inv_mass = nil
+	end
+end
+
+function on_update()
+	for objid,sect in pairs (dropped) do
+	--qqq("objid = "..objid.."   sect = "..sect)
+	--local sect, objid
+	--objid = xr_logic.pstor_retrieve(db.actor, "dropid", -1)
+	--sect = xr_logic.pstor_retrieve(db.actor, "dropsect", "non_exist")
+	--if objid ~= -1 then 
+		local obj = alife():object(objid)
+		if not obj then -- объект не существует, занчит использован
+			if string.sub(sect,1,9) == "fake_wpn_" then 
+				item_effects.fake_weapon_effect(sect)
+			end
+		end
+		dropped[objid] = nil
+		--xr_logic.pstor_store(db.actor, "dropid", -1)
+		--xr_logic.pstor_store(db.actor, "dropsect", "non_exist") 
+	--end
+	end
+end
+
+function autopickup_add(item_id,target_id)
+	if not target_id then
+		target_id = db.actor:id()
+	end
+	if not autopickup[item_id] then
+		autopickup[item_id] = target_id
+	end
+end
+
+function autopickup_update()
+	for k,v in pairs (autopickup) do
+		local object = level.object_by_id(k)
+		local target = level.object_by_id(v)
+		if object and target then
+			target:transfer_item(object,target)
+			autopickup[k] = nil
+		end
+	end
+end
+

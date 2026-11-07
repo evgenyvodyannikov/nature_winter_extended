@@ -1,0 +1,33 @@
+function fake_weapon_effect(section)
+	local length = string.len(section)
+	local real_weapon = string.sub(section, -(length - 5))
+	local slot = 15
+	if system_ini():line_exist(real_weapon,"slot") then
+		slot = system_ini():r_u32(real_weapon,"slot")
+	else
+		qqq("ERROR! item_effects.fake_weapon_effect: cannot find 'slot' variable")
+		return
+	end
+--news_manager.send_tip(db.actor, "real_weapon: "..real_weapon, nil, nil, 20000) 
+	local inslot = db.actor:item_in_slot(slot)
+	if inslot ~= nil then
+		local sect = "fake_"..inslot:section()
+		if (real_weapon ~= inslot:section()) and system_ini():section_exist(sect) then -- меняется если есть фейк у того, что в слоте и не ставится то же самое
+			alife():release(alife():object(inslot:id()), true)
+			--qqq("released: "..inslot:section().." id = "..inslot:id())
+			local cr = alife():create(sect, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			--qqq("created fake: "..sect.." id = "..cr.id)
+			cr = alife():create(real_weapon, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			--qqq("created real: "..real_weapon.." id = "..cr.id)
+		else
+			local cr = alife():create(section, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			--qqq("re-created: "..section.." id = "..cr.id)
+			return
+		end
+		--alife():release(alife():object(inslot:id()), true)
+		--alife():create(sect, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	else
+		alife():create(real_weapon, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+

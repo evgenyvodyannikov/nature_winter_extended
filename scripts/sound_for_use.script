@@ -1,0 +1,32 @@
+local tSound ={
+antirad       = "inv_sounds\\inv_pills",
+antir1d       = "inv_sounds\\inv_pills",
+medkit       = "inv_sounds\\inv_medic",
+medkit_army       = "inv_sounds\\inv_medic",
+medkit_scientic       = "inv_sounds\\inv_medic",
+medkit_elite       = "inv_sounds\\inv_medic",
+bandage       = "inv_sounds\\inv_bandage",
+kolbasa       = "inv_sounds\\inv_food",
+bread       = "inv_sounds\\inv_food",
+nuts       = "inv_sounds\\inv_food",
+sandwich       = "inv_sounds\\inv_food",
+conserva       = "inv_sounds\\inv_food",
+vodka        = "inv_sounds\\inv_vodka",
+energy_drink      = "inv_sounds\\inv_drinking",
+thermos_water      = "inv_sounds\\inv_drinking",
+thermos_coffee      = "inv_sounds\\inv_drinking",
+condensed_milk       = "inv_sounds\\inv_food_sgus",
+processed_cheese       = "inv_sounds\\inv_food_sgus",
+yogurt       = "inv_sounds\\inv_food_sgus",
+paek2       = "inv_sounds\\inv_irp",
+paek1       = "inv_sounds\\inv_irp"
+}
+ 
+function use_snd(obj)
+   if obj and tSound[obj:section()]  then 
+      local snd = xr_sound.get_safe_sound_object(tSound[obj:section()])
+      if snd then 
+      snd:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 2.0)
+      end
+   end
+end    

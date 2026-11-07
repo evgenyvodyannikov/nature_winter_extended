@@ -1,0 +1,130 @@
+function get_case_12_cache()
+get_case_12_cache_next()
+fracture1_create()
+spawn_zombie2_one()
+spawn_zombie2_one_next()
+end
+
+function get_case_12_cache_next()
+treasure_manager.get_treasure_manager():give_treasure("treasure_1870")
+end
+
+function fracture1_create()
+local x= -5,889
+local y= -8,305
+local z= -14,359
+local level_vertex= 2006
+local game_vertex_id= 1132
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_zombie2_one()
+local x= 149,613
+local y= 0,232
+local z= -238,785
+local level_vertex= 349152
+local game_vertex_id= 958
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_zombie2_one_next()
+local x= 130,476
+local y= -2,840
+local z= -271,569
+local level_vertex= 327354
+local game_vertex_id= 812
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function search_case_12_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("case_12_blood_dream_elephant") then
+            db.actor:give_info_portion("player_complete_case_12_blood_dream_part_4")
+            return true
+        end
+    end
+return false
+end
+
+function get_case_12_cache_last()
+get_case_12_cache_last_next()
+spawn_military_one()
+spawn_military_two()
+spawn_military_three()
+spawn_military_four()
+end
+
+function get_case_12_cache_last_next()
+    local obj= alife():create("ctwl_taynik",vector():set(29.4169998168945,-5.01800012588501,-14.3500003814697),6817,1140)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="unknown_blood_dream" then
+    level.map_add_object_spot_ser(obj.id,"green_location","’м, что здесь лежит?")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="unknown_blood_dream" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+function spawn_military_one()
+local x= -4,231
+local y= 7,497
+local z= 7,102
+local level_vertex= 235964
+local game_vertex_id= 487
+alife():create("npc_1872",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_military_two()
+local x= -3,490
+local y= 7,498
+local z= 2,204
+local level_vertex= 236695
+local game_vertex_id= 489
+alife():create("npc_1872",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_military_three()
+local x= -11,635
+local y= 5,226
+local z= 8,484
+local level_vertex= 228310
+local game_vertex_id= 484
+alife():create("npc_1872",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_military_four()
+local x= 241,799
+local y= 0,305
+local z= -8,726
+local level_vertex= 424353
+local game_vertex_id= 416
+alife():create("npc_1872",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function search_case_12_complete_last(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("unknown_blood_dream") then
+            db.actor:give_info_portion("player_complete_case_12_blood_dream_part_last")
+            return true
+        end
+    end
+return false
+end

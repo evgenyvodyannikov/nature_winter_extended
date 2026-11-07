@@ -1,0 +1,42 @@
+local iTimer
+function start_timer_ten_sec() 
+    iTimer = time_global() + 15*1000 
+end
+
+function timer_ten_sec() 
+    if iTimer and iTimer < time_global() then 
+        iTimer = nil 
+        this.start_story_colt1912_memory()
+    end
+end
+
+
+function start_story_colt1912_memory()
+text_memory()
+actor_have_s0f()
+get_treasure_with_colt1912()
+again_animation()
+end
+
+function text_memory(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Доступно воспоминание", nil, nil, 30000)
+end
+
+function actor_have_s0f()
+            db.actor:give_info_portion("story_colt1912_memory")
+end
+
+function get_treasure_with_colt1912()
+    local obj= alife():create("sc_taynik",vector():set(-246.509002685547,-14.335000038147,-23.9790000915527),11848,67)
+end
+
+function give_s0f_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "s0f", "in")
+end
+
+function again_animation()
+    level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")   
+    level.add_pp_effector("alcohol.ppe", 999, false, "") 
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

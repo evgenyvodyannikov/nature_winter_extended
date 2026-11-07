@@ -1,0 +1,13 @@
+function get_treasure()
+treasure_manager.get_treasure_manager():give_treasure("bar_secret_0007")
+treasure_manager.get_treasure_manager():give_treasure("bar_secret_0008")
+treasure_manager.get_treasure_manager():give_treasure("esc_secret_vagon_container")
+treasure_manager.get_treasure_manager():give_treasure("esc_secret_nice_place")
+treasure_manager.get_treasure_manager():give_treasure("gar_secret_toilet")
+treasure_manager.get_treasure_manager():give_treasure("gar_secret_box_blockpost")
+treasure_manager.get_treasure_manager():give_treasure("ros_secret_0010")
+treasure_manager.get_treasure_manager():give_treasure("yan_secret_0013")
+treasure_manager.get_treasure_manager():give_treasure("x16_secret_0000")
+treasure_manager.get_treasure_manager():give_treasure("mil_secret_0016")
+treasure_manager.get_treasure_manager():give_treasure("pri_secret_0003")
+end

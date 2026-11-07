@@ -1,0 +1,82 @@
+function start_spawn_nw() 
+text_case()
+time_death()
+spawn_art_one()
+spawn_art_two()
+end
+
+function text_case(first_speaker, second_speaker)
+	db.actor:give_info_portion("case_13_quantum_leap_started")
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение от Падалеки:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Спасибо - теперь устройство Хроноса мое! Кстати, эта фанатка сделала устройство в виде клинка из Принца Персии 'Пески времени'. Помочь тебе, Меченый? Ха-ха. Попытайся выбраться сам, если, конечно, не станешь обедом для них! Ха-ха!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 45000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function time_death()
+local obj= alife():create("npc_nw_1875",vector():set(-6.003,1.690,-13.082),1935,1128)
+obj:on_death()
+end
+
+function spawn_art_one()
+local x= -6,053
+local y= 1,689
+local z= -14,439
+local level_vertex= 1927
+local game_vertex_id= 1128
+alife():create("af_flower_time_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_art_two()
+local x= -5,985
+local y= 1,688
+local z= -12,288
+local level_vertex= 1939
+local game_vertex_id= 1128
+alife():create("af_flower_time_2",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+--Основная функция
+function actor_has_items(sSection,iNum)
+    if not iNum then iNum = 1 end
+    local oActor = db.actor
+    local iCnt = 0
+    if oActor and sSection then
+        oActor:iterate_inventory(
+            function (dummy, oItem)
+                if oItem:section() == sSection then
+                    iCnt = iCnt + 1
+                    if iCnt >= iNum then
+                        return true
+                    end
+                end
+            end
+        ,nil)
+    end
+    return iCnt >= iNum
+end
+
+--Вызов
+function search_souls_complete()
+    return this.actor_has_items("soul_zombie_n", 5) and db.actor:give_info_portion("spawn_deception_ql")
+end
+
+function search_and_found(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("desert_sand") then
+            db.actor:give_info_portion("player_complete_case_13_quantum_leap")
+            return true
+        end
+    end
+return false
+end
+
+function text_continuation_be(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_agroprom_get_military_documents")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение системы:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]Новое задание. Откройте КПК, чтобы его просмотреть. %c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_murder]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+

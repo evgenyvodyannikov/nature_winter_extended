@@ -1,0 +1,970 @@
+--Важное правило: цифры не пишем
+--function ЗДЕСЬ_ТОЛЬКО_БУКВЫ()  и только английскими
+
+--Amik : Вот кое что от Stalk15. Авторы функций не указаны 
+--(Для ТЧ).
+--"Функции"
+
+---------------------------------------------
+"Спавн НПС(или предмета)"
+
+function spawn_x14 ()
+    alife():create("Секция",vector():set(-7.32,-34.48,13.18),1542,2799)
+end
+---------------------------------------------
+--"Проверка на взятие предмета и выдача инфопоршня"
+--Функции типа "Проверка на взятие предмета..." я лично использую в квестах тегами 
+
+<function_complete>файл.функция</function_complete>
+
+
+function search_weapon_complete1(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("ПРЕДМЕТ") then
+            db.actor:give_info_portion("ПОРШЕНЬ")
+            return true
+        end
+    end
+return false
+end
+---------------------------------------------
+"Проверка на взятие нескольких разных предметов и выдача инфопоршня"
+
+local t_wpn = {"ПРЕДМЕТ1", "ПРЕДМЕТ1", "ПРЕДМЕТ1"}
+function search_ALL_weapons_complete()
+    local gg = db.actor
+    if gg then
+        for i=1,#t_wpn  do
+            if not gg:object(t_wpn[i]) then 
+                return false
+            end
+        end
+        gg:give_info_portion("ПОРШЕНЬ")
+        return true 
+    end
+return false
+end
+---------------------------------------------
+"Проверка на взятие N-колличества одного и того же предмета(например 10 аптечек)"
+Основная функция:
+ 
+function Actor_Has_ListItems(sSection,iNum)
+    if not iNum then iNum = 1 end
+    local oActor = db.actor
+    local iCnt = 0
+    if oActor and sSection then
+        oActor:iterate_inventory(
+            function (dummy, oItem)
+                if oItem:section() == sSection then
+                    iCnt = iCnt + 1
+                    if iCnt >= iNum then
+                        return true --/> актор имеет N предметов
+                    end
+                end
+            end
+        ,nil)
+    end
+    return iCnt >= iNum --/> имеет ли актор N предметов
+end
+Вызов:
+ 
+function search_2_bumazhki_sidr_complete()
+    return this.Actor_Has_ListItems("medkit", 10)
+end
+---------------------------------------------
+"Проверка на взятие предмета(обычная)"
+ 
+function search_weapon_complete(actor, npc)
+    if db.actor ~= nil then
+        return db.actor:object("wpn_vintorez")~=nil
+    end
+    return false
+end
+---------------------------------------------
+"Проверка на наличие предмета у актора"
+ 
+function have_docs_from_x14(first_speaker, second_speaker)
+    return first_speaker:object("ПРЕДМЕТ") ~= nil
+end
+---------------------------------------------
+"Передача предметов"
+ 
+function give_sidor_docs(first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "ПРЕДМЕТ", "out")
+end
+---------------------------------------------
+"Прием предметов"
+ 
+function give_nagrada_x14 (trader, actor)
+    dialogs.relocate_item_section(trader, "ПРЕДМЕТ", "in")
+end
+---------------------------------------------
+"Прверка на наличие многих предметов"
+ 
+function have_n_m1()
+    return ИМЯ_СКРИПТА.have_n_m("bread",2,"kolbasa",2,"conserva")
+end
+
+function have_n_m(section,number)
+    local actor = db.actor
+    if actor then
+        local cnt = 0
+        actor:iterate_inventory(
+            function (dummy, item)
+            if item:section() == section then cnt = cnt + 1 end
+            end
+        ,nil)
+        return cnt >= number
+    end
+    return false
+end
+---------------------------------------------
+"Вызов .РРЕ эфекта через диалог(Типа Удар в морду)"
+ 
+function punch()
+    --     set_inactivate_input_time(30)   
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\fusker.anm", 999, false, "") 
+end
+---------------------------------------------
+"Уменьшение(Увеличение)репутации ГГ"
+Отнимаем:
+ 
+function reputation_down_10(stalker, player)
+    db.actor:change_character_reputation(db.actor:character_reputation() - 10)
+end
+
+Плюсуем:
+ 
+function reputation_up_10(stalker, player)
+    db.actor:change_character_reputation(db.actor:character_reputation() + 10)
+end
+---------------------------------------------
+"Уменьшение здоровья"
+ 
+function malo_hp()
+    db.actor.health = -0.3 --Минус 30% дезек
+end
+---------------------------------------------
+"Удаление предмета из инвентаря(например аптечки)"
+ 
+function Delete_ak74u_from_Actor()
+    local oItem = db.actor:object("medkit") --/ определяем предмет у ГГ
+    if oItem then --/ у ГГ есть предмет
+        db.actor:drop_item(oItem) --/ выбрасываем предмет (опционально)
+        alife():release(alife():object(oItem:id()), true) --/ удаляем из игры
+    end
+end
+---------------------------------------------
+"Удаляем предмет (2)"
+ 
+function dell()
+    for a = 1,65534 do  
+        local se_obj = alife():object(a)
+        if se_obj and se_obj:section_name() == "СЕКЦИЯ ПРЕДМЕТА" then
+            alife():release(se_obj, true)
+        end
+    end
+end
+---------------------------------------------
+"Удаление нескольких одинаковых предметов(например удалим 7 аптечек)"
+ 
+function Delete_2_bumazhki_sidora_from_Actor()
+    local cnt = db.actor:object_count()
+    local ch=0
+    for i=0, cnt-1 do
+        local item = db.actor:object(i)
+        if item:section() == "medkit" then
+            local sobj = alife():object(item:id())
+            if sobj then 
+                alife():release(sobj,true)
+                ch = ch+1
+                if ch == 7 then --7 - кол-во удаляемых аптечек 
+                break end 
+            end 
+        end
+    end 
+end
+---------------------------------------------
+"Функция телепортации(Использовать для телепорта на другую локацию нельзя)"
+ 
+function teleportate_to_()
+    local a = vector()
+    a.x = -241.71509460448
+    a.y = -26.742816052856
+    a.z = -304.54711914063
+    db.actor:set_actor_position(a)
+end
+---------------------------------------------
+"Функция рамдомного удаления предметов из инвентаря ГГ"
+ 
+function  ReleaseRandomItem(num)
+    local actor = db.actor
+    local cnt = actor:object_count()
+    if cnt<num then return end 
+    for i=1,num do
+        local item = actor:object(math.random(0, cnt-1))
+        local sobj = alife():object(item:id())
+        if sobj then alife():release(sobj,true)
+            cnt = actor:object_count()
+        end
+    end
+end
+
+--вызывать так:
+ 
+ReleaseRandomItem(5)  -- 5 - число удаляемых предметов
+
+--Вызов через диалог: 
+ 
+function RRI()
+    имя_файла.ReleaseRandomItem(5)
+end
+
+--Пример:
+ 
+<action>имя_файла.RRI</action>
+---------------------------------------------
+"Заходим на локацию и меняем группировку"
+ 
+function join_monolith (actor, npc)  -- ставить на дельта апдейт 
+    printf ("ACTOR NOW IN имя группировки COMMUNITY")
+    if db.actor and level_id.имя уровня then -- пример l01_escape и т.п
+        db.actor:set_character_community ("имя группировки", 0, 0)
+    end
+end
+---------------------------------------------
+"Получение тайника"
+ 
+function habar_davay(actor, npc)
+    treasure_manager.get_treasure_manager():give_treasure("имя тайника")
+end
+---------------------------------------------
+"Удаление всего и вся из инвентаря - и пда, и болт, и фонарик, и бинокль, и детектор"
+ 
+function test_index()
+    local cnt = db.actor:object_count()
+    for i=0, cnt-1 do
+        local item = db.actor:object(i)
+        local sobj = alife():object(item:id())
+        if sobj then 
+            alife():release(sobj,true)
+        end
+    end
+end
+---------------------------------------------
+"Таймер"
+"Вариант без вывода на худ"
+ 
+local iTimer
+function Start_Timer_5_minutes() --/ (пере)запуск таймера (из диалога)
+    iTimer = time_global() + 5*1000 --/ взводим таймер на 5cek
+end
+
+function Timer_N_minutes() --/ вызывается из ':update' сталкер-биндера
+    if iTimer and iTimer < time_global() then --/ проверка текущего значения
+        iTimer = nil --/ выключаем таймер
+        скрипт.функция() --/ выполняем действие
+    end
+end
+
+-----------
+"Вариант с выводом на худ"
+ 
+local iTimer
+local last
+function start_timer_minutes_test(seconds) 
+    if last~= nil  then
+        iTimer = time_global()+last  --/ взводим таймер на остаток времени last
+    else 
+        iTimer = time_global() + 7*1000 --/ взводим таймер например 7 сек.
+    end 
+end
+
+function timer_n_minutes_test() --/ вызывается из ':update' сталкер-биндера
+    if iTimer then
+        last=iTimer-time_global() -- присваиваем переменной остаток времени до конца работы таймера
+        if iTimer < time_global() then 
+            iTimer = nil --/ выключаем таймер
+            last=nil
+            СКРИПТ.ФУНКЦИЯ--/ выполняем действие
+        end
+    end
+end 
+
+-- выводим  значение таймера в обратном отсчете  на худ
+function hud_static()  --/ вызывается из ':update' сталкер-биндера
+local hud = get_hud()
+local st
+    if iTimer then 
+    st = hud:GetCustomStatic("hud_timer")
+        if st==nil then 
+            hud:AddCustomStatic("hud_timer", true) 
+            st = hud:GetCustomStatic("hud_timer")
+        end
+        if last~=nil then
+            local hours = math.floor(last/3600000)
+            local minutes = math.floor(last/60000 - hours*60)
+            local seconds = math.floor(last/1000 - hours*3600 - minutes*60)
+            local text = string.format("%02d:%02d:%02d",hours,minutes,seconds) -- выводим время в формате 00:00:00
+            --local text=string.format("%.f",last/1000)
+            st:wnd():SetTextST(text)  
+        end 
+    else 
+        if hud:GetCustomStatic("hud_timer")~=nil then 
+            hud:RemoveCustomStatic("hud_timer")
+        end
+    end
+end
+---------------------------------------------
+"Расчет попадания в НПС (Выводится информации - в какую часть тела попал)"
+--Автор:Николай ФеНиКс(ФеНиКс)
+ 
+if bone_index > 0 and who then
+    if who:id() == db.actor:id() then --/ для актора
+        local oActiveItem = db.actor:object("wpn_svd")
+        if oActiveItem then --/ у актера проверяемое оружие
+            local kuda = ""
+            if bone_index == 14 or bone_index == 15 then
+                kuda = "Ранен в глаз"
+            elseif  bone_index == 13 then
+                kuda = "Ранен в голову"
+            elseif bone_index == 16 then
+                kuda = "Ранен в челюсть"
+            elseif bone_index == 17 then
+                kuda = "Ранен в шею"
+            elseif bone_index == 9 or bone_index == 10 or bone_index == 11 or bone_index == 18 then
+                kuda = "Ранен в грудь"   
+            elseif bone_index >= 1 and bone_index <= 8 then
+                kuda = "Ранен в ногу"   
+            elseif bone_index >= 19 and bone_index <= 42 then
+                kuda = "Ранен в руку"
+            end
+            news_manager.send_tip(db.actor, kuda, nil, nil, 2000)
+        end
+    end
+end
+
+--Вставлять функцию в мотиватор в функцию hit_callbak.
+--Например, после этого:
+ 
+if self.st.hit then
+    xr_logic.issue_event(self.object, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
+end
+---------------------------------------------
+"Функция для квестов (типа убить группу сталкеров, например, пятерых)"
+ 
+function mochim_five_nps()
+    if has_alife_info("первый_грохнут") and
+        has_alife_info("второй_грохнут") and
+        has_alife_info("третий_грохнут") and
+        has_alife_info("четвертый_грохнут") and
+        has_alife_info("и_пятый_наконец") then
+        return true 
+    else 
+        return false
+    end
+end
+
+--Использование:
+--В теле квеста пишем complete'ы:
+ 
+<infoportion_complete>esc_kvest_secret_merc_kill_poslannick</infoportion_complete>
+<function_complete>имя_файла.mochim_five_nps</function_complete>
+
+--После выполнения условий функции mochim_five_nps выдается поршень esc_kvest_secret_merc_kill_poslannick и задание обновляется.
+---------------------------------------------
+"Спавн предмета или НПС с меткой в ПДА"
+ 
+local ObjId=0
+function pda_killer_spawn()
+    local obj= alife():create("pda_merc_killer_glav",vector():set(-223.700,-7.678,-129.688),17000,281)
+    local text = "Текст метки"
+    level.map_add_object_spot_ser(obj.id, "blue_location", text) --/blue_location - тип метки
+    ObjId=obj.id 
+end
+
+--Эту метку можно удалить так:
+ 
+function delete_spot()
+    for a=1,65534 do --Перебор айди
+        local obj = alife():object(a)
+        if obj and obj:section_name() == "pda_merc_killer_glav" then --/pda_merc_killer_glav -- Секция предмета или НПС
+            level.map_remove_object_spot(obj.id,"blue_location")
+            break
+        end
+    end
+end
+---------------------------------------------
+"Вешаем метку в ПДА по Sid'у (Например на Волка)"
+ 
+local obj = alife():story_object( 6 ) -- 6 - сид Волка
+local obj_id = obj.id
+function add_spot_on_map(obj_id,type,text)
+    if obj_id then
+        if not text then text = "no_text" end
+        level.map_add_object_spot_ser(obj_id, type, text)
+    end
+end
+
+--Вызываем:
+ 
+function add_spot_on_map2(obj_id,type,text)
+    имя_файла.add_spot_on_map(obj.id,"green_location","Текст")
+end
+
+--Метку можно убрать вот так:
+ 
+local obj = alife():story_object( 6 )
+local obj_id = obj.id
+function remove_spot_from_map(obj_id,type)
+    if obj_id and level.map_has_object_spot(obj_id, type) ~= 0 then
+        level.map_remove_object_spot(obj_id, type)
+    end
+end
+
+--эту вызывать:
+ 
+function remove_spot()
+    this.remove_spot_from_map(obj.id,"green_location")
+end
+---------------------------------------------
+"Вывод сообщения на экран"
+ 
+function kvest_search_2_bumazhki_sidr_complete()
+    news_manager.send_tip(db.actor, "%c[255,255,128,128]Автор сообщения\n%c[default]Текст сообщения", 0, "wolf", 17000)
+end
+---------------------------------------------
+"Еще способ вывода сообщения"
+ 
+local text = "Здесь текст"
+function test()
+    news_manager.send_tip(db.actor, text, 0, "trader", 20000)
+end
+---------------------------------------------
+"Заставляем диалог появиться самому на примере Волка (подходим к Волку и диалог появляется сам)"
+--Спавним рестриктор на координатах Волка с радиусом метра 2.Делаем логику рестриктору:
+ 
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %+esc_on_talk%  ;Выдача поршня
+;Или так(Выбрать одно):
+on_actor_inside = %=on_talk%"       ;Функция
+
+--Если выбрали поршень, то создаем его:
+ 
+<info_portion id="esc_on_talk">
+<action>СКРИПТ.on_talk</action>
+</info_portion>
+
+--Вызываем функцию и видим диалог:
+ 
+function on_talk()
+    local npc = level_object_by_sid(006) 
+    db.actor:run_talk_dialog(npc)
+end
+---------------------------------------------
+"Делаем некоторых НПС бессмертными"
+ 
+function immotral()
+    local npc1 = level_object_by_sid(006) --волк
+    local npc2 = level_object_by_sid(092) --проводник
+    local npc3 = level_object_by_sid(032)-- кузнецов
+    local npc4= level_object_by_sid(100) --Серый
+    if npc1 then npc1.health = 1 end
+    if npc2 then npc2.health = 1 end
+    if npc3 then npc3.health = 1 end
+    if npc4 then npc4.health = 1 end
+end
+--В голову дохнут.
+---------------------------------------------
+"Отправляем НПС в другую группировку(например Волка)"
+ 
+function name()
+    local npc = level_object_by_sid(006)
+    npc:set_character_community("имя группировки", 0, 0)
+end
+
+--Если разговариваем с самим Волком, то вызываем эту функцию:
+ 
+function name(actor, npc)
+    npc:set_character_community("имя группировки", 0, 0)
+end
+---------------------------------------------
+"Удалим предмет из игры (или сталкера из игры (Удалим Волка))"
+ 
+function dell_kluk_final()
+    local se_obj = alife():object("esc_wolf")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+---------------------------------------------
+"При вызове происходит использование антирада"
+ 
+function do_something()
+    local item = db.actor:object("antirad")
+    if antirad then
+        db.actor:eat(item)
+    end
+end
+
+--Должно быть так:
+ 
+function do_something()
+    local item = db.actor:object("antirad")
+    if item then
+        db.actor:eat(item)
+    end
+end
+---------------------------------------------
+"Проверка:Какой костюм одет\не одет (например, Экзоскелет)"
+--Надет ли костюм
+ 
+function check_outfit()
+    local outfit = db.actor:item_in_slot(6)
+    if outfit:section() == "exo_outfit" then --/Если в 6 слоте присутствует "exo_outfit" тогда
+        return true  --/"exo_outfit" одет
+    else
+        return false --/"exo_outfit" не одет
+    end
+end
+
+--Не надет ли костюм
+ 
+function check_outfit()
+    local outfit = db.actor:item_in_slot(6)
+    if outfit:section() == "exo_outfit" then --/Если в 6 слоте присутствует "exo_outfit" тогда
+        return true --/"exo_outfit" не одет
+    else
+        return false  --/"exo_outfit" одет
+    end
+end
+---------------------------------------------
+"Наносим хит предмету"
+ 
+function hit_nanesti()
+    for a=1,65635,1 do
+        local obj=level.object_by_id(a)
+        if obj and string.find(obj:name(),"ПРЕДМЕТ") then 
+            local h = hit ();
+            h.power = 10000;
+            h.direction = vector():set (0, 0, 0);
+            h.impulse = 0;
+            h.draftsman = obj;
+            h.type = hit.explosion;
+            obj:hit (h);
+        end
+    end
+end
+---------------------------------------------
+"Проверяет, находится ли, например, Волк на локации Кордон"
+ 
+function rest()
+    local npc = level_object_by_sid(006) --волк
+    if npc and level.name() == "l01_escape" then
+        return true
+    else
+        return false
+    end
+end
+---------------------------------------------
+"Проверка: Например на Кордоне находится ГГ или нет"
+ 
+function go_to_marsh_complete()
+    if level_name == "l01escape" then 
+        return true
+    else
+        return false
+    end
+end
+
+---------------------------------------------
+
+--Еще функции (Для ТЧ).
+
+"Функции"
+
+1) "Убить НПС"
+
+function kill_stalker(actor, npc)
+	npc:kill(npc) 
+end
+
+---------------------------------------------
+
+
+2) "Как, через скрипт, сделать НПС врагом?"
+
+function enemy(actor, npc)
+npc:set_relation (game_object.enemy, db.actor)
+end
+
+---------------------------------------------
+
+
+3) "Как создать функцию вызова звукового сигнала и проиграть ее в голове ГГ?"
+
+function any_sound() 
+ local snd = sound_object([[characters_voice\human_03\stalker\talk\leaves\leaves_42]]) 
+ snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+---------------------------------------------
+
+
+4) "Еще один способ спавна НПС (или предмета)."
+
+function НАЗВАНИЕ_create()
+local x= 
+local y= 
+local z= 
+local level_vertex= 
+local game_vertex_id= 
+alife():create("НАЗВАНИЕ",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+---------------------------------------------
+
+
+
+5) "Как запустить много функций одной связкой?"
+
+Например:
+
+function all_spawn()
+НАЗВАНИЕ_create()
+any_sound() 
+end
+
+function НАЗВАНИЕ_create()
+local x= 
+local y= 
+local z= 
+local level_vertex= 
+local game_vertex_id= 
+alife():create("НАЗВАНИЕ",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function any_sound() 
+ local snd = sound_object([[characters_voice\human_03\stalker\talk\leaves\leaves_42]]) 
+ snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+-------------
+--Лёгкий спавн трупа NPC (без функций АМК)
+
+--Пишем вот такую простенькую функцию:
+ 
+function имя функции()
+local obj= alife():create("имя секции в spawn_sections.ltx",vector():set(x,y,z),level_vertex,game_vertex)
+obj:on_death()
+end
+
+--На примере - Ученый, близ упавшего вертолета, на армейких складах:
+ 
+function tester()
+local obj= alife():create("yan_ecolog_respawn_1",vector():set(-38.981,-17.916,355.841),273797,1816)
+obj:on_death()
+end
+
+-------------------------------------------------------------------------------------
+Спавн  предметов		( с указанием координат )	без  использования  функции диалога
+
+1.)	Способ выдать информацию о тайнике актеру
+--Функция выдачи тайника имеет такой вид: 
+function get_treasure()
+treasure_manager.get_treasure_manager():give_treasure("название нычки")
+end
+•	названия тайников смотрите в config\misc\treasure_manager.ltx 
+
+--------------------------------------------------
+2.) Cкрипт спавна предмета:
+
+--Создаем в заданном месте калаш
+
+function ak_create()
+	local a = vector() -- db.actor:position()
+	a.x = -220.21
+	a.y = -19.93
+	a.z = -158.98
+	alife():create("wpn_ak47",a,33447,47,65535)
+end
+
+
+ДЛЯ ПАТРОНОВ alife():create_ammo("ammo_9x18_fmj")
+
+
+--------------------------------------------------
+
+3.) Спаун объектов через скрипт. 
+
+
+1.Спаун предметов в рюкзак ГГ. Откройте через блокнот db.script  (1*) и там находим функцию:
+
+function add_actor( obj )
+actor = obj
+actor_proxy:net_spawn( obj )
+add_obj( obj )
+end
+
+--Изменим эту функцию. У нас должно получиться так:
+
+function add_actor( obj )
+actor = obj
+actor_proxy:net_spawn( obj )
+add_obj( obj )
+new_spawn.give_ak74() 
+end
+
+new_spawn.script - это название скрипта, в котором будет находиться наша функция спавна калаша.
+
+--Создаем скрипт new_spawn.script и пишем там функцию:
+
+function give_ak74()
+alife():create("wpn_ak74", db.actor:position(), db.actor:level_vertex_id(),db.actor:game_vertex_id(), db.actor:id())
+end
+
+Все! Теперь после того, как мы появимся у нас в инвентаре будет AK-74 и без использования диалогов! Таким способом можно заспавнить не только калаш, но и другое.
+(1*) будет происходить обновление игры ( происходит всё время! ),  и при каждом обновлении будет спавниться  предмет! 
+Лучше использовать такую структуру спавна :
+ПРИМЕР:
+function start_add_spawn()
+knife_create()
+killer1_outfit_create()
+end
+
+function knife_create()
+local x= -213,283
+local y= -22,544
+local z= -126,852
+local level_vertex= 41279
+local game_vertex_id= 59
+alife():create("wpn_knife",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function killer1_outfit_create()
+local x= -177,079
+local y= -19,931
+local z= -162,100
+local level_vertex= 74054
+local game_vertex_id= 52
+alife():create("killer1_outfit",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+--------------------------------------------------
+4.) Spawn через скрипт-дополнение
+
+Пишу статью специально для тех, кто только начинает увлекатся модмейкерством и не использует специальные проги для спавна (могу посоветовать ACDC-весчь улетная, спасиба разрабам:-)
+ Если вы хотите заспавнить в игру любой обьект-будь то непись, машина или аномалия без активации через диалог, тогда читайте и запоминайте:)
+ Изучая скрипты, я обнаружил, что можно запустить выдачу инфопоршны через обновление у актера... Не поняли? Объясняю - пишем в scripts\bind_stalker.script в секции обновления проверку на наличие info_portion: 
+function actor_binder:update(delta)
+	object_binder.update(self, delta)
+
+	-- DEBUG slowdown
+--	slowdown.update()
+
+	local time = time_global()
+	
+	game_stats.update (delta, self.object)
+
+	-- апдейт погоды
+	self.weather_manager:update()
+	
+	-- апдейт схемы детектора
+	self.actor_detector:update()
+
+	-- апдейт звуковой схемы актера
+	xr_sound.update_actor()
+
+	if not has_alife_info("spawn") then				--вот
+
+		self.object:give_info_portion("spawn")		--	наше
+
+	end						--		обновление
+
+Такой функцией мы проверяем наличие инфопоршны spawn, и если её нет, выдаем игроку...
+ Осталось только добавить эти инфопоршну - для этого в config\gamelay\ cоздаем файл с ней, например spawn.xml с текстом: 
+<?xml version='1.0' encoding="windows-1251"?>
+
+<game_information_portions>
+    <info_portion id="spawn">						-вот название нашей инфопоршны
+ <! -- action>название_скрипта.название_функции_в_нем</action -- >
+ <action>escape_dialog.give_weapon_to_actor</action>			-для примера выдадим стартовую снарягу(ПМм и патроны,что выдает волк)
+    </info_portion>
+
+</game_information_portions>
+
+Между 
+  <info_portion id="spawn">
+
+и 
+  </info_portion>
+
+Можете писать сколько угодно активаций скриптов (в пределах разумного, если не хотите загрузить процессор двумя сотнями операций:) Подключим наш файл в секцию инфопоршен в system.ltx: 
+[info_portions]
+;список xml файлов, содержащих info_portions
+files = spawn, info_portions, info_portions_light, info_portions_test, info_lchanger_ico...
+
+На этом все...Теперь когда вы зайдете в игру у вас в данном случае появится стартовая снаряга, ну а если вы пропишите активацию на спавн (ну или любое другое действие, например на: сон, телепорт и др.), у вас заспавнятся ваши предметы... Я еще бы не советовал часто пользоваться такой функцией, дабы могут возникнуть лаги при большом их кол-ве. Думаю одной-двух вам вполне хватит...
+ Ссори за жидкую инфу, дабы в моддинге всего три месяца...)
+
+
+-------------------------------------------------
+Все деньги убрать
+
+function case_problem()
+local money = actor:money() 
+actor:give_money(-money)
+end
+-------------------------------------------------
+Спавн аномалий скриптовым методом без использования all.spawn, а соответственно без необходимости начинать новую игру:
+
+ 1) Создаём в папке \gamedata\scripts скриптовый файл с любым именем, напрмер, anomaliya_spawn.script и заполняем этот файл следующим содержанием: 
+
+
+ function get_story_id_not_replay() 
+ local ST 
+ ST = xr_logic.pstor_retrieve(db.actor, "ScriptAnomId", 0) 
+ if type(ST) ~= "number" or ST == nil then 
+ ST = 9000 
+ xr_logic.pstor_store(db.actor, "ScriptAnomId", ST) 
+ end 
+ if type(ST) == "number" or ST ~= nil then 
+ ST = ST + 1 
+ xr_logic.pstor_store(db.actor, "ScriptAnomId", ST) 
+ end 
+ return tonumber(ST) 
+ end 
+
+ function create_anom(name_anom, posit_anom, lvid_anom, gvid_anom, radius_anom, power_anom) 
+ local obj = alife():create(name_anom, posit_anom, lvid_anom, gvid_anom) 
+
+ -----------------------write---------------------- 
+ local packet = net_packet() 
+ obj:STATE_Write(packet) 
+
+ -----------------------load----------------------- 
+ -- cse_alife_object 
+ local game_vertex_id = packet:r_u16() 
+ local distance = packet:r_float() 
+ local direct_control = packet:r_u32() 
+ local level_vertex_id = packet:r_u32() 
+ local object_flags = packet:r_u32() 
+ local custom_data = packet:r_stringZ() 
+ local story_id = packet:r_u32() 
+ local spawn_story_id = packet:r_u32() 
+
+ -- cse_shape 
+ local shape_count = packet:r_u8() 
+ for i=1,shape_count do 
+ local shape_type = packet:r_u8() 
+ if shape_type == 0 then 
+ -- sphere 
+ local center = packet:r_vec3() 
+ local radius = packet:r_float() 
+ else 
+ -- box 
+ local box = packet:r_matrix() 
+ end 
+ end 
+
+ -- cse_alife_space_restrictor 
+ local restrictor_type = packet:r_u8() 
+
+ -- cse_alife_custom_zone 
+ local max_power = packet:r_float() 
+ local owner_id = packet:r_u32() 
+ local enabled_time = packet:r_u32() 
+ local disabled_time = packet:r_u32() 
+ local start_time_shift = packet:r_u32() 
+
+ -- cse_alife_anomalous_zone 
+ local offline_interactive_radius = packet:r_float() 
+ local artefact_spawn_count = packet:r_u16() 
+ local artefact_position_offset = packet:r_u32() 
+
+ -- se_zone_anom 
+ local last_spawn_time_present = packet:r_u8() 
+
+ if (string.find (name_anom, 'zone_zharka_static') ~= nil 
+ or string.find (name_anom, 'zone_witches_galantine') ~= nil 
+ or string.find (name_anom, 'zone_mosquito_bald') ~= nil 
+ or string.find (name_anom, 'zone_mincer') ~= nil 
+ or string.find (name_anom, 'zone_gravi_zone') ~= nil 
+ or string.find (name_anom, 'zone_buzz') ~= nil ) 
+ and packet:r_elapsed() ~= 0 then 
+ abort("left=%d", left) 
+ end 
+
+ ---------------------------save-------------------- 
+ -- cse_alife_object 
+ packet:w_begin(game_vertex_id) 
+ packet:w_float(distance) 
+ packet:w_u32(direct_control) 
+ packet:w_u32(level_vertex_id) 
+ object_flags = bit_not(193) 
+ packet:w_u32(object_flags) 
+ packet:w_stringZ(custom_data) 
+ packet:w_u32(get_story_id_not_replay()) 
+ packet:w_u32(get_story_id_not_replay()) 
+
+ -- cse_shape 
+ packet:w_u8(1) -- количество фигур 
+ packet:w_u8(0) -- тип фигуры: сфера 
+ packet:w_vec3(vector():set(0, 0, 0)) 
+ if radius_anom ~= nil then 
+ packet:w_float(radius_anom) 
+ else 
+ packet:w_float(1.0) 
+ end 
+
+ -- cse_alife_space_restrictor 
+ packet:w_u8(restrictor_type) 
+
+ -- cse_alife_custom_zone 
+ if power_anom ~= nil then 
+ packet:w_float(power_anom) 
+ else 
+ packet:w_float(max_power) 
+ end 
+ packet:w_u32(owner_id) 
+ packet:w_u32(enabled_time) 
+ packet:w_u32(disabled_time) 
+ packet:w_u32(start_time_shift) 
+
+ -- cse_alife_anomalous_zone 
+ packet:w_float(offline_interactive_radius) 
+ packet:w_u16(artefact_spawn_count) 
+ packet:w_u32(artefact_position_offset) 
+
+ -- se_zone_anom 
+ packet:w_u8(last_spawn_time_present) 
+
+ ------------------------read------------------------ 
+ packet:r_seek(0) 
+ obj:STATE_Read (packet, packet:w_tell()) 
+
+ end 
+
+ -----------------------------------спавним аномалии----------------------------------- 
+
+ function spawn_anom1() 
+ this.create_anom('zone_zharka_static', vector():set(-30.974,0.002,693.734),178968,2618, 3, 0.7) 
+ end 
+
+ function spawn_anom2() 
+ this.create_anom('zone_witches_galantine_strong', vector():set(-20.851,0.000,693.588),178968,2618, 5, 0.8) 
+ end 
+
+ function spawn_anom3() 
+ this.create_anom('zone_mincer_average', vector():set(-26.064,0.000,698.637),178968,2618, 4, 1) 
+ end 
+
+ --Последние две цифры после координат - это радиус действия аномалии и её сила соответственно. 
+
+ 2) Всё, теперь остаётся вызвать функции спавна из диалога или из инфопоршня и три наши аномалии заспавнятся на заданных координатах в нужный игровой момент.
+
+--------------------------------------------------

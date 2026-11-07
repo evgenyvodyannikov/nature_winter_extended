@@ -1,0 +1,46 @@
+--[[
+
+File:  restriction_stock.script
+Created: 28.05.2008
+Copyright: © 2012 AMK team
+Author: Refresh
+Version: for NW v2.3 QL BV
+Last update : 09.09.2012 
+
+--]]
+
+
+function restriction_of_stock(_obj)
+	
+	--[[
+		Если предмет не был удален менеджером магазинов, то только тогда проверяем.
+	--]]
+	if not alife():object(_obj:id() ) then
+		return
+	end
+	
+	local  actor = db.actor
+	local 	_table = {
+			  _magazines  = {"clip_8_9x18_fmj","clip_8_9x18_pmm","clip_12_9x18_fmj","clip_12_9x18_pmm","clip_20_9x18_fmj","clip_20_9x18_pmm","clip_8_9x19_fmj","clip_8_9x19_pbp","clip_13_9x19_fmj","clip_13_9x19_pbp","clip_15_9x19_fmj","clip_15_9x19_pbp","clip_16_9x19_fmj","clip_16_9x19_pbp","clip_17_9x19_fmj","clip_17_9x19_pbp","clip_18_9x19_fmj","clip_18_9x19_pbp","mag_20_9x19_fmj","mag_20_9x19_pbp","mag_30_9x19_fmj","mag_30_9x19_pbp","mag_8_12x76_buck","mag_8_12x76_zhekan","mag_8_12x76_dart","mag_10_9x39_pab9","mag_10_9x39_ap","mag_10_9x39_sp5","mag_20_9x39_pab9","mag_20_9x39_ap","mag_20_9x39_sp5","mag_10_7.62x54_7h1","mag_10_7.62x54_ap","mag_10_7.62x54_7h14","mag_30_5.45x39_fmj","mag_30_5.45x39_ap","mag_45_5.45x39_fmj","mag_45_5.45x39_ap","mag_75_5.45x39_fmj","mag_75_5.45x39_ap","mag_30_5.56x45_ss190","mag_30_5.56x45_ap","mag_100_5.56x45_ss190","mag_100_5.56x45_ap","belt_100_5.56x45_ss190","belt_100_5.56x45_ap","clip_7_11.43x23_fmj","clip_7_11.43x23_hydro","clip_8_11.43x23_fmj","clip_8_11.43x23_hydro","mag_30_11.43x23_fmj","mag_30_11.43x23_hydro"}
+			}
+						 
+	for kk,vv in pairs(_table) do
+		local status = 0
+		local count = 0
+		
+		for k,v in pairs(vv) do
+			local _item = v 
+			actor:iterate_inventory(function (dummy, item) if item:section()== _item then count=count+1 end end, nil)
+			
+			if  kk == "_magazines" and count>5 then
+				buffer_item.add(_obj:id(),"Обоймы уже не помещаются.")
+				status = 1
+				break
+			end	
+		end
+	
+		if status == 1 then
+			break
+		end
+	end	
+end

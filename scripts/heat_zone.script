@@ -1,0 +1,1147 @@
+----------
+-- чтение формы из нет-пакета
+----------
+function r_shape(packet)
+ local s
+ local st = {}
+ st.count = packet:r_u8()
+ st.shapes = {}
+ for i=1, st.count do
+ s = {}
+ s.type = packet:r_u8()
+ if s.type == 0 then
+ s.center = packet:r_vec3()
+ s.radius = packet:r_float()
+ else
+ s.axis_x = packet:r_vec3()
+ s.axis_y = packet:r_vec3()
+ s.axis_z = packet:r_vec3()
+ s.offset = packet:r_vec3()
+ end
+ st.shapes[i] = s
+ end
+ return st
+end
+
+----------
+-- запись формы в нет-пакет
+----------
+function w_shape(packet, st)
+ local s
+ packet:w_u8(st.count)
+ for i=1, st.count do
+ s = st.shapes[i]
+ packet:w_u8(s.type)
+ if s.type == 0 then
+ packet:w_vec3(s.center)
+ packet:w_float(s.radius)
+ else
+ packet:w_vec3(s.axis_x)
+ packet:w_vec3(s.axis_y)
+ packet:w_vec3(s.axis_z)
+ packet:w_vec3(s.offset)
+ end
+ end
+end
+
+----------
+-- перепаковка нет-пакета созданного скриптом рестрикта
+----------
+function rewrite_restrictor(se_obj, custom, radius)
+ local packet = net_packet()
+ se_obj:STATE_Write(packet)
+ local game_vertex_id = packet:r_u16()
+ local distance = packet:r_float()
+ local direct_control = packet:r_s32()
+ local level_vertex_id = packet:r_s32()
+ local object_flags = packet:r_s32()
+ local custom_data = packet:r_stringZ()
+ local story_id = packet:r_s32()
+ local spawn_story_id = packet:r_s32()
+ local shape = r_shape(packet)
+ local restrictor_type = packet:r_u8()
+
+ custom_data = custom
+ shape = {}
+ shape.count = 1
+ shape.shapes = {}
+ shape.shapes[1] = {}
+ shape.shapes[1].type = 0
+ shape.shapes[1].center = vector():set(0,0,0)
+ shape.shapes[1].radius = radius
+
+ packet:w_u16(game_vertex_id)
+ packet:w_float(distance)
+ packet:w_s32(direct_control)
+ packet:w_s32(level_vertex_id)
+ packet:w_s32(object_flags)
+ packet:w_stringZ(custom_data)
+ packet:w_s32(story_id)
+ packet:w_s32(spawn_story_id)
+ w_shape(packet, shape)
+ packet:w_u8(restrictor_type)
+ se_obj:STATE_Read(packet, packet:w_tell() - packet:r_tell())
+end
+
+function spawn_zones()
+--Кордон
+esc_spawn1_zone()
+esc_spawn2_zone()
+esc_spawn3_zone()
+esc_spawn4_zone()
+esc_spawn5_zone()
+esc_spawn6_zone()
+esc_spawn7_zone()
+esc_spawn8_zone()
+esc_spawn10_zone()
+esc_spawn11_zone()
+--Свалка
+gar_spawn1_zone()
+gar_spawn2_zone()
+gar_spawn3_zone()
+gar_spawn4_zone()
+gar_spawn5_zone()
+gar_spawn6_zone()
+gar_spawn7_zone()
+--Темная долина
+dar_spawn1_zone()
+dar_spawn2_zone()
+dar_spawn3_zone()
+dar_spawn4_zone()
+dar_spawn5_zone()
+dar_spawn6_zone()
+dar_spawn7_zone()
+dar_spawn8_zone()
+dar_spawn9_zone()
+dar_spawn10_zone()
+dar_spawn11_zone()
+dar_spawn12_zone()
+dar_spawn13_zone()
+dar_spawn14_zone()
+dar_spawn15_zone()
+dar_spawn16_zone()
+dar_spawn17_zone()
+--Агропром
+agr_spawn1_zone()
+--Бар
+bar_spawn1_zone()
+bar_spawn2_zone()
+bar_spawn3_zone()
+bar_spawn4_zone()
+bar_spawn5_zone()
+bar_spawn6_zone()
+--Дикая Территория
+ros_spawn1_zone()
+ros_spawn2_zone()
+ros_spawn3_zone()
+ros_spawn4_zone()
+ros_spawn5_zone()
+--Янтарь
+yan_spawn1_zone()
+yan_spawn2_zone()
+yan_spawn3_zone()
+yan_spawn4_zone()
+yan_spawn5_zone()
+yan_spawn6_zone()
+yan_spawn7_zone()
+yan_spawn8_zone()
+yan_spawn9_zone()
+yan_spawn10_zone()
+yan_spawn11_zone()
+yan_spawn12_zone()
+--Армейские склады
+mil_spawn1_zone()
+mil_spawn2_zone()
+mil_spawn3_zone()
+mil_spawn4_zone()
+mil_spawn5_zone()
+mil_spawn6_zone()
+mil_spawn7_zone()
+mil_spawn8_zone()
+mil_spawn9_zone()
+mil_spawn10_zone()
+mil_spawn11_zone()
+mil_spawn12_zone()
+mil_spawn13_zone()
+mil_spawn14_zone()
+mil_spawn15_zone()
+--Радар
+rad_spawn1_zone()
+rad_spawn2_zone()
+rad_spawn3_zone()
+rad_spawn4_zone()
+rad_spawn5_zone()
+rad_spawn6_zone()
+rad_spawn7_zone()
+rad_spawn8_zone()
+rad_spawn9_zone()
+rad_spawn10_zone()
+rad_spawn11_zone()
+rad_spawn12_zone()
+rad_spawn13_zone()
+end
+
+
+--Escape
+function esc_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-206.853,-19.663,-140.029),45944,61)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-234.908,-19.678,-156.865),20038,47)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-142.654,-29.344,-360.956),107436,18)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-48.766,-9.703,-64.318),230512,77)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(111.066,-7.060,-40.922),412974,124)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(115.726,-7.138,9.171),418002,118)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(62.977,-0.078,149.470),351508,96)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn8_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(132.512,-0.057,309.508),436906,236)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn10_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(312.660,3.845,118.452),571665,143)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function esc_spawn11_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(354.714,14.968,-30.124),589819,140)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Garbage
+function gar_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-61.128,-1.755,-217.626),135702,268)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-60.852,1.459,4.976),135850,330)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(48.029,0.759,231.276),221773,359)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-223.933,-7.934,136.355),16993,281)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-71.693,-2.064,17.120),126200,329)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-94.784,-1.117,-3.784),116306,328)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function gar_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(102.650,-2.270,168.679),265709,364)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Darkvalley
+function dar_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-153.359,1.321,-186.544),10492,862)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-0.253,0.446,38.073),174065,1010)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(30.028,-2.408,3.342),211299,1025)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(44.210,8.282,-23.457),230067,1055)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(46.506,8.382,-30.980),232912,1057)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(47.380,1.686,-42.793),234689,1086)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(46.444,4.887,-54.338),232810,1075)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn8_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(36.647,0.731,-76.938),219564,1081)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn9_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-4.569,0.561,-69.127),168441,1041)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn10_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(34.772,1.635,-31.690),217734,1090)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn11_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(35.396,-2.142,-56.942),218625,1092)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn12_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(16.684,2.634,-37.754),194332,1050)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn13_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(22.755,5.468,32.007),202578,1007)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn14_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(127.314,0.487,-244.896),324505,956)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn15_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(148.426,0.584,-232.457),347600,958)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn16_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(142.194,0.510,-272.261),340224,961)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function dar_spawn17_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-135.823,1.330,-520.904),22101,832)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Agroprom
+function agr_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(251.220,0.293,71.351),427597,498)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Bar
+function bar_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(181.980,0.351,63.508),45203,1185)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function bar_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(130.096,0.444,60.052),36091,1227)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function bar_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(98.793,0.724,93.149),31519,1222)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function bar_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(117.422,0.346,122.156),34294,1213)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function bar_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(205.096,0.338,89.194),45504,1193)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function bar_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(196.732,0.342,120.927),46927,1190)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Rostok (Дикая Территория)
+function ros_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-150.689,0.492,158.540),38609,1327)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function ros_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-265.163,-0.195,155.223),5569,1348)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 6.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_mdl", "Зона согрева")
+end
+
+function ros_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-259.307,-5.433,89.146),6926,1359)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function ros_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-263.385,0.354,14.216),5797,1395)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function ros_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-185.241,-5.646,-68.474),29598,1403)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Yantar
+function yan_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(116.547,2.031,-128.867),101737,1440)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(159.995,-6.415,-90.192),129899,1451)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(60.394,0.404,-47.621),70899,1443)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 3.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(94.389,0.034,-2.707),88997,1514)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(37.064,0.087,14.118),57699,1445)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(24.807,-2.948,-48.086),51082,1505)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(43.647,0.377,-64.733),61182,1505)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn8_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(0.434,0.112,-41.456),39692,1444)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn9_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-6.693,1.316,-35.285),36246,1444)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn10_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-9.686,0.257,-20.216),35291,1525)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn11_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-13.408,1.211,-0.380),33421,1500)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function yan_spawn12_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(5.127,6.974,-10.344),41776,1525)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Military
+function mil_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-235.703,-12.310,52.326),96021,1680)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-220.214,-21.446,198.964),109037,1765)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-219.277,-21.468,202.924),110212,1765)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-249.180,-22.045,298.118),85360,1797)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-319.190,-22.220,210.754),27228,1795)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-351.315,-13.652,396.976),6787,1848)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-176.874,-15.785,375.545),146045,1859)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn8_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-190.726,-15.693,369.589),134712,1859)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn9_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-91.816,-20.354,218.417),222641,1734)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn10_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(98.455,-0.215,304.674),394224,1775)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn11_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(78.770,-7.560,334.206),376681,1775)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn12_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(38.639,-18.237,348.686),341819,1807)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn13_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(103.590,-12.369,52.916),397640,1558)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn14_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(1.768,-6.500,-26.105),309401,1585)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function mil_spawn15_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(-57.418,-10.323,26.419),253042,1608)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+
+--Radar
+function rad_spawn1_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(613.913,-52.173,-299.152),220569,1882)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn2_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(587.230,-54.030,-252.174),208479,1863)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn3_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(524.876,-48.622,-245.069),177697,2061)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn4_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(580.980,-62.707,-179.322),205815,1886)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn5_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(590.428,-49.856,18.448),209938,1901)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn6_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(632.039,-43.660,192.634),225246,1909)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn7_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(442.368,-49.872,-1.808),144178,1918)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn8_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(382.945,-33.862,145.996),113197,1926)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn9_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(187.682,-12.127,81.479),53735,1936)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn10_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(106.917,0.020,27.747),45695,1874)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn11_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(56.877,0.218,14.389),29559,2011)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn12_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(59.902,-4.266,-47.617),30689,1987)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+
+function rad_spawn13_zone()
+  local se_obj = alife():create("space_restrictor",vector():set(19.828,-0.014,-56.759),16912,1993)
+  local custom = "[logic]\n"..
+"active = sr_idle\n"..
+"[sr_idle]\n"..
+"on_actor_inside = %+space_heat_zone%"
+  rewrite_restrictor(se_obj, custom, 2.0)
+  --/ ставим метку на рестриктор
+  level.map_add_object_spot_ser(se_obj.id, "crlc_small", "Зона согрева")
+end
+

@@ -1,0 +1,24 @@
+local buffered_items = {}
+
+function add(id, text)
+table.insert(buffered_items, {id, text})
+end
+
+function clear()
+for k, v in pairs(buffered_items) do
+v = nil
+end
+buffered_items = {}
+end
+
+function update()
+local actor = db.actor
+    for k,v in pairs(buffered_items) do
+        local obj = level.object_by_id(v[1])
+        if obj then
+            amk.send_tip(v[2],nil,nil,5)
+            amk.drop_item(actor,obj)
+        end
+    end
+    clear()
+end

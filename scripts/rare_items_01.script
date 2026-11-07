@@ -1,0 +1,179 @@
+function has_rare_items_01(actor, npc)
+	return actor:money() >= 14000
+end
+
+function rare_items_01(actor, npc)
+dialogs.relocate_money(npc, 14000, "out")
+dialogs.relocate_item_section(actor, "wpn_glock_1a", "in")
+end
+
+function rare_items_02(actor, npc)
+dialogs.relocate_money(npc, 14000, "out")
+dialogs.relocate_item_section(actor, "wpn_glock_2a", "in")
+end
+
+function rare_items_03(actor, npc)
+dialogs.relocate_money(npc, 14000, "out")
+dialogs.relocate_item_section(actor, "wpn_glock_3a", "in")
+end
+
+
+function has_rare_items_04(actor, npc)
+	return actor:money() >= 50000
+end
+
+function rare_items_04(actor, npc)
+dialogs.relocate_money(npc, 50000, "out")
+dialogs.relocate_item_section(actor, "af_dummy_spring_red", "in")
+end
+
+
+function has_rare_items_03(actor, npc)
+	return actor:money() >= 70000
+end
+
+function rare_items_06(actor, npc)
+dialogs.relocate_money(npc, 70000, "out")
+dialogs.relocate_item_section(actor, "af_7", "in")
+end
+
+
+function has_rare_items_02(actor, npc)
+	return actor:money() >= 190000
+end
+
+function rare_items_05(actor, npc)
+dialogs.relocate_money(npc, 190000, "out")
+dialogs.relocate_item_section(actor, "wpn_kac_pd1", "in")
+end
+
+
+function has_rare_items_05(actor, npc)
+	return actor:money() >= 250000
+end
+
+function rare_items_07(actor, npc)
+dialogs.relocate_money(npc, 250000, "out")
+dialogs.relocate_item_section(actor, "af_health_stone", "in")
+end
+
+
+function has_rare_items_06(actor, npc)
+	return actor:money() >= 80000
+end
+
+function rare_items_08(actor, npc)
+dialogs.relocate_money(npc, 80000, "out")
+dialogs.relocate_item_section(actor, "af_10", "in")
+end
+
+
+function has_rare_items_07(actor, npc)
+	return actor:money() >= 145000
+end
+
+function rare_items_09(actor, npc)
+dialogs.relocate_money(npc, 145000, "out")
+dialogs.relocate_item_section(actor, "wpn_gro1z", "in")
+end
+
+
+function has_rare_items_08(actor, npc)
+	return actor:money() >= 29000
+end
+
+function rare_items_10(actor, npc)
+dialogs.relocate_money(npc, 29000, "out")
+dialogs.relocate_item_section(actor, "wpn_saiga12c", "in")
+end
+
+function has_rare_items_09(actor, npc)
+	return actor:money() >= 30000
+end
+
+function rare_items_11(actor, npc)
+dialogs.relocate_money(npc, 30000, "out")
+dialogs.relocate_item_section(actor, "wpn_auto_mag", "in")
+end
+
+
+function has_rare_items_10(actor, npc)
+	return actor:money() >= 60000
+end
+
+function rare_items_12(actor, npc)
+dialogs.relocate_money(npc, 60000, "out")
+dialogs.relocate_item_section(actor, "wpn_svi_dragoon", "in")
+end
+
+function has_rare_items_11(actor, npc)
+	return actor:money() >= 70000
+end
+
+function rare_items_13(actor, npc)
+dialogs.relocate_money(npc, 70000, "out")
+dialogs.relocate_item_section(actor, "wpn_xm110", "in")
+end
+
+function has_rare_items_12(actor, npc)
+	return actor:money() >= 10000
+end
+
+function rare_items_14(actor, npc)
+dialogs.relocate_money(npc, 10000, "out")
+dialogs.relocate_item_section(actor, "ammo_7.62x54_7h14", "in")
+dialogs.relocate_item_section(actor, "ammo_7.62x54_7h1", "in")
+dialogs.relocate_item_section(actor, "ammo_7.62x54_ap", "in")
+end
+
+function has_rare_items_13(actor, npc)
+	return actor:money() >= 109000
+end
+
+function rare_items_15(actor, npc)
+dialogs.relocate_money(npc, 109000, "out")
+dialogs.relocate_item_section(actor, "ammo_11.43x23gold", "in")
+end
+
+function has_rare_items_14(actor, npc)
+	return actor:money() >= 75000
+end
+
+function rare_items_16(actor, npc)
+dialogs.relocate_money(npc, 75000, "out")
+dialogs.relocate_item_section(actor, "wpn_galil", "in")
+end
+
+function has_rare_items_15(actor, npc)
+	return actor:money() >= 35000
+end
+
+function rare_items_17(actor, npc)
+dialogs.relocate_money(npc, 35000, "out")
+dialogs.relocate_item_section(actor, "wpn_ak74_military", "in")
+end
+
+function rare_items_18(actor, npc)
+dialogs.relocate_money(npc, 35000, "out")
+dialogs.relocate_item_section(actor, "wpn_groza_dolg", "in")
+end
+
+
+function has_rare_items_433(actor, npc)
+	return actor:money() >= 4000
+end
+
+function rare_items_433(actor, npc)
+dialogs.relocate_money(npc, 4000, "out")
+dialogs.relocate_item_section(actor, "ammo_11.43x23_fmj", "in")
+end
+
+
+function has_rare_items_315(actor, npc)
+	return actor:money() >= 3000
+end
+
+function rare_items_315(actor, npc)
+dialogs.relocate_money(npc, 3000, "out")
+dialogs.relocate_item_section(actor, "arrow_carbon", "in")
+end

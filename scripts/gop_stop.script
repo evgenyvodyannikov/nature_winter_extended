@@ -1,0 +1,371 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : gop_stop.script
+ Description : Игрок гоп
+ Copyright   : 2011 © Stalk15
+ Author      : Stalk15
+ Last update : 07.01.2011 
+--]]----------------------------------------------------------------------------------------------------
+
+
+local tUnicItems = 
+{
+        "wpn_knife",
+        "binocular_a",
+        "device_pda",
+        "device_torch",
+        "detector_simple",
+        "detector_advances",
+        "detector_elite",
+        "bolt",
+        "hand_radio"
+}
+
+local random
+local tNpcItems = {}
+
+function Actor_Otrabotal_Money(actor, speaker)
+    local NpcC = level.object_by_id(actor:id())
+    local NpcMany = GetNpcMoney(NpcC)
+	NpcMany = math.random(NpcMany - NpcMany/3.5, NpcMany + NpcMany/3)
+    dialogs.relocate_money(actor, NpcMany, "in")
+end
+
+function Actor_Otrabotal_Items(actor, speaker)
+  local NpcC = level.object_by_id(actor:id())
+    tNpcItems = {}
+      NpcC:iterate_inventory(function(dummy, Item)
+	   local tT = exchanging_items.GetTable_all_items()
+	    for k, v in pairs(tT) do
+           if Item:section() == v then
+                table.insert(tNpcItems, v)
+	         end
+	      end
+      end
+   ,nil)
+  Actor_Otrabotal_Items_(actor, speaker)
+end
+
+function Actor_Otrabotal_Items_(actor, speaker)
+  local ItemSection
+    if #tNpcItems > 0 then
+        for i=1,#tNpcItems do
+            ItemSection = tNpcItems[i]
+			dialogs.relocate_item_section(actor, ItemSection, "in")
+			actor:drop_item(actor:object(ItemSection))
+		    local sobj = alife():object(actor:object(ItemSection):id())
+                if sobj then 
+                    alife():release(sobj,true)
+		        end
+		   end
+	  end
+end			
+				
+function GetNpcMoney(Npc)
+    return Npc:money()
+end
+
+
+function joke_precondition4() 
+    random = math.random(1, 4) 
+end
+
+function rnd_phrase3() 
+    if random == r then return false 
+        elseif random == 1 then 
+            return true 
+        else 
+       return false 
+    end 
+end
+
+function not_rnd_phrase3() 
+    return not rnd_phrase3()
+end
+
+
+------------------ Диалоги ------------------
+local gop_stop_dlg_1_0 = "Слышь, сталкер! Есть че по мелочи? Гони сюда!"
+
+local gop_stop_dlg_1_1 = "Нет, нету."
+local gop_stop_dlg_1_2 = "Э! Ты у кого бабос решил отработать!? Щеголяй от сюда, пока сам не раскошелился!"
+local gop_stop_dlg_1_3 = "Вот, на, забирай! Только не трогай меня!"
+
+local gop_stop_dlg_1_4 = "Как нету? Ты че мне втираешь? Гони бабло, говорю, пока башню не снес!"
+local gop_stop_dlg_1_5 = "Ты не понял еще? Я тебе сказал не вонять, а бабло отваливать! Так что давай, подсуетись, пока не просек тебе!"
+local gop_stop_dlg_1_6 = "Во-о-о! Молодчик! Ну все, до встречи, парниша!"
+
+local gop_stop_dlg_1_7 = "Отстань от меня. Я тебе ни чего не дам!"
+local gop_stop_dlg_1_8 = "Не, мужик, ты че, вообще не вкупаешь что ли!? Я тебе сказал, вали от сюда нн-аа-хх-ее-рр! Понял, да!? Если щас не свалишь, получишь от меня пополной!"
+
+local gop_stop_dlg_1_9 = "Не дашь? Ну, тогда я щас сам возьму ..."
+local gop_stop_dlg_1_10 = "Ладно, я шманать не буду. Нет, так нет."
+local gop_stop_dlg_1_11 = "Слышь, посыльный! Я тебе щас посылалку то отломаю и засуну тебе кое-куда!"
+local gop_stop_dlg_1_12 = "Да ладно, че? Я так понял ты ни чего не дашь, значит пойду я уже от сюда."
+
+
+
+
+
+local gop_stop_dlg_2_0 = "Слышь, уважаемый! Отщеми мне денег, а?"
+
+local gop_stop_dlg_2_1 = "Нет, у меня нету денег."
+local gop_stop_dlg_2_2 = "Эй, гопота! Ты не у того деньги отщемить хочешь! Ковыляй от сюда, бычара! Ты не на ту лужайку попал, тебе тут ни чего не обломится!"
+local gop_stop_dlg_2_3 = "Вот, все, что есть! Бери и не трожь меня!"
+
+local gop_stop_dlg_2_4 = "Как нету? А ты найди! Я сказал, отщеми бабос! А где ты его возьмешь - твои проблемы."
+local gop_stop_dlg_2_5 = "Ты че, дерзкий что ли, я не понял? Ты че дерзишь? Я больше повтоять не буду. Филки сюда сыпь!"
+local gop_stop_dlg_2_6 = "О-о, красавчик, уважаю! Здоровье ведь дороже, чем деньги, да? Хе, ну я пошел."
+
+local gop_stop_dlg_2_7 = "Иди от сюда. У меня ни чего для тебя нет и я тебе ни чего не отдам просто так."
+local gop_stop_dlg_2_8 = "Слышь, ты че быкуешь, а? Я тебе щас вместо денег шиздюлей отсыплю! Если щас не побежишь нафиг от сюда, то я тебе так втащу, вся рожа посинеет, понял?! Давай, вали-вали!"
+
+local gop_stop_dlg_2_9 = gop_stop_dlg_1_9
+local gop_stop_dlg_2_10 = "Ну, нет, так нет. Ладно тогда."
+local gop_stop_dlg_2_11 = "Ты попал конкретно! Щас я тебе маргалы прострелю!"
+local gop_stop_dlg_2_12 = "Я понял. Уже валю."
+
+
+
+
+local gop_stop_dlg_3_0 = "Слышь, стопэ! Сюда иди! Бабки есть?"
+
+local gop_stop_dlg_3_1 = "Я деньгами в данный момент не распалагаю и ни чем тебе помочь не смогу."
+local gop_stop_dlg_3_2 = "Ты кого стопанул то, а!? Слышь, ё!? Ты на кого рот поднимаешь? Газуй от сюда, чтоб я видел, как твои гопские пятки сверкают!"
+local gop_stop_dlg_3_3 = "Забирай все, что есть. А теперь уходи."
+
+local gop_stop_dlg_3_4 = "Че сказал? Ни че не понял! Ты че базаришь? Ты бабки сюда гони!"
+local gop_stop_dlg_3_5 = "Ни шутя! Ты че, дикий что ли!? Ты че, лохозавр, бабло щеми сюда!"
+local gop_stop_dlg_3_6 = "Вот, другое дело! Вот так бы всегда. Пойду, может еще чего отработаю."
+
+local gop_stop_dlg_3_7 = "Отвянь от меня. Не лезь ко мне."
+local gop_stop_dlg_3_8 = "Ты че бача, не понял что ли? Тебе просечь надо, чтоб ты понял? Я щас просеку, если не сдриснешь от сюда!"
+
+local gop_stop_dlg_3_9 = "Вянут цветы, а ты щас сляжешь!"
+local gop_stop_dlg_3_10 = "Повезло тебе, я ухожу."
+local gop_stop_dlg_3_11 = "Ты мне просечешь? Ты сам напросился! Лови удар!"
+local gop_stop_dlg_3_12 = "Да ладно, че ты, я же в шутку. Я ушел."
+
+
+
+
+local gop_stop_dlg_4_0 = "Эй, сталкер, сюда иди! Гони хабар, пока не сломал тебе нос!"
+
+local gop_stop_dlg_4_1 = "У меня ни чего нет."
+local gop_stop_dlg_4_2 = "Какой хабар, базар фильтруй! Я тебя щас за такие слова ушатаю сдесь на месте и могилку поставлю."
+local gop_stop_dlg_4_3 = "Вот, все, что у меня есть. Забирай и не трогай меня."
+
+local gop_stop_dlg_4_4 = "Че ты гонишь, что нету? А если не так?"
+local gop_stop_dlg_4_5 = "Могилку ты поставишь, но только не для меня, а для себя! У тебя последняя попытка. Хабар сюда щеми!"
+local gop_stop_dlg_4_6 = "О! Маловато что-то, но в принципе сойдет! Давай, до встречи."
+
+local gop_stop_dlg_4_7 = "Не лезь ко мне, у меня нет хабара."
+local gop_stop_dlg_4_8 = "Ты че, бессмертный что ли? Я щас пушку то достану, замолкнешь сразу! Топай от сюда, пока я тебе реально башку не пробырявил."
+
+local gop_stop_dlg_4_9 = "Я щас сам заберу."
+local gop_stop_dlg_4_10 = gop_stop_dlg_2_10
+local gop_stop_dlg_4_11 = "Че ты меня пушкой пугаешь. Я щас сам пушку достану и яйца тебе отсрелю!"
+local gop_stop_dlg_4_12 = gop_stop_dlg_3_12
+
+
+
+
+
+local gop_stop_dlg_5_0 = "Слышь, хабар на бочку! ...Гони хабар говорю!"
+
+local gop_stop_dlg_5_1 = gop_stop_dlg_4_1
+local gop_stop_dlg_5_2 = "Ты че, попутал? Завали свое гопское рыло и только посмей еще раз новонять из своего рыла!"
+local gop_stop_dlg_5_3 = gop_stop_dlg_4_3
+
+local gop_stop_dlg_5_4 = "Харэ гнать! Все у тебя есть, не гони! Хабар сюда давай!"
+local gop_stop_dlg_5_5 = "Ты че так базаришь? Самый смелый что ли, а, лошара!? Хабар сюда дал быром!"
+local gop_stop_dlg_5_6 = "О, нормально! Не сахар, но пойдет."
+
+local gop_stop_dlg_5_7 = "Не приставай ко мне! Нету у меня ни чего, нету, понимаешь?"
+local gop_stop_dlg_5_8 = "А ты, я смтрю, реально, самый смелый! Короче, я тебя предупреждаю: Еще одно действие против меня, и я тебе так втащу, чо вся твоя дерзкая рожа расплющится и будешь свои зубы собирать!"
+
+local gop_stop_dlg_5_9 = gop_stop_dlg_4_9
+local gop_stop_dlg_5_10 = "Ну ладно, я тогда пойду."
+local gop_stop_dlg_5_11 = "Ну давай, попробуй. Я и сам могу хорошенько втащить!"
+local gop_stop_dlg_5_12 = "Стой! Все, не кипишуй. Это просто юмор у меня такой. Я ухожу уже."
+
+
+
+function init_gop_stop_dlg_1(dlg)
+    phr0 = dlg:AddPhrase(gop_stop_dlg_1_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddAction("gop_stop.joke_precondition4")
+    phr1 = dlg:AddPhrase(gop_stop_dlg_1_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+		phr1:GetPhraseScript():AddPrecondition("gop_stop.not_rnd_phrase3")
+    phr2 = dlg:AddPhrase(gop_stop_dlg_1_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+    phr3 = dlg:AddPhrase(gop_stop_dlg_1_3, "3", "0", -10000)
+        phr3:GetPhraseScript():AddAction("gop_stop.Actor_Otrabotal_Money")
+	    phr3:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	    phr3:GetPhraseScript():AddPrecondition("gop_stop.rnd_phrase3")
+    phr4 = dlg:AddPhrase(gop_stop_dlg_1_4, "4", "1", -10000)
+    phr5 = dlg:AddPhrase(gop_stop_dlg_1_5, "5", "2", -10000)
+    phr6 = dlg:AddPhrase(gop_stop_dlg_1_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr7 = dlg:AddPhrase(gop_stop_dlg_1_7, "7", "4", -10000)
+    phr8 = dlg:AddPhrase(gop_stop_dlg_1_8, "8", "5", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+    phr9 = dlg:AddPhrase(gop_stop_dlg_1_9, "9", "7", -10000)
+    phr10 = dlg:AddPhrase(gop_stop_dlg_1_10, "10", "7", -10000)
+	phr10Dublicate = dlg:AddPhrase(gop_stop_dlg_1_10, "10", "1", -10000)
+	    phr10:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr11 = dlg:AddPhrase(gop_stop_dlg_1_11, "11", "8", -10000)
+	    phr11:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+    phr12 = dlg:AddPhrase(gop_stop_dlg_1_12, "12", "8", -10000)
+	phr12Dublicate = dlg:AddPhrase(gop_stop_dlg_1_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr3Dublicate = dlg:AddPhrase(gop_stop_dlg_1_3, "3", "4", -10000)
+end
+
+
+function init_gop_stop_dlg_2(dlg)
+    phr0 = dlg:AddPhrase(gop_stop_dlg_2_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddAction("gop_stop.joke_precondition4")
+    phr1 = dlg:AddPhrase(gop_stop_dlg_2_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+		phr1:GetPhraseScript():AddPrecondition("gop_stop.not_rnd_phrase3")
+    phr2 = dlg:AddPhrase(gop_stop_dlg_2_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+    phr3 = dlg:AddPhrase(gop_stop_dlg_2_3, "3", "0", -10000)
+        phr3:GetPhraseScript():AddAction("gop_stop.Actor_Otrabotal_Money")
+	    phr3:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	    phr3:GetPhraseScript():AddPrecondition("gop_stop.rnd_phrase3")
+    phr4 = dlg:AddPhrase(gop_stop_dlg_2_4, "4", "1", -10000)
+    phr5 = dlg:AddPhrase(gop_stop_dlg_2_5, "5", "2", -10000)
+    phr6 = dlg:AddPhrase(gop_stop_dlg_2_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr7 = dlg:AddPhrase(gop_stop_dlg_2_7, "7", "4", -10000)
+    phr8 = dlg:AddPhrase(gop_stop_dlg_2_8, "8", "5", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+    phr9 = dlg:AddPhrase(gop_stop_dlg_2_9, "9", "7", -10000)
+    phr10 = dlg:AddPhrase(gop_stop_dlg_2_10, "10", "7", -10000)
+	phr10Dublicate = dlg:AddPhrase(gop_stop_dlg_2_10, "10", "1", -10000)
+	    phr10:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr11 = dlg:AddPhrase(gop_stop_dlg_2_11, "11", "8", -10000)
+		phr11:GetPhraseScript():AddAction("derzkiy_actor.npc_enemy_to_actor")
+		phr11:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr12 = dlg:AddPhrase(gop_stop_dlg_2_12, "12", "8", -10000)
+	phr12Dublicate = dlg:AddPhrase(gop_stop_dlg_1_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr3Dublicate = dlg:AddPhrase(gop_stop_dlg_2_3, "3", "4", -10000)
+end
+
+
+function init_gop_stop_dlg_3(dlg)
+    phr0 = dlg:AddPhrase(gop_stop_dlg_3_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddAction("gop_stop.joke_precondition4")
+    phr1 = dlg:AddPhrase(gop_stop_dlg_3_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+		phr1:GetPhraseScript():AddPrecondition("gop_stop.not_rnd_phrase3")
+    phr2 = dlg:AddPhrase(gop_stop_dlg_3_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+    phr3 = dlg:AddPhrase(gop_stop_dlg_3_3, "3", "0", -10000)
+        phr3:GetPhraseScript():AddAction("gop_stop.Actor_Otrabotal_Money")
+	    phr3:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	    phr3:GetPhraseScript():AddPrecondition("gop_stop.rnd_phrase3")
+    phr4 = dlg:AddPhrase(gop_stop_dlg_3_4, "4", "1", -10000)
+    phr5 = dlg:AddPhrase(gop_stop_dlg_3_5, "5", "2", -10000)
+    phr6 = dlg:AddPhrase(gop_stop_dlg_3_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr7 = dlg:AddPhrase(gop_stop_dlg_3_7, "7", "4", -10000)
+    phr8 = dlg:AddPhrase(gop_stop_dlg_3_8, "8", "5", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+    phr9 = dlg:AddPhrase(gop_stop_dlg_3_9, "9", "7", -10000)
+    phr10 = dlg:AddPhrase(gop_stop_dlg_3_10, "10", "7", -10000)
+	phr10Dublicate = dlg:AddPhrase(gop_stop_dlg_3_10, "10", "1", -10000)
+	    phr10:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr11 = dlg:AddPhrase(gop_stop_dlg_3_11, "11", "8", -10000)
+		phr11:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+    phr12 = dlg:AddPhrase(gop_stop_dlg_3_12, "12", "8", -10000)
+	phr12Dublicate = dlg:AddPhrase(gop_stop_dlg_1_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr3Dublicate = dlg:AddPhrase(gop_stop_dlg_3_3, "3", "4", -10000)
+end
+
+
+function init_gop_stop_dlg_4(dlg)
+    phr0 = dlg:AddPhrase(gop_stop_dlg_4_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddAction("gop_stop.joke_precondition4")
+    phr1 = dlg:AddPhrase(gop_stop_dlg_4_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+		phr1:GetPhraseScript():AddPrecondition("gop_stop.not_rnd_phrase3")
+    phr2 = dlg:AddPhrase(gop_stop_dlg_4_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+    phr3 = dlg:AddPhrase(gop_stop_dlg_4_3, "3", "0", -10000)
+        phr3:GetPhraseScript():AddAction("gop_stop.Actor_Otrabotal_Items")
+	    phr3:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	    phr3:GetPhraseScript():AddPrecondition("gop_stop.rnd_phrase3")
+    phr4 = dlg:AddPhrase(gop_stop_dlg_4_4, "4", "1", -10000)
+    phr5 = dlg:AddPhrase(gop_stop_dlg_4_5, "5", "2", -10000)
+    phr6 = dlg:AddPhrase(gop_stop_dlg_4_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr7 = dlg:AddPhrase(gop_stop_dlg_4_7, "7", "4", -10000)
+    phr8 = dlg:AddPhrase(gop_stop_dlg_4_8, "8", "5", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+    phr9 = dlg:AddPhrase(gop_stop_dlg_4_9, "9", "7", -10000)
+    phr10 = dlg:AddPhrase(gop_stop_dlg_4_10, "10", "7", -10000)
+	phr10Dublicate = dlg:AddPhrase(gop_stop_dlg_4_10, "10", "1", -10000)
+	    phr10:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr11 = dlg:AddPhrase(gop_stop_dlg_4_11, "11", "8", -10000)
+		phr11:GetPhraseScript():AddAction("derzkiy_actor.npc_enemy_to_actor")
+		phr11:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr12 = dlg:AddPhrase(gop_stop_dlg_4_12, "12", "8", -10000)
+	phr12Dublicate = dlg:AddPhrase(gop_stop_dlg_4_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr3Dublicate = dlg:AddPhrase(gop_stop_dlg_4_3, "3", "4", -10000)
+end
+
+function init_gop_stop_dlg_5(dlg)
+    phr0 = dlg:AddPhrase(gop_stop_dlg_5_0, "0", "-1", -10000)
+	    phr0:GetPhraseScript():AddAction("gop_stop.joke_precondition4")
+    phr1 = dlg:AddPhrase(gop_stop_dlg_5_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+		phr1:GetPhraseScript():AddPrecondition("gop_stop.not_rnd_phrase3")
+    phr2 = dlg:AddPhrase(gop_stop_dlg_5_2, "2", "0", -10000)
+	    phr2:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+    phr3 = dlg:AddPhrase(gop_stop_dlg_5_3, "3", "0", -10000)
+        phr3:GetPhraseScript():AddAction("gop_stop.Actor_Otrabotal_Items")
+	    phr3:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_older")
+	    phr3:GetPhraseScript():AddPrecondition("gop_stop.rnd_phrase3")
+    phr4 = dlg:AddPhrase(gop_stop_dlg_5_4, "4", "1", -10000)
+    phr5 = dlg:AddPhrase(gop_stop_dlg_5_5, "5", "2", -10000)
+    phr6 = dlg:AddPhrase(gop_stop_dlg_5_6, "6", "3", -10000)
+	    phr6:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr7 = dlg:AddPhrase(gop_stop_dlg_5_7, "7", "4", -10000)
+    phr8 = dlg:AddPhrase(gop_stop_dlg_5_8, "8", "5", -10000)
+	    phr8:GetPhraseScript():AddPrecondition("derzkiy_actor.precond_actor_under_or_ravno")
+	    phr8:GetPhraseScript():AddAction("derzkiy_actor.rnd_vsech_actoru")
+    phr9 = dlg:AddPhrase(gop_stop_dlg_5_9, "9", "7", -10000)
+    phr10 = dlg:AddPhrase(gop_stop_dlg_5_10, "10", "7", -10000)
+	phr10Dublicate = dlg:AddPhrase(gop_stop_dlg_5_10, "10", "1", -10000)
+	    phr10:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr11 = dlg:AddPhrase(gop_stop_dlg_5_11, "11", "8", -10000)
+		phr11:GetPhraseScript():AddAction("derzkiy_actor.vsech_po_rozhe_actora")
+		phr11:GetPhraseScript():AddAction("dialogs.break_dialog")
+    phr12 = dlg:AddPhrase(gop_stop_dlg_5_12, "12", "8", -10000)
+	phr12Dublicate = dlg:AddPhrase(gop_stop_dlg_5_12, "12", "2", -10000)
+	    phr12:GetPhraseScript():AddAction("dialogs.break_dialog")
+	phr3Dublicate = dlg:AddPhrase(gop_stop_dlg_5_3, "3", "4", -10000)
+end
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,589 @@
+
+    <game_task id="storyline_eliminate_gunslinger">
+        <title>storyline_escape_eliminate_gunslinger</title>
+        <objective>
+            <text>storyline_escape_eliminate_gunslinger</text>
+            <icon>ui_iconsTotal_storyline_eliminate_gunslinger</icon>
+            <infoportion_fail>cit_fail_first_task</infoportion_fail>
+            <article>storyline_gunslinger</article>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return</infoportion_complete>
+        </objective>
+        <objective>
+            <text>storyline_escape_find_gunslinger</text>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return</infoportion_complete>
+        </objective>
+        <objective>
+            <text>storyline_escape_eliminate_gunslinger</text>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="tutorial_find_artefact">
+        <title>tutorial_find_artefact</title>
+        <objective>
+            <text>tutorial_find_artefact_0</text>
+            <icon>ui_iconsTotal_tutorial_find_artefact</icon>            
+            <infoportion_complete>tutorial_artefact_done</infoportion_complete>
+        </objective>
+        <objective>
+            <text>tutorial_find_artefact_1</text>
+            <map_location_type hint="tutorial_artefact">green_location</map_location_type>
+            <object_story_id>Escape_Tutorial_Artefact</object_story_id>
+            <infoportion_complete>tutorial_artefact_gain</infoportion_complete>
+        </objective>
+        <objective>
+            <text>tutorial_find_artefact_2</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>tutorial_artefact_done</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="esc_help_wounded_from_raid" prio="485">
+        <title>esc_help_wounded_from_raid</title>
+        <objective>
+            <text>esc_help_wounded_from_raid_0</text>
+            <icon>ui_iconsTotal_esc_help_wounded_from_raid</icon>
+            <function_complete>escape_tasks.task_fox_complete</function_complete>
+            <infoportion_set_complete>garbage_meetstalker_start</infoportion_set_complete>            
+            <article>esc_fox_help</article>
+        </objective>
+        <objective>
+            <text>esc_help_wounded_from_raid_1</text>
+            <map_location_type hint="esc_fox">green_location</map_location_type>
+            <object_story_id>Escape_stalker_from_raid</object_story_id>
+            <infoportion_complete>escape_fox_heal</infoportion_complete>
+            <infoportion_fail>esc_dogs_return</infoportion_fail>
+        </objective>
+        <objective>
+            <text>esc_help_wounded_from_raid_2</text>
+            <map_location_type hint="esc_fox">green_location</map_location_type>
+            <object_story_id>Escape_stalker_from_raid</object_story_id>
+            <infoportion_complete>escape_stalker_done</infoportion_complete>
+        </objective>
+    </game_task>
+
+
+    <game_task id="esc_blockpost_case_to_trader" prio="390">
+        <title>esc_blockpost_case_to_trader</title>
+        <objective>
+            <text>esc_blockpost_case_to_trader_0</text>
+            <icon>ui_iconsTotal_esc_blockpost_case_to_trader</icon>
+            <infoportion_complete>escape_blockpost_case_done</infoportion_complete>
+        </objective>
+        <objective>
+            <text>esc_blockpost_case_to_trader_1</text>
+            <map_location_type hint="blokpost_case">green_location</map_location_type>
+            <object_story_id>Escape_blockpost_case</object_story_id>
+            <infoportion_complete>escape_blockpost_case_have</infoportion_complete>
+        </objective>
+        <objective>
+            <text>esc_blockpost_case_to_trader_2</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>escape_blockpost_case_done</infoportion_complete>            
+        </objective>
+    </game_task>
+
+    <game_task id="esc_dinamit_to_volk">
+        <title>esc_dinamit_to_volk</title>
+        <objective>
+            <text>esc_dinamit_to_volk_0</text>
+            <icon>ui_iconsTotal_esc_dinamit_to_volk</icon>
+            <infoportion_complete>esc_kill_bandits_quest_done</infoportion_complete>
+            <infoportion_fail>esc_wolf_dead</infoportion_fail>
+<!--            <function_fail>escape_tasks.is_actor_enemy_lager</function_fail> -->
+        </objective>
+        <objective>
+            <text>esc_dinamit_to_volk_1</text>
+            <map_location_type hint="wolfs_rangers">green_location</map_location_type>
+            <object_story_id>Escape_bridge_stalkers</object_story_id>
+            <function_complete>escape_tasks.petruha_talk</function_complete>            
+            <infoportion_fail>esc_petruha_die</infoportion_fail>
+        </objective>        
+        <objective>
+            <text>esc_dinamit_to_volk_2</text>
+            <map_location_type hint="esc_dinamit_to_volk">green_location</map_location_type> <!-- escape_dinamit -->
+            <object_story_id>esc_bandits_factory</object_story_id>
+            <infoportion_complete>esc_kill_bandits_quest_kill</infoportion_complete>
+        </objective>
+        <objective>
+            <text>esc_dinamit_to_volk_3</text>
+            <map_location_type hint="volk">green_location</map_location_type>
+            <object_story_id>Escape_novice_lager_volk</object_story_id>
+            <infoportion_complete>esc_kill_bandits_quest_done</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="esc_defend_lager" prio="385">
+        <title>esc_defend_lager_from_killers</title>
+        <objective>
+            <text>esc_defend_lager_from_killers_0</text>
+            <icon>ui_iconsTotal_esc_defend_lager</icon>
+            <function_complete>escape_tasks.task_lager_complete</function_complete>
+            <infoportion_fail>esc_lager_destroyed</infoportion_fail>
+            <function_fail>escape_tasks.is_actor_enemy_lager</function_fail>
+        </objective>
+        <objective>
+            <text>esc_defend_lager_from_killers_1</text>
+            <map_location_type hint="killers_team">green_location</map_location_type>
+            <object_story_id>esc_leader_killers</object_story_id>
+            <infoportion_complete>escape_lager_killers_die</infoportion_complete>
+        </objective>        
+        <objective>
+            <text>esc_defend_lager_from_killers_2</text>
+            <map_location_type hint="novice_leader">green_location</map_location_type>
+            <object_story_id>esc_lager_leader</object_story_id>
+            <infoportion_complete>escape_lager_complete</infoportion_complete>
+            <infoportion_fail>esc_fanat_die</infoportion_fail>
+        </objective>
+    </game_task>
+    
+    <game_task id="doctor_meet">
+        <title>meet_with_doctor</title>
+        <objective>
+            <text>meet_with_doctor_1</text>
+            <icon>ui_iconsTotal_doctor_meet</icon>
+            <infoportion_complete>esc_find_doctor_done</infoportion_complete>
+            <article>esc_doctor_meet</article>
+        </objective>
+        <objective>
+            <text>meet_with_doctor_2</text>
+            <map_location_type hint="meet_with_doctor_2">green_location</map_location_type>
+            <object_story_id>agr_doctor_spot</object_story_id>            
+        </objective>
+    </game_task>
+    
+    <!----------------------------- NEW: first task from trader----------------------------------->
+    
+        <game_task id="esc_flash_task" prio="495">
+        <title>tutorial_help_wounded</title>
+        <objective>
+            <text>tutorial_help_wounded</text>
+            <icon>ui_iconsTotal_tutorial_help_wounded</icon>
+            <infoportion_complete>esc_serious_talk</infoportion_complete>
+            <article>esc_flash_task_descr</article>
+        </objective>
+        <objective>
+            <text>tutorial_help_wounded_1</text>
+            <map_location_type hint="volk">green_location</map_location_type>
+            <object_story_id>Escape_novice_lager_volk</object_story_id>
+            <infoportion_complete>esc_shustry_located</infoportion_complete>
+            <function_fail>escape_tasks.task_volk_fail</function_fail>
+        </objective>
+        <objective>
+            <text>tutorial_help_wounded_2</text>
+            <map_location_type hint="tutorial_wounded">green_location</map_location_type>
+            <object_story_id>Escape_tutorial_wounded</object_story_id>
+            <map_location_hidden>1</map_location_hidden>
+            <infoportion_complete>tutorial_wounded_give_info</infoportion_complete>
+        </objective>
+        <objective>
+            <text>tutorial_help_wounded_3</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>esc_serious_talk</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="esc_atp_task">
+        <title>esc_dinamit_to_volk</title>
+        <objective>
+            <text>esc_dinamit_to_volk_1</text>
+            <map_location_type hint="wolfs_rangers">green_location</map_location_type>
+            <object_story_id>Escape_bridge_stalkers</object_story_id>
+            <map_location_hidden>1</map_location_hidden>
+            <function_complete>escape_tasks.petruha_talk</function_complete>            
+            <infoportion_fail>esc_petruha_die</infoportion_fail>
+        </objective>
+        <objective>
+            <text>esc_dinamit_to_volk</text>
+            <map_location_type hint="esc_dinamit_to_volk">green_location</map_location_type>
+            <map_location_hidden>1</map_location_hidden>
+            <object_story_id>esc_bandits_factory</object_story_id>
+            <infoportion_complete>esc_kill_bandits_quest_kill</infoportion_complete>
+        </objective>
+    </game_task>
+    
+    <game_task id="esc_trader_job" prio="0">
+        <title>esc_trader_job</title>
+        <objective>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <infoportion_complete>agroprom_military_case</infoportion_complete>
+        </objective>
+        <objective>
+            <text>esc_trader_job_text</text>
+            <map_location_type hint="esc_trader_job_text">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>agroprom_military_case</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="find_railroad_passage" prio="386">
+        <title>find_railroad_passage</title>
+        <objective>
+            <icon>ui_iconsTotal_find_railroad_passage</icon>
+            <article>find_railroad_passage_descr</article>
+            <infoportion_complete>esc_find_railroad_passage_done</infoportion_complete>
+        </objective>
+        <objective>
+            <text>find_railroad_passage_1</text>
+            <infoportion_complete>esc_find_railroad_passage_find_stalker</infoportion_complete>
+            <map_location_type hint="find_railroad_passage_1">green_location</map_location_type>
+            <object_story_id>esc_dead_tunel_novice</object_story_id>
+        </objective>
+        <objective>
+            <text>find_railroad_passage_2</text>
+        </objective>
+    </game_task>
+
+    <game_task id="case_1_trust" prio="500">
+        <title>case_1_trust_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust</infoportion_complete>
+            <infoportion_fail>player_kill_wolf</infoportion_fail>
+        </objective>
+        <objective>
+            <text>talking_with_volk_about_dolg</text>
+            <map_location_type hint="volk">green_location</map_location_type>
+            <object_story_id>Escape_novice_lager_volk</object_story_id>
+            <infoportion_complete>player_talked_with_wolf</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_sidor_case_1_trust</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust</infoportion_complete>
+            <infoportion_fail>player_kill_wolf</infoportion_fail>
+        </objective>
+</game_task>
+
+    <game_task id="case_2_racket" prio="500">
+        <title>case_2_racket_name</title>
+        <objective>
+            <text>talking_with_sidor_case_2_racket</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_2_racket</infoportion_complete>
+            <infoportion_fail>player_not_kill_gar_dolg_blokpost_commander</infoportion_fail>
+        </objective>
+        <objective>
+            <text>talking_with_gar_hellcar_about_dolg</text>
+            <map_location_type hint="Бес">green_location</map_location_type>
+            <object_story_id>gar_hellcar</object_story_id>
+            <infoportion_complete>player_talked_with_gar_hellcar</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_gar_dolg_blokpost_commander_about_dolg</text>
+            <map_location_type hint="Прапор">green_location</map_location_type>
+            <object_story_id>gar_spot_dolg_blokpost</object_story_id>
+            <infoportion_complete>player_talked_with_gar_dolg_blokpost_commander</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_sidor_case_2_racket</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_2_racket</infoportion_complete>
+            <infoportion_fail>player_not_kill_gar_dolg_blokpost_commander</infoportion_fail>
+        </objective>
+</game_task>
+
+    <game_task id="case_2_racket_dk" prio="500">
+        <title>case_2_racket_dk_name</title>
+        <objective>
+            <text>talking_with_sidor_case_2_racket_dk</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_2_racket_dk</infoportion_complete>
+        </objective>
+       <objective>
+            <text>talking_with_gar_hellcar_about_dolg</text>
+            <map_location_type hint="Бес">green_location</map_location_type>
+            <object_story_id>gar_hellcar</object_story_id>
+            <infoportion_complete>player_talked_with_gar_hellcar</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_sidor_case_2_racket_dk</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_2_racket_dk</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_3_subsidiarity" prio="500">
+        <title>case_3_subsidiarity_name</title>
+        <objective>
+            <text>talking_with_sidor_case_3_subsidiarity</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_3_subsidiarity</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_npc_883_about_job</text>
+            <map_location_type hint="Хирург">green_location</map_location_type>
+            <object_story_id>npc_883</object_story_id>
+            <infoportion_complete>player_complete_case_3_subsidiarity</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_4_secret_place" prio="500">
+        <title>case_4_secret_place_name</title>
+        <objective>
+            <text>talking_with_sidor_case_4_secret_place</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_4_secret_place</infoportion_complete>
+        </objective>
+        <objective>
+            <text>take_items_from_secret_place</text>
+            <infoportion_complete>player_take_items_from_secret_place_bullion_gild</infoportion_complete>
+            <infoportion_complete>player_take_items_from_secret_place_af</infoportion_complete>
+        </objective>
+        <objective>
+            <text>back_with_items_to_sidor_bullion_gild_and_af</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_4_secret_place</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_5_translation" prio="500">
+        <title>case_5_translation_name</title>
+        <objective>
+            <text>talking_with_sidor_case_5_translation</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_5_translation</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_barman_about_job</text>
+            <map_location_type hint="Бармен">green_location</map_location_type>
+            <object_story_id>bar_Barman</object_story_id>
+            <infoportion_complete>player_complete_case_5_translation</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_1del4_date_with_death_return" prio="500">
+        <title>case_1del4_date_with_death_return_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1del4_date_with_death_return</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_npc_3337</text>
+            <map_location_type hint="Виктор Наварро">green_location</map_location_type>
+            <object_story_id>npc_3337</object_story_id>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_1del4_date_with_death_return_next" prio="500">
+        <title>case_1del4_date_with_death_return_name_next</title>
+        <objective>
+            <text>talking_with_sidor_case_1del4_date_with_death_return_next</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return_next</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_sidor_case_1del4_date_with_death_return_next</text>
+            <map_location_type hint="Сидорович">green_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1del4_date_with_death_return_next</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_1del2_auditor" prio="500">
+        <title>case_1del2_auditor_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1del2_auditor</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1del2_auditor</infoportion_complete>
+            <infoportion_fail>end_all_in_nw_v2_ql</infoportion_fail>
+        </objective>
+        <objective>
+            <text>player_take_case_1del2_auditor</text>
+            <map_location_type hint="Тайник">blue_location</map_location_type>
+            <object_story_id>treasure_889</object_story_id>
+            <function_complete>case_1del2_auditor.search_case_1del2_auditor</function_complete>
+        </objective>        
+        <objective>
+            <text>back_with_items_sidor_case_1del2_auditor</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1del2_auditor</infoportion_complete>
+            <infoportion_fail>end_all_in_nw_v2_ql</infoportion_fail>
+        </objective>
+    </game_task>
+
+    <game_task id="case_1_trust_kill_volk" prio="500">
+        <title>case_1_trust_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust_kill_wolf</infoportion_complete>
+        </objective>
+        <objective>
+            <text>player_take_wpn_kill_volk</text>
+            <map_location_type hint="Тайник">blue_location</map_location_type>
+            <object_story_id>treasure_889</object_story_id>
+            <function_complete>case_1_trust.search_case_1_trust_wpn_kill_volk</function_complete>
+        </objective>        
+        <objective>
+            <text>back_with_wpn_kill_volk_sidor_case_1_trust</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust_kill_wolf</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="case_1_trust_kill_volk_why" prio="500">
+        <title>case_1_trust_kill_volk_why_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust_kill_volk_why</infoportion_complete>
+        </objective>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why_next</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_1_trust_kill_volk_why</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_sos_help" prio="500">
+        <title>case_sos_help_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>space_on_sos_next</infoportion_complete>
+        </objective>
+        <objective>
+            <text>case_sos_help_next</text>
+            <map_location_type hint="Раненый сталкер">blue_location</map_location_type>
+            <object_story_id>npc_nw_1877</object_story_id>
+            <infoportion_complete>space_on_sos_next</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_sos_all_next" prio="500">
+        <title>case_sos_all_next_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>over_sos_next_pda_all</infoportion_complete>
+        </objective>
+        <objective>
+            <text>case_sos_all_next_man</text>
+            <map_location_type hint="Неизвестно">blue_location</map_location_type>
+            <object_story_id>npc_nw_2821</object_story_id>
+            <infoportion_complete>over_sos_next_pda_all</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_sos_bomba" prio="500">
+        <title>case_sos_bomba_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_find_bomb_sos</infoportion_complete>
+        </objective>
+        <objective>
+            <text>case_sos_bomba_find</text>
+            <infoportion_complete>player_find_bomb_sos</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="bloodsucker_case" prio="500">
+        <title>bloodsucker_case_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_find_bloodsucker_case</infoportion_complete>
+        </objective>
+        <objective>
+            <text>bloodsucker_case_find</text>
+            <infoportion_complete>player_find_bloodsucker_case</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_sos_end_find" prio="500">
+        <title>case_sos_end_find_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk_why</text>
+            <icon>ui_iconsTotal_locations</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_go_find_sos</infoportion_complete>
+        </objective>
+        <objective>
+            <text>case_sos_end_find_man</text>
+            <map_location_type hint="Сталкер">blue_location</map_location_type>
+            <object_story_id>npc_nw_2821</object_story_id>
+            <infoportion_complete>player_go_find_sos</infoportion_complete>
+        </objective>
+</game_task>
+
+    <game_task id="case_12_deal" prio="500">
+        <title>case_12_deal_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_begin_case_12_deal</infoportion_complete>
+        </objective>     
+        <objective>
+            <text>back_case_12_deal</text>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_begin_case_12_deal</infoportion_complete>
+        </objective>
+    </game_task>
+
+    <game_task id="case_13_last_deal" prio="500">
+        <title>case_13_last_deal_name</title>
+        <objective>
+            <text>talking_with_sidor_case_1_trust_kill_volk</text>
+            <icon>ui_iconsTotal_esc_trader_job</icon>
+            <map_location_type hint="escape_trader">blue_location</map_location_type>
+            <object_story_id>Escape_Trader</object_story_id>
+            <infoportion_complete>player_complete_case_13_last_deal</infoportion_complete>
+        </objective>     
+        <objective>
+            <text>search_case_last_deal</text>
+            <infoportion_complete>player_find_last_deal</infoportion_complete>
+        </objective>
+        <objective>
+            <text>find_and_kill_dmitry</text>
+            <infoportion_complete>player_complete_case_13_last_deal</infoportion_complete>
+        </objective>
+    </game_task>

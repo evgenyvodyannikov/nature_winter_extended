@@ -1,0 +1,249 @@
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : cnt_zomb.script
+ Description : Ранг за убийство ходячих
+ Version     : 1.0 - Nature Winter v2.3 QL BV
+ Copyright   : 2012 © Stalk15
+ Author      : Stalk15
+ Last update : 15.07.2012 
+--]]----------------------------------------------------------------------------------------------------
+
+local CntKilledZombies = 0
+local NumberOfRank = 0
+local InitStatic = false
+--/Текстовый названия рангов
+local TableTxtRank = 
+{
+	[0] = "Безранговый",
+	[1] = "Выживший",
+	[2] = "Малоопытный",
+	[3] = "Новичек",
+	[4] = "Сталкер",
+	[5] = "Опытный",
+	[6] = "Охотник",
+	[7] = "Ветеран",
+	[8] = "Мастер",
+	[9] = "Эксперт",
+	[10] = "Беар Гриллс",
+	[11] = "NW-Мясник",
+	[12] = "NW-Безумец",
+	[13] = "NW-Мудрец"
+}
+
+--/Имена или номера медалей, отображаемые в сообщении о их получении
+local TableTxtRankMsg = 
+{
+	[0] = "Медаль 10 ранга",
+	[1] = "Медаль 9 ранга",
+	[2] = "Медаль 8 ранга",
+	[3] = "Медаль 7 ранга",
+	[4] = "Медаль 6 ранга",
+	[5] = "Медаль 5 ранга",
+	[6] = "Медаль 4 ранга",
+	[7] = "Медаль 3 ранга",
+	[8] = "Медаль 2 ранга",
+	[9] = "Медаль 1 ранга",
+	[10] = "Медаль высочайшего ранга 2-ой степени",
+	[11] = "Медаль высочайшего ранга 1-ой степени",
+	[12] = "Медаль - Nature Winter"
+}
+
+--/Нужное кол-во убитых зомби длля получения следующего ранга
+local TableCntZombies = 
+{
+	[0] = 1,
+	[1] = 10,
+	[2] = 35,
+	[3] = 55,
+	[4] = 85,
+	[5] = 105,
+	[6] = 130,
+	[7] = 155,
+	[8] = 200,
+	[9] = 250,
+	[10] = 350,
+	[11] = 415,
+	[12] = 750
+}
+
+--/Секции медалей
+local TableSectionsMedals = 
+{
+	[0] = "medalten",
+	[1] = "medal9",
+	[2] = "medal8",
+	[3] = "medal7",
+	[4] = "medal6",
+	[5] = "medal5",
+	[6] = "medal4",
+	[7] = "medal3",
+	[8] = "medal2",
+	[9] = "medal1",
+	[10] = "medalh2",
+	[11] = "medalh1",
+	[12] = "medalcheat"
+}
+
+--/Кол-во денег, выдаваемых при использовании медали
+local TableMoneysInMedals = 
+{
+	[TableSectionsMedals[0]] = 1000,
+	[TableSectionsMedals[1]] = 5000,
+	[TableSectionsMedals[2]] = 15000,
+	[TableSectionsMedals[3]] = 25000,
+	[TableSectionsMedals[4]] = 40000,
+	[TableSectionsMedals[5]] = 50000,
+	[TableSectionsMedals[6]] = 75000,
+	[TableSectionsMedals[7]] = 100000,
+	[TableSectionsMedals[8]] = 150000,
+	[TableSectionsMedals[9]] = 200000,
+	[TableSectionsMedals[10]] = 500000,
+	[TableSectionsMedals[11]] = 1000000,
+	[TableSectionsMedals[12]] = 10000000
+}
+
+--/секции зомбаков
+local TableSectionsZomb = 
+{
+	[0] = "m_zombie_e",
+	[1] = "zombie_strong",
+	[2] = "zombie_weak",
+	[3] = "zombie_normal",
+	[4] = "zombie_novice_1",
+	[5] = "zombie_novice_2",
+	[6] = "zombie_novice_3",
+	[7] = "zombie_novice_4",
+	[8] = "zombie_novice_5",
+	[9] = "zombie_novice_6",
+	[10] = "zombie_novice_7",
+	[11] = "zombie_experienced_1",
+	[12] = "zombie_experienced_2",
+	[13] = "zombie_experienced_3",
+	[14] = "zombie_experienced_4",
+	[15] = "zombie_experienced_5",
+	[16] = "zombie_veteran_1",
+	[17] = "zombie_veteran_2",
+	[18] = "zombie_veteran_3",
+	[19] = "zombie_veteran_4",
+	[20] = "zombie_veteran_5",
+	[21] = "zombie_master_1",
+	[22] = "zombie_master_2",
+	[23] = "zombie_master_3",
+	[24] = "m_skelet_zombie",
+	[25] = "skelet_strong",
+	[26] = "zombie_plague",
+	[27] = "zombie_plague_novice_1",
+	[28] = "zombie_plague_experienced_1",
+	[29] = "zombie_plague_veteran_1",
+	[30] = "zombie_plague_master_1",
+	[31] = "zombie_rusty",
+	[32] = "zombie_rusty_novice_1",
+	[33] = "zombie_rusty_experienced_1",
+	[34] = "zombie_rusty_veteran_1",
+	[35] = "zombie_rusty_master_1",
+	[36] = "zombie_first_zom_one",
+	[37] = "zombie_first_zom_two",
+	[38] = "zombie_first_zom_three",
+	[39] = "zombie_first_zom_four",
+	[40] = "zombie_first_zom_five",
+	[41] = "zombie_ti",
+	[42] = "zombie_speed",
+	[43] = "zombie_ti_master_1",
+	[44] = "m_skelet_zombie_master_1",
+	[45] = "zombie_speed_master_1"
+}
+
+function StaticUpdate()
+	if InitStatic == true then return true end
+	
+	local hud, custom_static1, custom_static2 = get_hud(), nil, nil
+	
+	custom_static1 = hud:GetCustomStatic("info_killed_zombied")
+	if custom_static1 == nil then
+		hud:AddCustomStatic("info_killed_zombied", true)
+		InitStatic = true
+		--news_manager.send_tip(db.actor, "загрузка1 "..NumberOfRank, 0, "stalker", 25000)
+	end
+	custom_static2 = hud:GetCustomStatic("info_killed_zombied_rank")
+	if custom_static2 == nil then
+		hud:AddCustomStatic("info_killed_zombied_rank", true)
+		--news_manager.send_tip(db.actor, "загрузка2 "..NumberOfRank, 0, "stalker", 25000)
+	end
+	
+	custom_static1 = hud:GetCustomStatic("info_killed_zombied")
+	custom_static2 = hud:GetCustomStatic("info_killed_zombied_rank")
+	if custom_static1 ~= nil then
+		custom_static1:wnd():SetTextST(CntKilledZombies)
+		dbg("custom_static1>>>SetTextST")
+	end
+	if custom_static2 ~= nil then
+		custom_static2:wnd():SetTextST(TableTxtRank[NumberOfRank])
+		dbg("custom_static2>>>SetTextST")
+	end
+end
+
+function on_death(victim, who)
+	if NumberOfRank > #TableTxtRankMsg then return true end
+	local hud = get_hud()
+	local custom_static, searched = nil, false
+	if victim and who then
+		if who:id() == db.actor:id() then
+			for k, v in pairs(TableSectionsZomb) do
+				if v == victim:section() then
+					searched = true
+				end
+			end		
+			if searched == true then
+				CntKilledZombies = CntKilledZombies + 1
+				custom_static = hud:GetCustomStatic("info_killed_zombied")
+				if custom_static ~= nil then
+					custom_static:wnd():SetTextST(CntKilledZombies)
+				end
+			end
+		end
+	end
+	if CntKilledZombies >= TableCntZombies[NumberOfRank] then
+		NumberOfRank = NumberOfRank + 1
+		news_manager.send_tip(db.actor, "Получена «"..TableTxtRankMsg[NumberOfRank - 1].."»", 0, "stalker", 30000)
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+		alife():create(TableSectionsMedals[NumberOfRank - 1], db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		custom_static = hud:GetCustomStatic("info_killed_zombied_rank")
+		if custom_static ~= nil then
+			custom_static:wnd():SetTextST(TableTxtRank[NumberOfRank])
+		end
+	end
+end
+
+function OnUse(obj)
+	if obj then
+		local IsMedal, ObjSec = nil, obj:section()
+		for k, v in pairs(TableSectionsMedals) do
+			if v == ObjSec then
+				IsMedal = k
+			end
+		end
+		if IsMedal ~= nil then
+			db.actor:give_money(TableMoneysInMedals[ObjSec])
+			news_manager.send_tip(db.actor, "Использована «"..TableTxtRankMsg[IsMedal].."». Получено денег: "..TableMoneysInMedals[ObjSec], 0, "stalker", 15000)
+		end
+	end
+end
+
+
+
+
+
+
+
+function save_var(p)
+	p:w_u32(CntKilledZombies)
+	p:w_u32(NumberOfRank)
+end
+
+function load_var(r)
+	CntKilledZombies = r:r_u32()
+	NumberOfRank = r:r_u32()
+end
+function dbg(DbgInfo)
+    get_console():execute("debug:~>"..DbgInfo)
+end

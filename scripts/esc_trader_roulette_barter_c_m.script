@@ -1,0 +1,51 @@
+function actor_have_af(actor, npc)
+      return actor:object("af_telepatic_crystall") ~= nil
+end
+
+function actor_have_tax(actor, npc)
+	return actor:money() >= 4000
+end
+
+function actor_give_tax_art_and_receives(actor, npc)
+local tbl = "actor"
+local items = {{'bread',3,'conserva','kolbasa',2},
+{'vodka','conserva'},
+{'medkit','medkit_army','medkit_scientic'},
+'antirad', 3,
+{'guitar_a','harmonica_a'},
+'grenade_rgd5', 2,
+'grenade_f1', 2,
+'af_rusty_thorn',
+'af_drops',
+{'wpn_fort','ammo_9x18_fmj'},
+{'wpn_bm16','ammo_12x70_buck'},
+{'wpn_walther','ammo_9x19_fmj'},
+{'wpn_mp5','ammo_9x19_fmj'},
+{'wpn_colt1911','ammo_11.43x23_fmj'},
+{'wpn_ak74u','ammo_5.45x39_fmj'},
+{'wpn_abakan','ammo_5.45x39_fmj'},
+{'wpn_spas12','ammo_12x76_zhekan'},
+{'wpn_ak74','ammo_5.45x39_fmj'},
+{'wpn_lr300','ammo_5.56x45_ss190'},
+{'wpn_s11','ammo_9x18_fmj'},
+{'wpn_l85','ammo_5.56x45_ss190'},
+{'wpn_glock_1','ammo_9x19_fmj'},
+{'wpn_glock_2','ammo_9x19_fmj'},
+{'wpn_glock_3','ammo_9x19_fmj'},
+{'wpn_remington870','ammo_12x76_zhekan'},
+{'wpn_saiga12c','ammo_12x76_zhekan'},
+'killer_outfit',
+'bandit_outfit',
+'af_fuzz_kolobok'}      
+xr_effects.uni_random_spawn(items, tbl, kol)
+msg("Получен предмет")
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+
+--Убор
+dialogs.relocate_money(npc, 4000, "out")
+dialogs.relocate_item_section(npc, "af_telepatic_crystall", "out")
+end
+function msg(text)
+	db.actor:give_game_news(text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+end

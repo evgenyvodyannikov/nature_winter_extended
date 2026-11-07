@@ -1,0 +1,123 @@
+-- Rage Mod - ‘ункци€ нажати€ на “јЅ
+local timer = 0
+
+function main(delta)
+   if timer>1000000 then timer = 1000000 end
+timer = timer+delta
+local hud = get_hud()
+   if hud:GetCustomStatic("main_task") and timer>3000 then
+this.start()
+timer = 0
+end
+end
+
+function power_teleport()
+local dir = db.actor:direction()
+local pos = db.actor:position()
+local v= "point_horror"
+           if db.actor:object(v) and level.name() == "l01_escape" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l02_garbage" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l03_agroprom" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l04_darkvalley" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l04u_labx18" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l05_bar" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l06_rostok" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l07_military" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if db.actor:object(v) and level.name() == "l11_pripyat" then
+	pos = pos:add(dir:mul(5))
+	db.actor:set_actor_position(pos)
+	this.next_vis()
+	end
+           if not db.actor:object(v) then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]” ¬ас недостаточно баллов страха - дл€ телепортации.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+	end
+           if db.actor:object(v) and level.name() == "l08u_brainlab" then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]Ќа данной локации невозможно телепортироватьс€.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+	end
+           if db.actor:object(v) and level.name() == "l10_radar" then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]Ќа данной локации невозможно телепортироватьс€.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+	end
+           if db.actor:object(v) and level.name() == "l12_stancia" then
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,255,1,1]Ќа данной локации невозможно телепортироватьс€.%c[default]").." Х"
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+	end
+end
+
+function start()
+local spw = ui_horror.horror(get_hud())
+level.start_stop_menu(spw,true)
+end
+
+function timer_st()
+timer = 0
+end
+
+function godmod()
+db.actor:give_info_portion("god_mode")
+end
+
+function disable_godmod()
+db.actor:disable_info_portion("god_mode")
+news_manager.send_tip(db.actor, "%c[255,255,128,128]Rage Mod:\n%c[default]Ѕессмертие отключено.", nil, nil, 30000)
+end
+
+function god_update()
+if db.actor:has_info("god_mode") then
+db.actor.health = 1.0
+end
+end
+
+function next_vis()
+	db.actor:give_info_portion("ah")
+    local task_texture, task_rect = get_texture_info("ui_iconsTotal_mutant")
+    local error_text = "%c[255,160,160,160]"..game.translate_string("—ообщение:").."\\n".."%c[default]".."Х "..game.translate_string("%c[255,1,255,1]“елепортаци€ прошла успешно.%c[default]").." Х"
+                db.actor:give_game_news(error_text, task_texture, task_rect, 0, 20000)
+    local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    local oItem = db.actor:object("point_horror") 
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end
+
+--horror (ui_iconsTotal_mutant)
+--murder (ui_iconsTotal_weapons)

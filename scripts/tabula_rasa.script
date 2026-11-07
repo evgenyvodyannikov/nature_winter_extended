@@ -1,0 +1,24 @@
+local timer = 0
+
+function update(delta)
+   timer = timer+delta
+   if timer>1000000 then timer = 1000000 end
+   local hud = get_hud()
+   if hud:GetCustomStatic("main_task") and timer>1000 then
+      do_something()
+      timer = 0
+   end
+end
+
+function do_something()
+local text 
+local vid 
+local gvid 
+local a = vector()  
+local text 
+a = db.actor:position()  
+vid = db.actor:level_vertex_id()  
+gvid = db.actor:game_vertex_id()  
+text = "Позиция:\\nX= "..a.x.."\\nY= "..a.y.."\\nZ= "..a.z.."\\nlevel_vertex= "..vid.."\\ngame_vertex_id= "..gvid 
+news_manager.send_tip(db.actor, text, nil, nil, 30000) 
+end

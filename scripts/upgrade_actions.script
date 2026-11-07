@@ -1,0 +1,565 @@
+---==================================================================================================---
+---================================(Модернизация у Сахарова)=========================================---
+---==================================================================================================---
+function saharov_actor_have_money_to_science_work(actor, npc)
+	return actor:money() >= 30000
+end
+function saharov_actor_give_money_to_science_work(actor, npc)
+	dialogs.relocate_money(npc, 30000, "out")	
+end
+function saharov_actor_dont_money_to_science_work(actor, npc)
+	return actor:money() < 30000
+end
+function saharov_actor_dont_money_to_one_experiment(actor, npc)
+	return actor:money() < 20000
+end
+function saharov_actor_dont_money_to_two_experiment(actor, npc)
+	return actor:money() < 35000
+end
+function saharov_actor_dont_money_to_three_experiment(actor, npc)
+	return actor:money() < 50000
+end
+function saharov_actor_mod_have_money_to_one_experiment(actor, npc)
+	return actor:money() >= 20000
+end
+function saharov_actor_mod_give_money_to_one_experiment(actor, npc)
+	dialogs.relocate_money(npc, math.random(10000,20000), "out")	
+end
+function saharov_actor_mod_have_money_to_two_experiment(actor, npc)
+	return actor:money() >= 35000
+end
+function saharov_actor_mod_give_money_to_two_experiment(actor, npc)
+	dialogs.relocate_money(npc, math.random(25000,35000), "out")	
+end
+function saharov_actor_mod_have_money_to_three_experiment(actor, npc)
+	return actor:money() >= 50000
+end
+function saharov_actor_mod_give_money_to_three_experiment(actor, npc)
+	dialogs.relocate_money(npc, math.random(40000,50000), "out")	
+end
+function actor_have_af_medusa(first_speaker, second_speaker)
+      return first_speaker:object("af_medusa") ~= nil
+end
+function actor_give_af_medusa(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_medusa", "out")
+end
+function saharov_give_af_medusa_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_medusa_mod_1", "in")
+end
+function saharov_give_af_medusa_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_medusa_mod_2", "in")
+end
+function saharov_give_af_medusa_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_medusa_mod_3", "in")
+end
+function actor_have_af_cristall_flower(first_speaker, second_speaker)
+      return first_speaker:object("af_cristall_flower") ~= nil
+end
+function actor_give_af_cristall_flower(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_flower", "out")
+end
+function saharov_give_af_cristall_flower_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_flower_mod_1", "in")
+end
+function saharov_give_af_cristall_flower_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_flower_mod_2", "in")
+end
+function saharov_give_af_cristall_flower_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_flower_mod_3", "in")
+end
+function actor_have_af_night_star(first_speaker, second_speaker)
+      return first_speaker:object("af_night_star") ~= nil
+end
+function actor_give_af_night_star(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_night_star", "out")
+end
+function saharov_give_af_night_star_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_night_star_mod_1", "in")
+end
+function saharov_give_af_night_star_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_night_star_mod_2", "in")
+end
+function saharov_give_af_night_star_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_night_star_mod_3", "in")
+end
+function actor_have_af_vyvert(first_speaker, second_speaker)
+      return first_speaker:object("af_vyvert") ~= nil
+end
+function actor_give_af_vyvert(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_vyvert", "out")
+end
+function saharov_give_af_vyvert_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_vyvert_mod_1", "in")
+end
+function saharov_give_af_vyvert_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_vyvert_mod_2", "in")
+end
+function saharov_give_af_vyvert_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_vyvert_mod_3", "in")
+end
+function actor_have_af_gravi(first_speaker, second_speaker)
+      return first_speaker:object("af_gravi") ~= nil
+end
+function actor_give_af_gravi(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gravi", "out")
+end
+function saharov_give_af_gravi_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gravi_mod_1", "in")
+end
+function saharov_give_af_gravi_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gravi_mod_2", "in")
+end
+function saharov_give_af_gravi_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gravi_mod_3", "in")
+end
+function actor_have_af_gold_fish(first_speaker, second_speaker)
+      return first_speaker:object("af_gold_fish") ~= nil
+end
+function actor_give_af_gold_fish(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gold_fish", "out")
+end
+function saharov_give_af_gold_fish_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gold_fish_mod_1", "in")
+end
+function saharov_give_af_gold_fish_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gold_fish_mod_2", "in")
+end
+function saharov_give_af_gold_fish_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_gold_fish_mod_3", "in")
+end
+function actor_have_af_drops(first_speaker, second_speaker)
+      return first_speaker:object("af_drops") ~= nil
+end
+function actor_give_af_drops(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_drops", "out")
+end
+function saharov_give_af_drops_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_drops_mod_1", "in")
+end
+function saharov_give_af_drops_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_drops_mod_2", "in")
+end
+function saharov_give_af_drops_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_drops_mod_3", "in")
+end
+function actor_have_af_fireball(first_speaker, second_speaker)
+      return first_speaker:object("af_fireball") ~= nil
+end
+function actor_give_af_fireball(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fireball", "out")
+end
+function saharov_give_af_fireball_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fireball_mod_1", "in")
+end
+function saharov_give_af_fireball_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fireball_mod_2", "in")
+end
+function saharov_give_af_fireball_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fireball_mod_3", "in")
+end
+function actor_have_af_cristall(first_speaker, second_speaker)
+      return first_speaker:object("af_cristall") ~= nil
+end
+function actor_give_af_cristall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall", "out")
+end
+function saharov_give_af_cristall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_mod_1", "in")
+end
+function saharov_give_af_cristall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_mod_2", "in")
+end
+function saharov_give_af_cristall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall_mod_3", "in")
+end
+function actor_have_af_blood(first_speaker, second_speaker)
+      return first_speaker:object("af_blood") ~= nil
+end
+function actor_give_af_blood(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_blood", "out")
+end
+function saharov_give_af_blood_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_blood_mod_1", "in")
+end
+function saharov_give_af_blood_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_blood_mod_2", "in")
+end
+function saharov_give_af_blood_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_blood_mod_3", "in")
+end
+function actor_have_af_mincer_meat(first_speaker, second_speaker)
+      return first_speaker:object("af_mincer_meat") ~= nil
+end
+function actor_give_af_mincer_meat(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_mincer_meat", "out")
+end
+function saharov_give_af_mincer_meat_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_mincer_meat_mod_1", "in")
+end
+function saharov_give_af_mincer_meat_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_mincer_meat_mod_2", "in")
+end
+function saharov_give_af_mincer_meat_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_mincer_meat_mod_3", "in")
+end
+function actor_have_af_soul(first_speaker, second_speaker)
+      return first_speaker:object("af_soul") ~= nil
+end
+function actor_give_af_soul(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_soul", "out")
+end
+function saharov_give_af_soul_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_soul_mod_1", "in")
+end
+function saharov_give_af_soul_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_soul_mod_2", "in")
+end
+function saharov_give_af_soul_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_soul_mod_3", "in")
+end
+function actor_have_af_electra_sparkler(first_speaker, second_speaker)
+      return first_speaker:object("af_electra_sparkler") ~= nil
+end
+function actor_give_af_electra_sparkler(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_sparkler", "out")
+end
+function saharov_give_af_electra_sparkler_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_sparkler_mod_1", "in")
+end
+function saharov_give_af_electra_sparkler_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_sparkler_mod_2", "in")
+end
+function saharov_give_af_electra_sparkler_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_sparkler_mod_3", "in")
+end
+function actor_have_af_electra_flash(first_speaker, second_speaker)
+      return first_speaker:object("af_electra_flash") ~= nil
+end
+function actor_give_af_electra_flash(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_flash", "out")
+end
+function saharov_give_af_electra_flash_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_flash_mod_1", "in")
+end
+function saharov_give_af_electra_flash_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_flash_mod_2", "in")
+end
+function saharov_give_af_electra_flash_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_flash_mod_3", "in")
+end
+function actor_have_af_electra_moonlight(first_speaker, second_speaker)
+      return first_speaker:object("af_electra_moonlight") ~= nil
+end
+function actor_give_af_electra_moonlight(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_moonlight", "out")
+end
+function saharov_give_af_electra_moonlight_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_moonlight_mod_1", "in")
+end
+function saharov_give_af_electra_moonlight_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_moonlight_mod_2", "in")
+end
+function saharov_give_af_electra_moonlight_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_moonlight_mod_3", "in")
+end
+function actor_have_af_electra_touster(first_speaker, second_speaker)
+      return first_speaker:object("af_electra_touster") ~= nil
+end
+function actor_give_af_electra_touster(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_touster", "out")
+end
+function saharov_give_af_electra_touster_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_touster_mod_1", "in")
+end
+function saharov_give_af_electra_touster_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_touster_mod_2", "in")
+end
+function saharov_give_af_electra_touster_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_touster_mod_3", "in")
+end
+function actor_have_af_ameba_slime(first_speaker, second_speaker)
+      return first_speaker:object("af_ameba_slime") ~= nil
+end
+function actor_give_af_ameba_slime(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slime", "out")
+end
+function saharov_give_af_ameba_slime_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slime_mod_1", "in")
+end
+function saharov_give_af_ameba_slime_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slime_mod_2", "in")
+end
+function saharov_give_af_ameba_slime_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slime_mod_3", "in")
+end
+function actor_have_af_ameba_slug(first_speaker, second_speaker)
+      return first_speaker:object("af_ameba_slug") ~= nil
+end
+function actor_give_af_ameba_slug(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slug", "out")
+end
+function saharov_give_af_ameba_slug_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slug_mod_1", "in")
+end
+function saharov_give_af_ameba_slug_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slug_mod_2", "in")
+end
+function saharov_give_af_ameba_slug_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slug_mod_3", "in")
+end
+function actor_have_af_ameba_mica(first_speaker, second_speaker)
+      return first_speaker:object("af_ameba_mica") ~= nil
+end
+function actor_give_af_ameba_mica(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_mica", "out")
+end
+function saharov_give_af_ameba_mica_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_mica_mod_1", "in")
+end
+function saharov_give_af_ameba_mica_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_mica_mod_2", "in")
+end
+function saharov_give_af_ameba_mica_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_ameba_mica_mod_3", "in")
+end
+function actor_have_af_dummy_spring(first_speaker, second_speaker)
+      return first_speaker:object("af_dummy_spring") ~= nil
+end
+function actor_give_af_dummy_spring(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_spring", "out")
+end
+function saharov_give_af_dummy_spring_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_spring_mod_1", "in")
+end
+function saharov_give_af_dummy_spring_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_spring_mod_2", "in")
+end
+function saharov_give_af_dummy_spring_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_spring_mod_3", "in")
+end
+function actor_have_af_dummy_dummy(first_speaker, second_speaker)
+      return first_speaker:object("af_dummy_dummy") ~= nil
+end
+function actor_give_af_dummy_dummy(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_dummy", "out")
+end
+function saharov_give_af_dummy_dummy_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_dummy_mod_1", "in")
+end
+function saharov_give_af_dummy_dummy_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_dummy_mod_2", "in")
+end
+function saharov_give_af_dummy_dummy_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_dummy_mod_3", "in")
+end
+function actor_have_af_dummy_battery(first_speaker, second_speaker)
+      return first_speaker:object("af_dummy_battery") ~= nil
+end
+function actor_give_af_dummy_battery(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_battery", "out")
+end
+function saharov_give_af_dummy_battery_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_battery_mod_1", "in")
+end
+function saharov_give_af_dummy_battery_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_battery_mod_2", "in")
+end
+function saharov_give_af_dummy_battery_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_battery_mod_3", "in")
+end
+function actor_have_af_dummy_pellicle(first_speaker, second_speaker)
+      return first_speaker:object("af_dummy_pellicle") ~= nil
+end
+function actor_give_af_dummy_pellicle(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_pellicle", "out")
+end
+function saharov_give_af_dummy_pellicle_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_pellicle_mod_1", "in")
+end
+function saharov_give_af_dummy_pellicle_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_pellicle_mod_2", "in")
+end
+function saharov_give_af_dummy_pellicle_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_pellicle_mod_3", "in")
+end
+function actor_have_af_dummy_glassbeads(first_speaker, second_speaker)
+      return first_speaker:object("af_dummy_glassbeads") ~= nil
+end
+function actor_give_af_dummy_glassbeads(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_glassbeads", "out")
+end
+function saharov_give_af_dummy_glassbeads_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_glassbeads_mod_1", "in")
+end
+function saharov_give_af_dummy_glassbeads_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_glassbeads_mod_2", "in")
+end
+function saharov_give_af_dummy_glassbeads_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_dummy_glassbeads_mod_3", "in")
+end
+function actor_have_af_rusty_thorn(first_speaker, second_speaker)
+      return first_speaker:object("af_rusty_thorn") ~= nil
+end
+function actor_give_af_rusty_thorn(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_thorn", "out")
+end
+function saharov_give_af_rusty_thorn_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_thorn_mod_1", "in")
+end
+function saharov_give_af_rusty_thorn_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_thorn_mod_2", "in")
+end
+function saharov_give_af_rusty_thorn_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_thorn_mod_3", "in")
+end
+function actor_have_af_rusty_kristall(first_speaker, second_speaker)
+      return first_speaker:object("af_rusty_kristall") ~= nil
+end
+function actor_give_af_rusty_kristall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_kristall", "out")
+end
+function saharov_give_af_rusty_kristall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_kristall_mod_1", "in")
+end
+function saharov_give_af_rusty_kristall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_kristall_mod_2", "in")
+end
+function saharov_give_af_rusty_kristall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_rusty_kristall_mod_3", "in")
+end
+function actor_have_af_fuzz_kolobok(first_speaker, second_speaker)
+      return first_speaker:object("af_fuzz_kolobok") ~= nil
+end
+function actor_give_af_fuzz_kolobok(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok", "out")
+end
+function saharov_give_af_fuzz_kolobok_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok_mod_1", "in")
+end
+function saharov_give_af_fuzz_kolobok_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok_mod_2", "in")
+end
+function saharov_give_af_fuzz_kolobok_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok_mod_3", "in")
+end
+function actor_have_af_radiation_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_radiation_crystall") ~= nil
+end
+function actor_give_af_radiation_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_radiation_crystall", "out")
+end
+function saharov_give_af_radiation_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_radiation_crystall_mod_1", "in")
+end
+function saharov_give_af_radiation_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_radiation_crystall_mod_2", "in")
+end
+function saharov_give_af_radiation_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_radiation_crystall_mod_3", "in")
+end
+function actor_have_af_telepatic_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_telepatic_crystall") ~= nil
+end
+function actor_give_af_telepatic_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_telepatic_crystall", "out")
+end
+function saharov_give_af_telepatic_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_telepatic_crystall_mod_1", "in")
+end
+function saharov_give_af_telepatic_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_telepatic_crystall_mod_2", "in")
+end
+function saharov_give_af_telepatic_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_telepatic_crystall_mod_3", "in")
+end
+function actor_have_af_strike_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_strike_crystall") ~= nil
+end
+function actor_give_af_strike_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_strike_crystall", "out")
+end
+function saharov_give_af_strike_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_strike_crystall_mod_1", "in")
+end
+function saharov_give_af_strike_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_strike_crystall_mod_2", "in")
+end
+function saharov_give_af_strike_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_strike_crystall_mod_3", "in")
+end
+function actor_have_af_burn_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_burn_crystall") ~= nil
+end
+function actor_give_af_burn_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_burn_crystall", "out")
+end
+function saharov_give_af_burn_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_burn_crystall_mod_1", "in")
+end
+function saharov_give_af_burn_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_burn_crystall_mod_2", "in")
+end
+function saharov_give_af_burn_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_burn_crystall_mod_3", "in")
+end
+function actor_have_af_explosion_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_explosion_crystall") ~= nil
+end
+function actor_give_af_explosion_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_explosion_crystall", "out")
+end
+function saharov_give_af_explosion_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_explosion_crystall_mod_1", "in")
+end
+function saharov_give_af_explosion_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_explosion_crystall_mod_2", "in")
+end
+function saharov_give_af_explosion_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_explosion_crystall_mod_3", "in")
+end
+function actor_have_af_firewound_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_firewound_crystall") ~= nil
+end
+function actor_give_af_firewound_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_firewound_crystall", "out")
+end
+function saharov_give_af_firewound_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_firewound_crystall_mod_1", "in")
+end
+function saharov_give_af_firewound_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_firewound_crystall_mod_2", "in")
+end
+function saharov_give_af_firewound_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_firewound_crystall_mod_3", "in")
+end
+function actor_have_af_shock_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_shock_crystall") ~= nil
+end
+function actor_give_af_shock_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_shock_crystall", "out")
+end
+function saharov_give_af_shock_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_shock_crystall_mod_1", "in")
+end
+function saharov_give_af_shock_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_shock_crystall_mod_2", "in")
+end
+function saharov_give_af_shock_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_shock_crystall_mod_3", "in")
+end
+function actor_have_af_chemical_burn_crystall(first_speaker, second_speaker)
+      return first_speaker:object("af_chemical-burn_crystall") ~= nil
+end
+function actor_give_af_chemical_burn_crystall(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_chemical-burn_crystall", "out")
+end
+function saharov_give_af_chemical_burn_crystall_one_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_chemical-burn_crystall_mod_1", "in")
+end
+function saharov_give_af_chemical_burn_crystall_two_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_chemical-burn_crystall_mod_2", "in")
+end
+function saharov_give_af_chemical_burn_crystall_three_mod(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_chemical-burn_crystall_mod_3", "in")
+end
+-----------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------

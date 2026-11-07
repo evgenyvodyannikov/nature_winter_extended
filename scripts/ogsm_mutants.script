@@ -1,0 +1,205 @@
+---------------------- Обработчик монстров OGSM 2.x -----------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+class "MutantManager"
+
+function MutantManager:__init()
+end
+
+function MutantManager:update(param)
+
+self.object = param
+
+-- Атака насекомых при приближении к чумному зомби
+
+if self.object:section()=="zombie_plague" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 10 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+if self.object:section()=="zombie_plague_novice_1" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 10 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+if self.object:section()=="zombie_plague_experienced_1" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 10 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+if self.object:section()=="zombie_plague_veteran_1" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 10 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+if self.object:section()=="zombie_plague_master_1" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 10 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+
+--Взрывные
+if string.find(self.object:section(), "zombie_rusty") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+if string.find(self.object:section(), "zombie_rusty_novice_1") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+if string.find(self.object:section(), "zombie_rusty_experienced_1") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+if string.find(self.object:section(), "zombie_rusty_veteran_1") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+if string.find(self.object:section(), "zombie_rusty_master_1") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+end
+
+local insect_particle = particles_object("ogsm\\ogsm_files_00")
+local insect_sound = sound_object([[anomaly\flies]])
+
+-- Атака насекомых чумного зомби
+function zombie_insect(p_obj)
+if p_obj then
+
+	local posit = p_obj:position()
+	local actor = db.actor:position()
+	local zh = hit()
+	zh.draftsman = db.actor
+	zh.type = hit.wound
+	zh.direction = p_obj:position():sub(actor)
+	zh:bone("pelvis")
+	zh.power = 0.35
+	zh.impulse = 0.1
+
+	if not insect_particle:playing() then 
+
+		insect_particle:play_at_pos(vector():set(actor.x, actor.y+1.8, actor.z))
+
+		if not insect_sound:playing() then 
+			insect_sound:play_at_pos(db.actor, actor)
+			db.actor:hit(zh)
+		else
+			insect_sound:set_position(actor)
+		end
+
+	else
+
+		insect_particle:move_to(vector():set(actor.x, actor.y+1.8, actor.z),vector():set(actor.x, actor.y+1.8, actor.z))
+
+		if not insect_sound:playing() then 
+			insect_sound:play_at_pos(db.actor, actor)
+			db.actor:hit(zh)
+		else
+			insect_sound:set_position(actor)
+		end
+	end
+end
+end
+
+local zombie_particle = particles_object("ogsm\\ogsm_zombieblow")
+local zombie_sound1 = sound_object([[anomaly\anomaly_body_tear_1]])
+local zombie_sound2 = sound_object([[weapons\f1_explode_]])
+
+-- Взрыв зомби-камикадзе
+function blow_zombie(p_obj)
+if p_obj then
+	local posit = p_obj:position()
+	local enemy = p_obj:best_enemy()
+	local zh = hit()
+	zh.type = hit.explosion
+	zh:bone("pelvis")
+	zh.power = 3
+	zh.impulse = 5
+
+	zombie_particle:play_at_pos(p_obj:position())
+
+	zombie_sound1:play_at_pos(p_obj, p_obj:position(), 0)
+	zombie_sound2:play_at_pos(p_obj, p_obj:position(), 0)
+
+	if enemy and posit:distance_to(enemy:position()) < 5 then 
+		zh.draftsman = enemy
+		zh.direction = p_obj:position():sub(enemy:position())
+		enemy:hit(zh)
+	end
+
+	if not enemy and posit:distance_to(db.actor:position()) < 5 then
+		zh.draftsman = db.actor
+		zh.direction = p_obj:position():sub(db.actor:position())
+		db.actor:hit(zh)
+	end
+
+	if p_obj:section() == "rad_zombie_rusty" then
+		alife():create("af_zombie_hand", p_obj:position(), p_obj:level_vertex_id(), p_obj:game_vertex_id())
+	end
+
+	alife():release(alife():object(p_obj:id()))
+end
+end

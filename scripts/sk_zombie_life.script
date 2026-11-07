@@ -1,0 +1,155 @@
+--[[----------------------------
+Основной скрипт превращения в зомби Zombie-shooter mod'а.
+Автор is SkyLoader.
+Версия: 1.95
+Последнее изменение скрипта - 18.08.12 
+Огромное спасибо Erlik'y и Artos'y за помощь в изучении скриптов.
+--------------------------------]]
+
+local ZombieVictim, ZombieTime
+local ZombieFlag = false
+
+local novice_zombies = {
+"zombie_novice_1",
+"zombie_novice_2",
+"zombie_novice_3",
+"zombie_novice_4",
+"zombie_novice_5",
+"zombie_novice_6",
+"zombie_novice_7",
+"zombie_plague_novice_1",
+"zombie_rusty_novice_1"
+}
+
+local experienced_zombies = {
+"zombie_experienced_1",
+"zombie_experienced_2",
+"zombie_experienced_3",
+"zombie_experienced_4",
+"zombie_experienced_5",
+"zombie_plague_experienced_1",
+"zombie_rusty_experienced_1"
+}
+
+local veteran_zombies = {
+"zombie_veteran_1",
+"zombie_veteran_2",
+"zombie_veteran_3",
+"zombie_veteran_4",
+"zombie_veteran_5",
+"zombie_plague_veteran_1",
+"zombie_rusty_veteran_1"
+}
+
+local master_zombies = {
+"zombie_master_1",
+"zombie_master_2",
+"zombie_master_3",
+"zombie_plague_master_1",
+"zombie_ti_master_1",
+"m_skelet_zombie_master_1",
+"zombie_speed_master_1",
+"zombie_rusty_master_1"
+}
+
+local ammo = {
+"ammo_9x18_fmj",
+"ammo_9x18_pmm",
+"ammo_9x19_fmj",
+"ammo_9x19_pbp",
+"ammo_5.45x39_fmj",
+"ammo_5.45x39_ap",
+"ammo_5.56x45_ss190",
+"ammo_5.56x45_ap",
+"ammo_9x39_ap",
+"ammo_9x39_sp5",
+"ammo_9x39_pab9",
+"ammo_12x70_buck",
+"ammo_12x76_dart",
+"ammo_12x76_zhekan"
+}
+
+
+function zombie_timer(seconds, victim) --\таймер на "безвылетность"
+ZombieTime = time_global()+seconds*1000
+ZombieVictim = victim
+end
+
+function life_zombie()
+	local function Nilim() --\дабы не писать много, заделаем в одну функцию и будем ее подгружать
+ZombieVictim = nil--\нилим юзердату жертвы и таймер
+ZombieTime  = nil
+ZombieFlag = true
+end
+
+    if (ZombieVictim and ZombieTime) then 
+		if  ZombieTime<time_global() then
+				if not ZombieFlag then
+--\Добавление с 2.08.10
+--\Чтобы был хоть какой-то шмот, Зомбированные не превращаются в зомби
+if ZombieVictim:character_community() == "zombied" or string.find(ZombieVictim:section(),"arena") or ZombieVictim:character_community()=="arena_enemy" then
+Nilim()
+else
+--\Добавление с 5.08.10
+--\Неписей с квестовыми предметами пропускать
+				if ZombieVictim:object("esc_wounded_flash") or ZombieVictim:object("val_key_to_underground") or ZombieVictim:object("kruglov_flash") or ZombieVictim:object("crazy_flash") or ZombieVictim:object("bar_tiran_pda") or ZombieVictim:object("bar_lucky_pda") or ZombieVictim:object("bar_ecolog_flash") or ZombieVictim:object("good_psy_helmet") or ZombieVictim:object("antir1d") or ZombieVictim:object("bad_psy_helmet") or ZombieVictim:object("mil_svoboda_leader_pda")				then
+Nilim()
+				else --\для обычный неписей делаем стандарт
+--\Добавление с 1.08.10
+--\Так как играть невозможно с рандомными зомби, пришлось прибегнуть к рангам неписей
+			local Zombie_rank
+			Zombie_rank = ranks.get_obj_rank_name(ZombieVictim)
+			if Zombie_rank ~= nil then
+--\Добавление с 5.08.10
+--\Выпадение патронов с трупов
+--\Решил отказаться от этой идеи, т.к. грузит комп. Сделал легче: с мастеров падают рандомные патроны.
+				if Zombie_rank == "novice" then
+				alife():release(alife():object(ZombieVictim:id()), true)
+				alife():create(novice_zombies[math.random(table.getn(novice_zombies))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+Nilim()
+				elseif Zombie_rank == "experienced" then
+				alife():release(alife():object(ZombieVictim:id()), true)
+				alife():create(experienced_zombies[math.random(table.getn(experienced_zombies))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+Nilim()
+				elseif Zombie_rank == "veteran" then
+				alife():release(alife():object(ZombieVictim:id()), true)
+				alife():create(veteran_zombies[math.random(table.getn(veteran_zombies))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+				alife():create(ammo[math.random(table.getn(ammo))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+Nilim()
+				elseif Zombie_rank == "master" then
+				alife():release(alife():object(ZombieVictim:id()), true)
+				alife():create(master_zombies[math.random(table.getn(master_zombies))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+				alife():create(ammo[math.random(table.getn(ammo))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+				alife():create(ammo[math.random(table.getn(ammo))], ZombieVictim:position() , ZombieVictim:level_vertex_id() , ZombieVictim:game_vertex_id())
+Nilim()
+				end
+			end
+		end
+	end
+end
+            else
+    ZombieFlag = false
+        end
+    end
+end
+
+function give_money(victim,who)
+--\Добавление с 6.08.10
+--\Изменено 29.03.12
+--\Получение денег за убийства зомби
+	if who:id() == db.actor:id() then --для актора
+		if victim and (victim:section() == "zombie_novice_1" or victim:section() == "zombie_novice_2" or victim:section() == "zombie_novice_3" or victim:section() == "zombie_novice_4" or victim:section() == "zombie_novice_5" or victim:section() == "zombie_novice_6" or victim:section() == "zombie_novice_7" or victim:section() == "zombie_plague_novice_1" or victim:section() == "zombie_rusty_novice_1") then
+local n = math.random(50,400)
+dialogs.relocate_money(db.actor,n,"in")
+elseif victim and (victim:section() == "zombie_experienced_1" or victim:section() == "zombie_experienced_2" or victim:section() == "zombie_experienced_3" or victim:section() == "zombie_experienced_4" or victim:section() == "zombie_experienced_5" or victim:section() == "zombie_plague_experienced_1" or victim:section() == "zombie_rusty_experienced_1") then
+local n = math.random(75,700)
+dialogs.relocate_money(db.actor,n,"in")
+elseif victim and (victim:section() == "zombie_veteran_1" or victim:section() == "zombie_veteran_2" or victim:section() == "zombie_veteran_3" or victim:section() == "zombie_veteran_4" or victim:section() == "zombie_veteran_5" or victim:section() == "zombie_plague_veteran_1" or victim:section() == "zombie_rusty_veteran_1") then
+local n = math.random(100,2500)
+dialogs.relocate_money(db.actor,n,"in")
+elseif victim and (victim:section() == "zombie_master_1" or victim:section() == "zombie_master_2" or victim:section() == "zombie_master_3" or victim:section() == "zombie_plague_master_1" or victim:section() == "zombie_ti_master_1" or victim:section() == "m_skelet_zombie_master_1" or victim:section() == "zombie_speed_master_1" or victim:section() == "zombie_rusty_master_1") then
+local n = math.random(120,3100)
+dialogs.relocate_money(db.actor,n,"in")
+		end
+	end
+end

@@ -1,0 +1,16 @@
+function case_7_artefact_and_amulet_give(actor, npc)
+dialogs.relocate_money(actor, 10000, "in")
+dialogs.relocate_item_section(npc, "af_7_case_7_cargo", "out")
+dialogs.relocate_item_section(npc, "amulet_case_7_kill_volkodav", "out")
+dialogs.relocate_item_section(actor, "grenade_f1", "in")
+dialogs.relocate_item_section(actor, "grenade_f1", "in")
+dialogs.relocate_item_section(actor, "grenade_f1", "in")
+dialogs.relocate_item_section(actor, "grenade_f1", "in")
+dialogs.relocate_item_section(actor, "grenade_f1", "in")
+end
+
+function case_7_binachi_and_amulet_give(actor, npc)
+dialogs.relocate_money(actor, 50000, "in")
+dialogs.relocate_item_section(npc, "wpn_binachi_case_7_cargo", "out")
+dialogs.relocate_item_section(npc, "amulet_case_7_kill_volkodav", "out")
+end

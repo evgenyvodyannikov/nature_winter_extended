@@ -1,0 +1,695 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<game_information_portions>
+
+    <info_portion id="space_heat_zone">
+        <action>heat_zone_all.warmed_health</action>
+    </info_portion>
+
+    <info_portion id="sound_alarm_attention">
+        <action>bar_code_cache_second.sound_ghost</action>
+    </info_portion>
+
+	<!-- Scared Novice -->
+	<info_portion id="bar_scared_novice_start"></info_portion>
+	<info_portion id="bar_scared_novice_hide"></info_portion>
+	<info_portion id="bar_scared_novice_attack"></info_portion>
+	<info_portion id="bar_scared_novice_done"></info_portion>
+
+	<info_portion id="dar_victor_navarro_have_info"></info_portion>
+
+	<!-- BAR -->
+    <info_portion id="bar_bar_square_1_state_1"></info_portion>
+    <info_portion id="bar_bar_square_1_state_2"></info_portion>
+    <info_portion id="bar_bar_square_1_state_3"></info_portion>
+
+    <info_portion id="bar_bar_square_2_state_1"></info_portion>
+    <info_portion id="bar_bar_square_2_state_2"></info_portion>
+    <info_portion id="bar_bar_square_2_state_3"></info_portion>
+
+    <info_portion id="bar_bar_square_3_state_1"></info_portion>
+    <info_portion id="bar_bar_square_3_state_2"></info_portion>
+    <info_portion id="bar_bar_square_3_state_3"></info_portion>
+
+	<!-- bar talk infoportions -->
+	<info_portion id="bar_bar_kill_svoboda_ambush_start"></info_portion>
+	<info_portion id="bar_bar_kill_svoboda_ambush_done"></info_portion>
+	
+	<info_portion id="bar_kill_veteran_start">
+		<task>bar_crazy_veterans_quest</task>
+	</info_portion>
+	<info_portion id="bar_kill_veteran_killed"></info_portion>
+	<info_portion id="bar_kill_veteran_done"></info_portion>	
+	
+	<!-- barman walk info portions -->
+	<info_portion id="bar_barman_need_hole">
+		<disable>bar_barman_need_room</disable>
+	</info_portion>
+	<info_portion id="bar_barman_stay_hole">
+		<disable>bar_barman_stay_room</disable>
+	</info_portion>
+	
+	<info_portion id="bar_barman_need_room">
+		<disable>bar_barman_need_hole</disable>
+	</info_portion>
+	<info_portion id="bar_barman_stay_room">
+		<disable>bar_barman_stay_hole</disable>
+	</info_portion>
+
+	<info_portion id="bar_start_megafon"></info_portion>
+
+	<!-- BAR osvedomitel trade information -->
+	<info_portion id="bar_bar_osvedomitel_info_01"></info_portion>
+	<info_portion id="bar_bar_osvedomitel_info_02"></info_portion>
+	<info_portion id="bar_bar_osvedomitel_info_03"></info_portion>
+	<info_portion id="bar_bar_osvedomitel_info_04"></info_portion>
+	<info_portion id="bar_bar_osvedomitel_info_05"></info_portion>
+
+	<!-- BAR HUNTER QUEST -->
+	<info_portion id="bar_bar_hunter_quest_start">
+		<task>bar_hunter_rifle</task>
+	</info_portion>
+	<info_portion id="bar_bar_hunter_quest_find_rifle"></info_portion>                                                        
+	<info_portion id="bar_bar_hunter_quest_finish"></info_portion>
+
+	<!-- DOLG BASE -->
+	<info_portion id="bar_dolg_base_pass"></info_portion>
+
+	<!-- af_telep_begin -->
+	<info_portion id="af_telep_begin_and_begin">
+        	<action>vvv.teleport</action>
+	</info_portion>
+
+        <!-- Отметиться у начальника охраны Долга -->
+	<info_portion id="bar_dolg_base_rules_start"></info_portion>
+	<info_portion id="bar_dolg_base_rules_talk"></info_portion>	
+	<info_portion id="bar_dolg_base_rules_finish"></info_portion>	
+
+
+	<info_portion id="bar_dolg_petrenko"></info_portion>
+	
+	<info_portion id="bar_dolg_bunker_pass"></info_portion>
+
+	<info_portion id="bar_dolg_community_start"></info_portion>
+
+	<info_portion id="bar_dolg_veteran_start">
+		<task>bar_dolg_test_quest</task>
+	</info_portion>
+	<info_portion id="bar_dolg_veteran_gain"></info_portion>
+	<info_portion id="bar_dolg_veteran_done"></info_portion>
+
+	<info_portion id="bar_dolg_community_leader"></info_portion>
+	<info_portion id="bar_dolg_community_leader_talk"></info_portion>
+	<info_portion id="bar_dolg_community_leader_done"></info_portion>
+
+	<info_portion id="bar_svoboda_rg6_start">
+		<task>mil_freedom_rg6_task</task>
+	</info_portion>
+	<info_portion id="mil_svoboda_rg6_gain"></info_portion>
+	<info_portion id="bar_svoboda_rg6_done"></info_portion>
+
+	<info_portion id="bar_kill_svoboda_ambush_start">
+		<task>bar_dolg_svoboda_ambush_quest</task>
+	</info_portion>
+	<info_portion id="bar_kill_svoboda_ambush_killed"></info_portion>
+	<info_portion id="bar_kill_svoboda_ambush_done"></info_portion>
+	<info_portion id="bar_kill_svoboda_reward"></info_portion>
+	<info_portion id="bar_voronin_dead"></info_portion>
+	<info_portion id="bar_kill_svoboda_leader_start">
+		<task>bar_dolg_svoboda_leader_kill_quest</task>
+	</info_portion>
+	<info_portion id="mil_kill_svoboda_leader_killed"></info_portion>
+	<info_portion id="bar_kill_svoboda_leader_done"></info_portion>
+
+    <info_portion id="rostok_heli_start"></info_portion>
+
+    <info_portion id="rostok_heli_down"></info_portion>
+
+    <!-- BAR DOLG TERRITORY -->
+    <info_portion id="bar_dolg_territory_1_hit"></info_portion>
+    <info_portion id="bar_dolg_territory_2_hit"></info_portion>
+    <info_portion id="bar_dolg_territory_3_hit"></info_portion>
+    <info_portion id="bar_dolg_territory_kill"></info_portion>
+    
+    <info_portion id="bar_territory_nodolg_1_hit"></info_portion>
+    <info_portion id="bar_territory_nodolg_2_hit"></info_portion>
+    <info_portion id="bar_territory_nodolg_kill"></info_portion>
+    <info_portion id="bar_dolg_territory_1_hit_notify"></info_portion>
+    <info_portion id="bar_dolg_territory_2_hit_notify"></info_portion>
+    <info_portion id="bar_dolg_territory_kill_notify"></info_portion>
+    
+	<!-- ECOLOG FLASH QUEST -->
+	<info_portion id="bar_ecolog_crush_heli_start"></info_portion>
+	<info_portion id="bar_ecolog_crush_heli_down"></info_portion>
+	
+	<info_portion id="bar_rescue_research_start">
+		<task>bar_resque_information</task>
+	</info_portion> 
+	<info_portion id="bar_kruglov_follow_actor">
+		<task>bar_resque_information_2</task>
+	</info_portion>
+	<info_portion id="rostok_kruglov_remark_1"></info_portion>
+	<info_portion id="bar_kruglov_follow_tunnel"></info_portion>
+	<info_portion id="bar_kruglov_follow_talk"></info_portion>
+	<info_portion id="bar_rescue_research_done"></info_portion>
+	<info_portion id="bar_rescue_research_fail"></info_portion>	
+	<info_portion id="bar_rescue_research_dead"></info_portion>
+	<info_portion id="bar_rescue_research_reward"></info_portion>
+	<info_portion id="bar_rescue_research_follow"></info_portion>
+	<info_portion id="bar_actor_heared_freedom_talk"></info_portion>
+	
+    <info_portion id="bar_spawn_heli_psevdodogs"></info_portion>
+    <info_portion id="bar_heli_scene_stay_online"></info_portion>
+
+    <info_portion id="bar_heli_scene_professor_die"></info_portion>
+    <info_portion id="bar_heli_scene_volkodav_die"></info_portion>
+    
+    <!-- FREEDOM FLASH QUEST -->
+	<info_portion id="bar_kill_professor_start">
+		<task>bar_kill_professor</task>
+	</info_portion>
+	<info_portion id="bar_kill_professor_done"></info_portion>
+	<info_portion id="bar_kill_professor_fail"></info_portion>		
+    <info_portion id="bar_kill_professor_reject"></info_portion>
+    <info_portion id="bar_kill_professor_reward"></info_portion>
+    <info_portion id="bar_kill_professor_volkodav_dead"></info_portion>
+    
+    <!-- FREEDOM ATTACK ECOLOG -->
+    <info_portion id="rostok_sniper_cheat"></info_portion>
+    <info_portion id="rostok_actor_kill_killer"></info_portion>
+    <info_portion id="rostok_sniper_to_walker"></info_portion>
+    <info_portion id="rostok_sniper_1_die"></info_portion>
+    <info_portion id="rostok_sniper_2_die"></info_portion>
+    <info_portion id="rostok_sniper_3_die"></info_portion>
+    <info_portion id="rostok_sniper_4_die"></info_portion>
+    <info_portion id="rostok_spawn_naemniki"></info_portion>
+    <info_portion id="rostok_ambush_killer_1_die"></info_portion>
+    <info_portion id="rostok_ambush_killer_2_die"></info_portion>
+    <info_portion id="rostok_ambush_killer_3_die"></info_portion>
+    <info_portion id="rostok_objective_1"></info_portion>
+    
+    <info_portion id="bar_freedom_attack_ecolog"></info_portion>
+    <info_portion id="bar_freedom_defence_ecolog"></info_portion>
+    <info_portion id="bar_ecolog_crush_actor_enemy"></info_portion>
+    <info_portion id="bar_actor_helps_kruglov"></info_portion>
+	<info_portion id="bar_rescue_research_chasing_start"></info_portion>
+	<info_portion id="bar_ecolog_see_chase"></info_portion>
+	<info_portion id="bar_ecolog_saw_chase"></info_portion>
+
+<info_portion id="bar_go_through_anomaly"></info_portion>
+<info_portion id="bar_fire_anomaly_forward"></info_portion>
+<info_portion id="bar_ambush_dead"></info_portion>
+<info_portion id="bar_bandits_dead"></info_portion>
+<info_portion id="bar_bandits_alive"></info_portion>
+<info_portion id="bar_rescue_research_chasing_end"></info_portion>
+
+<info_portion id="bar_freedom_talk"></info_portion>
+<info_portion id="bar_freedom_talk_v1"></info_portion>
+<info_portion id="bar_freedom_talk_v2"></info_portion>
+<info_portion id="bar_freedom_talk_c1"></info_portion>
+<info_portion id="bar_freedom_talk_c2"></info_portion>
+<info_portion id="bar_freedom_talk_end"></info_portion>
+    
+    <info_portion id="bar_rescue_research_corruped"></info_portion>
+    <info_portion id="bar_ecolog_research_normal">
+		<article>bar_ecolog_research_normal</article>
+    </info_portion>
+    <info_portion id="bar_ecolog_research_corrupted">
+		<article>bar_ecolog_research_corrupted</article>
+    </info_portion>
+
+	<info_portion id="code_have_one_door">
+		<article>code_in_nw_one_door</article>
+	</info_portion>
+    
+
+
+    
+    <!-- BAR BARMEN JOB -->
+
+
+        <!-- FIND DOCUMENTS -->
+    <info_portion id="bar_darklab_document_start">
+		<task>bar_darklab_documents</task>
+		<article>journal_before_darklab_documents</article>
+    </info_portion>
+	<info_portion id="bar_darklab_document_gain">
+		<article>journal_bar_darklab_documents</article>
+	</info_portion>
+	<info_portion id="bar_darklab_document_done"></info_portion>
+
+		 <!-- X16 DOCUMENTS -->
+    <info_portion id="bar_x16_documents_start">
+		<task>bar_x16_documents</task>
+		<article>journal_bar_x16_documents</article>
+    </info_portion>
+	<info_portion id="yan_x16_documents_gain"></info_portion>
+    <info_portion id="bar_x16_documents_done"></info_portion>
+    <info_portion id="rostok_spawn_dogs_food"></info_portion>
+
+		 <!-- PSIHOPAT -->
+	<info_portion id="bar_psih_come"></info_portion>
+	<info_portion id="bar_psih_suicide"></info_portion>
+	<info_portion id="bar_psih_done"></info_portion>
+	
+	<info_portion id="bar_barman_need_1_phrase"></info_portion>
+	<info_portion id="bar_barman_say_1_phrase"></info_portion>
+	<info_portion id="bar_psih_nopain"></info_portion>
+	<info_portion id="bar_psih_know_pain"></info_portion>
+	<info_portion id="bar_psih_know_gorbun"></info_portion>
+	<info_portion id="bar_psih_know_lisiy"></info_portion>
+	<info_portion id="bar_psih_find_lisiy"></info_portion>
+	<info_portion id="bar_radar_shedule">
+	</info_portion>
+
+
+
+    <!-- story_girl_memory_complete_part1 -->
+    <info_portion id="story_girl_memory_complete_part1">
+        <action>story_girl_memory.text_memory</action>
+        <action>story_girl_memory_complete_part1.give_s4f_to_actor</action>
+    </info_portion>
+
+    <!-- story_girl_memory_complete_part1_done -->
+    <info_portion id="story_girl_memory_complete_part1_done"></info_portion>
+
+    <!-- story_girl_memory_complete_part2 -->
+    <info_portion id="story_girl_memory_complete_part2">
+        <action>story_girl_memory_complete_part2.give_s5f_to_actor</action>
+    </info_portion>
+
+    <!-- story_girl_memory_complete_part2_done -->
+    <info_portion id="story_girl_memory_complete_part2_done">
+    </info_portion>
+
+
+	
+    <!-- case_5_translation -->
+    <info_portion id="case_5_translation_done"></info_portion>
+
+    
+    <!-- case_6_protocol_weapons -->
+    <info_portion id="case_6_protocol_weapons_started">
+         <task>case_6_protocol_weapons</task>
+    </info_portion>
+    <info_portion id="player_take_document1_from_secret_place">
+        <action>case_6_protocol_weapons.remove_metka_one</action>
+    </info_portion>
+    <info_portion id="player_take_document2_from_secret_place">
+        <action>case_6_protocol_weapons.remove_metka_two</action>
+    </info_portion>
+    <info_portion id="player_complete_case_6_protocol_weapons">
+    </info_portion>
+
+    <!-- case_7_kill_volkodav_delivery_of_cargo -->
+    <info_portion id="case_7_kill_volkodav_delivery_of_cargo_started">
+         <task>case_7_kill_volkodav_delivery_of_cargo</task>
+    </info_portion>
+    <info_portion id="player_kill_volkodav_and_take_amulet">
+    </info_portion>
+    <info_portion id="player_take_cargo_from_place">
+    </info_portion>
+    <info_portion id="player_take_cargo_from_place_all">
+        <action>case_7_kill_volkodav_delivery_of_cargo.remove_metka_one</action>
+    </info_portion>
+    <info_portion id="player_complete_case_7_kill_volkodav_delivery_of_cargo">
+    </info_portion>
+
+
+    <!-- case_8_philadelphia_experiment -->
+    <info_portion id="case_8_philadelphia_experiment_started">
+         <task>case_8_philadelphia_experiment</task>
+    </info_portion>
+    <info_portion id="player_have_energon">
+    </info_portion>
+    <info_portion id="player_complete_case_8_philadelphia_experiment">
+    </info_portion>
+
+	<info_portion id="player_have_compensation"></info_portion>
+
+
+    <!-- case_9_method_of_teleportation -->
+    <info_portion id="case_9_method_of_teleportation_started">
+         <task>case_9_method_of_teleportation</task>
+    </info_portion>
+    <info_portion id="player_have_case_9_equipment">
+    </info_portion>
+    <info_portion id="player_not_have_case_9_equipment">
+    </info_portion>
+    <info_portion id="player_take_case_9_equipment">
+    </info_portion>
+    <info_portion id="player_take_cache_case_9_from_place">
+        <action>case_9_method_of_teleportation_next_add_two.teleport</action>
+    </info_portion>
+    <info_portion id="player_complete_case_9_method_of_teleportation">
+    </info_portion>
+
+
+    <!-- case_10_mutation -->
+    <info_portion id="case_10_mutation_started">
+         <task>case_10_mutation</task>
+    </info_portion>
+    <info_portion id="player_take_cache_case_10_from_place">
+        <action>case_10_mutation.remove_metka_one</action>
+        <action>case_10_mutation_next.start_timer_survive_seconds</action>
+        <action>case_10_mutation_next_add.start_add_spawn</action>
+    </info_portion>
+    <info_portion id="player_complete_case_10_mutation">
+    </info_portion>
+
+    <!-- case_11_old_friend -->
+    <info_portion id="case_11_old_friend_started">
+         <task>case_11_old_friend</task>
+    </info_portion>
+    <info_portion id="player_take_doc_from_case_11_old_friend">
+    </info_portion>
+    <info_portion id="player_complete_case_11_old_friend">
+    </info_portion>
+    <info_portion id="player_complete_case_11_old_friend_continuation">
+    </info_portion>
+    <info_portion id="player_take_helmet_from_case_11_old_friend">
+        <action>case_11_old_friend.delete_s13f_from_actor</action>
+    </info_portion>
+    <info_portion id="player_take_wpn_from_case_11_old_friend">
+        <action>case_11_old_friend_next.actor_have_case_eleven_sf</action>
+    </info_portion>
+    <info_portion id="player_take_doc_friend_from_case_11_old_friend">
+        <action>case_11_old_friend_next.delete_sf_from_actor_next</action>
+    </info_portion>
+    <info_portion id="pda_green_next_eleven_case">
+        <action>case_11_section_2_changing_rules.text3_eleven_case</action>
+    </info_portion>
+    <info_portion id="player_understood_case_eleven_next">
+    </info_portion>
+
+    <!-- case_12_blood_dream -->
+    <info_portion id="player_case_12_blood_dream_started">
+         <task>case_12_blood_dream_part_1</task>
+    </info_portion>
+    <info_portion id="player_have_case_12_blood_dream_begin">
+         <task>case_12_blood_dream_part_2</task>
+        <action>case_12_blood_dream.remove_metka_one</action>
+    </info_portion>
+    <info_portion id="player_have_screwdriver_bandit_borov">
+        <action>case_12_blood_dream_next.elk_death</action>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream">
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_1">
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_2">
+         <task>case_12_blood_dream_part_3</task>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_3">
+         <task>case_12_blood_dream_part_4</task>
+        <action>case_12_blood_dream_next_add_two.get_case_12_cache</action>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_3_stop">
+         <task>case_12_blood_dream_part_last</task>
+        <action>case_12_blood_dream_next_add_two.get_case_12_cache_last</action>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_4">
+         <task>case_12_blood_dream_part_last</task>
+        <action>case_12_blood_dream_next_add_two.get_case_12_cache_last</action>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_last">
+        <action>case_12_blood_dream_next_add_two.remove_metka_one</action>
+        <action>case_12_blood_dream_next.last_all_or</action>
+    </info_portion>
+    <info_portion id="player_complete_case_12_blood_dream_part_last_art_done">
+    </info_portion>
+
+
+    <!-- case_10_section_2_diary -->
+    <info_portion id="bar_barman_case_10_section_2_diary_started">
+         <task>case_10_section_2_diary</task>
+    </info_portion>
+    <info_portion id="player_take_section_2_diary">
+    </info_portion>
+    <info_portion id="player_take_section_2_diary_done">
+    </info_portion>
+    <info_portion id="spawn_bar_dmitry">
+         <task>case_10_section_2_diary_talk</task>
+    </info_portion>
+    <info_portion id="player_ready_go_bar_dmitry">
+    </info_portion>
+    <info_portion id="player_go_bar_dmitry">
+         <task>case_10_section_2_diary_art</task>
+    </info_portion>
+    <info_portion id="player_find_art_bar_dmitry">
+        <action>case_10_section_2_diary.remove_metka_one</action>
+        <action>case_10_section_2_diary_next.start_add_spawn_abb</action>
+    </info_portion>
+    <info_portion id="player_complete_case_10_section_2_diary">
+    </info_portion>
+
+
+    <!-- case_10_section_3_leviathan -->
+    <info_portion id="player_can_go_case_10_section_3_leviathan">
+         <task>case_10_section_3_leviathan</task>
+    </info_portion>
+    <info_portion id="player_find_art_l_bar_dmitry">
+        <action>case_10_section_3_leviathan.remove_metka_one</action>
+        <action>case_10_section_3_leviathan.start_add_spawn_abb</action>
+    </info_portion>
+    <info_portion id="player_complete_case_10_section_3_leviathan">
+    </info_portion>
+
+
+    <!-- case_10_section_4_plan -->
+    <info_portion id="player_understood_case_10_section_4_plan">
+    </info_portion>
+
+
+    <!-- case_13_quantum_leap -->
+    <info_portion id="case_13_quantum_leap_started">
+         <task>case_13_quantum_leap</task>
+    </info_portion>
+    <info_portion id="player_complete_case_13_quantum_leap">
+        <action>case_13_quantum_leap.text_continuation_be</action>
+        <action>case_last_deal_restrictor.spawn_zones</action>
+         <task>case_12_deal</task>
+    </info_portion>
+    <info_portion id="player_find_exit_case_13_quantum_leap">
+        <action>case_13_quantum_leap_next.get_case_13_cache</action>
+    </info_portion>
+   <info_portion id="player_find_souls_spawn_case_13_quantum_leap">
+        <action>case_13_quantum_leap_next.start_add_spawn</action>
+    </info_portion>
+   <info_portion id="spawn_deception_ql">
+        <action>case_13_quantum_leap_next.start_spawn_deception_ql</action>
+    </info_portion>
+
+
+    <info_portion id="player_understood_code_cache_second">
+    </info_portion>
+    <info_portion id="player_understood_code_cache_first">
+    </info_portion>
+    <info_portion id="closed_this_case_in_game">
+    </info_portion>
+    <info_portion id="dragon_tears_spawn">
+        <action>spawn_monsters_zom.start_add_spawn</action>
+    </info_portion>
+    <info_portion id="vc_in_the_game">
+        <action>e_egg.next_vis</action>
+    </info_portion>
+    <info_portion id="sf_case_code_bar">
+        <action>case_sf_16_map.start_add_spawn</action>
+    </info_portion>
+    <info_portion id="open_choice_pro">
+         <task>prototype_case_sf_16_map</task>
+        <action>case_sf_16_map.snow_wolf_create</action>
+    </info_portion>
+    <info_portion id="player_understand_choice_pro">
+         <task>case_sf_16_map</task>
+    </info_portion>
+    <info_portion id="player_give_choice_pro">
+    </info_portion>
+    <info_portion id="player_give_pro_act">
+    </info_portion>
+    <info_portion id="player_decide_the_fate_of">
+    </info_portion>
+    <info_portion id="gar_seriy_stop_say_and_give_money">
+    </info_portion>
+
+    <info_portion id="mil_blockpost_free_task_stop_nw">
+    </info_portion>
+
+		<!-- DEACTIVATE RADAR -->
+    <info_portion id="bar_deactivate_radar_start">
+		<article>descr_bar_radar_deactivate</article>
+		<article>journal_before_radar_task</article>
+    </info_portion>
+	<info_portion id="bar_deactivate_radar_done"></info_portion>
+
+	<!-- TUNEL -->
+	<info_portion id="rostok_tunel_searched"></info_portion>
+	<info_portion id="rostok_tunel_gordon_diary">
+		<article>rostok_tunel_gordon_diary</article>
+	</info_portion>
+	
+	<!-- ARENA -->
+	<info_portion id="bar_arena_door_1_open"></info_portion>
+	<info_portion id="bar_arena_door_2_open"></info_portion>
+	<info_portion id="bar_arena_door_3_open"></info_portion>
+	
+	
+	<info_portion id="bar_arena_start">
+		<disable>bar_arena_reset</disable>
+	</info_portion>	
+	<info_portion id="bar_arena_start_introduce"></info_portion>
+	<info_portion id="bar_arena_spawn_monstr"></info_portion>
+	<info_portion id="bar_arena_monstr_ready"></info_portion>
+	<info_portion id="bar_arena_monstr_dead"></info_portion>
+	<info_portion id="bar_arena_actor_victory"></info_portion>
+	<info_portion id="bar_arena_actor_lose"></info_portion>
+	<info_portion id="bar_arena_actor_afraid"></info_portion>
+	<info_portion id="bar_arena_actor_dead"></info_portion>
+	<info_portion id="bar_arena_pause"></info_portion>
+	
+	<info_portion id="bar_arena_reset">
+		<disable>bar_arena_fight_1_reward</disable>
+		<disable>bar_arena_fight_1_reward</disable>
+		<disable>bar_arena_fight_2_reward</disable>
+		<disable>bar_arena_fight_3_reward</disable>
+		<disable>bar_arena_fight_4_reward</disable>
+		<disable>bar_arena_fight_5_reward</disable>
+		<disable>bar_arena_fight_6_reward</disable>
+		<disable>bar_arena_fight_7_reward</disable>
+		<disable>bar_arena_fight_8_reward</disable>
+	</info_portion>	
+	
+	<info_portion id="bar_arena_1000_r"></info_portion>
+	<info_portion id="bar_arena_2000_r"></info_portion>
+	<info_portion id="bar_arena_3000_r"></info_portion>
+	<info_portion id="bar_arena_5000_r"></info_portion>
+	
+	<info_portion id="bar_arena_20_p"></info_portion>
+	<info_portion id="bar_arena_50_p"></info_portion>
+	<info_portion id="bar_arena_100_p"></info_portion>
+	
+	<info_portion id="bar_arena_fight_10"></info_portion>
+	<info_portion id="bar_arena_fight_20"></info_portion>
+	<info_portion id="bar_arena_fight_30"></info_portion>
+	<info_portion id="bar_arena_fight_40"></info_portion>
+	<info_portion id="bar_arena_fight_50"></info_portion>
+	<info_portion id="bar_arena_fight_60"></info_portion>
+	<info_portion id="bar_arena_fight_70"></info_portion>
+	<info_portion id="bar_arena_fight_80"></info_portion>
+	<info_portion id="bar_arena_fight_90"></info_portion>
+	
+	
+	<info_portion id="bar_arena_pseudodog_choosen"></info_portion>
+	<info_portion id="bar_arena_pseudodog_defeated"></info_portion>	
+	
+	<info_portion id="bar_arena_snork_choosen"></info_portion>
+	<info_portion id="bar_arena_snork_defeated"></info_portion>	
+
+	<info_portion id="bar_arena_bloodsucker_choosen"></info_portion>
+	<info_portion id="bar_arena_bloodsucker_defeated"></info_portion>	
+    
+	<info_portion id="bar_arena_burer_choosen"></info_portion>
+	<info_portion id="bar_arena_burer_defeated"></info_portion>	
+
+	<info_portion id="bar_arena_savage_choosen"></info_portion>
+	<info_portion id="bar_arena_savage_defeated"></info_portion>
+	
+	<info_portion id="bar_arena_state_1"></info_portion>	
+    
+    <info_portion id="bar_arena_fight">
+		<disable>bar_arena_reset</disable>
+    </info_portion>
+    <info_portion id="bar_arena_fight_1"></info_portion>	
+    <info_portion id="bar_arena_fight_2"></info_portion>	
+    <info_portion id="bar_arena_fight_3"></info_portion>	
+    <info_portion id="bar_arena_fight_4"></info_portion>	
+    <info_portion id="bar_arena_fight_5"></info_portion>	
+    <info_portion id="bar_arena_fight_6"></info_portion>	
+    <info_portion id="bar_arena_fight_7"></info_portion>	
+    <info_portion id="bar_arena_fight_8"></info_portion>	
+    <info_portion id="bar_arena_fight_1_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_2_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_3_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_4_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_5_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_6_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_7_reward"></info_portion>	
+    <info_portion id="bar_arena_fight_8_reward"></info_portion>	
+    <info_portion id="bar_arena_rank_false"></info_portion>
+    <info_portion id="bar_arena_fight_1_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_2_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_3_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_4_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_5_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_6_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_7_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_8_done">
+		<disable>bar_arena_fight</disable>
+		<disable>bar_arena_fight_begin</disable>
+    </info_portion>	
+    <info_portion id="bar_arena_fight_3_stalker_1_die"></info_portion>	
+    <info_portion id="bar_arena_fight_3_stalker_2_die"></info_portion>	
+    <info_portion id="bar_arena_fight_4_stalker_1_die"></info_portion>	
+    <info_portion id="bar_arena_fight_4_stalker_2_die"></info_portion>
+    <info_portion id="bar_arena_fight_4_stalker_3_die"></info_portion>	
+    <info_portion id="bar_arena_fight_5_stalker_1_die"></info_portion>
+    <info_portion id="bar_arena_fight_5_stalker_2_die"></info_portion>	
+    <info_portion id="bar_arena_fight_6_stalker_1_die"></info_portion>	
+    <info_portion id="bar_arena_fight_6_stalker_2_die"></info_portion>	
+    <info_portion id="bar_arena_fight_6_stalker_3_die"></info_portion>
+    <info_portion id="bar_arena_fight_6_stalker_4_die"></info_portion>	
+    <info_portion id="bar_arena_fight_6_stalker_5_die"></info_portion>
+    <info_portion id="bar_arena_fight_6_stalker_6_die"></info_portion>	
+    <info_portion id="bar_arena_fight_8_stalker_1_die"></info_portion>	
+    <info_portion id="bar_arena_fight_8_stalker_2_die"></info_portion>	
+    <info_portion id="bar_arena_fight_8_stalker_3_die"></info_portion>
+    <info_portion id="bar_arena_fight_8_stalker_4_die"></info_portion>	
+    <info_portion id="bar_arena_fight_begin"></info_portion>
+    <info_portion id="bar_arena_territory_death"></info_portion>
+    <info_portion id="bar_barman_start_room"></info_portion>
+    <info_portion id="heli_hunt_start"></info_portion>
+    <info_portion id="ros_zombied_spawn_01"></info_portion>
+    <info_portion id="rostok_camera_start"></info_portion>
+    <info_portion id="bar_arena_survival"></info_portion>
+    <info_portion id="rostok_kruglov_give_flash"></info_portion>
+  
+  <info_portion id="barman_job_1">
+		<task>bar_barman_job_1</task>
+	</info_portion>
+	<info_portion id="barman_job_2">
+		<task>bar_barman_job_2</task>
+	</info_portion>
+	<info_portion id="barman_job_3">
+		<task>bar_barman_job_3</task>
+	</info_portion>
+	
+	<!-- Sleep -->
+	<info_portion id="barman_sleep_dialog"></info_portion> <!-- Доступен диалог с Барменом -->
+	<info_portion id="barman_said_can_go"></info_portion> <!-- Бармен разрешил войти -->
+	<info_portion id="guard_said_can_go_1"></info_portion> <!-- Первый диалог с Гариком -->
+	<info_portion id="guard_said_can_go_2"></info_portion> <!-- Общий диалог с Гариком -->
+    <info_portion id="guard_can_be_used"></info_portion> <!-- Можно юзать разговор с Гариком -->
+	<info_portion id="guard_didnot_say_stop"></info_portion> <!-- Гарик больше не будет говорит: Тебе сюда нельзя! -->
+	
+</game_information_portions>

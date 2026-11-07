@@ -1,0 +1,63 @@
+function start_add_spawn()
+death_one()
+death_two()
+death_three()
+death_four()
+get_map_code()
+end
+
+function death_one()
+local obj= alife():create("rad_freedom_respawn_2",vector():set(-367.180,-14.164,391.212),1676,1848)
+obj:on_death()
+end
+
+function death_two()
+local obj= alife():create("esc_soldier_respawn_specnaz",vector():set(-349.624,-13.737,388.737),7581,1847)
+obj:on_death()
+end
+
+function death_three()
+local obj= alife():create("rad_freedom_respawn_3",vector():set(-334.238,-13.364,381.708),17182,1847)
+obj:on_death()
+end
+
+function death_four()
+local obj= alife():create("rad_specnaz_respawn_specnaz",vector():set(-332.704,-13.570,390.313),18163,1847)
+obj:on_death()
+end
+
+function get_map_code()
+    local obj= alife():create("csfb_taynik",vector():set(-367.239,-13.743,387.652),1671,1848)
+end
+
+function snow_wolf_create()
+local x= -383,018
+local y= -14,074
+local z= 399,565
+local level_vertex= 365
+local game_vertex_id= 1848
+alife():create("white_wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function actor_have_pro(actor, npc)
+      return actor:object("ammo_5.45x39pro") ~= nil
+end
+
+function case_sf_done(actor, npc)
+dialogs.relocate_money(actor, 92000, "in")
+this.delete_pro()
+ability_horror_all.actor_have_murder()
+end
+
+function case_sf_done_yan(actor, npc)
+dialogs.relocate_money(actor, 33000, "in")
+this.delete_pro()
+ability_horror_all.actor_have_murder()
+end
+
+function delete_pro()
+    local oItem = db.actor:object("ammo_5.45x39pro")
+    if oItem then
+        alife():release(alife():object(oItem:id()), true)
+    end
+end

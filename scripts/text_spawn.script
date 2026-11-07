@@ -1,0 +1,7 @@
+function text1(first_speaker, second_speaker)
+               local task_texture, task_rect = get_texture_info("ui_iconsTotal_kill_stalker")
+               local error_text = "%c[255,160,160,160]"..game.translate_string("Сообщение:").."\\n".."%c[default]"..""..game.translate_string("%c[255,255,1,1]На Вас объявлена охота! Остерегайтесь!%c[default]")..""
+               db.actor:give_game_news(error_text, task_texture, task_rect, 0, 30000)
+end
+
+

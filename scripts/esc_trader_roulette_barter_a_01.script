@@ -1,0 +1,43 @@
+function actor_have_af(actor, npc)
+      return actor:object("af_gravi") ~= nil
+end
+
+function actor_have_tax(actor, npc)
+	return actor:money() >= 1000
+end
+
+function actor_give_tax_art_and_receives(actor, npc)
+local tbl = "actor"
+local items = {{'bread',3,'conserva','kolbasa',2},
+{'vodka','conserva'},
+{'medkit','medkit_army','medkit_scientic'},
+'antirad', 3,
+{'guitar_a','harmonica_a'},
+'grenade_rgd5', 2,
+'grenade_f1', 2,
+{'wpn_pm','ammo_9x18_fmj'},
+{'wpn_pb','ammo_9x18_fmj'},
+{'wpn_fort','ammo_9x18_fmj'},
+{'wpn_bm16','ammo_12x70_buck'},
+{'wpn_walther','ammo_9x19_fmj'},
+{'wpn_mp5','ammo_9x19_fmj'},
+{'wpn_colt1911','ammo_11.43x23_fmj'},
+{'wpn_ak74u','ammo_5.45x39_fmj'},
+{'wpn_spas12','ammo_12x76_zhekan'},
+{'wpn_ak74','ammo_5.45x39_fmj'},
+{'wpn_saiga12c','ammo_12x76_zhekan'},
+'novice_outfit',
+'bandit_outfit',
+'af_fireball'}      
+xr_effects.uni_random_spawn(items, tbl, kol)
+msg("Получен предмет")
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_get_item]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+
+--Убор
+dialogs.relocate_money(npc, 1000, "out")
+dialogs.relocate_item_section(npc, "af_gravi", "out")
+end
+function msg(text)
+	db.actor:give_game_news(text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+end

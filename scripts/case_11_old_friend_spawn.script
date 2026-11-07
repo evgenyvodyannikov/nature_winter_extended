@@ -1,0 +1,8 @@
+function item_create()
+local x= 116,323
+local y= -3,849
+local z= 18,136
+local level_vertex= 33492
+local game_vertex_id= 1239
+alife():create("pda_green",vector():set(x,y,z),level_vertex,game_vertex_id)
+end

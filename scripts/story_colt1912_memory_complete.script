@@ -1,0 +1,9 @@
+function delete_s0f_from_actor()
+    local oItem = db.actor:object("s0f") 
+    if oItem then 
+        db.actor:drop_item(oItem) 
+        alife():release(alife():object(oItem:id()), true) 
+    end
+end
+
+

@@ -1,0 +1,93 @@
+function start_add_spawn()
+ak76_modifier_l_create()
+addon_pk_a_create()
+medkit_scientic_create()
+bullion_gild_create()
+ak74_create()
+bizon4_create()
+rg6_m1_create()
+rpk75_create()
+af_7_create()
+end
+
+function ak76_modifier_l_create()
+local x= -194,638
+local y= -19,494
+local z= -133,087
+local level_vertex= 63641
+local game_vertex_id= 56
+alife():create("wpn_ak76_modifier_l",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function addon_pk_a_create()
+local x= -80,345
+local y= -2,112
+local z= -76,668
+local level_vertex= 187593
+local game_vertex_id= 76
+alife():create("wpn_addon_pk_a",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function medkit_scientic_create()
+local x= 140,133
+local y= 3,374
+local z= 337,250
+local level_vertex= 444961
+local game_vertex_id= 232
+alife():create("medkit_scientic",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("medkit_elite",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function bullion_gild_create()
+local x= -65,562
+local y= -0,847
+local z= -218,504
+local level_vertex= 133124
+local game_vertex_id= 268
+alife():create("wpn_ak74",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function ak74_create()
+local x= -109,488
+local y= 10,106
+local z= 6,196
+local level_vertex= 105392
+local game_vertex_id= 319
+alife():create("bullion_gild",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function bizon4_create()
+local x= -235,293
+local y= 4,498
+local z= 15,183
+local level_vertex= 16918
+local game_vertex_id= 1391
+alife():create("wpn_bizon4",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function rg6_m1_create()
+local x= 197,091
+local y= 0,094
+local z= 77,456
+local level_vertex= 45472
+local game_vertex_id= 1186
+alife():create("wpn_rg6_m1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function rpk75_create()
+local x= -69,927
+local y= -6,873
+local z= -71,875
+local level_vertex= 3439
+local game_vertex_id= 717
+alife():create("wpn_rpk75",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function af_7_create()
+local x= 11,392
+local y= -0,002
+local z= 16,987
+local level_vertex= 251423
+local game_vertex_id= 477
+alife():create("af_7",vector():set(x,y,z),level_vertex,game_vertex_id)
+end

@@ -1,0 +1,644 @@
+------ Настройки --------
+local drop_shooted_to_ground = false -- полностью отстрелянные магазины падают на землю (спидлодеров не касается)
+-------------------------
+local ini = system_ini()
+local last_binoc = nil
+local bfake = nil
+local last_slot = 0
+local bslot = db.actor:item_in_slot(4)
+local state = "idle"
+local new_ammo_list = {}
+local conv_ammo_list = {}
+local new_wm_list = {}
+local mag_max_size = 0
+local atype_start = 0
+local aload_start = 0
+local recharge_init = false
+local ammo_class = {}
+local exclusion_load = {}
+local exclusion_mag_charged = {}
+local prelast_load1 = nil
+local prelast_load2 = nil
+local last_load1 = nil
+local last_load2 = nil
+local last_gun1 = nil
+local last_gun2 = nil
+local lost_ammo_sect = nil
+local lost_ammo_cond = nil
+local lost_ammo_cap = nil
+local lost_ammo_id = nil
+local last_load_recharging = nil
+local final_charging_load = nil
+local spawn_delay_timer = nil
+local spawn_delay_value = 1000
+local gl_delay_value = 1000
+local gl_id = nil
+local gl_time = nil
+local gl_wpn = nil
+local consider_loaded = false
+local consider_loaded_delay = false
+local just_loaded_empty = nil
+
+
+function init_last_binoc()
+	local slot4 = db.actor:item_in_slot(4)
+	if slot4 then 
+		local s4s = slot4:section()
+		local class = ini:r_string(s4s,"class")
+		if class == "WP_BINOC" then return slot4 end
+	end
+    local count = db.actor:object_count()
+    for i= count-1,0,-1 do
+        local item = db.actor:object(i)
+		local is = item:section()
+		local iclass = ini:r_string(is,"class")
+		if iclass == "WP_BINOC" then 
+			return item 
+		end
+    end
+	return nil
+end
+
+function give_loaded(section)
+	if string.sub(section,1,4) == "mag_" or string.sub(section,1,5) == "clip_" or string.sub(section,1,5) == "belt_" then
+		consider_loaded = true
+		consider_loaded_delay = true
+	end
+	spawn.inv(section)
+end
+
+function update()
+	local act_slot = db.actor:active_slot()
+	if act_slot ~= 4 then
+		last_slot = act_slot
+	end
+	bslot = db.actor:item_in_slot(4)
+	-- монтиоринг состояния магазина активного оружия в 1 и 2 слотах
+	if act_slot == 1 and db.actor:item_in_slot(1) ~= nil and string.sub(db.actor:item_in_slot(1):section(),1,4) == "wpn_" then
+		local s1 = db.actor:item_in_slot(1)
+		local load1 = s1:get_ammo_in_magazine()
+		if not last_gun1 or last_gun1 ~= s1:id() then  -- оружие изменилось или появилось - инит
+			last_gun2 = nil -- сбрасываем ИД 2 слота
+			last_gun1 = s1:id() -- запоминаем ИД
+			last_load1 = load1 -- запоминаем заряд магазина
+			prelast_load1 = load1 -- запоминаем заряд магазина
+		end
+		if load1 == 0 and last_load1 > 0 and not inv.is_exchange_ui_open() then -- патроны упали до 0, инвентарь не открыт = последний выстрел
+			if get_gl_mode(last_gun1) == 0 then -- не режим стрельбы из подствольника
+				local ammo_class = parse_data(ini:r_string(s1:section(),"ammo_class")) -- запоминаем типы боеприпасов
+				local ammo_type = get_ammo_type(last_gun1)
+				local at = ammo_type + 1
+				local used_ammo = ammo_class[at] -- текущие БП
+				local e_sect = used_ammo.."_e"
+				if ini:section_exist(e_sect) then -- если есть секция пустого МП
+					if not (ini:line_exist(e_sect,"speedloader") and ini:r_bool(e_sect,"speedloader") == true) then
+						if drop_shooted_to_ground then
+							gl_id = alife():create(e_sect,(device().cam_pos:mad(device().cam_right, -0.1)),db.actor:level_vertex_id(),db.actor:game_vertex_id())
+						else
+							gl_id = spawn.inv(e_sect) -- пустой МП
+						end
+						gl_wpn = last_gun1
+						gl_time = time_global() + gl_delay_value
+					end
+				end
+			end
+		elseif load1 == 1 and lost_ammo_cond ~= nil and alife():object(lost_ammo_id) == nil then -- заряд стал 1 и исчез магазин, причем совсем - зарядка
+			local target_load = math.ceil(lost_ammo_cap*lost_ammo_cond)
+			s1:set_ammo_elapsed(target_load)
+			local e_sect = lost_ammo_sect.."_e"
+			if ini:section_exist(e_sect) then -- если есть секция пустого МП
+				if (ini:line_exist(e_sect,"speedloader") and ini:r_bool(e_sect,"speedloader") == true) then
+					spawn.inv(e_sect) -- пустой МП
+				end
+			end
+		end
+		prelast_load1 = last_load1
+		last_load1 = load1
+	elseif act_slot == 2 and db.actor:item_in_slot(2) ~= nil and string.sub(db.actor:item_in_slot(2):section(),1,4) == "wpn_" then
+		local s2 = db.actor:item_in_slot(2)
+		local load2 = s2:get_ammo_in_magazine()
+		if not last_gun2 or last_gun2 ~= s2:id() then  -- оружие изменилось или появилось - инит
+			last_gun1 = nil -- сбрасываем ИД 1 слота
+			last_gun2 = s2:id() -- запоминаем ИД
+			last_load2 = load2 -- запоминаем заряд магазина
+			prelast_load2 = load2 -- запоминаем заряд магазина
+		end
+		--get_gl_mode(last_gun2)
+		if load2 == 0 and last_load2 > 0 and not inv.is_exchange_ui_open() then -- патроны упали до 0, инвентарь не открыт = последний выстрел
+			if get_gl_mode(last_gun2) == 0 then -- не режим стрельбы из подствольника
+				local ammo_class = parse_data(ini:r_string(s2:section(),"ammo_class")) -- запоминаем типы боеприпасов
+				local ammo_type = get_ammo_type(last_gun2)
+				local at = ammo_type + 1
+				local used_ammo = ammo_class[at] -- текущие БП
+				local e_sect = used_ammo.."_e"
+				if ini:section_exist(e_sect) then -- если есть секция пустого МП
+					if not (ini:line_exist(e_sect,"speedloader") and ini:r_bool(e_sect,"speedloader") == true) then
+						if drop_shooted_to_ground then
+							gl_id = alife():create(e_sect,(device().cam_pos:mad(device().cam_right, -0.1)),db.actor:level_vertex_id(),db.actor:game_vertex_id())
+						else
+							gl_id = spawn.inv(e_sect) -- пустой МП
+						end
+						gl_wpn = last_gun2
+						gl_time = time_global() + gl_delay_value
+					end
+				end
+			end
+		elseif load2 == 1 and lost_ammo_cond ~= nil and alife():object(lost_ammo_id) == nil then -- заряд стал 1 и исчез магазин, причем совсем - зарядка
+			local target_load = math.ceil(lost_ammo_cap*lost_ammo_cond)
+			s2:set_ammo_elapsed(target_load)
+			local e_sect = lost_ammo_sect.."_e"
+			inv.add_dark_matter(unfloat10kx(e_sect,"inv_weight")) -- магазин зарядили в оружие, добавляем его вес
+			if ini:section_exist(e_sect) then -- если есть секция пустого МП
+				if (ini:line_exist(e_sect,"speedloader") and ini:r_bool(e_sect,"speedloader") == true) then
+					spawn.inv(e_sect) -- пустой МП
+				end
+			end
+		end
+		prelast_load2 = last_load2
+		last_load2 = load2
+	else
+		last_gun1 = nil -- сбрасываем ИД 1 слота
+		last_gun2 = nil -- сбрасываем ИД 2 слота
+	end
+	
+	lost_ammo_sect = nil
+	lost_ammo_cond = nil
+	lost_ammo_cap = nil
+	lost_ammo_id = nil
+	
+	-- Ловушка на магазины, появившиеся из-за переключения на подствольник
+	if gl_time and gl_id and gl_wpn then
+		if (time_global() > gl_time) or (alife():object(gl_wpn) == nil) then -- Время прошло, подствол не вкл - сброс
+			gl_time = nil
+			gl_id = nil
+			gl_wpn = nil
+		else -- если подствол включается - делетим магазин
+			if get_gl_mode(gl_wpn) == 1 then
+				alife():release(gl_id,true)
+				gl_time = nil
+				gl_id = nil
+				gl_wpn = nil
+			end
+		end
+	end
+	
+	-- конверсия подобранных магазинов
+	for k,v in pairs(new_ammo_list) do
+	--qqq("mag conversion: start")
+		local count = v
+		if (ini:line_exist(k,"speedloader") and ini:r_bool(k,"speedloader") == true) then
+			local wm = ini:r_string(k,"wm_section")
+			local ammo_class = parse_data(ini:r_string(wm,"ammo_class"))
+			se_respawn.create_ammo(ammo_class[1],db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),v)
+		else
+			local maxsize = ini:r_float(k,"mag_size")
+			local wm_sect = ini:r_string(k,"wm_section")
+			local mags = math.ceil(count/maxsize) -- к-во МО
+			state = "converting"
+			if mags > 1 then
+				for i = 1,(mags - 1) do
+					local mag = spawn.inv(k) -- полные МП
+					local magid = mag.id
+					conv_ammo_list[magid] = 0.995
+					count = count - maxsize
+				end
+			end
+			if count > 0 then -- если остались патроны
+				local mag = spawn.inv(k) -- спавним неполный
+				local magid = mag.id
+				conv_ammo_list[magid] = count/maxsize*0.995
+			end
+			inv.subtract_dark_matter(unfloat10kx(k.."_e","inv_weight")) -- магазин достали из оружия, убираем его вес
+		end
+	--qqq("mag conversion: end")
+	end
+	new_ammo_list = {}
+	
+	if consider_loaded then
+		if consider_loaded_delay then
+			consider_loaded_delay = false
+		else
+			consider_loaded = false
+		end
+	end
+	
+	if state == "converting" then return end -- чтобы статус не сбросился раньше времени
+	
+	-- монитор состояния слота
+	--if not bslot then -- в слоте бинокля ничего нет
+	if rslot then -- в слоте бинокля ничего нет
+		state = "idle"
+	else
+	
+		if bslot and string.sub(bslot:section(),1,3) == "wm_" then -- в слоте бинокля МО  -- wm_ - префикс МО
+		--qqq("wm in slot")
+			bsect = bslot:section()
+			if not last_binoc then
+				last_binoc = init_last_binoc()
+			end
+			if act_slot == 4 then -- слот активен, значит мы заряжаем магазин (или тупо смотрим на него)
+			--qqq("slot active")
+				local ammo_type = get_ammo_type(bslot:id())
+				state = "charge_mag"
+				if not recharge_init then
+					if final_charging_load then
+					--qqq("init break")
+						return
+					end
+					mag_max_size = ini:r_float(bsect,"ammo_mag_size")
+					atype_start = ammo_type
+					aload_start = bslot:get_ammo_in_magazine()
+					last_load_recharging = aload_start
+					ammo_class = parse_data(ini:r_string(bsect,"ammo_class"))
+					recharge_init = true
+					return
+				end
+				local at = ammo_type + 1
+				local used_ammo = ammo_class[at]
+				if bslot:get_ammo_in_magazine() < last_load_recharging then -- если уменьшилось к-во патронов - выстрел = полная разрядка
+					local ammo_class = parse_data(ini:r_string(bsect,"ammo_class"))
+					local ammo_return = ammo_class[ammo_type+1]
+					se_respawn.create_ammo(ammo_return,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),(bslot:get_ammo_in_magazine() + 1))
+					bslot:set_ammo_elapsed(0)
+					recharge_init = false
+				end
+				if (ini:line_exist(bsect,"tri_state_reload") and ini:r_string(bsect,"tri_state_reload") == "on") then
+					if bslot:get_ammo_in_magazine() > aload_start then -- если изменилось количество патронов = что-то делали (иначе на другой тип не переключится)
+						if not db.actor:object(used_ammo) -- если больше нет таких патронов
+						  or bslot:get_ammo_in_magazine() == mag_max_size then -- или магазин полон - меняем слот = завершение зарядки 
+							if not final_charging_load then
+								final_charging_load = bslot:get_ammo_in_magazine()
+							end
+							db.actor:activate_slot(last_slot)
+						end
+					end
+					if ammo_type ~= atype_start then -- если сменился тип патронов - возвращаем то, что было в начале в инвентарь
+					--qqq("changed ammo")
+						local ammo_class = parse_data(ini:r_string(bsect,"ammo_class"))
+						local ret_num, ret_type, rest = get_load(bslot:id())
+						if rest == 0 then -- если оставаться нечему, все патроны одного типа - возможно при начале с 0
+							atype_start = ammo_type
+						else -- иначе - патроны разных типов, закрываем зарядку
+							--[[
+							--qqq("load = "..bslot:get_ammo_in_magazine().." aload_start = "..aload_start)
+							--local qty = bslot:get_ammo_in_magazine() - ret_num
+							--qqq("qty = "..qty)
+							local ammo_return = ammo_class[ret_type+1]
+							bslot:set_ammo_elapsed(rest)
+							qqq("ammo_return = "..ammo_return)
+							if ret_num > 0 then -- пачки с наполнением 0 не спавним
+								se_respawn.create_ammo(ammo_return,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),ret_num)
+							end
+							recharge_init = false
+							--]]
+							if not final_charging_load then
+								final_charging_load = bslot:get_ammo_in_magazine()
+							end
+							db.actor:activate_slot(last_slot)
+						--qqq("changed ammo end")
+						end
+					end
+				else
+					if bslot:get_ammo_in_magazine() == mag_max_size then -- если магазин полон
+						if ammo_type ~= atype_start -- если изменился тип патронов
+						  or bslot:get_ammo_in_magazine() > aload_start then -- или возросло количество - меняем слот = завершение зарядки 
+							if not final_charging_load then
+								final_charging_load = bslot:get_ammo_in_magazine()
+							end
+							db.actor:activate_slot(last_slot)
+						end
+					end
+				end
+				last_load_recharging = bslot:get_ammo_in_magazine()
+			else -- слот не активен
+			--qqq("slot not active")
+				if state == "charge_mag" then -- а только что был
+					if not final_charging_load then -- если закрыто вручную, этого параметра еще нет, создаем
+						final_charging_load = bslot:get_ammo_in_magazine()
+					end
+					if not spawn_delay_timer then
+						spawn_delay_timer = time_global() + spawn_delay_value
+					end
+					--qqq("timer")
+					if spawn_delay_timer < time_global() then
+					--qqq("timer done")
+						state = "mag_charged" -- только зарядили
+						local a_type = 0
+						final_charging_load, a_type, rest_num, rest_type = get_load(bslot:id())
+						if not (ini:line_exist(bsect,"tri_state_reload") and ini:r_string(bsect,"tri_state_reload") == "on") then
+							a_type = get_ammo_type(bslot:id())
+							final_charging_load = bslot:get_ammo_in_magazine()
+						end
+						local target_sect = ini:r_string(bsect,"charged"..a_type)
+						atype_start = 0
+						aload_start = 0
+						ammo_class = {}
+						recharge_init = false
+						if final_charging_load == 0 then -- если ничего не заряжено
+							target_sect = target_sect.."_e" -- пустой магазин
+							just_loaded_empty = true
+						end
+						if rest_num > 0 then
+							local a_class = parse_data(ini:r_string(bsect,"ammo_class"))
+							local ammo_rest = a_class[(rest_type + 1)]
+							se_respawn.create_ammo(ammo_rest,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),rest_num)
+						end
+						spawn.inv(target_sect)
+						spawn_delay_timer = nil
+					end
+				end
+			end
+			
+		else -- в слоте бинокля что угодно, кроме МО
+		--qqq("wm not in slot")
+			if not inv.is_exchange_ui_open() then -- если инвентарь/торговля/обыск не открыты
+				state = "idle"
+				-- переброска магазина с пояса на слот бинокля
+				for k,v in pairs (inv.belt) do
+					local iobs = v:section()
+					if iobs then -- объект мог исчезнуть с последнего обновления таблицы, секция будет nil со всеми вытекающими
+						if string.sub(iobs,1,4) == "mag_" or string.sub(iobs,1,5) == "clip_" or string.sub(iobs,1,5) == "belt_" then
+							last_binoc = bslot
+							if bslot then
+								bfake = spawn.inv("fake_"..bslot:section())
+								alife():release(alife():object(bslot:id()),true)
+							end
+							--db.actor:drop_item(bslot)								-- бросаем предмет с пояса
+							local wm_sect = ini:r_string(v:section(),"wm_section")	-- секция МО
+							local magcap = ini:r_float(v:section(),"mag_size")		-- вместимость магазина
+							local wm_load = math.ceil(magcap*v:condition())			-- патронов в МО
+							local wm = spawn.inv(wm_sect)							-- спавним МО, упадет в слот
+							local wmid = wm.id
+							new_wm_list[wmid] = wm_load								-- выставляем заряд
+							alife():release(alife():object(v:id()),true)			-- убираем МП с пояса
+							--db.actor:transfer_item(bslot,db.actor) 					-- поднимаем брошенное в слот
+							inv.update_belt_init()									-- старт перепроверки пояса
+							break
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function process_new_wm(obj,takesect,takeid)
+	if new_wm_list[takeid] then
+		obj:set_ammo_elapsed(new_wm_list[takeid])
+		new_wm_list[takeid] = nil
+	end
+end
+
+function on_lost_ammo(obj,sect,cond)
+	if state == "converting" then 
+		return 
+	end
+	lost_ammo_sect = sect
+	lost_ammo_cond = cond
+	lost_ammo_id = obj:id()
+	lost_ammo_cap = ini:r_float(sect,"mag_size")
+	inv.subtract_dark_matter(get_extra_mass(sect,cond))
+end
+
+function process_new_ammo(obj,takesect,takeid)
+	if exclusion_load[takeid] then -- если в списке исключений
+		exclusion_load[takeid] = nil -- убираем оттуда
+		return -- и не обрабатываем
+	end
+	if string.sub(takesect,-2,-1) == "_e" and not just_loaded_empty then
+		return -- пустые не трогаем
+	end
+	if consider_loaded then
+		obj:set_condition(0.995)
+	end
+	if state == "mag_charged" then -- только что заряженные магазины
+		local target_cond = final_charging_load/mag_max_size*0.995
+		obj:set_condition(target_cond)
+		inv.add_dark_matter(get_extra_mass(takesect,target_cond))
+		exclusion_mag_charged[obj:id()] = true
+		mag_max_size = 0
+		final_charging_load = nil
+		just_loaded_empty = nil
+		alife():release(alife():object(bslot:id()),true)
+		--db.actor:drop_item(last_binoc)								-- бросаем предмет с пояса
+		--db.actor:transfer_item(last_binoc,db.actor) 					-- поднимаем брошенное в слот
+		-- [[
+		if bfake then
+			local next_mag = false
+			for k,v in pairs (inv.belt) do
+				local iobs = v:section()
+				if iobs then
+					if string.sub(iobs,1,4) == "mag_" or string.sub(iobs,1,5) == "clip_" or string.sub(iobs,1,5) == "belt_" then
+						next_mag = true
+						break
+					end
+				end
+			end
+			if bfake.parent_id == db.actor:id() and not next_mag then
+				alife():release(bfake)
+			end
+			if not next_mag then
+				bfake = nil
+			end
+		end
+		--]]
+		state = "idle"
+	elseif state == "converting" then -- конвертим выпавшие магазин-патроны в истинные магазины
+		if conv_ammo_list[takeid] then
+			local target_cond = conv_ammo_list[takeid]
+			obj:set_condition(target_cond)
+			inv.add_dark_matter(get_extra_mass(takesect,target_cond))
+			conv_ammo_list[takeid] = nil
+		end
+		local n = 0
+		for k,v in pairs (conv_ammo_list) do
+			n = n + 1
+		end
+		if n == 0 then state = "idle" end
+	else -- попавшие к актору в другой ситуации
+		cond = obj:condition()
+		if cond < 0.996 then -- магазин уже обработан, ситуация сброс/подъем
+			inv.add_dark_matter(get_extra_mass(takesect,cond))
+			return 
+		end 
+		-- иначе это магазины с condition = 1, появившиеся при разрядке оружия, на самом деле - патроны 
+		-- обновляем в таблице количество данных патронов
+		--qqq("process_new_ammo: else")
+		if not new_ammo_list[takesect] then
+			new_ammo_list[takesect] = 1
+		else
+			new_ammo_list[takesect] = new_ammo_list[takesect] + 1
+		end
+		alife():release(alife():object(obj:id()),true)
+		--qqq("process_new_ammo: released")
+	end
+end
+
+function get_extra_mass(sect,cond)
+	local empty_sect = sect.."_e" 
+	if not ini:section_exist(empty_sect) or cond > 0.996 then
+		return 0
+	end
+	local empty_mass = unfloat10kx(empty_sect,"inv_weight")
+	local self_mass = unfloat10kx(sect,"inv_weight")
+	local max_cap = ini:r_float(sect,"mag_size")
+	local load = math.ceil(cond*max_cap)
+	local extra_mass = empty_mass + self_mass*(load - 1) -- 1 патрон уже считается в двигле
+	return extra_mass
+end
+
+function unfloat10kx(sect,val) -- читаем точное значение, домножаем на 10000 и отбрасываем дробную часть
+	local read_str = ini:r_string(sect,val).."0000"
+	local pos = string.find(read_str,".",1,true)
+	if pos == nil then 
+		return tonumber(read_str) -- и так целое
+	else
+		local int_part = ""
+		local float_part = string.sub(read_str,(pos+1),(pos+4))
+		if pos ~= 1 then
+			int_part = string.sub(read_str,1,pos-1)
+		end
+		return tonumber(int_part..float_part)
+	end
+end
+
+function get_ammo_type(id)
+	local sobj = alife():object(id)
+	if not sobj then
+		return 0 
+	end
+	local np = net_packet()
+	sobj:STATE_Write(np)
+	local size = np:w_tell()
+	np:r_seek(size - 1)
+	local ammo_type = np:r_u8()
+	return ammo_type
+end
+
+function get_gl_mode(id,sect)
+	local sobj = alife():object(id)
+	if not sect then
+		sect = sobj:section_name()
+	end
+	local class = ini:r_string(sect,"class")
+	if class ~= "WP_AK74" and class ~= "WP_GROZA" then
+		return 0
+	end
+	local np = net_packet()
+	sobj:UPDATE_Write(np)
+	local size = np:w_tell()
+	np:r_seek(size - 11)	-- (size) - 11 - 0 - ПГ неактивен или отсутствует, 1 - ПГ активен
+	local gl_mode = np:r_u8()
+	--qqq("gl_mode: "..gl_mode.." time = "..time_global())
+	return gl_mode
+end
+
+function get_load(id,sect)
+	local sobj = alife():object(id)
+	local np = net_packet()
+	sobj:UPDATE_Write(np)
+	local size = np:w_tell()
+	--qqq("size = "..size)
+	np:r_seek(11)
+	local load_1 = 0 -- заряжено первого типа
+	local type_1 = 0 -- первый тип
+	local load_2 = 0 -- заряжено другого типа
+	local type_2 = 0 -- первый тип
+	for i = 1,size - 11 do
+		local round_type = np:r_u8()
+		--qqq((i).." = "..round_type)
+		if load_1 == 0 then
+			type_1 = round_type
+		end
+		if type_1 == round_type then
+			load_1 = load_1 + 1
+			--qqq("load_1 = "..load_1)
+		else
+			load_2 = load_2 + 1
+			type_2 = round_type
+			--qqq("load_2 = "..load_2)
+		end
+	end
+	--qqq("load_1 = "..load_1..", type_1 = "..type_1..", load_2 = "..load_2)
+	return load_1,type_1,load_2,type_2
+end
+
+-------------------------- БИНДЕР МАГАЗИНОВ -------------------------------------------------
+
+function init(obj)
+	local new_binder = magazine_binder(obj)
+	obj:bind_object(new_binder)
+end
+
+---------------------------------------------------------------------------------------------
+class "magazine_binder" (object_binder)
+function magazine_binder:__init(obj) super(obj)
+	self.loaded = false
+	self.init = false
+end 
+
+function magazine_binder:reload(section)
+	object_binder.reload(self, section)
+end
+
+function magazine_binder:reinit()
+	object_binder.reinit(self)
+end
+
+function magazine_binder:net_save_relevant()
+	return true
+end
+
+function magazine_binder:save(packet)
+	object_binder.save(self, packet)
+	packet:w_float(self.object:condition())
+end
+
+function magazine_binder:load(reader)
+	self.loaded = true
+	object_binder.load(self, reader)
+	self.cond = reader:r_float()
+end
+
+function magazine_binder:net_spawn(data)
+	if not object_binder.net_spawn(self, data) then
+		return false
+	end
+	if self.loaded then
+		exclusion_load[self.object:id()] = true -- прописываем в исключения, не надо обрабатывать его как новый
+		self.object:set_condition(self.cond)
+	end
+	return true
+end
+
+function magazine_binder:net_destroy()
+	object_binder.net_destroy(self)
+end
+
+function magazine_binder:update(delta)
+	object_binder.update(self, delta)
+	if not db.actor then return end
+	if not self.init then
+		if string.sub(self.object:section(),-2,-1) == "_e" then -- пустой магазин имеет condition = 0 в любом случае
+			--qqq("binder_update: id = "..self.object:id())
+			self.object:set_condition(0)
+		else
+			if self.loaded then -- если загрузка, и не пустой - выставляем condition
+				if not exclusion_mag_charged[self.object:id()] then 
+					self.object:set_condition(self.cond)
+					if self.object:parent() and self.object:parent():id() == db.actor:id() then
+						inv.add_dark_matter(get_extra_mass(self.object:section(),self.cond))
+						inv.update_belt_init()
+					end
+				end
+			elseif not (self.object:parent() and self.object:parent():id() == db.actor:id()) then
+				self.object:set_condition(0.995)
+			end
+		end
+		self.init = true
+	end
+	if exclusion_mag_charged[self.object:id()] and self.init then
+		exclusion_mag_charged[self.object:id()] = nil
+	end
+end
+

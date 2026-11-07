@@ -1,0 +1,1510 @@
+local 	actor_items_table =  {
+				"af_mine",
+				"caps_mosquito_bald",
+				"caps_gravi",
+				"caps_mincer",
+				"caps_electra",
+				"caps_zharka",
+				"caps_ameba",
+				"af_medusa",
+				"af_cristall_flower",
+				"af_night_star",
+				"af_vyvert",
+				"af_gravi",
+				"af_gold_fish",
+				"af_blood",
+				"af_mincer_meat",
+				"af_soul",
+				"af_electra_sparkler",
+				"af_electra_flash",
+				"af_electra_moonlight",
+				"af_rusty_thorn",
+				"af_rusty_kristall",
+				"af_rusty_sea-urchin",
+				"af_ameba_slime",
+				"af_ameba_slug",
+				"af_ameba_mica",
+				"af_drops",
+				"af_fireball",
+				"af_cristall",
+				"af_dummy_glassbeads",
+				"af_dummy_pellicle",
+				"af_dummy_battery",
+				"af_dummy_dummy",
+				"af_dummy_spring",
+				"af_fuzz_kolobok",
+				"wpn_pm",
+				"wpn_pb",
+				"wpn_fort",
+				"wpn_hpsa",
+				"wpn_beretta",
+				"wpn_walther",
+				"wpn_sig220",
+				"wpn_colt1911",
+				"wpn_usp",
+				"wpn_desert_eagle",
+				"wpn_bm16",
+				"wpn_bm16_full",
+				"wpn_toz34",
+				"wpn_wincheaster1300",
+				"wpn_spas12",
+				"wpn_ak74u",
+				"wpn_mp5",
+				"wpn_ak74",
+				"wpn_abakan",
+				"wpn_l85",
+				"wpn_lr300",
+				"wpn_sig550",
+				"wpn_groza",
+				"wpn_val",
+				"wpn_vintorez",
+				"wpn_svu",
+				"wpn_svd",
+				"wpn_rg-6",
+				"wpn_rpg7",
+				"wpn_g36",
+				"wpn_fn2000",
+				"wpn_addon_scope",
+				"wpn_addon_scope_susat",
+				"wpn_addon_silencer",
+				"wpn_addon_grenade_launcher",
+				"wpn_addon_grenade_launcher_m203",
+				"ammo_vog-25_teg",
+				"ammo_vog-25_hbgteg",
+				"ammo_og-7b",
+				"ammo_vog-25p",
+				"ammo_vog-25",
+				"medkit_scientic",
+				"medkit_army",
+				"mutant_flesh_eye",
+				"mutant_boar_leg",
+				"mutant_dog_tail",
+				"mutant_psevdodog_tail",
+				"mutant_krovosos_jaw",
+				"mutant_burer_hand",
+				"mutant_zombie_hand",
+				"mutant_snork_leg",
+				"olives",
+				"nuts",
+				"syrok",
+				"bread_norad",
+				"kolbasa_norad",
+				"conserva_norad",
+				"nuts_norad",
+				"sardina_norad",
+				"detector_simple",
+				"detector_advances",
+				"detector_elite",
+				"detector_elite_hi",
+				"detector_mine_finder",
+				"guitar_a",
+				"harmonica_a",
+				"wpn_ak74_m1",
+				"wpn_abakan_m1",
+				"wpn_fort_m1",
+				"wpn_ak74u_m1",
+				"wpn_mp5_m1",
+				"wpn_groza_m1",
+				"wpn_spas12_m1",
+				"wpn_winchester_m1",
+				"wpn_l85_m1",
+				"wpn_lr300_m1",
+				"wpn_svd_m1",
+				"wpn_sig_m1",
+				"wpn_eagle_m1",
+				"wpn_colt_m1",
+				"wpn_val_m1",
+				"wpn_mp5_m2",
+				"wpn_abakan_m2",
+				"wpn_l85_m2",
+				"wpn_sig_m2",
+				"wpn_rg6_m1",
+				"wpn_walther_m1",
+				"wpn_ak74_snip",
+				"wpn_abakan_snip",
+				"wpn_l85_snip",
+				"wpn_lr300_snip",
+				"wpn_sig550_snip",
+				"wpn_groza_snip",
+				"wpn_val_snip",
+				"wpn_g36_snip",
+				"wpn_fn2000_snip",
+				"wpn_ak74u_light",		
+				"wpn_ak74_light",	
+				"wpn_abakan_light",
+				"wpn_l85_light",
+				"wpn_lr300_light",
+				"wpn_sig550_light",
+				"wpn_groza_light",
+				"wpn_val_light",
+				"wpn_g36_light",
+				"wpn_fn2000_light",
+				"wpn_vintorez_light",
+				"wpn_svu_light",
+				"wpn_svd_light",
+				"wpn_rg6_light",
+				"wpn_ak74_storm",
+				"wpn_abakan_storm",
+				"wpn_l85_storm",
+				"wpn_lr300_storm",
+				"wpn_sig550_storm",
+				"wpn_groza_storm",
+				"wpn_val_storm",
+				"wpn_g36_storm",
+				"wpn_fn2000_storm",
+				"wpn_ak74u_silenc",		
+				"wpn_ak74_silenc",	
+				"wpn_abakan_silenc",
+				"wpn_l85_silenc",
+				"wpn_lr300_silenc",
+				"wpn_sig550_silenc",
+				"wpn_groza_silenc",
+				"wpn_g36_silenc",
+				"wpn_fn2000_silenc",
+				"wpn_9mm_nato_silencer",
+				"sleeping_bag",
+				"wpn_bizon",
+				"wpn_mac10",
+				"wpn_mp7a3",
+				"wpn_kriss_super_v",
+				"wpn_smg_tmp",
+				"wpn_tec9",
+				"wpn_ots33",
+				"wpn_benelli_short",
+				"wpn_mp5k",
+				"wpn_sr3vihr",
+				"wpn_toz34_short",
+				"wpn_fn2000_sniper",
+				"wpn_fn2000_old"
+	  			}
+local 	friend_items_table =  {
+				{
+				"ammo_vog-25_teg",
+				"ammo_vog-25_hbgteg",
+				"bread_norad",
+				"kolbasa_norad",
+				"conserva_norad",
+				"nuts_norad",
+				"sardina_norad",
+				"af_mine",
+				"af_medusa",
+				"af_cristall_flower",
+				"af_night_star",
+				"af_vyvert",
+				"af_gravi",
+				"af_gold_fish",
+				"af_blood",
+				"af_mincer_meat",
+				"af_soul",
+				"af_electra_sparkler",
+				"af_electra_flash",
+				"af_electra_moonlight",
+				"af_rusty_thorn",
+				"af_rusty_kristall",
+				"af_rusty_sea-urchin",
+				"af_ameba_slime",
+				"af_ameba_slug",
+				"af_ameba_mica",
+				"af_drops",
+				"af_fireball",
+				"af_cristall",
+				"af_dummy_glassbeads",
+				"af_dummy_pellicle",
+				"af_dummy_battery",
+				"af_dummy_dummy",
+				"af_dummy_spring",
+				"af_fuzz_kolobok",
+				"ammo_9x18_fmj",
+				"ammo_9x18_pmm",
+				"ammo_9x19_pbp",
+				"ammo_9x19_fmj",
+				"ammo_11.43x23_hydro",
+				"ammo_11.43x23_fmj",
+				"ammo_12x70_buck",
+				"ammo_12x76_dart",
+				"ammo_12x76_zhekan",
+				"ammo_5.45x39_ap",
+				"ammo_5.45x39_fmj",
+				"ammo_9x39_sp5",
+				"ammo_9x39_ap",
+				"ammo_9x39_pab9",
+				"ammo_5.56x45_ss190",
+				"ammo_5.56x45_ap",
+				"ammo_7.62x54_7h14",
+				"ammo_7.62x54_7h1",
+				"ammo_7.62x54_ap",
+				"ammo_og-7b",
+				"ammo_vog-25p",
+				"ammo_vog-25",
+				"grenade_f1",
+				"grenade_rgd5",
+				"grenade_gd-05",
+				"grenade_light",
+				"ammo_m209",
+				"wpn_pm",
+				"wpn_pb",
+				"wpn_fort",
+				"wpn_hpsa",
+				"wpn_beretta",
+				"wpn_walther",
+				"wpn_sig220",
+				"wpn_colt1911",
+				"wpn_usp",
+				"wpn_desert_eagle",
+				"wpn_bm16",
+				"wpn_bm16_full",
+				"wpn_toz34",
+				"wpn_wincheaster1300",
+				"wpn_spas12",
+				"wpn_ak74u",
+				"wpn_mp5",
+				"wpn_ak74",
+				"wpn_abakan",
+				"wpn_l85",
+				"wpn_lr300",
+				"wpn_sig550",
+				"wpn_groza",
+				"wpn_val",
+				"wpn_vintorez",
+				"wpn_svu",
+				"wpn_svd",
+				"wpn_rg-6",
+				"wpn_rpg7",
+				"wpn_g36",
+				"wpn_fn2000",
+				"wpn_addon_scope",
+				"wpn_addon_scope_susat",
+				"wpn_addon_silencer",
+				"wpn_addon_grenade_launcher",
+				"wpn_addon_grenade_launcher_m203",
+				"bandage",
+				"medkit",
+				"medkit_scientic",
+				"medkit_army",
+				"antirad",
+				"mutant_flesh_eye",
+				"mutant_boar_leg",
+				"mutant_dog_tail",
+				"mutant_psevdodog_tail",
+				"mutant_krovosos_jaw",
+				"mutant_burer_hand",
+				"mutant_zombie_hand",
+				"mutant_snork_leg",
+
+				"bread",
+				"kolbasa",
+				"conserva",
+				"vodka",
+				"energy_drink",
+				"energy_drink_new",
+				"stalker_drink_new",
+				"stalker_drink_old",
+				"olives",
+				"nuts",
+				"sardina",
+				"syrok",
+				"detector_simple",
+				"detector_advances",
+				"detector_elite",
+				"detector_mine_finder",
+				"guitar_a",
+				"harmonica_a",
+
+				"wpn_ak74_snip",
+				"wpn_abakan_snip",
+				"wpn_l85_snip",
+				"wpn_lr300_snip",
+				"wpn_sig550_snip",
+				"wpn_groza_snip",
+				"wpn_val_snip",
+				"wpn_g36_snip",
+				"wpn_fn2000_snip",
+				"wpn_ak74u_light",
+				"wpn_ak74_light",
+				"wpn_abakan_light",
+				"wpn_l85_light",
+				"wpn_lr300_light",
+				"wpn_sig550_light",
+				"wpn_groza_light",
+				"wpn_val_light",
+				"wpn_g36_light",
+				"wpn_fn2000_light",
+				"wpn_vintorez_light",
+				"wpn_svu_light",
+				"wpn_svd_light",
+				"wpn_rg6_light",
+				"wpn_ak74_storm",
+				"wpn_abakan_storm",
+				"wpn_l85_storm",
+				"wpn_lr300_storm",
+				"wpn_sig550_storm",
+				"wpn_groza_storm",
+				"wpn_val_storm",
+				"wpn_g36_storm",
+				"wpn_fn2000_storm",
+				"wpn_ak74u_silenc",
+				"wpn_ak74_silenc",
+				"wpn_abakan_silenc",
+				"wpn_l85_silenc",
+				"wpn_lr300_silenc",
+				"wpn_sig550_silenc",
+				"wpn_groza_silenc",
+				"wpn_g36_silenc",
+				"wpn_fn2000_silenc",
+
+				"wpn_9mm_nato_silencer",
+				"sleeping_bag",
+				"wpn_mac10",
+				"wpn_mp7a3",
+				"wpn_smg_tmp",
+				"wpn_tec9",
+				"wpn_ots33",
+				"wpn_benelli_short",
+				"wpn_mp5k",
+				"wpn_sr3vihr",
+				"wpn_toz34_short"
+	  			},
+				{
+				 400,
+				 450,
+				 250,
+				 300,
+				 400,
+				 800,
+				 450,
+				 1000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 1000,
+				 2500,
+				 5000,
+				 5000,
+				 5000,
+				 5000,
+				 5000,
+				 5000,
+				 5000,
+				 70,
+				 80,
+				 120,
+				 100,
+				 215,
+				 200,
+				 50,
+				 100,
+				 60,
+				 250,
+				 200,
+				 375,
+				 400,
+				 340,
+				 320,
+				 380,
+				 1000,
+				 900,
+				 950,
+				 1000,
+				 270,
+				 200,
+				 310,
+				 240,
+				 150,
+				 210,
+				 255,
+				 280,
+				 300,
+				 350,
+				 2500,
+				 900,
+				 800,
+				 1200,
+				 1100,
+				 1500,
+				 2300,
+				 400,
+				 2700,
+				 4500,
+				 4150,
+				 3400,
+				 1000,
+				 2500,
+				 2000,
+				 2500,
+				 4000,
+				 5000,
+				 6500,
+				 10000,
+				 9000,
+				 12000,
+				 10000,
+				 15000,
+				 12000,
+				 10000,
+				 18000,
+				 17000,
+				 200,
+				 200,
+				 100,
+				 250,
+				 250,
+				 50,
+				 150,
+				 400,
+				 220,
+				 300,
+				 300,
+				 800,
+				 500,
+				 1500,
+				 3000,
+				 3500,
+				 200,
+				 1100,
+
+				 50,
+				 50,
+				 100,
+				 100,
+				 50,
+				 250,
+				 200,
+				 75,
+				 800,
+				 400,
+				 150,
+				 250,
+				 500,
+				 5000,
+				 12000,
+				 8000,
+				 1000,
+				 300,
+
+				 4000,
+				 5000,
+				 6000,
+				 8000,
+				 9000,
+				 12500,
+				 11500,
+				 19500,
+				 20000,
+				 2500,
+				 3500,
+				 4500,
+				 5500,
+				 7500,
+				 8500,
+				 12000,
+				 11000,
+				 19000,
+				 19500,
+				 14000,
+				 12000,
+				 17000,
+				 14000,
+				 4000,
+				 5000,
+				 5500,
+				 8000,
+				 9000,
+				 12500,
+				 11500,
+				 19500,
+				 20000,
+				 3100,
+				 4000,
+				 5000,
+				 6000,
+				 8000,
+				 9000,
+				 12500,
+				 19500,
+				 20000,
+
+				 450,
+				 1000,
+				 1600,
+				 5500,
+				 3500,
+				 1100,
+				 3500,
+				 2300,
+				 2100,
+				 7000,
+				 800
+				}
+			      }
+local 	some_items_table =  { 	
+			      novice = {
+					"ammo_9x18_fmj",
+					"ammo_9x18_pmm",
+					"ammo_9x19_pbp",
+					"ammo_9x19_fmj",
+					"ammo_11.43x23_hydro",
+					"ammo_11.43x23_fmj",
+					"ammo_12x70_buck",
+					"ammo_12x76_dart",
+					"ammo_12x76_zhekan",
+					"ammo_5.45x39_ap",
+					"ammo_5.45x39_fmj",
+					"ammo_5.56x45_ss190",
+					"ammo_5.56x45_ap",
+					"grenade_f1",
+					"grenade_rgd5",
+					"bandage",
+					"medkit",
+					"medkit_army",
+					"antirad",
+					"bread",
+					"kolbasa",
+					"conserva",
+					"vodka",
+					"energy_drink",
+					"energy_drink_new",
+					"stalker_drink_new",
+					"stalker_drink_old",
+					"sardina",
+					"syrok",
+					"bread_norad",
+					"kolbasa_norad",
+					"conserva_norad",
+					"sardina_norad"
+					},
+			 experienced = {
+					"af_mine",
+					"af_medusa",
+					"af_vyvert",
+					"af_blood",
+					"af_electra_sparkler",
+					"af_rusty_thorn",
+					"af_ameba_slime",
+					"af_drops",
+					"ammo_9x18_fmj",
+					"ammo_9x18_pmm",
+					"ammo_9x19_pbp",
+					"ammo_9x19_fmj",
+					"ammo_11.43x23_hydro",
+					"ammo_11.43x23_fmj",
+					"ammo_12x70_buck",
+					"ammo_12x76_dart",
+					"ammo_12x76_zhekan",
+					"ammo_5.45x39_ap",
+					"ammo_5.45x39_fmj",
+					"ammo_9x39_sp5",
+					"ammo_5.56x45_ss190",
+					"ammo_5.56x45_ap",
+					"ammo_7.62x54_7h14",
+					"ammo_vog-25p",
+					"ammo_vog-25",
+					"grenade_f1",
+					"grenade_rgd5",
+					"ammo_m209",
+					"bandage",
+					"medkit",
+					"medkit_scientic",
+					"medkit_army",
+					"antirad",
+					"bread",
+					"kolbasa",
+					"conserva",
+					"vodka",
+					"energy_drink",
+					"energy_drink_new",
+					"stalker_drink_new",
+					"stalker_drink_old",
+					"nuts",
+					"sardina",
+					"syrok",
+					"bread_norad",
+					"kolbasa_norad",
+					"conserva_norad",
+					"nuts_norad",
+					"sardina_norad"
+					},
+			     veteran = {
+					"af_mine",
+					"af_medusa",
+					"af_cristall_flower",
+					"af_vyvert",
+					"af_gravi",
+					"af_blood",
+					"af_mincer_meat",
+					"af_electra_sparkler",
+					"af_electra_flash",
+					"af_rusty_thorn",
+					"af_rusty_kristall",
+					"af_ameba_slime",
+					"af_ameba_slug",
+					"af_drops",
+					"af_fireball",
+					"ammo_9x19_pbp",
+					"ammo_9x19_fmj",
+					"ammo_11.43x23_hydro",
+					"ammo_11.43x23_fmj",
+					"ammo_12x76_dart",
+					"ammo_5.45x39_ap",
+					"ammo_5.45x39_fmj",
+					"ammo_9x39_sp5",
+					"ammo_9x39_ap",
+					"ammo_5.56x45_ss190",
+					"ammo_5.56x45_ap",
+					"ammo_7.62x54_7h14",
+					"ammo_7.62x54_7h1",
+					"ammo_og-7b",
+					"ammo_vog-25p",
+					"ammo_vog-25",
+					"grenade_f1",
+					"grenade_rgd5",
+					"ammo_m209",
+					"bandage",
+					"medkit",
+					"medkit_scientic",
+					"medkit_army",
+					"antirad",
+					"conserva",
+					"energy_drink_new",
+					"stalker_drink_new",
+					"olives",
+					"nuts",
+					"sardina",
+					"syrok",
+					"bread_norad",
+					"kolbasa_norad",
+					"conserva_norad",
+					"nuts_norad",
+					"sardina_norad"
+					},
+			      master = {
+					"af_mine",
+					"af_medusa",
+					"af_cristall_flower",
+					"af_vyvert",
+					"af_gravi",
+					"af_blood",
+					"af_mincer_meat",
+					"af_electra_sparkler",
+					"af_electra_flash",
+					"af_rusty_thorn",
+					"af_rusty_kristall",
+					"af_ameba_slime",
+					"af_ameba_slug",
+					"af_drops",
+					"af_fireball",
+					"ammo_11.43x23_hydro",
+					"ammo_11.43x23_fmj",
+					"ammo_12x76_dart",
+					"ammo_5.45x39_ap",
+					"ammo_5.45x39_fmj",
+					"ammo_9x39_sp5",
+					"ammo_9x39_ap",
+					"ammo_9x39_pab9",
+					"ammo_5.56x45_ss190",
+					"ammo_5.56x45_ap",
+					"ammo_7.62x54_7h14",
+					"ammo_7.62x54_7h1",
+					"ammo_7.62x54_ap",
+					"ammo_og-7b",
+					"ammo_vog-25p",
+					"ammo_vog-25",
+					"ammo_vog-25_teg",
+					"ammo_vog-25_hbgteg",
+					"grenade_f1",
+					"grenade_rgd5",
+					"ammo_m209",
+					"medkit_scientic",
+					"medkit_army",
+					"antirad",
+					"energy_drink_new",
+					"stalker_drink_new",
+					"olives",
+					"nuts",
+					"syrok",
+					"conserva_norad",
+					"nuts_norad",
+					"sardina_norad"
+					}
+			    }
+local 	min_max_cost_table = { 	
+				novice = {0, 1500},
+				experienced = {	1000, 5500},
+				veteran = { 2000, 17000},
+				master = { 3000, 100000}
+			     }
+local 	min_max_delta_table = { 	
+				novice = 40,
+				experienced = 30,
+				veteran = 20,
+				master = 10
+			      }
+local random_friend_item_name
+local random_actor_item_name
+local some_items_count
+local barter_flag
+
+local quest_number = 1
+local quest_hunter_name = ""
+local quest_item_name = ""
+local reward_flag
+local   list_quest =   {"hunters_quest_dialog_11",
+			"hunters_quest_dialog_12",
+			"hunters_quest_dialog_13",
+			"hunters_quest_dialog_14",
+			"hunters_quest_dialog_15",
+			"hunters_quest_dialog_16",
+			"hunters_quest_dialog_17",
+			"hunters_quest_dialog_18"}
+
+---------for treasure_manager-------
+
+function get_treasure_name(section)
+	local eat_name = {		"conserva",
+				"bread",
+				"kolbasa",
+				"nuts"}
+
+	local str = game.translate_string(news_manager.get_inv_name(section))
+	if string.find(section,"detector_") then 
+		return game.translate_string("Детектор")
+	end
+	if string.find(section,"af_") then 
+		return game.translate_string("Артефакт")
+	end
+	if (string.find(section,"medkit") or (section == "antirad") or (section == "bandage")) then 
+		return game.translate_string("Медикаменты")
+	end
+	if string.find(section,"grenade_") then 
+		return game.translate_string("Взрывчатка")
+	end
+	if (string.find(section,"ammo_vog-25") or string.find(section,"ammo_m209")) then 
+		return game.translate_string("Подствольные гранаты")
+	end
+	if string.find(section,"_drink_") then 
+		return game.translate_string("Напитки")
+	end
+	if string.find(section,"ammo_") then 
+		return game.translate_string("Патроны")
+	end
+	if string.find(section,"mutant_") then 
+		return game.translate_string("Части мутанта")
+	end
+	if string.find(section,"wpn_addon_") then 
+		return game.translate_string("Модификация для оружия")
+	end
+	for i=1, table.getn(eat_name), 1 do
+		if section == eat_name[i] then 
+			return game.translate_string("Еда")
+		end
+	end
+	return str
+end
+
+---------hunter quest-------
+
+function check_ready_quest(first_speaker, second_speaker)
+--	dbglog ("check_ready_quest(%s,%s)",first_speaker:name(),second_speaker:name())
+	if check_quest_time_limit(first_speaker, second_speaker) then 
+		return check_no_wounded(first_speaker, second_speaker)
+	else
+		return false
+	end
+end
+
+function check_quest_time_limit(first_speaker, second_speaker)
+	local current_time = get_current_time_minutes()
+	local quest_time_limit = xr_logic.pstor_retrieve(second_speaker, "quest_time_limit", 0)
+	if quest_time_limit == nil then
+		quest_time_limit = current_time
+	end
+	return (current_time >= quest_time_limit)
+end
+
+function hunter_init_quest_dialog(dlg)
+--0
+	local phr = dlg:AddPhrase("hunters_quest_dialog_0","0","",-10000)
+	local phrase_script = phr:GetPhraseScript()
+	phrase_script:AddAction("add_dialogs.set_quest_time_limit")
+--1
+	phr = dlg:AddPhrase("hunters_quest_dialog_1","1","0",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddDontHasInfo("hunter_quest_info")
+	phrase_script:AddAction("add_dialogs.hunter_quest_init")
+
+--создаём ветвление восемь вариантов квеста 11...18
+	for i=1, 8, 1 do
+		phr = dlg:AddPhrase(game.translate_string("hunters_quest_dialog_1"..tostring(i))..game.translate_string("hunters_quest_dialog_1001"), tostring(10 + i),"1",-10000)
+		phrase_script = phr:GetPhraseScript()
+		phrase_script:AddPrecondition("add_dialogs.check_quest_number_"..tostring(i))
+
+		phr = dlg:AddPhrase("hunters_quest_dialog_111", tostring(110 + i), tostring(10 + i), -10000)
+		phrase_script = phr:GetPhraseScript()
+		phrase_script:AddAction("add_dialogs.hunter_set_name")
+		phrase_script:AddGiveInfo("hunter_quest_info")
+	end
+--19
+	dlg:AddPhrase("hunters_quest_dialog_19","19","1",-10000)
+--2
+	phr = dlg:AddPhrase("hunters_quest_dialog_2","2","0",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddHasInfo("hunter_quest_info")
+	phrase_script:AddPrecondition("add_dialogs.check_hunter_name")
+--21
+	phr = dlg:AddPhrase("hunters_quest_dialog_21","21","2",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddPrecondition("add_dialogs.check_quest_item")
+	phrase_script:AddAction("add_dialogs.relocate_quest_item")
+--211
+	phr = dlg:AddPhrase("hunters_quest_dialog_211","211","21",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddAction("add_dialogs.hunter_quest_reward")
+	phrase_script:AddDisableInfo("hunter_quest_info")
+--22
+	phr = dlg:AddPhrase("hunters_quest_dialog_22","22","2",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddAction("add_dialogs.delete_timeout")
+--23
+	phr = dlg:AddPhrase("hunters_quest_dialog_23","23","2",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddAction("add_dialogs.set_quest_time_limit")
+--231
+	phr = dlg:AddPhrase("hunters_quest_dialog_231","231","23",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddDisableInfo("hunter_quest_info")
+	phrase_script:AddAction("add_dialogs.hunter_quest_fail")
+	
+--ветвление подсказки где находится квестодатель 30..39
+	for i=0, 9, 1 do
+		phr = dlg:AddPhrase(game.translate_string("hunters_quest_dialog_3").." "..game.translate_string("hunters_quest_dialog_3"..tostring(i)).."...", tostring(30+i),"0",-10000)
+		phrase_script = phr:GetPhraseScript()
+		phrase_script:AddHasInfo("hunter_quest_info")
+		phrase_script:AddPrecondition("add_dialogs.not_check_hunter_name")
+		phrase_script:AddPrecondition("add_dialogs.check_quest_level_"..tostring(i))
+--390..399
+		dlg:AddPhrase("hunters_quest_dialog_391", tostring(390+i), tostring(30+i), -10000)
+	end
+--4
+	phr = dlg:AddPhrase("hunters_quest_dialog_4", "4", "0",-10000)
+	phrase_script = phr:GetPhraseScript()
+	phrase_script:AddHasInfo("hunter_quest_info")
+	phrase_script:AddPrecondition("add_dialogs.not_check_hunter_name")
+	phrase_script:AddPrecondition("add_dialogs.check_quest_hunter_dead")
+	phrase_script:AddDisableInfo("hunter_quest_info")
+	phrase_script:AddAction("add_dialogs.hunter_quest_fail")
+--41
+	dlg:AddPhrase("hunters_quest_dialog_41", "41", "4", -10000)
+end
+
+function check_hunter_quest_live()
+	for i=1, se_stalker.get_count_tmp_stalkers(), 1 do
+		local obj_id = se_stalker.get_point_tmp_stalkers(i)
+		local alife_obj = alife():object(obj_id)
+		if (alife_obj ~= nil) and (alife_obj:alive() ~= false) then
+			local lname = alife():level_name( game_graph():vertex(alife_obj.m_game_vertex_id ):level_id())
+			if alife_obj:name() == quest_hunter_name then
+				return lname
+			end
+		end
+	end
+	return "dead"
+end
+
+function hunter_quest_load(F)
+	local quest_time_limit = {{},{}}
+	quest_number = F:r_u8()
+	quest_hunter_name = F:r_stringZ()
+	quest_item_name = F:r_stringZ()
+	local count_a = F:r_u16()
+	for a=1, count_a, 1 do
+		quest_time_limit[1][a] = F:r_stringZ()
+		quest_time_limit[2][a] = F:r_u32()
+	end 
+end
+
+function hunter_quest_save(F)
+	F:w_u8(quest_number)
+	F:w_stringZ(quest_hunter_name)
+	F:w_stringZ(quest_item_name)
+	F:w_u16 (0)
+end
+
+function hunter_quest_init()
+--	math.randomseed(time_global())
+	quest_number = math.random(1, 8)
+	local task_texture, task_rect = get_texture_info("ui_iconsTotal_monster_part", "ui_iconsTotal_locations")
+	db.actor:give_talk_message(game.translate_string(list_quest[quest_number]), task_texture, task_rect, "iconed_trade_info")
+	return true
+end
+
+function hunter_quest_text(news_text)
+	local pda_task = xr_sound.get_safe_sound_object([[device\pda\pda_objective]])
+	local task_texture, task_rect = get_texture_info("ui_iconsTotal_monster_part", "ui_iconsTotal_locations")
+	pda_task:play(db.actor, 0, sound_object.s2d)
+	if db.actor:is_talking() then	
+		db.actor:give_talk_message(news_text, task_texture, task_rect,"iconed_answer_item")
+	else
+		db.actor:give_game_news(news_text, task_texture, task_rect, 0, 3000)
+	end	
+	local hud = get_hud()
+	hud:AddCustomStatic("main_task", true)
+	hud:GetCustomStatic("main_task"):wnd():SetTextST(news_text)
+	hud:GetCustomStatic("main_task").m_endTime = time_global()/1000 + 5
+end
+
+function hunter_quest_fail(speaker1, speaker2)
+	hunter_quest_text(game.translate_string("hunter_monster_part_quest_fail").." "..game.translate_string(list_quest[quest_number]))
+end
+
+function hunter_quest_reward(speaker1, speaker2) 
+	local rang_table = ranks.get_obj_rank_name(speaker1)
+	local quest_item = db.actor:object (quest_item_name)
+	local min_delta = math.floor(quest_item:cost() - (quest_item:cost()/100)*30)
+	local max_delta = math.floor(quest_item:cost() + (quest_item:cost()/100)*10)
+	local nn = table.getn(friend_items_table[1])
+	local reward_items_table = {{},{}}
+	local n_count = 0
+	for a=1, nn, 1 do
+		if ((friend_items_table[2][a] >= min_delta) and (friend_items_table[2][a] <= max_delta)  and (friend_items_table[1][a] ~= quest_item_name)) or (check_some_item(rang_table, friend_items_table[1][a]) and (friend_items_table[2][a] < quest_item:cost()) and (friend_items_table[2][a]*10 >= quest_item:cost())) then
+			n_count = n_count + 1
+			reward_items_table[1][n_count] = friend_items_table[1][a]
+			reward_items_table[2][n_count] = friend_items_table[2][a]
+		end
+	end
+	if n_count == 0 then 
+		reward_flag = false
+		return false 
+	end
+	local rnd_num = math.random(1, table.getn(reward_items_table[1]))
+	local item_name = reward_items_table[1][rnd_num]
+	local some_items_count = 1
+	local cost_some_items = reward_items_table[2][rnd_num]
+	if check_some_item(rang_table, item_name) then
+		for a=1, 10, 1 do
+			if cost_some_items < quest_item:cost() then
+				some_items_count = some_items_count +1
+				cost_some_items = cost_some_items + reward_items_table[2][rnd_num]
+			else 
+				break
+			end
+		end
+	end
+	local task_texture, task_rect = get_texture_info("ui_iconsTotal_agr_agr_help_krot")
+	local dlg_text = ""
+	local str_fmt = "%c[255,160,200,160]"
+	local tmp_fmt = ""
+	local str_fmt_def = "%c[default]"
+	if some_items_count > 1 then
+		tmp_fmt = " ("..tostring(math.floor(some_items_count)).." "..game.translate_string("st_barter_1")
+	end
+	dlg_text = " "..game.translate_string(news_manager.get_inv_name(item_name))..str_fmt_def..tmp_fmt
+	db.actor:give_talk_message(dlg_text, task_texture, task_rect, "iconed_trade_info")
+	for a=1, some_items_count, 1 do
+		dialogs.relocate_item_section(db.actor, item_name, "in")
+	end
+	hunter_quest_text(game.translate_string("hunter_monster_part_quest_end").." "..game.translate_string(list_quest[quest_number]))
+	set_quest_time_limit(speaker2, speaker1)
+	reward_flag = true
+end
+
+function relocate_quest_item(speaker1, speaker2)
+	if check_quest_item() then
+		dialogs.relocate_item_section(speaker2, quest_item_name, "out")
+	end
+end
+
+function hunter_set_name(speaker1, speaker2)
+--	dbglog ("hunter_set_name(%s,%s)",speaker1:name(),speaker2:name())
+	quest_hunter_name = speaker1:name()
+	hunter_quest_text(game.translate_string(list_quest[quest_number]))
+	delete_timeout(speaker2, speaker1)
+end
+
+
+function delete_timeout(speaker1, speaker2)
+--	dbglog ("delete_timeout(%s,%s)",speaker1:name(),speaker2:name())
+	local quest_time_limit = get_current_time_minutes()
+	xr_logic.pstor_store(speaker2, "quest_time_limit", quest_time_limit)
+end
+
+
+function set_quest_time_limit(speaker1, speaker2)
+	local quest_time_limit = get_current_time_minutes() + math.random(120, 600)
+	xr_logic.pstor_store(speaker2, "quest_time_limit", quest_time_limit)
+--[[
+	local quest_time_limit_days = math.floor (quest_time_limit/(24*60))
+	local quest_time_limit_hours = math.floor((quest_time_limit - quest_time_limit_days*24*60)/60)
+	local quest_time_limit_minutes = (quest_time_limit - quest_time_limit_days*24*60) - quest_time_limit_hours*60
+	dbglog("%s_pstor_store(days=%d, hours=%d, minutes=%d)", speaker2:name(),quest_time_limit_days, quest_time_limit_hours, quest_time_limit_minutes)
+]]
+end
+
+function check_quest_item()
+	return db.actor:object(quest_item_name) ~= nil
+end
+
+function check_hunter_name(speaker1, speaker2)
+	return speaker1:name() == quest_hunter_name
+end
+
+function not_check_hunter_name( speaker1, speaker2 )
+	delete_timeout(speaker2, speaker1)
+	return not check_hunter_name(speaker1, speaker2)
+end
+
+function check_quest_level_0()
+	return (check_hunter_quest_live() == "l01_escape")
+end
+function check_quest_level_1()
+	return (check_hunter_quest_live() == "l02_garbage")
+end
+function check_quest_level_2()
+	return (check_hunter_quest_live() == "l03_agroprom")
+end
+function check_quest_level_3()
+	return (check_hunter_quest_live() == "l04_darkvalley")
+end
+function check_quest_level_4()
+	return (check_hunter_quest_live() == "l05_bar")
+end
+function check_quest_level_5()
+	return (check_hunter_quest_live() == "l06_rostok")
+end
+function check_quest_level_6()
+	return (check_hunter_quest_live() == "l07_military")
+end
+function check_quest_level_7()
+	return (check_hunter_quest_live() == "l08_yantar")
+end
+function check_quest_level_8()
+	return (check_hunter_quest_live() == "l10_radar")
+end
+function check_quest_level_9()
+	return (check_hunter_quest_live() == "l11_pripyat")
+end
+function check_quest_hunter_dead()
+	return (check_hunter_quest_live() == "dead")
+end
+
+function check_quest_number_1()
+	if quest_number == 1 then
+		quest_item_name = "mutant_flesh_eye"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_2()
+	if quest_number == 2 then
+		quest_item_name = "mutant_boar_leg"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_3()
+	if quest_number == 3 then
+		quest_item_name = "mutant_dog_tail"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_4()
+	if quest_number == 4 then
+		quest_item_name = "mutant_psevdodog_tail"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_5()
+	if quest_number == 5 then
+		quest_item_name = "mutant_krovosos_jaw"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_6()
+	if quest_number == 6 then
+		quest_item_name = "mutant_burer_hand"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_7()
+	if quest_number == 7 then
+		quest_item_name = "mutant_zombie_hand"
+		return true
+	end
+	return false 
+end
+
+function check_quest_number_8()
+	if quest_number == 8 then
+		quest_item_name = "mutant_snork_leg"
+		return true
+	end
+	return false 
+end
+
+---------spawn skvorec----
+
+function spawn_skvorec()
+	local sim = alife()
+	if sim then
+		local obj = sim:create("rukzak_inventory_box", vector():set(118.57,8.0,-50.45), 315300, 979)
+		local se_obj = sim:object(obj.id)
+		if se_obj then
+			for a=1, 5, 1 do
+				sim:create("ammo_9x19_pbp", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+				sim:create("grenade_rgd5", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+			end
+			sim:create("wpn_mp7a3", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+			sim:create("grenade_f1", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+			sim:create("grenade_light", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+			sim:create("grenade_light", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+		end
+	end
+end
+
+---------arsenal p90-------
+
+function check_p90()
+	return (db.actor:object("wpn_fn_p90") ~= nil)
+end
+
+function check_p90_silencer()
+	return (db.actor:object("wpn_addon_p90_silencer") ~= nil)
+end
+
+function check_money_p90_quest()
+	local actor_money = db.actor:money()
+	return (actor_money > 50000)
+end
+
+function lost_p90_money( speaker1, speaker2 )
+	if check_money_p90_quest() then
+		dialogs.relocate_money(speaker1, 50000, "out")
+	end
+end
+
+function spawn_p90_ammo_quest()
+	local sim = alife()
+	if sim then
+		sim:create("esc_stalker_respawn_2", vector():set(-74.53,-33.15,-335.2), 196550, 99)
+		turret_mgun.create_turret("turret_army", "l01_escape", vector():set(-130.28,-24.61,-354.2), "military", "esc_blokpost", 120, 90)
+		local obj = sim:create("rukzak_inventory_box", vector():set(-74.53,-33.15,-335.2), 196550, 99)
+		local se_obj = sim:object(obj.id)
+		if se_obj then
+			for a=1, 20, 1 do
+				sim:create("ammo_5.7x28_ap", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+			end
+			sim:create("wpn_addon_p90_silencer", se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, se_obj.id)
+		end
+	end
+end
+
+function get_current_time_minutes()
+	local current_minutes = level.get_time_minutes()
+	local current_hours = level.get_time_hours()
+	local current_days = level.get_time_days()
+--	dbglog("get_current_time(days=%d, hours=%d, minutes=%d)", current_days, current_hours, current_minutes)
+	return (current_days*24*60 + current_hours*60 + current_minutes)
+end
+
+function set_p90_time_limit(speaker1, speaker2)
+--   Задаётся в игровых минутах, сутки плюс-минус час
+	local p90_time_limit = get_current_time_minutes() + 23*60 + math.random(1, 120)
+	xr_logic.pstor_store(speaker1, "p90_time_limit", p90_time_limit)
+end
+
+function check_p90_time_limit(speaker1, speaker2)
+	local current_time = get_current_time_minutes()
+	local p90_time_limit = xr_logic.pstor_retrieve(speaker2, "p90_time_limit", 0)
+
+	return (current_time >= p90_time_limit)
+end
+
+---------Army weapon-------
+function have_a_army_weapon()
+	return ((db.actor:object("wpn_ak103") ~= nil) or (db.actor:object("wpn_ak103_snip") ~= nil) or (db.actor:object("wpn_ak103_light") ~= nil) or (db.actor:object("wpn_ak103_storm") ~= nil) or (db.actor:object("wpn_ak103_silenc") ~= nil) or (db.actor:object("wpn_groza1") ~= nil) or (db.actor:object("wpn_groza1_snip") ~= nil) or (db.actor:object("wpn_groza1_light") ~= nil) or (db.actor:object("wpn_groza1_storm") ~= nil) or (db.actor:object("wpn_groza1_silenc") ~= nil))
+end
+
+function have_a_not_army_weapon()
+	return not have_a_army_weapon ()
+end
+
+---------Sidor-------
+function give_mine_finder( speaker1, speaker2 )
+	dialogs.relocate_item_section(speaker1, "detector_mine_finder", "in")
+end
+
+function lost_mine_finder()
+	local actor_obj = db.actor:object ("detector_mine_finder")
+	if actor_obj ~= nil then
+		news_manager.relocate_item(db.actor, "out", "detector_mine_finder")
+		db.actor:mark_item_dropped(actor_obj)
+		alife():release(alife():object(actor_obj:id()),true)
+	end
+end
+
+function have_a_mine_finder()
+	return (db.actor:object ("detector_mine_finder") ~= nil)
+end
+
+--------Informator--------
+function check_informator_money()
+	local actor_money = db.actor:money()
+	return (actor_money > 500)
+end
+function lost_money( speaker1, speaker2 )
+	local actor_money = db.actor:money()
+	if actor_money > 500 then
+		dialogs.relocate_money(speaker2, 500, "out")
+	end
+end
+
+---------All barter-------
+function is_friend1(first_speaker, second_speaker)
+	return (first_speaker:relation(second_speaker) == game_object.friend)
+end
+
+function check_no_wounded(first_speaker, second_speaker)
+	return not dialogs.is_opp_wounded(first_speaker, second_speaker)
+end
+
+function is_friend2(first_speaker, second_speaker)
+	if check_time_limit(second_speaker, first_speaker) then 
+		return ((second_speaker:relation(first_speaker) == game_object.friend) and check_no_wounded(first_speaker, second_speaker))
+	else
+		return false
+	end
+end
+
+function become_neutral(first_speaker, second_speaker)
+	first_speaker:set_relation(game_object.neutral, second_speaker)
+end
+
+function check_friend_barter(first_speaker, second_speaker)
+	local n = table.getn(actor_items_table)
+	local n_count = 0
+	local actor_table = {}
+	local rang_table = ranks.get_obj_rank_name(first_speaker)
+	local min_cost = min_max_cost_table[rang_table][1]
+	local max_cost = min_max_cost_table[rang_table][2]
+
+--	dbglog ("rang: %s, min=%d, max=%d ",rang_table,min_cost,max_cost)
+	for a=1, n, 1 do
+		local actor_items = db.actor:object (actor_items_table[a])
+		if actor_items ~= nil then
+			local item_cost = actor_items:cost()*actor_items:condition()
+			if (item_cost >= min_cost) and (item_cost <= max_cost) then
+				n_count = n_count + 1
+				actor_table[n_count] = actor_items_table[a]
+			end
+		end
+	end
+
+	if n_count == 0 then 
+		barter_flag = false
+		return barter_flag
+	end
+
+	random_actor_item_name = actor_table[math.random(1, table.getn(actor_table))]
+	local random_actor_item = db.actor:object (random_actor_item_name)
+
+	local min_delta = math.floor(random_actor_item:cost() - (random_actor_item:cost()/100)*min_max_delta_table[rang_table])
+	local max_delta = math.floor(random_actor_item:cost() + (random_actor_item:cost()/100)*(min_max_delta_table[rang_table]/2))
+
+	local nn = table.getn(friend_items_table[1])
+	local barter_items_table = {{},{}}
+	n_count = 0
+	for a=1, nn, 1 do
+		if ((friend_items_table[2][a] >= min_delta) and (friend_items_table[2][a] <= max_delta)  and (friend_items_table[1][a] ~= random_actor_item_name)) or (check_some_item(rang_table, friend_items_table[1][a]) and (friend_items_table[2][a] < random_actor_item:cost()) and (friend_items_table[2][a]*10 >= random_actor_item:cost())) then
+			n_count = n_count + 1
+			barter_items_table[1][n_count] = friend_items_table[1][a]
+			barter_items_table[2][n_count] = friend_items_table[2][a]
+		end
+	end
+	if n_count == 0 then 
+		barter_flag = false
+		return barter_flag
+	end
+
+--- проверить одинаковость меняемых предметов
+	local rnd_num = math.random(1, table.getn(barter_items_table[1]))
+	random_friend_item_name = barter_items_table[1][rnd_num]
+	some_items_count = 1
+	local cost_some_items = barter_items_table[2][rnd_num]
+	if check_some_item(rang_table, random_friend_item_name) then
+	for a=1, 10, 1 do
+			if cost_some_items < random_actor_item:cost() then
+				some_items_count = some_items_count +1
+				cost_some_items = cost_some_items + barter_items_table[2][rnd_num]
+			else 
+				break
+			end
+		end
+	end
+--	dbglog("random friend item: %s, cost:%d count:%d",random_friend_item_name,cost_some_items,some_items_count)
+
+	local task_texture, task_rect = get_texture_info("ui_iconsTotal_lost_thing")
+	local dlg_text = ""
+	local str_fmt = "%c[255,160,200,160]"
+	local tmp_fmt = ""
+	local str_fmt_def = "%c[default]"
+
+	if some_items_count > 1 then
+		tmp_fmt = " ("..tostring(math.floor(some_items_count)).." "..game.translate_string("st_barter_1")
+	end
+
+	dlg_text = game.translate_string("st_barter_2").." "..str_fmt..game.translate_string(news_manager.get_inv_name(random_actor_item_name))
+	db.actor:give_talk_message(dlg_text, task_texture, task_rect, "iconed_trade_info")
+	task_texture, task_rect = get_texture_info("ui_iconsTotal_found_thing")
+	dlg_text = game.translate_string("st_barter_3").." "..str_fmt..game.translate_string(news_manager.get_inv_name(random_friend_item_name))..str_fmt_def..tmp_fmt
+	db.actor:give_talk_message(dlg_text, task_texture, task_rect, "iconed_trade_info")
+
+	barter_flag = true 
+
+	local barter_time_limit = get_current_time_minutes() + math.random(120, 600)
+	xr_logic.pstor_store(first_speaker, "barter_time_limit", barter_time_limit)
+	return true
+end
+
+function check_name_current_level(section_name)
+	local st_obj_id = 0
+	for i=1, se_stalker.get_count_tmp_stalkers(), 1 do
+		st_obj_id = se_stalker.get_point_tmp_stalkers(i)
+		local st_obj = alife():object(st_obj_id)
+		if st_obj ~= nil then
+			if string.find(st_obj:name(),section_name) then
+				return (level.object_by_id(st_obj.id) ~= nil)
+			end
+		end
+	end
+	return false
+end
+
+function barter_load(F)
+-- Остатки старой системы для совместимости версий
+	local barter_time_limit = {{},{}}
+	local count_a = F:r_u16()
+	for a=1, count_a, 1 do
+		barter_time_limit[1][a] = F:r_stringZ()
+		barter_time_limit[2][a] = F:r_u32()
+	end 
+end
+
+function barter_save(F)
+-- Для совместимости версий.
+	F:w_u16 (0)
+end
+
+function check_time_limit(first_speaker, second_speaker)
+	local rand_barter = 10
+--	dbglog ("check_time_limit()")
+	local current_time = get_current_time_minutes()
+	local barter_time_limit = xr_logic.pstor_retrieve(first_speaker, "barter_time_limit", 0)
+	if barter_time_limit == nil then
+		barter_time_limit = current_time
+	end
+-- Если обмен возможен, с вероятностью rand_barter увеличим таймаут.
+	local check_flag = (current_time >= barter_time_limit)
+	if check_flag and (math.random(1, 100) < rand_barter) then
+		local barter_time_limit = get_current_time_minutes() + math.random(50, 100)
+		xr_logic.pstor_store(first_speaker, "barter_time_limit", barter_time_limit)
+		check_flag = false
+	end
+	return check_flag
+end
+
+function barter_items()
+	local barter_item = db.actor:object (random_actor_item_name)
+	if barter_item then
+		news_manager.relocate_item(db.actor, "out", random_actor_item_name)
+		db.actor:mark_item_dropped(barter_item)  
+		alife():release(alife():object(barter_item:id()),true)
+		for a=1, some_items_count, 1 do
+			dialogs.relocate_item_section(db.actor, random_friend_item_name, "in")
+		end
+	end
+end
+
+function check_barter_flag()
+	return barter_flag
+end
+
+function check_not_barter_flag()
+	return not barter_flag
+end
+
+function check_item_for_barter()
+	local item_for_barter = db.actor:object (random_actor_item_name)
+	return (item_for_barter ~= nil)
+end
+
+function check_not_item_for_barter()
+	return not check_item_for_barter()
+end
+
+function check_some_item(arg_rank, arg_item)
+	local n = table.getn(some_items_table[arg_rank])
+	for a=1, n, 1 do
+		if some_items_table[arg_rank][a] == arg_item then
+			return true
+		end
+	end
+	return false
+end
+
+local tmp_barter_flag = true
+
+function check_barter_items(first_speaker, second_speaker)
+	local n = table.getn(actor_items_table)
+	local n_count = 0
+	local rang_table = ranks.get_obj_rank_name(first_speaker)
+	local min_cost = min_max_cost_table[rang_table][1]
+	local max_cost = min_max_cost_table[rang_table][2]
+	for a=1, n, 1 do
+	local actor_items = db.actor:object (actor_items_table[a])
+	if actor_items ~= nil
+		then
+		local item_cost = actor_items:cost()*actor_items:condition()
+		if (item_cost >= min_cost) and (item_cost <= max_cost)
+			then
+			n_count = n_count + 1
+			end
+		end
+	end
+	local count_items = n_count*10
+	if count_items > 90 then count_items = 90 end
+	if (math.random(1, 100) > count_items) then
+		local barter_time_limit = get_current_time_minutes() + math.random(120, 600)
+		xr_logic.pstor_store(first_speaker, "barter_time_limit", barter_time_limit)
+		tmp_barter_flag = false
+		return tmp_barter_flag
+	end
+	tmp_barter_flag = true
+	return tmp_barter_flag
+end
+
+function check_not_barter_items(first_speaker, second_speaker)
+	return not tmp_barter_flag
+end

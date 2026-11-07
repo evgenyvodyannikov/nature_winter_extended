@@ -1,0 +1,65 @@
+local iTimer
+local last
+function start_timer_ten_seconds(seconds) 
+    if last~= nil  then
+        iTimer = time_global()+last 
+    else 
+        iTimer = time_global() + 10*1000
+    end 
+end
+
+function timer_ten_seconds() --/ вызывается из ':update' сталкер-биндера
+    if iTimer then
+        last=iTimer-time_global() 
+        if iTimer < time_global() then 
+            iTimer = nil 
+            last=nil
+            case_9_method_of_teleportation_next.animation()
+        end
+    end
+end 
+
+function hud_static()  --/ вызывается из ':update' сталкер-биндера
+local hud = get_hud()
+local st
+    if iTimer then 
+    st = hud:GetCustomStatic("hud_timer")
+        if st==nil then 
+            hud:AddCustomStatic("hud_timer", true) 
+            st = hud:GetCustomStatic("hud_timer")
+        end
+        if last~=nil then
+            local hours = math.floor(last/3600000)
+            local minutes = math.floor(last/60000 - hours*60)
+            local seconds = math.floor(last/1000 - hours*3600 - minutes*60)
+            local text = string.format("%02d:%02d:%02d",hours,minutes,seconds)
+            --local text=string.format("%.f",last/1000)
+            st:wnd():SetTextST(text)  
+        end 
+    else 
+        if hud:GetCustomStatic("hud_timer")~=nil then 
+            hud:RemoveCustomStatic("hud_timer")
+        end
+    end
+end
+
+function animation()
+teleport()
+again_animation()
+end
+
+function teleport()
+    local a = vector()
+    a.x = 152,104
+    a.y = 0,098
+    a.z = 76,192
+    db.actor:set_actor_position(a)
+end
+
+function again_animation()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "case_9_method_of_teleportation_next_add.start_add_spawn") 
+end
+
+

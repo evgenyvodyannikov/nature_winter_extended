@@ -1,0 +1,12 @@
+function actor_have_money(actor, npc)
+	return actor:money() >= 100000
+end
+
+function actor_give_money(actor, npc)
+dialogs.relocate_money(npc, 100000, "out")
+end
+
+function sound_ghost()
+    local snd_obj = xr_sound.get_safe_sound_object([[ambient\alarm_attention\scary_ghost]])
+     snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end

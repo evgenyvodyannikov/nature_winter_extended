@@ -1,0 +1,3 @@
+function case_8_philadelphia_experiment_next_money(actor, npc)
+	return actor:money() >= 500000
+end

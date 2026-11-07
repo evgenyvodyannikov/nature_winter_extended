@@ -1,0 +1,122 @@
+local iTimer
+local last
+function start_timer_ten_seconds(seconds) 
+    if last~= nil  then
+        iTimer = time_global()+last 
+    else 
+        iTimer = time_global() + 10*1000
+    end 
+end
+
+function timer_ten_seconds() --/ вызывается из ':update' сталкер-биндера
+    if iTimer then
+        last=iTimer-time_global() 
+        if iTimer < time_global() then 
+            iTimer = nil 
+            last=nil
+            case_10_mutation.animation()
+        end
+    end
+end 
+
+function hud_static()  --/ вызывается из ':update' сталкер-биндера
+local hud = get_hud()
+local st
+    if iTimer then 
+    st = hud:GetCustomStatic("hud_timer")
+        if st==nil then 
+            hud:AddCustomStatic("hud_timer", true) 
+            st = hud:GetCustomStatic("hud_timer")
+        end
+        if last~=nil then
+            local hours = math.floor(last/3600000)
+            local minutes = math.floor(last/60000 - hours*60)
+            local seconds = math.floor(last/1000 - hours*3600 - minutes*60)
+            local text = string.format("%02d:%02d:%02d",hours,minutes,seconds)
+            --local text=string.format("%.f",last/1000)
+            st:wnd():SetTextST(text)  
+        end 
+    else 
+        if hud:GetCustomStatic("hud_timer")~=nil then 
+            hud:RemoveCustomStatic("hud_timer")
+        end
+    end
+end
+
+function animation()
+teleport()
+again_animation()
+get_case_10_cache()
+spawn_deathclaw()
+spawn_deathclaw_two()
+text_one_one()
+end
+
+function teleport()
+    local a = vector()
+    a.x = 156,460
+    a.y = -21,114
+    a.z = 77,607
+    db.actor:set_actor_position(a)
+end
+
+function again_animation()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "") 
+end
+
+
+function get_case_10_cache()
+    local obj= alife():create("cnt_taynik",vector():set(148.785003662109,-21.0639991760254,97.9339981079102),39946,1210)
+this.set_metka_one()
+end
+
+function set_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="case_10_mutation_doc" then
+    level.map_add_object_spot_ser(obj.id,"green_location","Неизвестно, что там лежит")
+    return
+   end
+  end
+ end
+end
+
+function remove_metka_one()
+ for a=1,65534 do
+  local obj = alife():object(a)
+  if obj then
+   if obj:section_name()=="case_10_mutation_doc" then
+    level.map_remove_object_spot(obj.id,"green_location")
+    break
+   end
+  end
+ end
+end
+
+
+function spawn_deathclaw()
+local x= 153,305
+local y= -21,060
+local z= 85,155
+local level_vertex= 40686
+local game_vertex_id= 1211
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_deathclaw_two()
+local x= 138,617
+local y= -21,059
+local z= 108,795
+local level_vertex= 37396
+local game_vertex_id= 1205
+alife():create("m_deathclaw_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function text_one_one(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Бармен, что это за твари? Блин, они полезли наверх.", nil, nil, 30000)
+end
+
+

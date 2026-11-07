@@ -1,0 +1,46 @@
+local iTimer
+function start_timer_ten_sec() 
+    iTimer = time_global() + 10*1000 
+end
+
+function timer_ten_sec() 
+    if iTimer and iTimer < time_global() then 
+        iTimer = nil 
+        this.start_story_girl_memory()
+    end
+end
+
+function start_story_girl_memory()
+text_memory()
+actor_have_s1f()
+get_treasure_with_story_girl()
+again_animation()
+end
+
+function text_memory(first_speaker, second_speaker)
+    news_manager.send_tip(db.actor,"%c[255,255,128,1]Доступно воспоминание", nil, nil, 30000)
+end
+
+function actor_have_s1f()
+            db.actor:give_info_portion("story_girl_memory")
+end
+
+local ObjId=0
+function get_treasure_with_story_girl()
+    local obj= alife():create("sg_taynik",vector():set(125.696998596191,5.02400016784668,45.3889999389648),44680,1177)
+    local text = "Не могу вспомнить, что там лежит. Нужно проверить."
+    level.map_add_object_spot_ser(obj.id, "green_location", text)
+    ObjId=obj.id 
+end
+
+function again_animation()
+    level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")   
+    level.add_pp_effector("alcohol.ppe", 999, false, "") 
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function give_s1f_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "s1f", "in")
+    dialogs.relocate_item_section(trader, "s2f", "in")
+end

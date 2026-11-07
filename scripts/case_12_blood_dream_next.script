@@ -1,0 +1,92 @@
+function elk_death()
+local obj= alife():create("npc_1871",vector():set(19.800,-10.828,-3.473),5775,1137)
+obj:on_death()
+end
+
+function search_case_12_complete(actor, npc)
+    if db.actor ~= nil then
+        if db.actor:object("case_12_blood_dream_begin") then
+            db.actor:give_info_portion("player_complete_case_12_blood_dream_part_1")
+            db.actor:give_info_portion("player_have_case_12_blood_dream_begin")
+            return true
+        end
+    end
+return false
+end
+
+function last_all_or() 
+again_animation()
+del_npc_one()
+zombie_create()
+zombie_create_two()
+zombie_create_three()
+zombie_create_four()
+zombie_create_five()
+case_13_quantum_leap.start_spawn_nw()
+end
+
+function del_npc_one()
+    local se_obj = alife():object("npc_1875")
+    if se_obj then
+        alife():release(se_obj, true)
+    end
+end
+
+function again_animation()
+    local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
+    snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_cam_effector("camera_effects\\empty.anm", 999, false, "") 
+    level.add_pp_effector("peace_fade.ppe", 999, false, "") 
+end
+
+function zombie_create()
+local x= -2,978
+local y= -10,820
+local z= -0,648
+local level_vertex= 2330
+local game_vertex_id= 1143
+alife():create("skelet_strong",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_first_zom_one",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function zombie_create_two()
+local x= 7,204
+local y= -10,817
+local z= -4,516
+local level_vertex= 3740
+local game_vertex_id= 1135
+alife():create("zombie_first_zom_two",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_first_zom_three",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function zombie_create_three()
+local x= -0,980
+local y= -10,814
+local z= -8,111
+local level_vertex= 2676
+local game_vertex_id= 1134
+alife():create("zombie_first_zom_four",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_first_zom_five",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function zombie_create_four()
+local x= 1,928
+local y= 4,187
+local z= -3,241
+local level_vertex= 3075
+local game_vertex_id= 1124
+alife():create("zombie_rusty_master_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_rusty_master_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("wolk",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function zombie_create_five()
+local x= 37,292
+local y= -10,816
+local z= -0,479
+local level_vertex= 7278
+local game_vertex_id= 1136
+alife():create("zombie_plague_master_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+alife():create("zombie_plague_master_1",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+

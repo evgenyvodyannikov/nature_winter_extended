@@ -1,0 +1,14 @@
+function on()
+return 1
+end
+function off()
+end
+function update()
+end
+function menu()
+d2hud.stop()
+end
+
+function msg(text)
+	db.actor:give_game_news(text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+end

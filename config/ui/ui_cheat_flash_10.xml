@@ -1,0 +1,52 @@
+	<?-- Vergas подписи кнопок выбора музыкального файла В слоте флешка 10--?>
+	<background_f10_t1 x="187" y="128" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Helloween: Open Your Life</text>
+	</background_f10_t1>
+	
+	<background_f10_t2 x="187" y="149" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Rage: In a Namless Time</text>
+	</background_f10_t2>
+
+	<background_f10_t3 x="187" y="170" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Кино: Красно-жёлтые дни</text>
+	</background_f10_t3>
+
+	<background_f10_t4 x="187" y="191" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Ария: Смотри </text>
+	</background_f10_t4>
+
+	<background_f10_t5 x="187" y="212" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Маврик: Виктория</text>
+	</background_f10_t5>
+	
+	<background_f10_t6 x="187" y="233" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Nightwish: Passion and The Opera</text>
+	</background_f10_t6>
+
+	<background_f10_t7 x="187" y="255" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t7>
+	
+	<background_f10_t8 x="187" y="275" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t8>
+	
+	<background_f10_t9 x="187" y="296" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t9>
+	
+	<background_f10_t10 x="187" y="317" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t10>
+	
+	<background_f10_t11 x="187" y="338" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t11>
+	
+	<background_f10_t12 x="187" y="359" width="100" height="20" stretch="1">
+		<text font="letterica16"  r="162" g="181" b="205" a="255" >Файл не загружен</text>
+	</background_f10_t12>
+	
+	<background_36 x="473" y="308" width="50" height="35">
+		<text font="letterica18"  r="238" g="154" b="0" a="255" align="l">Флешка №10</text>
+	</background_36>

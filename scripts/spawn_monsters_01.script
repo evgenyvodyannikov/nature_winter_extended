@@ -1,0 +1,74 @@
+function start_add_spawn()
+art_telep_create()
+biblio_one_create()
+biblio_two_create()
+one_death()
+two_death()
+create()
+spawn_zombie1_one()
+spawn_zombie2_one()
+end
+
+function art_telep_create()
+local x= -1,034
+local y= 4,188
+local z= -12,310
+local level_vertex= 2663
+local game_vertex_id= 1127
+alife():create("af_telep_begin",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function biblio_one_create()
+local x= 20,253
+local y= -16,408
+local z= 30,555
+local level_vertex= 5874
+local game_vertex_id= 1159
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function biblio_two_create()
+local x= 10,510
+local y= -12,429
+local z= 20,153
+local level_vertex= 4327
+local game_vertex_id= 1155
+alife():create("m_fracture_e",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function one_death()
+local obj= alife():create("npc_888",vector():set(28.043,-13.533,41.876),6521,1161)
+obj:on_death()
+end
+
+function two_death()
+local obj= alife():create("npc_888",vector():set(28.148,-13.537,39.816),6519,1161)
+obj:on_death()
+end
+
+function create()
+db.actor:give_info_portion("call_funct_begin")
+    level.add_pp_effector("alcohol.ppe", 1973, false)
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_case_1del4]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+end
+
+function spawn_zombie1_one()
+local x= -222,714
+local y= -19,931
+local z= -167,530
+local level_vertex= 32807
+local game_vertex_id= 47
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+function spawn_zombie2_one()
+local x= -216,519
+local y= -19,826
+local z= -159,136
+local level_vertex= 34720
+local game_vertex_id= 47
+alife():create("mil_stalker_respawn_6",vector():set(x,y,z),level_vertex,game_vertex_id)
+end
+
+
