@@ -370,6 +370,7 @@ local update_cnt = 0
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:update(delta)
 	object_binder.update(self, delta)
+	guiders.start_guid_update()
 	
 	-- рация для ГГ
 	if update_cnt <= 50 then

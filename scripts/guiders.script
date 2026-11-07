@@ -3,10 +3,11 @@
 --[[ ---------------------------------------------------------------------------------------------------
  File        : guiders.script
  Description : Проводники
- Version     : 2.1 - Nature Winter v2.0 QL
+ Version     : 2.11 - Nature Winter v2.0 QL
  Copyright   : 2012 © Stalk15
- Author      : Stalk15
- Last update : 02.07.2012 
+ Author      : Stalk15, TidalN
+ Created	 : 02.07.2012
+ Last update : 07.11.2026
 --]]----------------------------------------------------------------------------------------------------
 
 --------------- Можно менять ---------------
@@ -15,8 +16,7 @@ local sale = 1.1         --/Чем больше значение, тем дешевле будет стоить услуга
 local AllDestImm = true  --/ true - точки назначения доступны только если Вы уже побывали на этой локации, или если Вы имеете квест, связанный с этой локацией.false - все точки назначения доступны сразу.
 local SaleFriend = 1.15   --/Чем больше значение, тем дешевле будет стоить услуга проводника друга
 --------------- Нельзя менять ---------------
-local start_guid, guid_effect = false, false
-local on_start_guid = false
+local on_start_guid, guid_effect = false, false
 local timer = 0
 local obj_id = 0         --/До куда мерить дистанцию.
 local cost_on_guid = 77  --/будет цена
@@ -40,7 +40,7 @@ local sms_guider_1 = {
 	  "Ай-ёё! Чуть не замочили, уроды!"
     }
 	
-local x1, y1, z1, lvid, gvid, on_level, sObject, MessGuider = nil, nil, nil, nil, nil, nil, nil, nil
+local x1, y1, z1, lvid, gvid, on_level, sObject
 ----------------------------------------// Точки назначения //----------------------------------------
 
 ---------------------------- Кордон ----------------------------
@@ -386,41 +386,27 @@ end
 ----------------------------------------------------------  Base function  ----------------------------------------------------------
 --/Проверка дистанции и вычисление оплаты 
 function Check_distance_to_destination_and_computation_cost(first_speaker, second_speaker)
-    local obj, obj2
-        if obj_id == nil then
-		    obj = alife():object(sObject)
-        elseif sObject == nil then
-	        obj = alife():story_object(obj_id)
-        end	
-            local guider_rank = ranks.get_obj_rank_name(first_speaker)
-            local destination2 = game_graph():vertex(obj.m_game_vertex_id):level_id() 
-            local level_name2 = alife():level_id()
-			--/На другую локу
-	            if destination2 ~= level_name2 then
-                    if obj then
-                        local g_v = obj.m_game_vertex_id                              
-                        local pos1 = game_graph():vertex(g_v):game_point()  
-                        g_v = db.actor:game_vertex_id()                      
-                        local pos2 = game_graph():vertex(g_v):game_point()  
-                        local dist = pos1:distance_to(pos2)   
-                        cost_on_guid = dist/sale
-						MessGuider = 27000
-	                 end
-	             end
-				 --/На активную локу
-	                if destination2 == level_name2 then
-			            if obj_id ~= nil or obj_id ~= 0 then
-			                obj2 = level_object_by_sid(obj_id)
-			            end
-			            if obj_id == nil or obj_id == 0 then
-			                obj2 = alife():object(sObject)
-			            end
-			        end
-		            if obj2 and destination2 == level_name2 then
-			            local dist_2 = obj2:position():distance_to(db.actor:position())
-				        cost_on_guid = dist_2/(sale + 3.3)
-						MessGuider = 10000
-                    end	
+    local simulator = alife()
+    local graph = game_graph()
+    local guider_rank = ranks.get_obj_rank_name(first_speaker)
+    if on_level == level.name() then
+		--/На текущую локу
+        local anchor = obj_id and level_object_by_sid(obj_id)
+        local destination = anchor and anchor:position() or vector():set(x1, y1, z1)
+        cost_on_guid = destination:distance_to(db.actor:position()) / (sale + 3.3)
+    else
+		--/На другую локу
+        local destination = graph:vertex(gvid)
+        local anchor = obj_id and simulator:story_object(obj_id) or sObject and simulator:object(sObject)
+        if anchor then
+            local anchor_vertex = graph:vertex(anchor.m_game_vertex_id)
+            if anchor_vertex:level_id() == destination:level_id() then
+                destination = anchor_vertex
+            end
+        end
+        local actor_position = graph:vertex(db.actor:game_vertex_id()):game_point()
+        cost_on_guid = destination:game_point():distance_to(actor_position) / sale
+    end
 --------------------  Основная корректировка цены  ----------------------------
 	            if on_level == "l03_agroprom" and obj_id == 321 then
 	                cost_on_guid = cost_on_guid + cost_on_guid/5
@@ -500,15 +486,7 @@ function Check_distance_to_destination_and_computation_cost(first_speaker, secon
 end
 --------------------------------------------------------------------------------------------------------------------
 function _on_start_guid(first_speaker, second_speaker)
-    local obj
-        if obj_id == nil then
-		    obj = alife():object(sObject)
-        elseif sObject == nil then
-	        obj = alife():story_object(obj_id)
-        end	
-	    local destination = game_graph():vertex(obj.m_game_vertex_id):level_id() 
-        local level_name = alife():level_id()
-	if destination ~= level_name then
+	if on_level ~= level.name() then
         local VisGuider
 	    local guider = second_speaker:id()
 	    local sGuider = alife():object(guider)
@@ -522,7 +500,7 @@ function _on_start_guid(first_speaker, second_speaker)
 	    t.custom = "[logic]\ncfg = scripts\\guider.ltx"
 	    xrs_utils.write_stalker_params(t,SpawnGuider)
 		db.actor:give_info_portion("guider_spawn")
-	--/ character параметры
+		--/ character параметры
 	    local GuiderCom = second_speaker:character_community()
 		--/Ранг
         tmp = xr_logic.pstor_retrieve(db.actor, "guiderrank", 0)
@@ -533,18 +511,18 @@ function _on_start_guid(first_speaker, second_speaker)
 		tmp = GuiderCom
 		xr_logic.pstor_store(db.actor, "guidercom", tmp)
 	end
-	  --/Имя
+	  	--/Имя
 		tmp = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
 		tmp = guider_name
 		xr_logic.pstor_store(db.actor, "guidername", tmp)
 		
-       --/Сам проводник
+       	--/Сам проводник
 		tmp = xr_logic.pstor_retrieve(db.actor, "guideruserdata", 0)
 		tmp = second_speaker:id()
 		xr_logic.pstor_store(db.actor, "guideruserdata", tmp)
         		
-    start_guid = true
     on_start_guid = true
+    guid_effect = false
 	timer = time_global()
 	this.off_input(30)
 	level.add_pp_effector("monolith_off.ppe", 1977, false)
@@ -557,53 +535,50 @@ function _on_start_guid(first_speaker, second_speaker)
 end
 
 function start_guid_update()
-    if on_start_guid == true then
-	    level.hide_indicators()
-		  if time_global() - timer > 1.7*1000 and guid_effect == false then
-		   level.remove_pp_effector(1977)
-		   this.guid_effect_2()
-		   guid_effect = true
-		end
+    if not db.actor then
+        return
     end
-    if guid_effect == true and time_global() - timer > 4.1*1000 then
-		this.start_guid__()
-        on_start_guid = false
-	    guid_effect = false
-	end	
-	if db.actor and has_alife_info("guider_spawn") and has_alife_info("guid_complete") then
-	    local Guider = alife():story_object(3773)
-	    local cGuider = level_object_by_sid(3773)
-	        if Guider or cGuider then
-		        if cGuider:position():distance_to(db.actor:position()) > 15 or cGuider:position():distance_to(db.actor:position()) == nil then   -- or has_alife_info("guider_death") and time_global() - timer > 7.7*1000
-			        alife():release(Guider, true)
---			        news_manager.send_tip(db.actor, "Удалили")
-		            db.actor:disable_info_portion("guider_spawn")
-					db.actor:disable_info_portion("guider_on_hit")
-					db.actor:disable_info_portion("guider_death")
-					db.actor:disable_info_portion("guid_complete")
-                end					
-          end
-	 end  
+
+    if on_start_guid then
+        local elapsed = time_global() - timer
+        level.hide_indicators()
+        if elapsed > 1700 and not guid_effect then
+            level.remove_pp_effector(1977)
+            this.guid_effect_2()
+            guid_effect = true
+        end
+        if elapsed > 4100 and guid_effect then
+            on_start_guid = false
+            guid_effect = false
+            this.start_guid__()
+        end
+    end
+
+    if has_alife_info("guider_spawn") and has_alife_info("guid_complete") then
+        local simulator = alife()
+        local guide = simulator:story_object(3773)
+        local online_guide = level_object_by_sid(3773)
+        if not guide or (online_guide and online_guide:position():distance_to(db.actor:position()) > 15) then
+            if guide then
+                simulator:release(guide, true)
+            end
+            db.actor:disable_info_portion("guider_spawn")
+            db.actor:disable_info_portion("guider_on_hit")
+            db.actor:disable_info_portion("guider_death")
+            db.actor:disable_info_portion("guid_complete")
+        end
+    end
 end
 
 --/Начинаем переход
 function start_guid__()
-    local obj
-        if obj_id == nil then
-		    obj = alife():object(sObject)
-        elseif sObject == nil then
-	        obj = alife():story_object(obj_id)
-        end	
-		if obj then
-	        local destination = game_graph():vertex(obj.m_game_vertex_id):level_id() 
-		    local level_name = alife():level_id()                                   
-		        if destination ~= level_name then
-			        guid_teleport.start_level_changer(vector():set(x1,y1,z1), lvid, gvid, on_level)
-	      else
-		    local a = vector() a.x = x1  a.y = y1  a.z = z1  
-            db.actor:set_actor_position(a)			
-        end				
-	end
+    local destination = vector():set(x1, y1, z1)
+    if on_level ~= level.name() then
+        guid_teleport.start_level_changer(destination, lvid, gvid, on_level)
+    else
+        db.actor:set_actor_position(destination)
+        message_from_the_guider()
+    end
 end
 
 --/Функции оплаты
@@ -656,7 +631,6 @@ end
 function effector_callbak_guid_unfade()
     level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "guiders.effector_callbak_guid_reset")
     level.add_pp_effector("peace_unfade.ppe", 1973, false)
-	message_from_the_guider()
 end
 
 function effector_callbak_guid_reset()
@@ -674,12 +648,15 @@ function on_other_level_effect()
 end
 
 function message_from_the_guider_and_effect()
+    on_start_guid = false
+    guid_effect = false
     message_from_the_guider()
 	on_other_level_effect()
 	Del_LevelChanger()   --/Заодно удалим LC
 end
 
 function message_from_the_guider()
+    local duration = has_alife_info("guider_spawn") and 27000 or 10000
     local TabG
     local Rnd = math.random(1, 4)
         if has_alife_info("start_guid_1") then
@@ -696,13 +673,13 @@ function message_from_the_guider()
 		        local SnsObj = xr_sound.get_safe_sound_object([[device\pda\pda_tip]])
 			    SnsObj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
 		    if Rnd == 1 then
-				db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,216,165,108), math.random(700, 1900), MessGuider)
+				db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,216,165,108), math.random(700, 1900), duration)
 	        elseif Rnd == 2 then
-	            db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,0,83,47), math.random(700, 1900), MessGuider)
+	            db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,0,83,47), math.random(700, 1900), duration)
 	        elseif Rnd == 3 then
-			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,108,165,108), math.random(700, 1900), MessGuider)
+			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,108,165,108), math.random(700, 1900), duration)
 	        elseif Rnd == 4 then
-			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(165,108,165,108), math.random(700, 1900), MessGuider)
+			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(165,108,165,108), math.random(700, 1900), duration)
 	        end
 	        db.actor:disable_info_portion("start_guid_1")
 	        db.actor:disable_info_portion("start_guid_2")
@@ -713,10 +690,9 @@ end
 
 --/Напали на проводника
 function message_help_to_guider()
-  local Guider = alife():story_object(3773)
   local cGuider = level_object_by_sid(3773)
   local Rnd = math.random(1, 4)
-	if Guider or cGuider then
+	if cGuider then
 		if cGuider:position():distance_to(db.actor:position()) > 15 then
 		    local guidername_ = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
             local text = "%c[255,69,207,246]Проводник:%c[255,255,150,0]"..tostring(guidername_).."\\n%c[default]"..sms_guider_1[math.random(9, 11)]
@@ -744,9 +720,8 @@ end
 
 --/Установка character параметров проводнику
 function set_guider_char_params()
-  local Guider = alife():story_object(3773)
   local cGuider = level_object_by_sid(3773)
-	if Guider or cGuider then
+	if cGuider then
 	    local SetRank = xr_logic.pstor_retrieve(db.actor, "guiderrank", 0)
 		local SetCom = xr_logic.pstor_retrieve(db.actor, "guidercom", 0)
 	    cGuider:set_character_community(SetCom, 0, 0)   
@@ -758,7 +733,9 @@ end
 function delete_guider()
     local Guider = xr_logic.pstor_retrieve(db.actor, "guideruserdata", 0)
     local sGuider = alife():object(Guider)
-	alife():release(sGuider, true)
+	if sGuider then
+		alife():release(sGuider, true)
+	end
 end
 
 --/Отключение ввода
@@ -783,8 +760,7 @@ function reset_guid()
 	    db.actor:disable_info_portion("guid_complete")
 	end
 	local Guider = alife():story_object(3773)
-	local cGuider = level_object_by_sid(3773)
-	if Guider or cGuider then
+	if Guider then
 	    alife():release(Guider, true)
 	end
 end
@@ -1170,9 +1146,8 @@ function init_guiders_dialog(dlg)
 	    phr28:GetPhraseScript():AddPrecondition("guiders.not_have_money_on_guid")
 	phr29 = dlg:AddPhrase(guider_dialog_phr_29, "29", "27", -10000)
 	phr30 = dlg:AddPhrase(guider_dialog_phr_30, "30", "29", -10000)
-        phr30:GetPhraseScript():AddAction("dialogs.break_dialog")	
---	    phr30:GetPhraseScript():AddAction("guiders.start_guid")
-		phr30:GetPhraseScript():AddAction("guiders._on_start_guid")
+	    phr30:GetPhraseScript():AddAction("guiders._on_start_guid")
+	    phr30:GetPhraseScript():AddAction("dialogs.break_dialog")
 		
 	phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "24", -10000)
     phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "26", -10000)
@@ -1201,39 +1176,4 @@ function on_guider_dialog_phr_26(first_speaker, second_speaker)
         else
 		    db.actor:give_talk_message(guider_dialog_phr_26_2, "ui\\icon_guider", Frect():set(165,0,165,108), "iconed_answer_item")
 	 end
-end 
-
---local Fast = false
-function on_start_guid_update()
---    if Fast == false then
-	    db.actor:set_fastcall(start_guid_update, db.actor)
---		Fast = true
---	end
 end
-
-on_start_guid_update()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
