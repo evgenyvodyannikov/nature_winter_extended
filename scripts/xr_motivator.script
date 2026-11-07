@@ -152,6 +152,9 @@ function motivator_binder:clear_callbacks()
 end
 
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
+	if not self.object then
+		return
+	end
 
 	--// xr_companion
 	if xr_companion.is_companion(self.object:id()) and amount < 0.3 then
