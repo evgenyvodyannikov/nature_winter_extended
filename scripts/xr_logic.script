@@ -1246,7 +1246,7 @@ function pstor_load_all(obj, reader)
 	end
 	local ctr = reader:r_u32()
 
-	if tonumber(ctr) > 20 and tostring(obj:name()) ~= "single_player" and npc_id ~= db.actor:id() then 
+	if tonumber(ctr) > 20 and tostring(obj:name()) ~= "single_player" and obj:clsid() ~= clsid.actor then
 		-- logf("намюпсфем назейр я онбпефдеммшл PSTOR: "..tostring(obj:name()).." асдер опнхгбедемю оношрйю бняярюмнбкемхъ")
 		ctr = 20 
 	end
